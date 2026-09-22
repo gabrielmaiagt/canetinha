@@ -93,6 +93,8 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 
 /* ===== opções em cards com foto ===== */
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pgrid .pc.wide{grid-column:1/-1}
+.pgrid .pc.wide .im{aspect-ratio:2/1}
 .pc{position:relative;border:0;padding:0;background:var(--card);border-radius:var(--r-sm);overflow:hidden;cursor:pointer;text-align:left;box-shadow:0 10px 24px -14px rgba(76,29,149,.35);outline:2.5px solid transparent;transition:outline-color .12s}
 .pc .im{aspect-ratio:4/5;background:var(--card2);position:relative}
 .pc .im img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
@@ -337,7 +339,7 @@ const CONFIG = {
     bebidaProduto: "",        // etapa 7 e oferta (A6)
     // A MODELO — mesma mulher em tudo (grupo C do doc 06)
     corpoMedio: "", corpoPlus: "", corpoAcima: "", corpoSobrepeso: "",
-    areaCulotes: "", areaBarriga: "", areaGluteos: "", areaCorpoTodo: "",
+    areaCulotes: "", areaBarriga: "", areaCorpoTodo: "",
     depoisSeca: "", depoisNatural: "",
     // prova
     depoimentoFoto1: "",
@@ -380,14 +382,15 @@ const quote = (name, text, meta, av) => `<div class="quote"><div class="qa">${av
 const carousel = (arr, label, tall = false) => `<div class="car ${tall ? "tall" : ""}">${arr.map((s, i) => img(s, `${label} ${i + 1}`, tall ? "4/5" : "1/1")).join("")}</div>`;
 const title = (h, sub) => `<h2 class="q-title">${h}</h2>${sub ? `<p class="q-sub">${sub}</p>` : ""}`;
 const list = (key, arr, { multi = false } = {}) => ({ multi, html: `<div class="opts" data-key="${key}" data-multi="${multi}">${arr.map((o, i) => `<button class="opt" data-v="${esc(o.v || o.l)}" data-i="${i}"><span class="dot">✓</span><span class="lbl">${o.l}${o.s ? `<small>${o.s}</small>` : ""}</span></button>`).join("")}</div>${multi ? btn("Continuar →") : ""}` });
-const photos = (key, arr, { multi = false } = {}) => ({ multi, html: `<div class="pgrid" data-key="${key}" data-multi="${multi}">${arr.map((o, i) => `<button class="pc" data-v="${esc(o.v || o.l)}" data-i="${i}"><div class="im">${o.img ? `<img src="${o.img}" alt="${esc(o.l)}" loading="lazy">` : `<div class="ph">📷 ${esc(o.ph || o.l)}</div>`}</div><div class="bar"><span>${o.l}</span><i>→</i></div>${multi ? `<span class="chk">✓</span>` : ""}</button>`).join("")}</div>${multi ? btn("Continuar →") : ""}` });
+const photos = (key, arr, { multi = false } = {}) => ({ multi, html: `<div class="pgrid" data-key="${key}" data-multi="${multi}">${arr.map((o, i) => `<button class="pc${o.wide ? " wide" : ""}" data-v="${esc(o.v || o.l)}" data-i="${i}"><div class="im">${o.img ? `<img src="${o.img}" alt="${esc(o.l)}" loading="lazy">` : `<div class="ph">📷 ${esc(o.ph || o.l)}</div>`}</div><div class="bar"><span>${o.l}</span><i>→</i></div>${multi ? `<span class="chk">✓</span>` : ""}</button>`).join("")}</div>${multi ? btn("Continuar →") : ""}` });
 
 /* ---- personalização derivada das respostas ---- */
 const P = {
   falta: () => Math.max(0, (+S.a.peso || 0) - (+S.a.ideal || 0)),
   mes1: () => { const f = P.falta(); return f ? Math.min(f, 10) : 10; },
   meses: () => { const f = P.falta(); return f ? Math.max(1, Math.ceil(f / 8)) : 1; },
-  foco: () => ((S.a.areasalvo || [])[0] || "barriga").toLowerCase(),
+  areas: () => Array.isArray(S.a.areasalvo) ? S.a.areasalvo : S.a.areasalvo ? [S.a.areasalvo] : [],
+  foco: () => (P.areas()[0] || "barriga").toLowerCase(),
   horario: () => {
     const f = S.a.fome, r = S.a.rotina || "";
     if (f === "manhã") return r.startsWith("Trabalho fora") ? "logo ao acordar, antes de sair" : "logo ao acordar";
@@ -396,14 +399,29 @@ const P = {
     return "de manhã e 30 min antes do jantar";
   },
   beneficio: () => (S.a.beneficios || [])[0] || "",
+  metaLinha: () => {
+    const m = S.a.meta, f = P.falta(); if (!m) return "";
+    const R = { "Até 5 kg": [0, 5], "De 6 a 10 kg": [6, 10], "De 11 a 19 kg": [11, 19], "20 kg ou mais": [20, 999] }[m];
+    const q = `Você marcou <b>${esc(m)}</b> lá no começo`;
+    if (!f || !R) return `${q} — a dose e o horário saem calculados pro seu corpo.`;
+    if (f >= R[0] && f <= R[1]) return `${q} — e pelo seu peso e a sua altura, são <b>${f} kg</b> de gordura pra sair. Bate certinho.`;
+    if (f > R[1]) return `${q}. Pelo seu peso e a sua altura, o seu corpo tem <b>${f} kg</b> de gordura pra sair — dá pra ir além do que você pediu.`;
+    return `${q}, e a meta que você colocou é de <b>${f} kg</b>. É com esses ${f} kg que eu vou montar a sua dose.`;
+  },
+  futuro: () => ({
+    igual: "Daqui 1 ano você não precisa estar do mesmo jeito que hoje.",
+    pior: "Daqui 1 ano você não precisa estar mais pesada do que hoje.",
+    nem: "Você disse que prefere nem imaginar como estaria daqui 1 ano. Então vamos mudar o ano.",
+    magra: "Você disse que daqui 1 ano quer estar magra — se achar o que funciona pra você. Achou.",
+  }[S.a.futuro] || ""),
   empatia: () => ({
     "Minha autoestima tá lá embaixo": "Você disse que a autoestima tá lá embaixo. Em 30 dias o que muda primeiro é o espelho.",
     "Vivo cansada, sem energia pra nada": "Você disse que vive cansada. Quando a fome para de mandar, a energia volta na primeira semana.",
     "Já tá mexendo com a saúde: pressão, dores, exames": "Você disse que já tá mexendo na saúde. Por isso o horário e a dose são calculados pro seu corpo, não genéricos.",
     "Tá afetando a minha vida íntima": "Você disse que tá afetando a sua vida íntima. Secar só a gordura, mantendo as curvas, é exatamente o que a Canetinha faz.",
-  }[S.a.impacto] || "Não é falta de força de vontade. É a fome que a canetinha desliga à força — e que a Canetinha de Pobre desliga do jeito natural, enquanto coloca seu corpo pra queimar gordura 24 horas por dia."),
+  }[S.a.impacto] || "Não é falta de força de vontade. É a fome — e é ela que a Canetinha de Pobre corta primeiro."),
   barreira: () => ({
-    fome: "A fome vence — e é isso que a Canetinha corta primeiro.",
+    fome: "A fome vence — e é isso que a Canetinha de Pobre corta primeiro.",
     tempo: "Falta tempo — por isso são 5 minutos de preparo, 1 vez por dia.",
     financeiro: "É caro — por isso é R$ 37 e ingrediente de mercado, não R$ 3 mil.",
     constancia: "Você larga na 2ª semana — quando a fome some, manter deixa de ser esforço.",
@@ -477,13 +495,13 @@ const STEPS = [
   ...(ENTRY === "landing" ? [LANDING] : []),
 
   /* 02 — áreas (cards com foto, multi) */
-  { id: "areas", title: "Pra começar: <span class='hl'>onde</span> você mais quer secar?", sub: "Pode marcar mais de uma.",
+  { id: "areas", title: "Pra começar: <span class='hl'>onde</span> você mais quer secar?",
     ...photos("areasalvo", [
       { l: "Barriga", img: A.areaBarriga, ph: "modelo · barriga marcada" }, { l: "Culotes", img: A.areaCulotes, ph: "modelo · culotes marcados" },
-      { l: "Glúteos", img: A.areaGluteos, ph: "modelo · glúteos (costas)" }, { l: "Corpo todo", img: A.areaCorpoTodo, ph: "modelo · contorno" }], { multi: true }) },
+      { l: "Corpo todo", img: A.areaCorpoTodo, ph: "modelo · contorno", wide: true }]) },
 
   /* 03 — quantos kg (Mounjaro etapa 2) */
-  { id: "meta", title: "E quantos quilos você quer <span class='hl'>eliminar</span>?",
+  { id: "meta", title: "Quantos quilos você quer <span class='hl'>eliminar</span>?",
     ...list("meta", [{ l: "Até 5 kg" }, { l: "De 6 a 10 kg" }, { l: "De 11 a 19 kg" }, { l: "20 kg ou mais" }]) },
 
   /* 04 — tipo de corpo */
@@ -500,12 +518,16 @@ const STEPS = [
   { id: "feliz", title: "Você tá <span class='rd'>feliz</span> com a sua aparência hoje?",
     ...list("feliz", [{ l: "Não, quero emagrecer pra me sentir melhor" }, { l: "Sim, mas sei que posso melhorar" }]) },
 
+  /* 06b — implicação futura (modelo Paizão: "Se nada mudar, como você se imagina daqui 1 ano?") */
+  { id: "futuro", title: "Se nada mudar: como você se <span class='rd'>imagina</span> daqui 1 ano?",
+    ...list("futuro", [{ l: "Do mesmo jeito que hoje", v: "igual" }, { l: "Mais pesada do que hoje", v: "pior" }, { l: "Prefiro nem imaginar", v: "nem" }, { l: "Magra — se eu achar o que funciona pra mim", v: "magra" }]) },
+
   /* 07 — relação com a canetinha (aprovada) — alimenta a abertura do mecanismo, o alerta do diagnóstico e o FAQ */
-  { id: "caneta", title: "E a <span class='hl'>canetinha de verdade</span>, qual a sua relação com ela?",
+  { id: "caneta", title: "Me fala uma coisa: qual a sua relação com a <span class='hl'>canetinha de verdade</span>?",
     ...list("caneta", [{ l: "Já usei e o peso voltou", v: "usei" }, { l: "Quero usar, mas tenho medo dos efeitos", v: "medo" }, { l: "Queria, mas não tenho R$ 3 mil por mês", v: "caro" }, { l: "Nunca pensei nisso", v: "nunca" }]) },
 
   /* 06 — barreira */
-  { id: "barreira", title: "E o que mais te <span class='rd'>impede</span> de emagrecer?",
+  { id: "barreira", title: "O que mais te <span class='rd'>impede</span> de emagrecer?",
     ...list("barreira", [
       { l: "A fome vence", s: "Começo a dieta e não aguento, principalmente à noite", v: "fome" },
       { l: "Falta tempo", s: "Rotina agitada, não sobra tempo pra mim", v: "tempo" },
@@ -522,7 +544,7 @@ const STEPS = [
     }[S.a.caneta] || `<b>Você já viu a Virginia Fonseca, a Jojo Todynho, a Maraisa secando na canetinha.</b> O que ninguém conta é o que ela faz por trás 👇`;
     return `
     <div class="al acc">${open}</div>
-    <h2 class="q-title">A Canetinha de Pobre age na <span class="hl">causa principal</span> do ganho de peso — e a canetinha de verdade não</h2>
+    <h2 class="q-title">A Canetinha de Pobre age na <span class="hl">causa principal</span> do ganho de peso</h2>
     <div class="cmp">
       <div class="col bad"><h3>❌ A canetinha de verdade</h3><ul>
         <li><i>✗</i><span>Deixa com <b>cara de doente</b> — seca o rosto junto</span></li>
@@ -534,14 +556,14 @@ const STEPS = [
         <li><i>✓</i><span><b>Acelera o metabolismo</b> e coloca o corpo pra <b>queimar gordura 24 horas por dia</b>, até dormindo</span></li>
         <li><i>✓</i><span><b>Derrete a gordura localizada</b> — barriga, culote, coxa — e mantém bumbum, curvas e firmeza</span></li>
         <li><i>✓</i><span><b>O peso não volta</b>, porque não cria dependência</span></li>
-        <li><i>✓</i><span>Ingredientes de mercado, <b>5 minutos</b>, R$ 37</span></li></ul></div>
+        <li><i>✓</i><span>Ingredientes de <b>mercado</b>, <b>5 minutos</b> de preparo, 1 vez por dia</span></li></ul></div>
     </div>
     ${img(A.bebidaProduto, "foto do copo com a bebida (prompt A6)", "16/9")}
-    <p class="small"><b>Por isso as famosas estão trocando.</b> A Canetinha de Pobre estimula o mesmo hormônio da saciedade que a caneta e ainda acelera o metabolismo: seu corpo passa a <b>queimar gordura 24 horas por dia, mesmo enquanto você dorme</b> — e você começa a secar já nos primeiros dias. O horário certo de tomar eu calculo nas próximas perguntas.</p>
+    <p class="small"><b>Por isso as famosas estão trocando.</b> É o mesmo hormônio da saciedade que a caneta liga — só que vindo do seu próprio corpo, sem agulha e sem receita. Você começa a secar já nos primeiros dias. O horário certo de tomar eu calculo nas próximas perguntas.</p>
     ${btn("Entendi, continuar →", "pulse")}`; } },
 
   /* 08 — benefícios */
-  { id: "beneficios", title: "O que você mais quer <span class='hl'>sentir</span> nos próximos 30 dias?", sub: "Marca tudo que se aplica.",
+  { id: "beneficios", title: "O que você mais quer <span class='hl'>sentir</span> nos próximos 30 dias?", sub: "Pode marcar mais de uma.",
     ...list("beneficios", [{ l: "Parar de beliscar e comer besteira" }, { l: "Me olhar no espelho e gostar" }, { l: "Usar qualquer roupa sem marcar a barriga" }, { l: "Ouvir \"o que você fez pra emagrecer?\"" }, { l: "Meu parceiro me olhando com desejo" }, { l: "Subir escada sem cansar" }], { multi: true }) },
 
   /* 09 — prova */
@@ -554,18 +576,20 @@ const STEPS = [
     ${btn("Continuar →", "pulse")}` },
 
   /* 10–12 — dados */
-  { id: "peso", title: "Quase lá! Qual é o seu <span class='hl'>peso</span> hoje?", sub: "Fica só entre nós 🔒 É pra calcular a sua dose.", slider: { key: "peso", min: 40, max: 200, def: 75, unit: "kg" } },
-  { id: "altura", title: "E a sua <span class='hl'>altura</span>?", sub: "Vou calcular o seu IMC.", slider: { key: "altura", min: 140, max: 210, def: 165, unit: "cm" } },
-  { id: "ideal", title: "E qual peso você quer <span class='hl'>chegar</span>?", slider: { key: "ideal", min: 40, max: 200, def: 62, unit: "kg" } },
+  { id: "peso", title: "Agora os números: qual é o seu <span class='hl'>peso</span> hoje?", sub: "Fica só entre nós 🔒 É pra calcular a sua dose.", slider: { key: "peso", min: 40, max: 200, def: 75, unit: "kg" } },
+  { id: "altura", title: "Qual é a sua <span class='hl'>altura</span>?", sub: "Vou calcular o seu IMC.", slider: { key: "altura", min: 140, max: 210, def: 165, unit: "cm" } },
+  { id: "ideal", title: "Qual peso você quer <span class='hl'>alcançar</span>?", slider: { key: "ideal", min: 40, max: 200, def: 62, unit: "kg" } },
 
   /* 13 — tela motivacional (BetterMe) — usa meta + barreira */
   { id: "motiva", render: () => `
     <div class="info-card">
+      ${P.futuro() ? `<p class="small" style="margin-bottom:10px">${P.futuro()}</p>` : ""}
       <p class="big">${P.falta() ? `Faltam <span class="hl">${P.falta()} kg</span> pra sua meta. Dá pra fazer <span class="hl">sem passar fome.</span>` : `Dá pra chegar lá <span class="hl">sem passar fome.</span>`}</p>
+      ${P.metaLinha() ? `<p class="small">${P.metaLinha()}</p>` : ""}
       <p class="small">Pelo seu perfil, a Canetinha de Pobre prevê <b>até ${P.mes1()} kg no primeiro mês</b>${P.meses() > 1 ? ` e a meta completa em cerca de <b>${P.meses()} meses</b>` : ""} — comendo arroz e feijão — com a fome cortada e o metabolismo queimando gordura o dia inteiro, até dormindo.</p>
       ${P.barreira() ? `<div class="al acc">${P.barreira()}</div>` : ""}
       <div class="mock">${A.appMockup ? `<img src="${A.appMockup}" alt="App">` : `<div class="ph">📷 mockup do celular com o app: receita + dose + horário (prompt F8)</div>`}</div>
-      <p class="small">Faltam 4 perguntinhas pra eu fechar o seu <b>horário da Canetinha</b>.</p>
+      <p class="small">Faltam 4 perguntinhas pra eu fechar o <b>horário da sua Canetinha de Pobre</b>.</p>
     </div>
     ${btn("Continuar →", "pulse")}` },
 
@@ -578,11 +602,12 @@ const STEPS = [
     ...list("fome", [{ l: "De manhã, acordo com fome", v: "manhã" }, { l: "À tarde, depois do almoço", v: "tarde" }, { l: "À noite, depois do jantar", v: "noite" }, { l: "O dia inteiro, vivo beliscando", v: "o dia inteiro" }]) },
 
   /* 17 — corpo que quer */
-  { id: "corpoalvo", title: "E como você quer se <span class='hl'>ver</span> daqui a 30 dias?",
+  { id: "corpoalvo", title: "Como você quer se <span class='hl'>ver</span> daqui a 30 dias?",
+    sub: () => S.a.feliz === "Sim, mas sei que posso melhorar" ? "Você disse que dá pra melhorar. Então escolhe o ponto de chegada:" : "Você disse que quer emagrecer pra se sentir melhor. Escolhe o ponto de chegada:",
     ...photos("corpoalvo", [{ l: "Seca e definida", img: A.depoisSeca, ph: "modelo · seca (C10)", v: "Em forma" }, { l: "Magra e natural", img: A.depoisNatural, ph: "modelo · natural (C11)", v: "Natural" }]) },
 
   /* 18 — compromisso */
-  { id: "compromisso", title: "Última, e é a que mais vale: você tá <span class='hl'>disposta</span> a tomar a Canetinha todo dia por 30 dias?",
+  { id: "compromisso", title: "Última, e é a que mais vale: você tá <span class='hl'>disposta</span> a tomar a Canetinha de Pobre todo dia por 30 dias?",
     ...list("compromisso", [{ l: "Tô pronta, pode vir 🙏", v: "pronta" }, { l: "Quero, mas tenho medo de não conseguir", v: "medo" }]) },
 
   /* 19 — loading */
@@ -607,10 +632,10 @@ const STEPS = [
   { id: "diagnostico", render: () => {
     const v = imc(), f = faixa(); const pos = Math.max(3, Math.min(97, ((v - 15) / 25) * 100));
     const frase = {
-      magreza: `Seu IMC deu <b>${v.toFixed(1)}</b>, abaixo da faixa — mas fome descontrolada também acumula gordura localizada. A Canetinha regula isso.`,
-      normal: `Seu IMC deu <b>${v.toFixed(1)}</b>, dentro da faixa. Mas seu metabolismo pode estar lento, acumulando gordura localizada — e é isso que a Canetinha vai derreter.`,
+      magreza: `Seu IMC deu <b>${v.toFixed(1)}</b>, abaixo da faixa — mas fome descontrolada também acumula gordura localizada. A Canetinha de Pobre regula isso.`,
+      normal: `Seu IMC deu <b>${v.toFixed(1)}</b>, dentro da faixa. Mas seu metabolismo pode estar lento, acumulando gordura localizada — e é isso que a Canetinha de Pobre vai derreter.`,
       sobrepeso: `Seu IMC deu <b>${v.toFixed(1)}</b>: sobrepeso. Seu corpo está no modo <b>acúmulo de gordura</b> — metabolismo lento, retendo líquido — e cada mês que passa fica mais difícil de reverter sem ajuda.`,
-      obesidade: `Seu IMC deu <b>${v.toFixed(1)}</b>: obesidade. Seu corpo está no modo <b>acúmulo de gordura</b> e a sua saúde tem que vir primeiro. Chegou o limite de deixar pra depois — a Canetinha começa hoje.`,
+      obesidade: `Seu IMC deu <b>${v.toFixed(1)}</b>: obesidade. Seu corpo está no modo <b>acúmulo de gordura</b> e a sua saúde tem que vir primeiro. Chegou o limite de deixar pra depois — a Canetinha de Pobre começa hoje.`,
     }[f];
     const beforeImg = { "Médio": A.corpoMedio, "Plus size": A.corpoPlus, "Acima do peso": A.corpoAcima, "Sobrepeso": A.corpoSobrepeso }[S.a.corpo] || "";
     const afterImg = S.a.corpoalvo === "Natural" ? A.depoisNatural : A.depoisSeca;
@@ -630,7 +655,7 @@ const STEPS = [
       <div class="imc">${frase}</div>
       <div class="rows">
         <div><small>Peso</small><b>${S.a.peso || "–"} kg</b></div><div class="d"></div><div><small>Meta</small><b class="goal">${S.a.ideal || "–"} kg</b></div>
-        <div><small>Foco</small><b>${esc((S.a.areasalvo || []).join(", ") || "corpo todo")}</b></div><div class="d"></div><div><small>Sua Canetinha</small><b class="goal">${P.horario()}</b></div>
+        <div><small>Foco</small><b>${esc(P.areas().join(", ") || "corpo todo")}</b></div><div class="d"></div><div><small>Sua Canetinha de Pobre</small><b class="goal">${P.horario()}</b></div>
       </div>
     </div>
     <div class="metric"><div class="mt"><span>IMC ${v.toFixed(1)}</span><span class="${f === "normal" ? "ok" : ""}">${f === "normal" ? "faixa saudável" : "⚠️ zona de alerta"}</span></div><div class="bar"><span class="tip" style="left:${pos}%">Você</span><span class="dot" style="left:${pos}%"></span></div><div class="lg"><span>Magreza</span><span>Baixo</span><span>Normal</span><span>Sobrepeso</span><span>Obesidade</span></div></div>
@@ -643,7 +668,7 @@ const STEPS = [
     const v = imc(), f = faixa();
     const gif = f === "obesidade" ? A.gifIMCobesidade : f === "sobrepeso" ? A.gifIMCsobrepeso : A.gifIMCnormal;
     const gord = f === "obesidade" ? ["35-40%", "25-29%"] : f === "sobrepeso" ? ["29-34%", "20-25%"] : ["25-29%", "15-25%"];
-    const areas = (S.a.areasalvo || []).join(", ") || "Corpo todo";
+    const areas = P.areas().join(", ") || "Corpo todo";
     const ben = P.beneficio();
     const args = [
       ["A Receita da Canetinha de Pobre", "O preparo exato, os ingredientes de mercado e a dose certa pro seu peso pra cortar a fome e ativar a queima de gordura 24h.", "🥤"],
@@ -681,7 +706,7 @@ const STEPS = [
       <div><div class="em">⚖️</div><b>${S.a.peso || "–"} kg</b><small>peso atual</small></div>
       <div><div class="em">🏁</div><b>${S.a.ideal || "–"} kg</b><small>meta</small></div>
     </div>
-    <div class="al acc" style="text-align:center">🕒 Horário da sua Canetinha: <b>${P.horario()}</b>${P.falta() ? ` · previsão <b>até ${P.mes1()} kg de gordura</b> no 1º mês` : ""}</div>
+    <div class="al acc" style="text-align:center">🕒 Horário da sua Canetinha de Pobre: <b>${P.horario()}</b>${P.falta() ? ` · previsão <b>até ${P.mes1()} kg de gordura</b> no 1º mês` : ""}</div>
     <p class="h3">Seu protocolo inclui:</p>
     <div class="args">${args.map((a, i) => `<div class="a"><div class="ai">${A.argumentos[i] ? `<img src="${A.argumentos[i]}" alt="">` : a[2]}</div><div class="at"><b>${a[0]}</b><p>${a[1]}</p></div></div>`).join("")}</div>
     <div class="sp2"></div>
@@ -708,7 +733,7 @@ const STEPS = [
     <div class="sp2"></div>
     <div class="guar"><div class="g"><b>30</b>dias de<br>garantia</div><p><b>Garantia de Reembolso ⭐⭐⭐⭐⭐</b><br>A lei obriga 7 dias; eu dou 30. Se em 30 dias sua barriga não desinchar e suas roupas não folgarem, devolvo cada centavo — e você ainda fica com o protocolo de graça. É só mandar um e-mail pro suporte ou pedir pelo app.</p></div>
     <div class="stamp"><div class="sa">${A.avatarSentada ? `<img src="${A.avatarSentada}" alt="">` : avRound()}</div><div><b>Protocolo gerado por: ${esc(CONFIG.avatar)}</b>${CONFIG.crn ? `<br>Nutricionista · ${esc(CONFIG.crn)}` : ""}</div></div>
-    <div class="timer">Sua Canetinha fica reservada por<b id="timer">10:00</b>depois disso a página é apagada pra dar lugar a novas avaliações</div>
+    <div class="timer">Sua Canetinha de Pobre fica reservada por<b id="timer">10:00</b>depois disso a página é apagada pra dar lugar a novas avaliações</div>
     <div class="sp2"></div>
     <p class="h3">Depoimentos</p>
     ${quote("Rafaela Nascimento", "Muito bom! Recomendo, minha fome sumiu e já perdi 5 kg nos últimos 17 dias.", "📍 Recife - PE", A.quotesAvatars[1])}
@@ -780,8 +805,8 @@ function render() {
   let h = "";
   if (st.render) h = st.render();
   else {
-    h += title(st.title, st.sub);
-    if (st.slider) { const s = st.slider, cur = S.a[s.key] ?? s.def; h += `<div class="slider"><div class="val"><span id="sv">${cur}</span><small>${s.unit}</small></div><input type="range" id="sl" min="${s.min}" max="${s.max}" value="${cur}" aria-label="${st.title.replace(/<[^>]+>/g, "")}"><div class="rng"><span>${s.min} ${s.unit}</span><span>${s.max} ${s.unit}</span></div></div>${btn("Continuar →")}`; }
+    h += title(typeof st.title === "function" ? st.title() : st.title, typeof st.sub === "function" ? st.sub() : st.sub);
+    if (st.slider) { const s = st.slider, cur = S.a[s.key] ?? s.def; h += `<div class="slider"><div class="val"><span id="sv">${cur}</span><small>${s.unit}</small></div><input type="range" id="sl" min="${s.min}" max="${s.max}" value="${cur}" aria-label="${String(typeof st.title === "function" ? st.title() : st.title).replace(/<[^>]+>/g, "")}"><div class="rng"><span>${s.min} ${s.unit}</span><span>${s.max} ${s.unit}</span></div></div>${btn("Continuar →")}`; }
     else h += st.html;
   }
   app.innerHTML = `<section class="step">${h}</section>`;

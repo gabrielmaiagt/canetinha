@@ -114,11 +114,11 @@ const FIREBASE = { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain
 
 /* ============ Estrutura do funil (espelha site/index.html) ============ */
 const STEPS = [
-  ["landing", "Landing", "/?v=landing"], ["areas", "Onde quer secar", "/"], ["meta", "Quantos kg", "meta"], ["corpo", "Corpo hoje", "corpo"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["caneta", "Relação c/ canetinha", "caneta"], ["barreira", "O que impede", "barreira"], ["mecanismo", "Mecanismo ✗/✓", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["fome", "Momento da fome", "fome"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Diagnóstico", "diagnostico"], ["oferta", "🎬 Oferta (VSL)", "oferta"], ["checkout", "Clique checkout", "checkout"],
+  ["landing", "Landing", "/?v=landing"], ["areas", "Onde quer secar", "/"], ["meta", "Quantos kg", "meta"], ["corpo", "Corpo hoje", "corpo"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["caneta", "Relação c/ canetinha", "caneta"], ["barreira", "O que impede", "barreira"], ["mecanismo", "Mecanismo ✗/✓", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["fome", "Momento da fome", "fome"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Diagnóstico", "diagnostico"], ["oferta", "🎬 Oferta (VSL)", "oferta"], ["checkout", "Clique checkout", "checkout"],
 ];
 const MEDIA = new Set(["prova", "loading", "oferta"]);
 const QUESTIONS = [
-  ["areasalvo", "Onde quer secar", "Pra começar: onde você mais quer secar? (multi)"], ["meta", "Quantos kg", "E quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["caneta", "Canetinha", "E a canetinha de verdade, qual a sua relação com ela?"], ["barreira", "O que impede", "E o que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha todo dia por 30 dias?"],
+  ["areasalvo", "Onde quer secar", "Pra começar: onde você mais quer secar?"], ["meta", "Quantos kg", "E quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["futuro", "Daqui 1 ano", "Se nada mudar: como você se imagina daqui 1 ano?"], ["caneta", "Canetinha", "E a canetinha de verdade, qual a sua relação com ela?"], ["barreira", "O que impede", "E o que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha todo dia por 30 dias?"],
 ];
 const CANETA = { usei: "Já usei e o peso voltou", medo: "Medo dos efeitos", caro: "Não tenho R$ 3 mil", nunca: "Nunca pensei nisso" };
 const BARREIRA = { fome: "A fome vence", tempo: "Falta tempo", financeiro: "É caro demais", constancia: "Sem constância" };
@@ -151,7 +151,7 @@ function demoData() {
     const entry = Math.random() < 0.3 ? "landing" : "pergunta", vsl = Math.random() < 0.5 ? "A" : "B";
     const created = now - R(7 * 864e5);
     const s = { sid: "demo" + k, entry, vsl, day: dayStr(new Date(created)), createdAt: created, mobile: Math.random() < 0.92, utm_source: pickW([["facebook", 7], ["instagram", 2], [null, 1]]), utm_campaign: pickW([["famosas-caneta v2", 5], ["cara-de-doente v1", 3], ["10kg-30dias", 2], [null, 1]]), utm_content: pickW([["reel-01", 4], ["reel-02", 3], ["carrossel-01", 2]]), answers: {}, steps: {} };
-    let t = 0; const drops = { areas: 0.55, meta: 0.04, corpo: 0.04, impacto: 0.05, feliz: 0.02, caneta: 0.03, barreira: 0.03, mecanismo: 0.10, beneficios: 0.04, prova: 0.09, peso: 0.04, altura: 0.01, ideal: 0.01, motiva: 0.03, rotina: 0.02, sono: 0.01, fome: 0.01, corpoalvo: 0.01, compromisso: 0.02, loading: 0.01, diagnostico: 0.12, oferta: 0 };
+    let t = 0; const drops = { areas: 0.52, meta: 0.04, corpo: 0.04, impacto: 0.05, feliz: 0.02, futuro: 0.03, caneta: 0.03, barreira: 0.03, mecanismo: 0.10, beneficios: 0.04, prova: 0.09, peso: 0.04, altura: 0.01, ideal: 0.01, motiva: 0.03, rotina: 0.02, sono: 0.01, fome: 0.01, corpoalvo: 0.01, compromisso: 0.02, loading: 0.01, diagnostico: 0.12, oferta: 0 };
     const meta = pickW([["Até 5 kg", 25], ["De 6 a 10 kg", 35], ["De 11 a 19 kg", 28], ["20 kg ou mais", 12]]);
     if (entry === "landing") { s.steps.landing = { i: 0, t: 0 }; if (Math.random() < 0.45) { out.push(s); continue; } }
     for (let i = 0; i < order.length; i++) {
@@ -161,11 +161,12 @@ function demoData() {
       if (Math.random() < d) break;
     }
     const A = s.answers, has = (id) => s.steps[id] && (order.indexOf(id) < order.indexOf(s.maxStepId) || s.maxStepId === id);
-    if (s.steps.meta) A.areasalvo = [pickW([["Barriga", 6], ["Culotes", 3], ["Glúteos", 2], ["Corpo todo", 3]])];
+    if (s.steps.meta) A.areasalvo = [pickW([["Barriga", 5], ["Culotes", 2], ["Corpo todo", 7]])];
     if (s.steps.corpo) A.meta = meta;
     if (s.steps.impacto) A.corpo = pickW([["Médio", 2], ["Sobrepeso", 4], ["Acima do peso", 3], ["Plus size", 2]]);
     if (s.steps.feliz) A.impacto = pickW([["Minha autoestima tá lá embaixo", 5], ["Vivo cansada, sem energia pra nada", 3], ["Já tá mexendo com a saúde: pressão, dores, exames", 2], ["Tá afetando a minha vida íntima", 2]]);
-    if (s.steps.caneta) A.feliz = pickW([["Não, quero emagrecer pra me sentir melhor", 7], ["Sim, mas sei que posso melhorar", 3]]);
+    if (s.steps.futuro) A.feliz = pickW([["Não, quero emagrecer pra me sentir melhor", 7], ["Sim, mas sei que posso melhorar", 3]]);
+    if (s.steps.caneta) A.futuro = pickW([["Do mesmo jeito que hoje", 4], ["Mais pesada do que hoje", 3], ["Prefiro nem imaginar", 2], ["Magra — se eu achar o que funciona pra mim", 3]]);
     if (s.steps.barreira) A.caneta = pickW([["usei", 2], ["medo", 3], ["caro", 4], ["nunca", 2]]);
     if (s.steps.mecanismo) A.barreira = pickW([["fome", 5], ["tempo", 2], ["financeiro", 2], ["constancia", 3]]);
     if (s.steps.prova) A.beneficios = [pickW([["Parar de beliscar e comer besteira", 4], ["Me olhar no espelho e gostar", 3], ["Usar qualquer roupa sem marcar a barriga", 3], ["Ouvir \"o que você fez pra emagrecer?\"", 1], ["Meu parceiro me olhando com desejo", 2], ["Subir escada sem cansar", 1]])];
@@ -282,8 +283,8 @@ function render() {
     </div>
 
     <div class="card">
-      <h2>1ª pergunta · Onde quer secar <span>· barriga / culotes / glúteos / corpo todo</span></h2>
-      <p class="exp">Entrada (<code>/</code>). Resposta em <code>answers.areasalvo</code> (lista). Taxa = quem escolheu ÷ PageViews · Drop = PV − quem chegou em <b>Quantos kg</b>.</p>
+      <h2>1ª pergunta · Onde quer secar <span>· barriga / culotes / corpo todo · escolha única, 1 toque</span></h2>
+      <p class="exp">Entrada (<code>/</code>). Resposta em <code>answers.areasalvo</code>. Taxa = quem escolheu ÷ PageViews · Drop = PV − quem chegou em <b>Quantos kg</b>.</p>
       <div class="tiles">
         ${tile(N(ans1), "Responderam a 1ª", `${P(pct(ans1, pv))} · ${N(ans1)} / ${N(pv)} · do pageview`)}
         ${tile(P(pct(ans1, pv)), "Taxa de resposta", `${N(ans1)} / ${N(pv)} PV`)}
@@ -292,7 +293,7 @@ function render() {
       </div>
       <p class="qtitle">Onde quer secar <span>· Pra começar: onde você mais quer secar?</span></p>
       <div class="rows">${q1.items.map(([v, n]) => `<div class="row"><span class="lbl">${esc(v)}</span>${hbar(n, q1max)}<span class="v num"><b>${N(n)}</b><span>${P(pct(n, ans1))}</span></span></div>`).join("") || `<div class="empty">sem respostas ainda</div>`}</div>
-      <p class="foot">Contagem via <code>answers.areasalvo</code> (multi: uma pessoa pode contar em mais de uma). Taxa = quem respondeu a 1ª ÷ PageViews.</p>
+      <p class="foot">Contagem via <code>answers.areasalvo</code>. Taxa = quem respondeu a 1ª ÷ PageViews.</p>
     </div>
 
     <div class="card">
@@ -347,7 +348,7 @@ function render() {
 
     <div class="card">
       <h2>Respostas por pergunta</h2>
-      <p class="exp">Contagem em <code>answers.*</code>. Perguntas multi (áreas, benefícios) somam mais de 100%.</p>
+      <p class="exp">Contagem em <code>answers.*</code>. A pergunta de benefícios é multi, então soma mais de 100%.</p>
       ${QUESTIONS.map(([key, short, full]) => { const d = dist(rows, key); const max = Math.max(1, ...d.items.map(x => x[1])); return `<p class="qtitle">${esc(short)} <span>· ${esc(full)}</span></p><div class="rows">${d.items.map(([v, n]) => `<div class="row"><span class="lbl" title="${esc(String(v))}">${esc(key === "caneta" ? (CANETA[v] || v) : key === "barreira" ? (BARREIRA[v] || v) : key === "compromisso" ? (COMP[v] || v) : String(v))}</span>${hbar(n, max)}<span class="v num"><b>${N(n)}</b><span>${P(pct(n, d.base))}</span></span></div>`).join("") || `<div class="empty">sem respostas</div>`}</div>`; }).join("")}
     </div>
 
