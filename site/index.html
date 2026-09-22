@@ -319,6 +319,7 @@ const CONFIG = {
   parcelas: "8x de R$ 5",
   vagas:    7,
   timerSeconds: 600,
+  backredirect: true,        // "voltar" na oferta → /back/ (cupom R$ 24,90). false = desliga
   // VSL da oferta: cole o embed da vturb (ou a URL de um mp4). Vazio = placeholder.
   vslEmbed: "",              // VSL A
   vslEmbedB: "",             // VSL B (sorteio conforme split.vslB)
@@ -459,6 +460,7 @@ const DB = (() => {
     answer: (key, val) => write({ answers: { [key]: val } }),
     calc: (o) => write(o),
     checkout: (n) => write({ checkoutClicked: true, checkoutAt: secs(), ctaN: n, checkoutClicks: FS ? FS.FieldValue.increment(1) : 1 }),
+    back: () => write({ backLeft: true, backLeftAt: secs() }),
     audio: (id) => write({ audio: { [id]: true } }),
   };
 })();
@@ -736,6 +738,7 @@ const STEPS = [
       setTimeout(show, 2500);
       document.querySelectorAll(".cta").forEach(b => b.addEventListener("click", () => { track("InitiateCheckout", { cta: b.dataset.n, imc: imc().toFixed(1) }); if (DB) DB.checkout(+b.dataset.n); setTimeout(() => { window.location.href = checkoutUrl(); }, 150); }));
       track("ViewOffer", { imc: imc().toFixed(1), faixa: faixa() });
+      armBackredirect();
     } },
 ];
 
@@ -745,8 +748,21 @@ const STEPS = [
 const app = document.getElementById("app"), prog = document.getElementById("prog"), back = document.getElementById("back"), band = document.getElementById("band");
 document.getElementById("brand").innerHTML = A.logo ? `<img src="${A.logo}" alt="Canetinha de Pobre" style="height:40px;width:auto;margin:0 auto">` : `<span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l3.5-1L18 8.5a2.1 2.1 0 0 0-3-3L4.5 16z"/><path d="M13 7l4 4"/><path d="M6 15l3 3"/></svg>Canetinha <b>de Pobre</b></span>`;
 
+function checkoutParams() {
+  const p = new URLSearchParams(); let q = location.search;
+  try { if (q && q.length > 1) localStorage.setItem("utm_query", q); else q = localStorage.getItem("utm_query") || ""; } catch (e) {}
+  new URLSearchParams(q).forEach((v, k) => { if (!["s", "v", "ab"].includes(k)) p.set(k, v); });
+  p.set("imc", imc().toFixed(1)); if (DB) p.set("sid", DB.sid); p.set("ab", VSLV); p.set("entry", ENTRY); return p;
+}
 function checkoutUrl() {
-  try { const u = new URL(CONFIG.checkout); new URLSearchParams(location.search).forEach((v, k) => u.searchParams.set(k, v)); u.searchParams.set("imc", imc().toFixed(1)); if (DB) u.searchParams.set("sid", DB.sid); u.searchParams.set("ab", VSLV); u.searchParams.set("entry", ENTRY); return u.toString(); } catch { return CONFIG.checkout; }
+  try { const u = new URL(CONFIG.checkout); checkoutParams().forEach((v, k) => u.searchParams.set(k, v)); return u.toString(); } catch { return CONFIG.checkout; }
+}
+/* BACKREDIRECT (modelo BumbumFlix /back/): na oferta, "voltar" cai em /back/ com os mesmos parâmetros */
+function armBackredirect() {
+  if (!CONFIG.backredirect || !history.pushState || armBackredirect.done) return; armBackredirect.done = true;
+  const go = () => { if (STEPS[S.i].id !== "oferta") return; if (DB) DB.back(); track("BackRedirect"); location.replace(new URL("back/?" + checkoutParams().toString(), location.href).toString()); };
+  for (let i = 0; i < 5; i++) history.pushState({ br: i }, "", location.href);
+  addEventListener("popstate", go);
 }
 function next() { if (S.i < STEPS.length - 1) { S.i++; save(); render(); } }
 function prev() { if (S.i > 0) { S.i--; if (STEPS[S.i].id === "loading") S.i--; save(); render(); } }

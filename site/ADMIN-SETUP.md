@@ -56,3 +56,15 @@ O clique no checkout é o último evento aqui. A URL do checkout leva `sid`, `ab
 5. Testar: abrir o funil no celular, responder 2 perguntas, abrir `/admin` e ver a sessão.
 
 Cada `git push` na `main` publica sozinho. Rotas: `/` = funil · `/admin` = painel · `?v=landing|pergunta` e `?ab=A|B` forçam variantes.
+
+
+## 10. Backredirect (`/back/`)
+
+Modelo: `bumbum-pessego.com/back/` (BumbumFlix) — mesma mecânica do R$ 27 do Paizão, sem perder UTM.
+
+- **Como funciona:** na oferta o funil empilha 5 `history.pushState`. "Voltar" → `/back/?utm…&sid&ab&entry&imc`. Na `/back/`, "voltar" de novo, sair pelo topo (desktop) ou voltar pelo bfcache → checkout direto com `src=bk-bk`. O botão da página manda `src=bk-vsl`.
+- **UTMs:** o funil e a `/back/` guardam `location.search` em `localStorage.utm_query`; se a URL chegar limpa, recupera de lá.
+- **Config:** `site/back/index.html` → `CONFIG.checkoutBack` (link do produto a R$ 24,90), `cupom`, `price`, `priceBefore`, `off`, `photo`, `giftImg`. Pra desligar: `CONFIG.backredirect = false` em `site/index.html`.
+- **Firestore:** grava na mesma sessão (`sessions/{sid}`): `backLeft` (apertou voltar), `backViewed`, `backOpened` (abriu o presente), `backCheckout` = `bk-vsl` | `bk-bk`, `backCta`.
+- **Webhook de venda:** mandar `product: "backredirect"` e, se der, `src` (vem na URL do checkout) pra separar botão × voltar-de-novo.
+- **Testar:** abrir `/index.html?s=21` (oferta), apertar voltar.

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>🎁 Espera! Tenho um presente pra você — Canetinha de Pobre</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
+<!-- ===== PIXEL (UTMify) — mesmo pixel do funil ===== -->
+<style>
+:root{
+  --bg:#ffffff; --card:#ffffff; --card2:#f7f3fe;
+  --line:rgba(91,46,158,.14); --line2:rgba(91,46,158,.28);
+  --ink:#281e44; --ink2:#5f5878; --mute:#9b94ad;
+  --accent:#7c3aed; --accent-deep:#5b21b6; --accent-soft:#ede7fb;
+  --grad:linear-gradient(180deg,#a98bf5 0%,#7c46e6 100%);
+  --pink:#ec4899; --pink-soft:#fdf2f8; --yellow:#fde047;
+  --green:#16a34a; --green-deep:#15803d; --green-soft:#dcfce7;
+  --r:20px; --r-sm:14px; --maxw:520px;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --shadow:0 18px 44px -18px rgba(76,29,149,.28);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:22px 18px 60px}
+.c{text-align:center}
+h1{font-size:1.75rem;line-height:1.2;font-weight:900;letter-spacing:-.02em;margin:0;text-align:center}
+h1 .mk{background:linear-gradient(transparent 55%,var(--yellow) 55%)}
+h2{font-size:1.35rem;font-weight:900;letter-spacing:-.01em;margin:0}
+h2 .pk{color:var(--pink)}
+.btn{display:block;width:100%;border:0;border-radius:99px;padding:17px 18px;font:800 1rem var(--font);color:#fff;background:var(--pink);box-shadow:0 12px 28px -10px rgba(236,72,153,.6);cursor:pointer;text-align:center;text-decoration:none;letter-spacing:.01em}
+.btn.green{background:var(--green);box-shadow:0 12px 28px -10px rgba(22,163,74,.6)}
+.btn.pulse{animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+/* estado 1 */
+#s1{padding-top:60px}
+.gift{margin:34px auto 0;border:3px dashed var(--pink);border-radius:26px;background:var(--pink-soft);padding:34px 22px 30px;text-align:center;cursor:pointer}
+.gift .em{font-size:110px;line-height:1;animation:wig 1.4s ease-in-out infinite;display:block}
+.gift img{width:180px;max-width:70%;display:block;margin:0 auto}
+@keyframes wig{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.gift .btn{max-width:280px;margin:26px auto 0;padding:15px}
+.hint{color:var(--ink2);font-weight:700;text-align:center;margin-top:26px;font-size:1.05rem}
+.hint b{color:var(--pink)}
+/* estado 2 */
+.bar{position:fixed;top:0;left:0;right:0;z-index:40;background:#1e1230;color:#fff;font-weight:800;font-size:.9rem;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;display:flex;justify-content:center;gap:10px;align-items:center}
+.bar .cp{background:var(--pink);padding:3px 10px;border-radius:99px;font-size:.82rem}
+.bar .tm{font-variant-numeric:tabular-nums}
+.conf{font-size:64px;text-align:center;line-height:1;margin-top:26px}
+.pres{margin-top:18px;border:3px dashed var(--pink);border-radius:26px;background:var(--pink-soft);padding:22px 18px;text-align:center}
+.pres .tag{display:inline-block;background:var(--pink);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:5px 12px;border-radius:99px}
+.pres .off{font-size:2.6rem;font-weight:900;color:var(--pink);letter-spacing:-.02em;line-height:1.1;margin-top:8px}
+.pres .of{font-size:.95rem;color:var(--ink2)}.pres .of b{color:var(--ink)}
+.cup{margin:14px auto 0;background:#1e1230;color:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:320px}
+.cup span{font-size:.72rem;color:#cbbde8;letter-spacing:.1em}
+.cup b{font-size:1.05rem;letter-spacing:.06em}
+.cup button{border:0;background:#3b2a5c;color:#fff;border-radius:9px;padding:7px 10px;font:600 .74rem var(--font);cursor:pointer}
+.ok{color:var(--green-deep);font-weight:700;font-size:.86rem;margin-top:10px}
+.ph{border:2px dashed var(--line2);border-radius:var(--r);background:var(--card2);color:var(--ink2);display:grid;place-items:center;text-align:center;font-size:.85rem;font-weight:600;padding:16px;aspect-ratio:4/3;margin-top:16px}
+.ph img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.inc{margin-top:16px;display:grid;gap:10px}
+.inc .it{background:var(--card2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.inc .it.main{background:#fffbeb;border-color:#fde68a}
+.inc .it b{display:block;font-size:.95rem}
+.inc .it p{margin:3px 0 0;font-size:.85rem;color:var(--ink2);line-height:1.5}
+.inc .gr{display:inline-block;background:var(--green-soft);color:var(--green-deep);font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.price{margin-top:22px;border:2px solid var(--pink);border-radius:var(--r);padding:22px 16px 18px;text-align:center;position:relative;background:var(--card);box-shadow:var(--shadow)}
+.price .feat{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:99px;white-space:nowrap}
+.price .before{color:var(--mute);font-size:.95rem;text-decoration:line-through}
+.price .arrow{color:var(--pink);font-size:1.3rem;line-height:1}
+.price .val{font-size:2.8rem;font-weight:900;color:var(--ink);line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.price .val small{font-size:1.1rem;vertical-align:top;margin-right:2px}
+.price .pix{font-size:.85rem;color:var(--ink2);margin-top:4px}
+.price .chk{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:.8rem;font-weight:700;color:var(--green-deep)}
+.sec{font-size:.78rem;color:var(--mute);text-align:center;margin-top:10px}
+.guar{margin-top:22px;background:var(--green-soft);border:1px solid #bbf7d0;border-radius:var(--r);padding:16px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.guar .ic{font-size:32px;line-height:1}
+.guar b{display:block;font-size:.95rem}.guar p{margin:4px 0 0;font-size:.85rem;color:var(--ink2);line-height:1.55}
+.faq{margin-top:10px;display:grid;gap:8px}
+.faq details{background:var(--card2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px}
+.faq summary{font-weight:700;cursor:pointer;font-size:.92rem;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::after{content:"+";color:var(--mute);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{margin-top:8px;font-size:.86rem;color:var(--ink2);line-height:1.55}
+.h3{font-size:1.05rem;font-weight:800;margin-top:26px}
+.sp{height:18px}
+.foot{color:var(--mute);font-size:.72rem;text-align:center;line-height:1.6;margin-top:34px}
+.foot b{color:var(--ink2)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="s1">
+  <h1>Espera!<br><span class="mk">Antes de sair…</span><br><span class="mk">resgate o seu presente 🎁</span></h1>
+  <div class="gift" id="gift" role="button" tabindex="0" aria-label="Abrir presente">
+    <span class="em" id="giftEm">🎁</span>
+    <button class="btn" type="button">👇 TOCA PRA ABRIR</button>
+  </div>
+  <p class="hint"><b>↑</b> Clique no presente acima pra abrir</p>
+  <p class="foot" id="disc1"></p>
+</div>
+
+<div class="wrap" id="s2" hidden style="padding-top:70px">
+  <div class="bar"><span>🎁 <b id="barCup"></b></span><span>•</span><span>⏰ <span class="tm" id="timer">05:00</span></span></div>
+  <div class="conf">🎉</div>
+  <h2 class="c">Parabéns!<br><span class="pk">Você acabou de ganhar:</span></h2>
+  <div class="pres">
+    <span class="tag">🎁 SEU PRESENTE</span>
+    <div class="off" id="offBig"></div>
+    <div class="of">na sua <b>Canetinha de Pobre completa</b></div>
+    <div class="cup"><div><span>CUPOM</span><br><b id="cupTxt"></b></div><button type="button" id="copy">📋 copiar</button></div>
+    <div class="ok">✅ Cupom já aplicado no botão abaixo</div>
+  </div>
+
+  <h2 style="margin-top:30px">Tudo que você vai levar<br><span class="pk">na Canetinha de Pobre com <span id="offTxt"></span>:</span></h2>
+  <div class="ph" id="photo">📷 foto da expert com a bebida + prints de resultado (mesma da oferta: bebidaProduto)</div>
+
+  <p class="h3">✅ O que está incluso:</p>
+  <div class="inc" id="inc"></div>
+
+  <div class="price">
+    <span class="feat">🎁 Cupom <span id="cupFeat"></span> aplicado</span>
+    <div class="before">De R$ <span id="pBefore"></span></div>
+    <div class="arrow">↓</div>
+    <div class="val"><small>R$</small><span id="pNow"></span></div>
+    <div class="pix">à vista no Pix ou cartão</div>
+    <div class="chk"><span>✅ Acesso imediato</span><span>✅ Grupo VIP incluso</span></div>
+  </div>
+  <div class="sp"></div>
+  <a class="btn green pulse cta" id="cta1" href="#">QUERO MINHA CANETINHA COM <span class="offTxt"></span> →</a>
+  <p class="sec">🔒 Pagamento seguro via Pix ou Cartão • Acesso imediato</p>
+
+  <div class="guar"><div class="ic">🛡️</div><div><b>Garantia incondicional de 30 dias</b><p>A lei obriga 7 dias; eu dou 30. Se em 30 dias sua barriga não desinchar e suas roupas não folgarem, devolvo cada centavo — e você ainda fica com o protocolo de graça. É só mandar mensagem pro suporte.</p></div></div>
+
+  <p class="h3">❓ Perguntas frequentes:</p>
+  <div class="faq">
+    <details><summary>Isso é a mesma coisa que a canetinha?</summary><div class="ans">Não. A canetinha é um remédio injetável de uso controlado. A Canetinha de Pobre é um preparo natural que estimula o mesmo hormônio da saciedade e acelera o metabolismo pra queimar gordura — sem agulha, sem receita e sem os efeitos da caneta (cara de doente, rebote, perda de músculo).</div></details>
+    <details><summary>Já usei a canetinha e o peso voltou. Funciona pra mim?</summary><div class="ans">É justamente pra isso. O rebote acontece porque a fome volta sem o sinal artificial. Aqui o sinal vem do seu corpo, então não tem rebote.</div></details>
+    <details><summary>Tem efeito colateral?</summary><div class="ans">É 100% natural. Na primeira semana pode dar leve dor de cabeça e mais idas ao banheiro.</div></details>
+    <details><summary>Como recebo o acesso?</summary><div class="ans">No e-mail cadastrado na compra, na hora.</div></details>
+  </div>
+  <div class="sp"></div>
+  <a class="btn green pulse cta" id="cta2" href="#">QUERO MINHA CANETINHA COM <span class="offTxt"></span> →</a>
+  <p class="foot"><b>Canetinha de Pobre • <span id="avatar"></span></b><br><br><span id="disc2"></span></p>
+</div>
+
+<script>
+/* =====================================================================
+   CONFIG do backredirect
+   ===================================================================== */
+const CONFIG = {
+  checkoutBack: "https://pay.wiapy.com/SEU_LINK_BACK",   // checkout do produto a R$ 24,90
+  cupom: "CANETINHA13",
+  price: "24,90", priceBefore: "37,90", off: "R$ 13 OFF",
+  avatar: "Dra. [Nome da Avatar]",
+  timerSeconds: 300,
+  giftImg: "",           // imagem 3D do presente (vazio = emoji)
+  photo: "",             // foto expert + bebida + prints (mesma da oferta)
+  firebase: { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain: "canetinha-4bd2a.firebaseapp.com", projectId: "canetinha-4bd2a", appId: "1:298345331983:web:06f6d8092fcbc3e1d5527a" },
+};
+const INCLUSO = [
+  ["⚡", "A Receita da Canetinha de Pobre", "O preparo exato, os ingredientes de mercado e a dose certa pro seu peso pra cortar a fome e ativar a queima de gordura 24h.", true],
+  ["✅", "BÔNUS 1: Protocolo Sem Cara de Doente", "O que as famosas fazem pra derreter gordura localizada sem murchar o rosto nem perder as curvas."],
+  ["✅", "BÔNUS 2: Definição de metas diárias", "Pra acompanhar o resultado todo dia e se manter no caminho."],
+  ["✅", "BÔNUS 3: Anti Efeito Sanfona", "Pra o peso não voltar depois — sem depender de caneta nenhuma."],
+  ["✅", "BÔNUS 4: Desafio de 21 dias", "Com as outras meninas, pra maximizar o resultado."],
+  ["✅", "BÔNUS 5: Grupo VIP + Suporte no WhatsApp", "Pra tirar dúvida, postar resultado e não desistir."],
+];
+const DISC = "Este produto não substitui orientação médica. Consulte um profissional de saúde antes de iniciar, especialmente se estiver gestante, amamentando, tiver alguma condição de saúde pré-existente ou fizer uso de medicamentos. Resultados variam de pessoa para pessoa.";
+
+/* ===== parâmetros: vêm da oferta (utms + sid + ab + entry + imc); se perder, recupera do localStorage ===== */
+let search = location.search;
+try { if (search && search.length > 1) localStorage.setItem("utm_query", search); else search = localStorage.getItem("utm_query") || ""; } catch (e) {}
+const Q = new URLSearchParams(search);
+function checkoutUrl(src) {
+  try { const u = new URL(CONFIG.checkoutBack); Q.forEach((v, k) => u.searchParams.set(k, v)); u.searchParams.set("src", src); u.searchParams.set("cupom", CONFIG.cupom); return u.toString(); } catch (e) { return CONFIG.checkoutBack; }
+}
+
+/* ===== Firestore: marca na sessão do funil (mesmo sid) ===== */
+let DB = null;
+(function () {
+  const sid = Q.get("sid"); if (!sid || !CONFIG.firebase.apiKey) return;
+  const load = (s) => new Promise((r, j) => { const e = document.createElement("script"); e.src = s; e.onload = r; e.onerror = j; document.head.appendChild(e); });
+  const ready = (async () => { const v = "10.12.0"; await load(`https://www.gstatic.com/firebasejs/${v}/firebase-app-compat.js`); await load(`https://www.gstatic.com/firebasejs/${v}/firebase-auth-compat.js`); await load(`https://www.gstatic.com/firebasejs/${v}/firebase-firestore-compat.js`); firebase.initializeApp(CONFIG.firebase); await firebase.auth().signInAnonymously(); return firebase.firestore(); })().catch(() => null);
+  const write = (patch) => ready.then(db => { if (db) db.collection("sessions").doc(sid).set({ ...patch, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true }).catch(() => {}); });
+  DB = { write };
+  write({ backViewed: true, backAt: Math.round(Date.now() / 1000) });
+})();
+const track = (ev, d) => { try { if (window.utmify) utmify("track", ev, d); if (window.fbq) fbq("trackCustom", ev, d); } catch (e) {} };
+
+/* ===== mecânica: voltar de novo / sair = checkout direto (src=bk-bk) ===== */
+(function () {
+  let redirected = false, pageReady = false; setTimeout(() => pageReady = true, 2000);
+  function go() { if (redirected) return; redirected = true; if (DB) DB.write({ backCheckout: "bk-bk", backCheckoutAt: Math.round(Date.now() / 1000) }); track("InitiateCheckout", { src: "bk-bk" }); location.replace(checkoutUrl("bk-bk")); }
+  if (history.pushState) { for (let i = 0; i < 5; i++) history.pushState({ br: i }, "", location.href); addEventListener("popstate", go); }
+  document.addEventListener("mouseleave", (e) => { if (pageReady && e.clientY <= 0 && !e.relatedTarget) go(); });
+  addEventListener("pageshow", (e) => { if (e.persisted) go(); });
+})();
+
+/* ===== render ===== */
+const $ = (id) => document.getElementById(id);
+$("disc1").textContent = DISC; $("disc2").textContent = DISC; $("avatar").textContent = CONFIG.avatar;
+if (CONFIG.giftImg) $("giftEm").outerHTML = `<img src="${CONFIG.giftImg}" alt="">`;
+$("barCup").textContent = CONFIG.cupom; $("cupTxt").textContent = CONFIG.cupom; $("cupFeat").textContent = CONFIG.cupom;
+$("offBig").textContent = CONFIG.off; $("offTxt").textContent = CONFIG.off; document.querySelectorAll(".offTxt").forEach(e => e.textContent = CONFIG.off);
+$("pBefore").textContent = CONFIG.priceBefore; $("pNow").textContent = CONFIG.price;
+if (CONFIG.photo) $("photo").innerHTML = `<img src="${CONFIG.photo}" alt="">`;
+$("inc").innerHTML = INCLUSO.map(([ic, t, d, main]) => `<div class="it ${main ? "main" : ""}"><div>${ic}</div><div><b>${t}${main ? "" : `<span class="gr">GRÁTIS</span>`}</b><p>${d}</p></div></div>`).join("");
+document.querySelectorAll(".cta").forEach((a, i) => { a.href = checkoutUrl("bk-vsl"); a.addEventListener("click", () => { if (DB) DB.write({ backCheckout: "bk-vsl", backCheckoutAt: Math.round(Date.now() / 1000), backCta: i + 1 }); track("InitiateCheckout", { src: "bk-vsl", cta: i + 1 }); }); });
+$("copy").onclick = () => { try { navigator.clipboard.writeText(CONFIG.cupom); $("copy").textContent = "✅ copiado"; } catch (e) {} };
+
+function open() {
+  $("s1").hidden = true; $("s2").hidden = false; scrollTo(0, 0);
+  if (DB) DB.write({ backOpened: true }); track("BackOpened");
+  let t = CONFIG.timerSeconds; const te = $("timer");
+  const tk = () => { te.textContent = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`; if (t-- > 0) setTimeout(tk, 1000); }; tk();
+}
+$("gift").addEventListener("click", open);
+$("gift").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") open(); });
+track("BackView");
+</script>
+</body>
+</html>

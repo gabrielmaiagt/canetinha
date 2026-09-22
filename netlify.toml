@@ -37,3 +37,8 @@
   from = "/quiz"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/back"
+  to = "/back/index.html"
+  status = 200

@@ -177,6 +177,7 @@ function demoData() {
     if (s.steps.loading) A.compromisso = pickW([["pronta", 7], ["medo", 3]]);
     if (s.completed && A.peso && A.altura) { s.imc = +(A.peso / ((A.altura / 100) ** 2)).toFixed(1); s.faixa = s.imc < 18.5 ? "magreza" : s.imc < 25 ? "normal" : s.imc < 30 ? "sobrepeso" : "obesidade"; s.horario = A.fome === "manhã" ? "logo ao acordar" : A.fome === "tarde" ? "30 min antes do almoço" : A.fome === "noite" ? "30 min antes do jantar" : "manhã e 30 min antes do jantar"; s.falta = Math.max(0, A.peso - A.ideal); }
     if (s.offerViewed) { let p = 0.24 * (vsl === "B" ? 1.2 : 1) * (A.caneta === "usei" ? 1.3 : 1) * (meta === "Até 5 kg" ? 0.75 : 1) * (A.compromisso === "pronta" ? 1.1 : 0.85); if (Math.random() < p) { s.checkoutClicked = true; s.checkoutAt = s.offerAt + 20 + R(160); s.ctaN = pickW([[1, 5], [2, 3], [3, 1], [4, 1]]); if (Math.random() < 0.55) { const st = pickW([["aprovada", 6], ["PENDING", 2], ["CANCELED", 1], ["REFUSED", 1]]); const prod = pickW([["principal", 7], ["backredirect", 2], ["upsell 1", 1]]); const val = prod === "principal" ? 37.9 : prod === "backredirect" ? 27 : 97; sl.push({ at: created + (s.checkoutAt + 60) * 1000, day: s.day, status: st, product: prod, value: val, source: prod === "backredirect" && Math.random() < 0.7 ? null : s.utm_source, campaign: s.utm_campaign, sid: s.sid, vsl, entry }); } } }
+    if (s.offerViewed && !s.checkoutClicked && Math.random() < 0.35) { s.backLeft = true; s.backViewed = Math.random() < 0.9; if (s.backViewed && Math.random() < 0.55) { s.backOpened = true; if (Math.random() < 0.3) s.backCheckout = "bk-vsl"; } if (s.backViewed && !s.backCheckout && Math.random() < 0.25) s.backCheckout = "bk-bk"; if (s.backCheckout && Math.random() < 0.5) sl.push({ at: created + 600 * 1000, day: s.day, status: pickW([["aprovada", 6], ["PENDING", 2], ["CANCELED", 1], ["REFUSED", 1]]), product: "backredirect", value: 24.9, source: s.utm_source, campaign: s.utm_campaign, sid: s.sid, vsl, entry, src: s.backCheckout }); }
     out.push(s);
   }
   return { out, sl };
@@ -239,6 +240,9 @@ function render() {
   const oA = rows.filter(s => s.offerViewed && s.vsl === "A"), oB = rows.filter(s => s.offerViewed && s.vsl === "B");
   const vslRows = (r) => { const n = r.length, c = r.filter(s => s.checkoutClicked).length, cta1 = r.filter(s => s.checkoutClicked && s.ctaN === 1).length, t = median(r.filter(s => s.checkoutAt && s.offerAt).map(s => s.checkoutAt - s.offerAt)); return [["Viram a oferta com esta VSL", N(n), "", `(${P(pct(n, off))})`], ["Clicaram no checkout", N(c), "green", `(${P(pct(c, n))})`], ["Clicaram no 1º botão (dentro/abaixo da VSL)", N(cta1), "", `(${P(pct(cta1, c))} dos cliques)`], ["Não clicaram", N(n - c), "red"], ["Tempo mediano até o clique", t != null ? Math.round(t) + "s" : "–"]]; };
   const vslTot = (r) => { const n = r.length, c = r.filter(s => s.checkoutClicked).length; return `Checkout/oferta: <b>${P(pct(c, n), 1)}</b> · Share: <b>${P(pct(n, off))}</b>`; };
+  // backredirect
+  const bkSales = sl.filter(x => x.product === "backredirect" && /aprovad|paid|approved/i.test(x.status));
+  const bk = { left: rows.filter(s => s.backLeft).length, viewed: rows.filter(s => s.backViewed).length, opened: rows.filter(s => s.backOpened).length, ck: rows.filter(s => s.backCheckout).length, vsl: rows.filter(s => s.backCheckout === "bk-vsl").length, bb: rows.filter(s => s.backCheckout === "bk-bk").length, sales: bkSales.length, rev: bkSales.reduce((a, x) => a + (+x.value || 0), 0) };
   // pós-bifurcação caneta
   const canetaGroups = ["usei", "medo", "caro", "nunca"].map(k => ({ k, rows: rows.filter(s => (s.answers || {}).caneta === k) }));
   const canRows = (r) => { const n = r.length, m = r.filter(s => reachedStep(s, "mecanismo")).length, pass = r.filter(s => reachedStep(s, "beneficios")).length, d = r.filter(s => s.completed).length, c = r.filter(s => s.checkoutClicked).length, o = r.filter(s => s.offerViewed).length; return [["Responderam assim", N(n), "", `(${P(pct(n, rows.filter(s => (s.answers || {}).caneta).length))})`], ["Viram o mecanismo", N(m)], ["Pararam nele", N(m - pass), "red"], ["Passaram", N(pass), "green", `(${P(pct(pass, m))})`], ["Diagnóstico", N(d), "", `(${P(pct(d, n))})`], ["Checkout", N(c), "green", `(${P(pct(c, o))} da oferta)`]]; };
@@ -316,6 +320,18 @@ function render() {
       `CVR de venda por VSL fica no bloco Vendas quando o webhook estiver ligado (a venda leva <code>ab</code> na URL do checkout).`, splitCtl("vslB", "quem vê a VSL B"))}
 
     <div class="card">
+      <h2>Backredirect · /back <span>· apertou "voltar" na oferta → presente R$ 24,90</span></h2>
+      <p class="exp">Modelo BumbumFlix <code>/back/</code>: na oferta, "voltar" cai na <code>/back/</code> (cupom); lá, "voltar" de novo ou sair vai direto pro checkout (<code>src=bk-bk</code>). UTMs vão junto (localStorage), então a venda do back não vira "(sem origem)" como no Paizão.</p>
+      <div class="tiles">
+        ${tile(N(bk.left), "Apertaram voltar na oferta", `${P(pct(bk.left, off))} · ${N(bk.left)} / ${N(off)} · de quem chegou na oferta`)}
+        ${tile(N(bk.opened), "Abriram o presente", `${P(pct(bk.opened, bk.viewed))} · ${N(bk.opened)} / ${N(bk.viewed)} · de quem viu a /back`)}
+        ${tile(N(bk.ck), "Clicaram no checkout do back", `${P(pct(bk.ck, bk.viewed))} · botão ${N(bk.vsl)} · voltar de novo ${N(bk.bb)}`)}
+        ${tile(N(bk.sales), "Vendas do back", `${bk.viewed ? P(pct(bk.sales, bk.viewed)) : "–"} da /back · ${BRL(bk.rev)}${sales.length ? "" : " · precisa do webhook"}`)}
+      </div>
+      <p class="foot">Sem o back, essas ${N(bk.left)} pessoas tinham ido embora. "Botão" = clicou no CTA da /back (<code>src=bk-vsl</code>); "voltar de novo" = tentou sair da /back e foi jogada no checkout (<code>src=bk-bk</code>). Pra desligar: <code>CONFIG.backredirect = false</code> no funil.</p>
+    </div>
+
+    <div class="card">
       <h2>Pós-bifurcação · relação com a canetinha <span>· abre o mecanismo com uma frase diferente</span></h2>
       <p class="exp">A resposta de <b>"qual a sua relação com a canetinha?"</b> muda a abertura da tela ✗/✓ (já usei e voltou / medo / caro / nunca pensei), um alerta no diagnóstico e o FAQ. Aqui: quem passou do mecanismo por resposta.</p>
       <div class="quad">${canetaGroups.map(g => { const r = canRows(g.rows); return `<div class="side"><h3>${esc(CANETA[g.k])}</h3><p class="d">abertura "${g.k}"</p>${r.map(x => `<div class="ln"><span>${x[0]}</span><b class="${x[2] || ""}">${x[1]}${x[3] ? `<em>${x[3]}</em>` : ""}</b></div>`).join("")}</div>`; }).join("")}</div>
@@ -349,7 +365,7 @@ function render() {
     <div class="card">
       <h2>Leads recentes <span>(${N(pv)} · mostrando ${N(recent.length)})</span></h2>
       <div class="scroll" style="margin-top:10px"><table><thead><tr><th>Quando</th><th>Entrada</th><th>VSL</th><th>Origem</th><th>Áreas</th><th>Corpo</th><th>kg → meta</th><th>Canetinha</th><th>Fome</th><th>IMC</th><th>Etapa atingida</th><th>Checkout</th></tr></thead><tbody>
-      ${recent.map(s => `<tr><td class="num">${s.createdAt ? new Date(s.createdAt).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : s.day}</td><td>${s.entry === "landing" ? "landing" : "pergunta"}</td><td>${esc(s.vsl || "—")}</td><td>${esc(s.utm_source || "—")}</td><td>${esc(((s.answers || {}).areasalvo || []).join(", ") || "—")}</td><td>${esc((s.answers || {}).corpo || "—")}</td><td class="num">${(s.answers || {}).peso ? `${s.answers.peso} → ${s.answers.ideal || "?"}` : "—"}</td><td>${esc(CANETA[(s.answers || {}).caneta] || "—")}</td><td>${esc((s.answers || {}).fome || "—")}</td><td class="num">${s.imc || "—"}</td><td>${esc(stepLabel(s.maxStepId))}</td><td>${s.checkoutClicked ? `<span class="ok">✓ CTA ${s.ctaN || ""}</span>` : "—"}</td></tr>`).join("") || `<tr><td colspan="12"><div class="empty">sem sessões no período</div></td></tr>`}
+      ${recent.map(s => `<tr><td class="num">${s.createdAt ? new Date(s.createdAt).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : s.day}</td><td>${s.entry === "landing" ? "landing" : "pergunta"}</td><td>${esc(s.vsl || "—")}</td><td>${esc(s.utm_source || "—")}</td><td>${esc(((s.answers || {}).areasalvo || []).join(", ") || "—")}</td><td>${esc((s.answers || {}).corpo || "—")}</td><td class="num">${(s.answers || {}).peso ? `${s.answers.peso} → ${s.answers.ideal || "?"}` : "—"}</td><td>${esc(CANETA[(s.answers || {}).caneta] || "—")}</td><td>${esc((s.answers || {}).fome || "—")}</td><td class="num">${s.imc || "—"}</td><td>${esc(stepLabel(s.maxStepId))}</td><td>${s.checkoutClicked ? `<span class="ok">✓ CTA ${s.ctaN || ""}</span>` : s.backCheckout ? `<span class="ok">✓ back</span>` : s.backViewed ? "↩ back" : "—"}</td></tr>`).join("") || `<tr><td colspan="12"><div class="empty">sem sessões no período</div></td></tr>`}
       </tbody></table></div>
     </div>
   </div>`;
