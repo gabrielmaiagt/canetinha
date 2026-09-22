@@ -3,375 +3,380 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Admin · Canetinha de Pobre</title>
+<title>Canetinha de Pobre · Leads</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
 <style>
 :root{
-  color-scheme:light;
-  --bg:#f5f4f9; --paper:#ffffff; --ink:#17132a; --ink2:#524c68; --mute:#8d88a3; --line:#e6e3ee; --line2:#d3cfe0;
-  --accent:#6d33e0; --accent-soft:#ede7fb;
-  --seq-1:#e9e1fb; --seq-2:#c9b8f3; --seq-3:#a98be9; --seq-4:#8459df; --seq-5:#6d33e0; --seq-6:#4c1fa8;
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
-  --bad:#c2410c; --bad-soft:#fdebe3; --good:#008300; --good-soft:#e6f4e6; --warn:#b26a00;
-  --display:"Plus Jakarta Sans",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+  color-scheme:dark;
+  --bg:#0f0e15; --card:#15141d; --card2:#1b1a25; --line:#24232f; --line2:#33313f;
+  --ink:#f3f1fa; --ink2:#b9b4cc; --mute:#7f7a93;
+  --grad:linear-gradient(90deg,#6d3df5 0%,#a78bfa 100%); --grad2:linear-gradient(90deg,#f5a23d 0%,#f04e6a 100%); --track:#22212c;
+  --accent:#a78bfa; --red:#ff6b8a; --green:#34d399; --orange:#f5a23d;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#100e17;--paper:#1a1724;--ink:#f1eefa;--ink2:#c3bdd6;--mute:#8b849f;--line:#2a2638;--line2:#3a354c;--accent:#a78bfa;--accent-soft:#2a2340;--seq-1:#2a2340;--seq-2:#3d3162;--seq-3:#5b4a8f;--seq-4:#7a63c1;--seq-5:#9d83e9;--seq-6:#c4b3f7;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--bad:#f59a70;--bad-soft:#3a2418;--good:#5ad55a;--good-soft:#173117;--warn:#e0a030}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#100e17;--paper:#1a1724;--ink:#f1eefa;--ink2:#c3bdd6;--mute:#8b849f;--line:#2a2638;--line2:#3a354c;--accent:#a78bfa;--accent-soft:#2a2340;--seq-1:#2a2340;--seq-2:#3d3162;--seq-3:#5b4a8f;--seq-4:#7a63c1;--seq-5:#9d83e9;--seq-6:#c4b3f7;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--bad:#f59a70;--bad-soft:#3a2418;--good:#5ad55a;--good-soft:#173117;--warn:#e0a030}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.45}
-.wrap{max-width:1200px;margin:0 auto;padding-block:20px 80px;padding-inline:18px}
-h1{font-family:var(--display);font-size:1.5rem;font-weight:800;margin:0;letter-spacing:-.01em}
-h2{font-family:var(--display);font-size:1.05rem;font-weight:800;margin:0 0 10px}
-h3{font-family:var(--display);font-size:.9rem;font-weight:700;margin:0 0 8px;color:var(--ink)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.5}
+.wrap{max-width:1200px;margin:0 auto;padding-block:26px 90px;padding-inline:20px}
+h1{font-size:1.5rem;font-weight:700;margin:0;letter-spacing:-.01em}
+h2{font-size:1.02rem;font-weight:700;margin:0}
+h2 span{font-weight:400;color:var(--mute);font-size:.92rem}
 p{margin:0}
-.sub{color:var(--mute);font-size:.82rem}
+.sub{color:var(--mute);font-size:.86rem}
+.sub code,.exp code{font-family:ui-monospace,Menlo,monospace;font-size:.8em;color:var(--ink2)}
 .num{font-variant-numeric:tabular-nums}
-section{margin-top:26px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-/* top */
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.top .r{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.pill{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
-.pill.demo{background:var(--bad-soft);color:var(--bad)}
-button,select,input{font-family:inherit;font-size:.86rem}
-.btn{border:1px solid var(--line2);background:var(--paper);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
-.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-/* filters */
-.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
-.filters select,.filters input{border:1px solid var(--line2);background:var(--paper);color:var(--ink);padding:7px 10px;border-radius:10px}
-.seg{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
-.seg button{border:0;background:var(--paper);color:var(--ink2);padding:7px 11px;cursor:pointer;font-weight:600}
-.seg button.on{background:var(--accent);color:#fff}
-/* kpis */
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
-.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.kpi b{display:block;font-family:var(--display);font-size:1.55rem;font-weight:800;line-height:1.1}
-.kpi span{font-size:.76rem;color:var(--mute)}
-.kpi small{display:block;font-size:.74rem;color:var(--ink2);margin-top:3px}
-/* tables */
-table{width:100%;border-collapse:collapse;font-size:.84rem}
-th{text-align:left;font-family:var(--display);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding:8px 8px;border-bottom:1px solid var(--line)}
-td{padding:8px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.top .r{display:flex;gap:8px}
+.btn{border:1px solid var(--line2);background:var(--card);color:var(--ink);font:600 .86rem var(--font);padding:9px 14px;border-radius:10px;cursor:pointer}
+.btn.pri{background:#6d3df5;border-color:#6d3df5;color:#fff}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:18px}
+.card .exp{color:var(--ink2);font-size:.84rem;margin-top:6px;margin-bottom:14px;line-height:1.55}
+.card .exp b{color:var(--ink)}
+.foot{color:var(--mute);font-size:.8rem;margin-top:14px;line-height:1.5}
+/* filtros */
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end}
+.filters label{display:block;font-size:.78rem;color:var(--ink2);margin-bottom:5px}
+.filters input,.filters select{width:100%;background:var(--card2);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font:500 .9rem var(--font)}
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;min-height:118px}
+.tile b{display:block;font-size:2rem;font-weight:800;line-height:1.05;letter-spacing:-.01em}
+.tile .l{display:block;font-weight:600;font-size:.92rem;margin-top:6px}
+.tile .s{display:block;color:var(--mute);font-size:.78rem;margin-top:3px;line-height:1.4}
+/* barras horizontais */
+.rows{display:grid;gap:9px}
+.row{display:grid;grid-template-columns:260px 1fr 130px;gap:14px;align-items:center;font-size:.9rem}
+.row .lbl{color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .lbl.hot{color:var(--red);font-weight:600}
+.row .v{text-align:right}.row .v b{color:var(--ink)}.row .v span{color:var(--mute);font-size:.82rem;margin-left:4px}.row .v i{font-style:normal;color:var(--red);font-weight:700;margin-left:6px}
+.bar{height:14px;background:var(--track);border-radius:99px;overflow:hidden;position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--grad);border-radius:99px}
+.bar.vid i{background:var(--grad2)}.bar.gray i{background:#6b6880}
+.row.pct{grid-template-columns:260px 52px 1fr 150px}
+.row.pct .p{font-weight:700;text-align:right}.row.pct .p.hot{color:var(--red)}
+@media (max-width:640px){.row{grid-template-columns:1fr 100px}.row .bar{grid-column:1/-1;order:3}.row.pct{grid-template-columns:1fr 46px 110px}.row.pct .bar{grid-column:1/-1}}
+/* retenção vertical */
+.vbars{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;align-items:end;height:220px;margin:40px 0 6px}
+.vb{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
+.vb .col{width:100%;background:var(--track);border-radius:8px 8px 4px 4px;position:relative;height:100%;overflow:hidden}
+.vb .col i{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,#a78bfa,#6d3df5);border-radius:8px 8px 4px 4px}
+.vb.vid .col i{background:linear-gradient(180deg,#f5a23d,#f04e6a)}.vb.gray .col i{background:#6b6880}
+.vb .pv{position:absolute;top:-20px;font-size:.66rem;font-weight:700;color:var(--ink2);white-space:nowrap}
+.vlabels{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-bottom:18px}
+.vlabels span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.7rem;color:var(--mute);height:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-self:center}
+/* A/B duo */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.side{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.side.on{border-color:#5a4a8a;box-shadow:0 0 0 1px #3a2f5c inset}
+.side h3{margin:0;font-size:1rem;font-weight:700}
+.side .d{color:var(--mute);font-size:.8rem;margin:2px 0 10px}
+.side .ln{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:.9rem}
+.side .ln span:first-child{color:var(--ink2)}.side .ln b{font-weight:700}.side .ln b.red{color:var(--red)}.side .ln b.green{color:var(--green)}.side .ln em{font-style:normal;color:var(--mute);margin-left:4px;font-size:.82rem}
+.side .tot{border-top:1px dashed var(--line2);margin-top:6px;padding-top:10px;color:var(--ink2);font-size:.84rem;line-height:1.6}
+.side .tot b{color:var(--ink)}
+.quad{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+/* tabelas */
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{text-align:left;color:var(--mute);font-weight:500;font-size:.82rem;padding:10px 10px;border-bottom:1px solid var(--line)}
+td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
 tr:last-child td{border-bottom:0}
-td.r,th.r{text-align:right}
+.ok{color:var(--green);font-weight:700}
 .scroll{overflow-x:auto}
-/* bars */
-.bar{position:relative;height:12px;background:var(--seq-1);border-radius:4px;overflow:hidden;min-width:120px}
-.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--seq-5);border-radius:0 4px 4px 0}
-.bar.s1 i{background:var(--s1)}.bar.s2 i{background:var(--s2)}.bar.s3 i{background:var(--s3)}
-.bar.bad i{background:var(--bad)}
-.drop{color:var(--bad);font-weight:600}
-.up{color:var(--good);font-weight:600}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:12px}
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-.q{display:grid;gap:6px}
-.q .row{display:grid;grid-template-columns:1fr 130px 44px 64px;gap:10px;align-items:center;font-size:.82rem}
-.q .row .lbl{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.q .row .cv{color:var(--mute);font-size:.74rem;text-align:right}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.76rem;color:var(--ink2);margin-bottom:8px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-size:.76rem;padding:6px 9px;border-radius:8px;z-index:50;display:none;max-width:260px}
-/* login */
-.login{max-width:380px;margin:80px auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
-.login input{width:100%;border:1px solid var(--line2);background:var(--bg);color:var(--ink);padding:10px 12px;border-radius:10px;margin-top:8px}
+.empty{padding:22px;text-align:center;color:var(--mute);border:1px dashed var(--line2);border-radius:12px}
+.badge{display:inline-block;background:#2a1f4d;color:#c4b5fd;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.badge.demo{background:#3a1a1a;color:#fda4af}
+.qtitle{font-weight:700;margin:18px 0 10px}.qtitle span{color:var(--ink2);font-weight:400}
+.login{max-width:380px;margin:90px auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.login input{width:100%;background:var(--card2);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:11px 12px;margin-top:8px;font:500 .95rem var(--font)}
 .login .btn{width:100%;margin-top:12px}
-.err{color:var(--bad);font-size:.82rem;margin-top:8px}
-.ab{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.ab .row{display:grid;grid-template-columns:1fr 90px;align-items:center;gap:8px;margin-top:8px}
-.ab input[type=range]{width:100%;accent-color:var(--accent)}
-.note{font-size:.78rem;color:var(--mute);margin-top:8px}
-.empty{padding:30px;text-align:center;color:var(--mute)}
-@media (max-width:640px){.q .row{grid-template-columns:1fr 90px 40px 56px}}
+.err{color:var(--red);font-size:.84rem;margin-top:8px}
+.cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+.cfg label{display:flex;justify-content:space-between;font-size:.84rem;color:var(--ink2)}.cfg label b{color:var(--ink)}
+.cfg input[type=range]{width:100%;accent-color:#a78bfa}
+.cfg input[type=number]{width:90px;background:var(--card2);color:var(--ink);border:1px solid var(--line2);border-radius:8px;padding:7px;font:500 .9rem var(--font)}
+.tip{position:fixed;pointer-events:none;background:#fff;color:#111;font-size:.76rem;padding:6px 9px;border-radius:8px;z-index:50;display:none}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div class="tip" id="tip"></div>
-
 <script>
-/* ============ CONFIG — cole o mesmo config do Firebase do funil ============ */
+/* ============ CONFIG — mesmo config do Firebase do funil ============ */
 const FIREBASE = { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain: "canetinha-4bd2a.firebaseapp.com", projectId: "canetinha-4bd2a", appId: "1:298345331983:web:06f6d8092fcbc3e1d5527a" };
 
 /* ============ Estrutura do funil (espelha site/index.html) ============ */
 const STEPS = [
-  ["landing", "Landing (só variante)"], ["areas", "Onde quer secar"], ["meta", "Quantos kg"], ["corpo", "Corpo hoje"], ["impacto", "Impacto na vida"], ["feliz", "Está feliz?"], ["caneta", "Relação com a canetinha"], ["barreira", "O que impede"], ["mecanismo", "Mecanismo ✗/✓"], ["beneficios", "Benefícios"], ["prova", "Prova + áudio 1"], ["peso", "Peso"], ["altura", "Altura"], ["ideal", "Meta (kg)"], ["motiva", "Faltam X kg"], ["rotina", "Rotina"], ["sono", "Sono"], ["fome", "Momento da fome"], ["corpoalvo", "Corpo que quer"], ["compromisso", "Compromisso"], ["loading", "Loading"], ["diagnostico", "Diagnóstico"], ["oferta", "Oferta"], ["checkout", "Clique no checkout"],
+  ["landing", "Landing", "/?v=landing"], ["areas", "Onde quer secar", "/"], ["meta", "Quantos kg", "meta"], ["corpo", "Corpo hoje", "corpo"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["caneta", "Relação c/ canetinha", "caneta"], ["barreira", "O que impede", "barreira"], ["mecanismo", "Mecanismo ✗/✓", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["fome", "Momento da fome", "fome"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Diagnóstico", "diagnostico"], ["oferta", "🎬 Oferta (VSL)", "oferta"], ["checkout", "Clique checkout", "checkout"],
 ];
+const MEDIA = new Set(["prova", "loading", "oferta"]);
 const QUESTIONS = [
-  ["areasalvo", "Onde quer secar (multi)"], ["meta", "Quantos kg quer eliminar"], ["corpo", "Corpo hoje"], ["impacto", "Impacto na vida"], ["feliz", "Está feliz com a aparência?"], ["caneta", "Relação com a canetinha"], ["barreira", "O que mais impede"], ["beneficios", "Benefícios (multi)"], ["rotina", "Rotina"], ["sono", "Sono"], ["fome", "Momento da fome"], ["corpoalvo", "Corpo que quer"], ["compromisso", "Compromisso"],
+  ["areasalvo", "Onde quer secar", "Pra começar: onde você mais quer secar? (multi)"], ["meta", "Quantos kg", "E quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["caneta", "Canetinha", "E a canetinha de verdade, qual a sua relação com ela?"], ["barreira", "O que impede", "E o que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha todo dia por 30 dias?"],
 ];
-const CANETA = { usei: "Já usei e o peso voltou", medo: "Medo dos efeitos", caro: "Não tenho R$ 3 mil", nunca: "Nunca pensei" };
-const BARREIRA = { fome: "A fome vence", tempo: "Falta tempo", financeiro: "É caro", constancia: "Sem constância" };
+const CANETA = { usei: "Já usei e o peso voltou", medo: "Medo dos efeitos", caro: "Não tenho R$ 3 mil", nunca: "Nunca pensei nisso" };
+const BARREIRA = { fome: "A fome vence", tempo: "Falta tempo", financeiro: "É caro demais", constancia: "Sem constância" };
+const COMP = { pronta: "Tô pronta", medo: "Tenho medo de não conseguir" };
 
 /* ============ Estado ============ */
 const app = document.getElementById("app"), tip = document.getElementById("tip");
 const QS = new URLSearchParams(location.search);
 const DEMO = QS.get("demo") === "1" || !FIREBASE.apiKey;
-let db = null, all = [], config = { split: { landing: 0, vslB: 0, version: 1 }, vagas: 7 };
-let F = { period: "7d", from: "", to: "", entry: "", vsl: "", camp: "", dev: "" };
+let db = null, all = [], sales = [], config = { split: { landing: 0, vslB: 0, version: 1 }, vagas: 7 };
+const today = new Date(), d7 = new Date(today); d7.setDate(d7.getDate() - 6);
+const dayStr = (d) => d.toISOString().slice(0, 10);
+let F = { from: dayStr(d7), to: "", source: "", entry: "", vsl: "" };
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const pct = (a, b) => b ? (100 * a / b) : 0;
-const fp = (v, d = 1) => (Math.round(v * 10 ** d) / 10 ** d).toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d }) + "%";
-const fn = (n) => (n || 0).toLocaleString("pt-BR");
+const pct = (a, b) => b ? 100 * a / b : 0;
+const P = (v, d = 0) => (Math.round(v * 10 ** d) / 10 ** d).toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d }) + "%";
+const N = (n) => (n || 0).toLocaleString("pt-BR");
+const BRL = (v) => (v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 const median = (arr) => { const a = arr.filter(x => typeof x === "number" && !isNaN(x)).sort((x, y) => x - y); if (!a.length) return null; const m = Math.floor(a.length / 2); return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
-const dayStr = (d) => d.toISOString().slice(0, 10);
-const bar = (v, max, cls = "") => `<div class="bar ${cls}" data-tip="${fp(v)}"><i style="width:${max ? Math.max(0, Math.min(100, 100 * v / max)) : 0}%"></i></div>`;
+const hbar = (v, max, cls = "") => `<div class="bar ${cls}" data-tip="${P(v, 1)}"><i style="width:${max ? Math.max(0, Math.min(100, 100 * v / max)) : 0}%"></i></div>`;
+const tile = (b, l, s = "") => `<div class="tile"><b class="num">${b}</b><span class="l">${l}</span>${s ? `<span class="s num">${s}</span>` : ""}</div>`;
 
-/* ============ Demo (dados sintéticos pra ver o painel sem banco) ============ */
+/* ============ Demo ============ */
 function demoData() {
   const R = (n) => Math.floor(Math.random() * n), pickW = (arr) => { const t = arr.reduce((s, x) => s + x[1], 0); let r = Math.random() * t; for (const [v, w] of arr) { r -= w; if (r <= 0) return v; } return arr[0][0]; };
-  const out = []; const now = Date.now();
+  const out = [], sl = []; const now = Date.now();
   const order = STEPS.map(s => s[0]).filter(s => s !== "landing" && s !== "checkout");
-  for (let k = 0; k < 900; k++) {
-    const entry = Math.random() < 0.35 ? "landing" : "pergunta", vsl = Math.random() < 0.5 ? "A" : "B";
-    const created = now - R(14 * 864e5);
-    const s = { sid: "demo" + k, entry, vsl, day: dayStr(new Date(created)), createdAt: created, mobile: Math.random() < 0.92, utm_campaign: pickW([["famosas-caneta", 5], ["cara-de-doente", 3], ["10kg-30dias", 2], [null, 1]]), utm_content: pickW([["reel-01", 4], ["reel-02", 3], ["carrossel-01", 2]]), answers: {}, steps: {} };
-    // progressão com queda
-    let t = 0; const drops = { areas: 0.06, meta: 0.05, corpo: 0.05, impacto: 0.06, feliz: 0.03, caneta: 0.04, barreira: 0.04, mecanismo: 0.14, beneficios: 0.05, prova: 0.12, peso: 0.05, altura: 0.02, ideal: 0.02, motiva: 0.04, rotina: 0.03, sono: 0.02, fome: 0.02, corpoalvo: 0.02, compromisso: 0.03, loading: 0.02, diagnostico: 0.18, oferta: 0 };
+  for (let k = 0; k < 1400; k++) {
+    const entry = Math.random() < 0.3 ? "landing" : "pergunta", vsl = Math.random() < 0.5 ? "A" : "B";
+    const created = now - R(7 * 864e5);
+    const s = { sid: "demo" + k, entry, vsl, day: dayStr(new Date(created)), createdAt: created, mobile: Math.random() < 0.92, utm_source: pickW([["facebook", 7], ["instagram", 2], [null, 1]]), utm_campaign: pickW([["famosas-caneta v2", 5], ["cara-de-doente v1", 3], ["10kg-30dias", 2], [null, 1]]), utm_content: pickW([["reel-01", 4], ["reel-02", 3], ["carrossel-01", 2]]), answers: {}, steps: {} };
+    let t = 0; const drops = { areas: 0.55, meta: 0.04, corpo: 0.04, impacto: 0.05, feliz: 0.02, caneta: 0.03, barreira: 0.03, mecanismo: 0.10, beneficios: 0.04, prova: 0.09, peso: 0.04, altura: 0.01, ideal: 0.01, motiva: 0.03, rotina: 0.02, sono: 0.01, fome: 0.01, corpoalvo: 0.01, compromisso: 0.02, loading: 0.01, diagnostico: 0.12, oferta: 0 };
     const meta = pickW([["Até 5 kg", 25], ["De 6 a 10 kg", 35], ["De 11 a 19 kg", 28], ["20 kg ou mais", 12]]);
-    let reached = 0;
+    if (entry === "landing") { s.steps.landing = { i: 0, t: 0 }; if (Math.random() < 0.45) { out.push(s); continue; } }
     for (let i = 0; i < order.length; i++) {
-      const id = order[i]; t += 4 + R(14); s.steps[id] = { i, t }; s.maxStep = i; s.maxStepId = id; reached = i;
+      const id = order[i]; t += 4 + R(14); s.steps[id] = { i, t }; s.maxStep = i; s.maxStepId = id;
       if (id === "diagnostico") s.completed = true; if (id === "oferta") { s.offerViewed = true; s.offerAt = t; }
-      let d = drops[id] * (entry === "landing" ? 1.25 : 1) * (meta === "Até 5 kg" ? 1.2 : 1);
+      let d = drops[id] * (id === "areas" && entry === "landing" ? 0.5 : 1) * (meta === "Até 5 kg" ? 1.15 : 1);
       if (Math.random() < d) break;
     }
-    const A = s.answers, has = (id) => s.steps[id];
-    if (has("areas")) A.areasalvo = [pickW([["Barriga", 6], ["Culotes", 3], ["Coxas", 2], ["Braços", 2], ["Glúteos", 1], ["Corpo todo", 2]])];
-    if (has("meta")) A.meta = meta;
-    if (has("corpo")) A.corpo = pickW([["Médio", 2], ["Sobrepeso", 4], ["Acima do peso", 3], ["Plus size", 2]]);
-    if (has("impacto")) A.impacto = pickW([["Minha autoestima tá lá embaixo", 5], ["Vivo cansada, sem energia pra nada", 3], ["Já tá mexendo com a saúde: pressão, dores, exames", 2], ["Tá afetando a minha vida íntima", 2]]);
-    if (has("feliz")) A.feliz = pickW([["Não, quero emagrecer pra me sentir melhor", 7], ["Sim, mas sei que posso melhorar", 3]]);
-    if (has("caneta")) A.caneta = pickW([["usei", 2], ["medo", 3], ["caro", 4], ["nunca", 2]]);
-    if (has("barreira")) A.barreira = pickW([["fome", 5], ["tempo", 2], ["financeiro", 2], ["constancia", 3]]);
-    if (has("beneficios")) A.beneficios = [pickW([["Parar de beliscar e comer besteira", 4], ["Me olhar no espelho e gostar", 3], ["Usar qualquer roupa sem marcar a barriga", 3], ["Ouvir \"o que você fez pra emagrecer?\"", 1], ["Meu parceiro me olhando com desejo", 2], ["Subir escada sem cansar", 1]])];
-    if (has("peso")) A.peso = 60 + R(50); if (has("altura")) A.altura = 150 + R(25); if (has("ideal")) A.ideal = Math.max(45, (A.peso || 75) - 5 - R(20));
-    if (has("rotina")) A.rotina = pickW([["Trabalho fora, rotina corrida", 5], ["Trabalho em casa, horário flexível", 2], ["Fico em casa cuidando da família", 3], ["Outro", 1]]);
-    if (has("sono")) A.sono = pickW([["Menos de 5 horas", 2], ["Entre 5 e 7 horas", 5], ["Entre 7 e 9 horas", 3], ["Mais de 9 horas", 1]]);
-    if (has("fome")) A.fome = pickW([["manhã", 1], ["tarde", 3], ["noite", 5], ["o dia inteiro", 3]]);
-    if (has("corpoalvo")) A.corpoalvo = pickW([["Em forma", 6], ["Natural", 4]]);
-    if (has("compromisso")) A.compromisso = pickW([["pronta", 7], ["medo", 3]]);
+    const A = s.answers, has = (id) => s.steps[id] && (order.indexOf(id) < order.indexOf(s.maxStepId) || s.maxStepId === id);
+    if (s.steps.meta) A.areasalvo = [pickW([["Barriga", 6], ["Culotes", 3], ["Coxas", 2], ["Braços", 2], ["Glúteos", 1], ["Corpo todo", 2]])];
+    if (s.steps.corpo) A.meta = meta;
+    if (s.steps.impacto) A.corpo = pickW([["Médio", 2], ["Sobrepeso", 4], ["Acima do peso", 3], ["Plus size", 2]]);
+    if (s.steps.feliz) A.impacto = pickW([["Minha autoestima tá lá embaixo", 5], ["Vivo cansada, sem energia pra nada", 3], ["Já tá mexendo com a saúde: pressão, dores, exames", 2], ["Tá afetando a minha vida íntima", 2]]);
+    if (s.steps.caneta) A.feliz = pickW([["Não, quero emagrecer pra me sentir melhor", 7], ["Sim, mas sei que posso melhorar", 3]]);
+    if (s.steps.barreira) A.caneta = pickW([["usei", 2], ["medo", 3], ["caro", 4], ["nunca", 2]]);
+    if (s.steps.mecanismo) A.barreira = pickW([["fome", 5], ["tempo", 2], ["financeiro", 2], ["constancia", 3]]);
+    if (s.steps.prova) A.beneficios = [pickW([["Parar de beliscar e comer besteira", 4], ["Me olhar no espelho e gostar", 3], ["Usar qualquer roupa sem marcar a barriga", 3], ["Ouvir \"o que você fez pra emagrecer?\"", 1], ["Meu parceiro me olhando com desejo", 2], ["Subir escada sem cansar", 1]])];
+    if (s.steps.altura) A.peso = 60 + R(50); if (s.steps.ideal) A.altura = 150 + R(25); if (s.steps.motiva) A.ideal = Math.max(45, (A.peso || 75) - 5 - R(20));
+    if (s.steps.sono) A.rotina = pickW([["Trabalho fora, rotina corrida", 5], ["Trabalho em casa, horário flexível", 2], ["Fico em casa cuidando da família", 3], ["Outro", 1]]);
+    if (s.steps.fome) A.sono = pickW([["Menos de 5 horas", 2], ["Entre 5 e 7 horas", 5], ["Entre 7 e 9 horas", 3], ["Mais de 9 horas", 1]]);
+    if (s.steps.corpoalvo) A.fome = pickW([["manhã", 1], ["tarde", 3], ["noite", 5], ["o dia inteiro", 3]]);
+    if (s.steps.compromisso) A.corpoalvo = pickW([["Em forma", 6], ["Natural", 4]]);
+    if (s.steps.loading) A.compromisso = pickW([["pronta", 7], ["medo", 3]]);
     if (s.completed && A.peso && A.altura) { s.imc = +(A.peso / ((A.altura / 100) ** 2)).toFixed(1); s.faixa = s.imc < 18.5 ? "magreza" : s.imc < 25 ? "normal" : s.imc < 30 ? "sobrepeso" : "obesidade"; s.horario = A.fome === "manhã" ? "logo ao acordar" : A.fome === "tarde" ? "30 min antes do almoço" : A.fome === "noite" ? "30 min antes do jantar" : "manhã e 30 min antes do jantar"; s.falta = Math.max(0, A.peso - A.ideal); }
-    if (s.offerViewed) { let p = 0.19 * (vsl === "B" ? 1.22 : 1) * (A.caneta === "usei" ? 1.3 : 1) * (meta === "Até 5 kg" ? 0.75 : 1) * (A.compromisso === "pronta" ? 1.1 : 0.85); if (Math.random() < p) { s.checkoutClicked = true; s.checkoutAt = s.offerAt + 20 + R(160); s.ctaN = pickW([[1, 5], [2, 3], [3, 1], [4, 1]]); s.checkoutClicks = 1 + (Math.random() < .2 ? 1 : 0); } }
+    if (s.offerViewed) { let p = 0.24 * (vsl === "B" ? 1.2 : 1) * (A.caneta === "usei" ? 1.3 : 1) * (meta === "Até 5 kg" ? 0.75 : 1) * (A.compromisso === "pronta" ? 1.1 : 0.85); if (Math.random() < p) { s.checkoutClicked = true; s.checkoutAt = s.offerAt + 20 + R(160); s.ctaN = pickW([[1, 5], [2, 3], [3, 1], [4, 1]]); if (Math.random() < 0.55) { const st = pickW([["aprovada", 6], ["PENDING", 2], ["CANCELED", 1], ["REFUSED", 1]]); sl.push({ at: created + (s.checkoutAt + 60) * 1000, day: s.day, status: st, value: Math.random() < 0.8 ? 37.9 : 47.8, source: s.utm_source, campaign: s.utm_campaign, sid: s.sid, vsl, entry }); } } }
     out.push(s);
   }
-  return out;
+  return { out, sl };
 }
 
 /* ============ Firebase ============ */
 const load = (src) => new Promise((res, rej) => { const el = document.createElement("script"); el.src = src; el.onload = res; el.onerror = rej; document.head.appendChild(el); });
-async function initFirebase() {
-  const v = "10.12.0";
-  await load(`https://www.gstatic.com/firebasejs/${v}/firebase-app-compat.js`);
-  await load(`https://www.gstatic.com/firebasejs/${v}/firebase-auth-compat.js`);
-  await load(`https://www.gstatic.com/firebasejs/${v}/firebase-firestore-compat.js`);
-  firebase.initializeApp(FIREBASE); db = firebase.firestore();
-}
-async function fetchSessions() {
-  const { from, to } = range();
-  let q = db.collection("sessions").where("day", ">=", from).where("day", "<=", to).orderBy("day", "desc").limit(5000);
-  const snap = await q.get();
+async function initFirebase() { const v = "10.12.0"; await load(`https://www.gstatic.com/firebasejs/${v}/firebase-app-compat.js`); await load(`https://www.gstatic.com/firebasejs/${v}/firebase-auth-compat.js`); await load(`https://www.gstatic.com/firebasejs/${v}/firebase-firestore-compat.js`); firebase.initializeApp(FIREBASE); db = firebase.firestore(); }
+async function fetchAll() {
+  const from = F.from || "2020-01-01", to = F.to || dayStr(new Date());
+  const snap = await db.collection("sessions").where("day", ">=", from).where("day", "<=", to).limit(8000).get();
   all = snap.docs.map(d => { const x = d.data(); x.createdAt = x.createdAt && x.createdAt.toMillis ? x.createdAt.toMillis() : (x.createdAt || 0); return x; });
+  try { const s2 = await db.collection("sales").where("day", ">=", from).where("day", "<=", to).limit(5000).get(); sales = s2.docs.map(d => { const x = d.data(); x.at = x.at && x.at.toMillis ? x.at.toMillis() : (x.at || 0); return x; }); } catch (e) { sales = []; }
   try { const c = await db.collection("config").doc("funnel").get(); if (c.exists) config = { ...config, ...c.data() }; } catch (e) {}
 }
 
-/* ============ Filtros ============ */
-function range() {
-  const today = new Date(); let from, to = dayStr(today);
-  if (F.period === "hoje") from = to;
-  else if (F.period === "7d") { const d = new Date(today); d.setDate(d.getDate() - 6); from = dayStr(d); }
-  else if (F.period === "30d") { const d = new Date(today); d.setDate(d.getDate() - 29); from = dayStr(d); }
-  else if (F.period === "custom") { from = F.from || "2020-01-01"; to = F.to || to; }
-  else from = "2020-01-01";
-  return { from, to };
-}
-function filtered() {
-  const { from, to } = range();
-  return all.filter(s => (s.day >= from && s.day <= to) && (!F.entry || s.entry === F.entry) && (!F.vsl || s.vsl === F.vsl) && (!F.camp || (s.utm_campaign || "(sem)") === F.camp) && (!F.dev || (F.dev === "mobile") === !!s.mobile));
-}
-
 /* ============ Cálculos ============ */
-function funnel(rows) {
-  const ids = STEPS.map(s => s[0]);
-  const reach = {}; ids.forEach(id => reach[id] = 0);
-  rows.forEach(s => { Object.keys(s.steps || {}).forEach(id => { if (id in reach) reach[id]++; }); if (s.checkoutClicked) reach.checkout++; });
-  const start = rows.length; let prev = start; const out = [];
-  STEPS.forEach(([id, label]) => { if (id === "landing" && !reach.landing) return; const n = reach[id]; out.push({ id, label, n, ofStart: pct(n, start), ofPrev: pct(n, prev), drop: prev - n }); prev = n || prev; });
+function filtered() { return all.filter(s => (!F.from || s.day >= F.from) && (!F.to || s.day <= F.to) && (!F.source || (s.utm_source || "(sem origem)") === F.source) && (!F.entry || s.entry === F.entry) && (!F.vsl || s.vsl === F.vsl)); }
+function filteredSales() { return sales.filter(s => (!F.from || s.day >= F.from) && (!F.to || s.day <= F.to) && (!F.source || (s.source || "(sem origem)") === F.source) && (!F.entry || !s.entry || s.entry === F.entry) && (!F.vsl || !s.vsl || s.vsl === F.vsl)); }
+const reachedStep = (s, id) => !!(s.steps && s.steps[id]);
+function retention(rows) {
+  const base = rows.length; const out = [{ id: "pv", label: "PageView · abriu o quiz", n: base, ofStart: 100, ofPrev: 100, drop: 0, media: false }]; let prev = base;
+  STEPS.forEach(([id, label]) => {
+    if (id === "landing") return;
+    const n = id === "checkout" ? rows.filter(s => s.checkoutClicked).length : rows.filter(s => reachedStep(s, id)).length;
+    out.push({ id, label, n, ofStart: pct(n, base), ofPrev: pct(n, prev), drop: prev - n, media: MEDIA.has(id) });
+    prev = n || prev;
+  });
   return out;
 }
-function dist(rows, key) {
-  const c = {}; let base = 0;
-  rows.forEach(s => { const v = (s.answers || {})[key]; if (v == null) return; base++; (Array.isArray(v) ? v : [v]).forEach(x => { c[x] = c[x] || { n: 0, off: 0, ck: 0 }; c[x].n++; if (s.offerViewed) c[x].off++; if (s.checkoutClicked) c[x].ck++; }); });
-  return { base, items: Object.entries(c).sort((a, b) => b[1].n - a[1].n) };
-}
-function seg(rows, fn, labelOf = (x) => x) {
-  const c = {};
-  rows.forEach(s => { const k = fn(s); if (k == null) return; c[k] = c[k] || { n: 0, off: 0, ck: 0 }; c[k].n++; if (s.offerViewed) c[k].off++; if (s.checkoutClicked) c[k].ck++; });
-  return Object.entries(c).map(([k, v]) => ({ k: labelOf(k), ...v })).sort((a, b) => b.n - a.n);
-}
-function stepTimes(rows) {
-  const ids = STEPS.map(s => s[0]).filter(x => x !== "checkout");
-  const per = {};
-  rows.forEach(s => { const st = s.steps || {}; const arr = Object.entries(st).sort((a, b) => a[1].i - b[1].i); for (let i = 0; i < arr.length - 1; i++) { const [id, v] = arr[i]; const dt = arr[i + 1][1].t - v.t; if (dt >= 0 && dt < 1800) (per[id] = per[id] || []).push(dt); } });
-  return ids.map(id => ({ id, label: (STEPS.find(s => s[0] === id) || [])[1], med: median(per[id] || []), n: (per[id] || []).length })).filter(x => x.n);
+function dist(rows, key) { const c = {}; let base = 0; rows.forEach(s => { const v = (s.answers || {})[key]; if (v == null) return; base++; (Array.isArray(v) ? v : [v]).forEach(x => { c[x] = c[x] || 0; c[x]++; }); }); return { base, items: Object.entries(c).sort((a, b) => b[1] - a[1]) }; }
+function seg(rows, fn, labelOf = (x) => x) { const c = {}; rows.forEach(s => { const k = fn(s); if (k == null) return; c[k] = c[k] || { n: 0, off: 0, ck: 0, done: 0 }; c[k].n++; if (s.offerViewed) c[k].off++; if (s.checkoutClicked) c[k].ck++; if (s.completed) c[k].done++; }); return Object.entries(c).map(([k, v]) => ({ key: k, k: labelOf(k), ...v })).sort((a, b) => b.n - a.n); }
+
+/* ============ Blocos ============ */
+function abBlock(title, exp, groups, rowsFn, footNote) {
+  // groups: [{k,label,desc,rows:[...sessions],on}]
+  const sides = groups.map(g => { const r = rowsFn(g.rows); return `<div class="side ${g.on ? "on" : ""}"><h3>${esc(g.label)}</h3><p class="d">${g.desc}</p>${r.map(x => `<div class="ln"><span>${x[0]}</span><b class="${x[2] || ""}">${x[1]}${x[3] ? `<em>${x[3]}</em>` : ""}</b></div>`).join("")}${g.tot ? `<div class="tot">${g.tot(g.rows)}</div>` : ""}</div>`; }).join("");
+  return `<div class="card"><h2>${title}</h2><p class="exp">${exp}</p><div class="duo">${sides}</div>${footNote ? `<p class="foot">${footNote}</p>` : ""}</div>`;
 }
 
-/* ============ Render ============ */
 function render() {
-  const rows = filtered();
-  const n = rows.length, started = rows.filter(s => Object.keys(s.answers || {}).length).length, diag = rows.filter(s => s.completed).length, off = rows.filter(s => s.offerViewed).length, ck = rows.filter(s => s.checkoutClicked).length;
-  const tOffer = median(rows.filter(s => s.offerAt).map(s => s.offerAt));
-  const camps = [...new Set(all.map(s => s.utm_campaign || "(sem)"))].sort();
-  const fun = funnel(rows); const maxN = Math.max(1, ...fun.map(f => f.n));
-  const kpi = (b, s, sm = "") => `<div class="kpi"><b class="num">${b}</b><span>${s}</span>${sm ? `<small class="num">${sm}</small>` : ""}</div>`;
+  const rows = filtered(), sl = filteredSales();
+  const pv = rows.length, off = rows.filter(s => s.offerViewed).length, ck = rows.filter(s => s.checkoutClicked).length, done = rows.filter(s => s.completed).length;
+  const approved = sl.filter(s => /aprovad|paid|approved/i.test(s.status)); const rev = approved.reduce((a, s) => a + (+s.value || 0), 0);
+  const sources = [...new Set(all.map(s => s.utm_source || "(sem origem)"))].sort();
+  const ret = retention(rows); const maxN = Math.max(1, ...ret.map(r => r.n));
+  const q1 = dist(rows, "areasalvo"); const q1max = Math.max(1, ...q1.items.map(x => x[1]));
+  const ans1 = rows.filter(s => (s.answers || {}).areasalvo).length, to2 = rows.filter(s => reachedStep(s, "meta")).length;
 
-  // A/B
-  const abEntry = seg(rows, s => s.entry, k => k === "landing" ? "Com landing" : "Sem landing (pergunta)");
-  const abVsl = seg(rows.filter(s => s.offerViewed), s => s.vsl, k => "VSL " + k);
-  const abTable = (arr, cls) => `<div class="scroll"><table><thead><tr><th>Variante</th><th class="r">Sessões</th><th class="r">Oferta</th><th class="r">Checkout</th><th class="r">Ck/Oferta</th><th class="r">Ck/Sessão</th><th></th></tr></thead><tbody>${arr.map((r, i) => `<tr><td><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--s${i % 3 + 1});margin-right:6px"></i>${esc(r.k)}</td><td class="r num">${fn(r.n)}</td><td class="r num">${fn(r.off)}</td><td class="r num">${fn(r.ck)}</td><td class="r num"><b>${fp(pct(r.ck, r.off))}</b></td><td class="r num">${fp(pct(r.ck, r.n))}</td><td>${bar(pct(r.ck, r.off), Math.max(1, ...arr.map(x => pct(x.ck, x.off))), "s" + (i % 3 + 1))}</td></tr>`).join("") || `<tr><td colspan="7" class="empty">sem dados</td></tr>`}</tbody></table></div>`;
-
+  // A/B entrada
+  const eA = rows.filter(s => s.entry === "pergunta"), eB = rows.filter(s => s.entry === "landing");
+  const abRows = (r) => { const n = r.length, first = r.filter(s => (s.answers || {}).areasalvo).length, d = r.filter(s => s.completed).length, o = r.filter(s => s.offerViewed).length, c = r.filter(s => s.checkoutClicked).length; return [["Viram esta variante", N(n), "", `(${P(pct(n, pv))})`], ["Responderam a 1ª pergunta", N(first), "green", `(${P(pct(first, n))})`], ["Pararam antes da 1ª", N(n - first), "red"], ["Chegaram no diagnóstico", N(d), "", `(${P(pct(d, n))})`], ["Chegaram na oferta", N(o), "", `(${P(pct(o, n))})`], ["Clicaram no checkout", N(c), "green", `(${P(pct(c, o))} da oferta)`]]; };
+  const abTot = (r) => { const n = r.length, o = r.filter(s => s.offerViewed).length, c = r.filter(s => s.checkoutClicked).length; return `Oferta/pageview: <b>${P(pct(o, n))}</b> · Checkout/oferta: <b>${P(pct(c, o))}</b> · Checkout/pageview: <b>${P(pct(c, n), 1)}</b>`; };
+  // A/B VSL
+  const oA = rows.filter(s => s.offerViewed && s.vsl === "A"), oB = rows.filter(s => s.offerViewed && s.vsl === "B");
+  const vslRows = (r) => { const n = r.length, c = r.filter(s => s.checkoutClicked).length, cta1 = r.filter(s => s.checkoutClicked && s.ctaN === 1).length, t = median(r.filter(s => s.checkoutAt && s.offerAt).map(s => s.checkoutAt - s.offerAt)); return [["Viram a oferta com esta VSL", N(n), "", `(${P(pct(n, off))})`], ["Clicaram no checkout", N(c), "green", `(${P(pct(c, n))})`], ["Clicaram no 1º botão (dentro/abaixo da VSL)", N(cta1), "", `(${P(pct(cta1, c))} dos cliques)`], ["Não clicaram", N(n - c), "red"], ["Tempo mediano até o clique", t != null ? Math.round(t) + "s" : "–"]]; };
+  const vslTot = (r) => { const n = r.length, c = r.filter(s => s.checkoutClicked).length; return `Checkout/oferta: <b>${P(pct(c, n), 1)}</b> · Share: <b>${P(pct(n, off))}</b>`; };
+  // pós-bifurcação caneta
+  const canetaGroups = ["usei", "medo", "caro", "nunca"].map(k => ({ k, rows: rows.filter(s => (s.answers || {}).caneta === k) }));
+  const canRows = (r) => { const n = r.length, m = r.filter(s => reachedStep(s, "mecanismo")).length, pass = r.filter(s => reachedStep(s, "beneficios")).length, d = r.filter(s => s.completed).length, c = r.filter(s => s.checkoutClicked).length, o = r.filter(s => s.offerViewed).length; return [["Responderam assim", N(n), "", `(${P(pct(n, rows.filter(s => (s.answers || {}).caneta).length))})`], ["Viram o mecanismo", N(m)], ["Pararam nele", N(m - pass), "red"], ["Passaram", N(pass), "green", `(${P(pct(pass, m))})`], ["Diagnóstico", N(d), "", `(${P(pct(d, n))})`], ["Checkout", N(c), "green", `(${P(pct(c, o))} da oferta)`]]; };
   // personalização
-  const faixas = seg(rows.filter(s => s.faixa), s => s.faixa);
-  const horarios = seg(rows.filter(s => s.horario), s => s.horario);
-  const faltaB = seg(rows.filter(s => typeof s.falta === "number"), s => s.falta <= 5 ? "até 5 kg" : s.falta <= 10 ? "6–10 kg" : s.falta <= 19 ? "11–19 kg" : "20+ kg");
-  const canetaSeg = seg(rows.filter(s => (s.answers || {}).caneta), s => s.answers.caneta, k => CANETA[k] || k);
-  const barreiraSeg = seg(rows.filter(s => (s.answers || {}).barreira), s => s.answers.barreira, k => BARREIRA[k] || k);
-  const compSeg = seg(rows.filter(s => (s.answers || {}).compromisso), s => s.answers.compromisso, k => k === "pronta" ? "Tô pronta" : "Tenho medo");
-  const segTable = (title, arr, note = "") => `<div class="card"><h3>${title}</h3>${note ? `<p class="sub" style="margin-bottom:8px">${note}</p>` : ""}<div class="scroll"><table><thead><tr><th>Segmento</th><th class="r">n</th><th class="r">% </th><th class="r">Ck/Oferta</th><th></th></tr></thead><tbody>${arr.map(r => `<tr><td>${esc(r.k)}</td><td class="r num">${fn(r.n)}</td><td class="r num">${fp(pct(r.n, arr.reduce((a, x) => a + x.n, 0)))}</td><td class="r num"><b>${r.off ? fp(pct(r.ck, r.off)) : "–"}</b></td><td>${bar(pct(r.ck, r.off), Math.max(1, ...arr.map(x => pct(x.ck, x.off))))}</td></tr>`).join("") || `<tr><td colspan="5" class="empty">sem dados</td></tr>`}</tbody></table></div></div>`;
+  const faixas = seg(rows.filter(s => s.faixa), s => s.faixa), horarios = seg(rows.filter(s => s.horario), s => s.horario), faltaB = seg(rows.filter(s => typeof s.falta === "number"), s => s.falta <= 5 ? "até 5 kg" : s.falta <= 10 ? "6–10 kg" : s.falta <= 19 ? "11–19 kg" : "20+ kg"), comp = seg(rows.filter(s => (s.answers || {}).compromisso), s => s.answers.compromisso, k => COMP[k] || k), barr = seg(rows.filter(s => (s.answers || {}).barreira), s => s.answers.barreira, k => BARREIRA[k] || k);
+  const segList = (title, arr, exp) => { const tot = arr.reduce((a, x) => a + x.n, 0), max = Math.max(1, ...arr.map(x => x.n)); return `<p class="qtitle">${title} <span>· ${exp}</span></p><div class="rows">${arr.map(r => `<div class="row"><span class="lbl">${esc(r.k)}</span>${hbar(r.n, max)}<span class="v num"><b>${N(r.n)}</b><span>${P(pct(r.n, tot))}</span> <span title="checkout/oferta">· ck ${r.off ? P(pct(r.ck, r.off)) : "–"}</span></span></div>`).join("") || `<div class="empty">sem dados</div>`}</div>`; };
+  // vendas por origem
+  const bySrc = {}; approved.forEach(s => { const k = s.source || "(sem origem)"; bySrc[k] = (bySrc[k] || 0) + (+s.value || 0); }); const srcArr = Object.entries(bySrc).sort((a, b) => b[1] - a[1]); const srcMax = Math.max(1, ...srcArr.map(x => x[1]));
+  const recentSales = [...sl].sort((a, b) => b.at - a.at).slice(0, 15);
+  // leads recentes
+  const recent = [...rows].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)).slice(0, 200);
+  const stepLabel = (id) => (STEPS.find(x => x[0] === id) || [])[1] || id || "–";
 
-  // respostas
-  const qCards = QUESTIONS.map(([key, label]) => { const d = dist(rows, key); const max = Math.max(1, ...d.items.map(x => x[1].n)); return `<div class="card"><h3>${esc(label)}</h3><p class="sub" style="margin-bottom:8px">${fn(d.base)} responderam · Ck/Oferta por resposta à direita</p><div class="q">${d.items.map(([v, c]) => `<div class="row"><span class="lbl" title="${esc(String(v))}">${esc(key === "caneta" ? (CANETA[v] || v) : key === "barreira" ? (BARREIRA[v] || v) : String(v))}</span>${bar(c.n, max)}<span class="num" style="text-align:right">${fp(pct(c.n, d.base), 0)}</span><span class="cv num">${c.off ? fp(pct(c.ck, c.off), 0) : "–"}</span></div>`).join("") || `<div class="empty">sem respostas</div>`}</div></div>`; }).join("");
+  app.innerHTML = `<div class="wrap">
+    <div class="top"><div><h1>Canetinha de Pobre · Leads ${DEMO ? `<span class="badge demo">demo</span>` : `<span class="badge">firestore</span>`}</h1>
+      <p class="sub num">${N(pv)} pageviews · ${N(off)} na oferta · ${N(ck)} cliques no checkout · ${N(approved.length)} compras · CVR ${P(pct(approved.length, pv), 1)} · de ${F.from || "sempre"} até ${F.to || "agora"}${DEMO ? " · <b style='color:var(--red)'>dados sintéticos</b> até o funil rodar" : ""}</p></div>
+      <div class="r"><button class="btn" id="reload">Atualizar</button>${!DEMO ? `<button class="btn" id="logout">Sair</button>` : ""}</div></div>
 
-  // utm
-  const utmC = seg(rows, s => s.utm_campaign || "(sem)"), utmK = seg(rows, s => s.utm_content || "(sem)");
-  const utmTable = (arr, h) => `<div class="card"><h3>${h}</h3><div class="scroll"><table><thead><tr><th>${h}</th><th class="r">Sessões</th><th class="r">Oferta</th><th class="r">Checkout</th><th class="r">Ck/Sessão</th></tr></thead><tbody>${arr.slice(0, 15).map(r => `<tr><td>${esc(r.k)}</td><td class="r num">${fn(r.n)}</td><td class="r num">${fn(r.off)}</td><td class="r num">${fn(r.ck)}</td><td class="r num"><b>${fp(pct(r.ck, r.n))}</b></td></tr>`).join("") || `<tr><td colspan="5" class="empty">sem dados</td></tr>`}</tbody></table></div></div>`;
+    <div class="card"><div class="filters">
+      <div><label>De</label><input type="date" id="from" value="${F.from}"></div>
+      <div><label>Até</label><input type="date" id="to" value="${F.to}"></div>
+      <div><label>Origem (utm_source)</label><select id="fSource"><option value="">todas</option>${sources.map(s => `<option ${F.source === s ? "selected" : ""}>${esc(s)}</option>`).join("")}</select></div>
+      <div><label>Entrada</label><select id="fEntry"><option value="">todas</option><option value="pergunta" ${F.entry === "pergunta" ? "selected" : ""}>sem landing</option><option value="landing" ${F.entry === "landing" ? "selected" : ""}>com landing</option></select></div>
+      <div><label>VSL</label><select id="fVsl"><option value="">todas</option><option value="A" ${F.vsl === "A" ? "selected" : ""}>A</option><option value="B" ${F.vsl === "B" ? "selected" : ""}>B</option></select></div>
+      <div><button class="btn" id="clear">Limpar</button></div>
+    </div></div>
 
-  // tempos
-  const times = stepTimes(rows); const maxT = Math.max(1, ...times.map(t => t.med || 0));
-  // sessões
-  const recent = [...rows].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)).slice(0, 40);
-
-  app.innerHTML = `
-  <div class="wrap">
-    <div class="top">
-      <div><h1>Canetinha de Pobre · Admin</h1><p class="sub">${DEMO ? "Modo demonstração — dados sintéticos até o Firestore ser configurado" : "Dados do Firestore · " + fn(all.length) + " sessões carregadas"}</p></div>
-      <div class="r">${DEMO ? `<span class="pill demo">demo</span>` : `<span class="pill">firestore</span>`}<button class="btn" id="reload">Atualizar</button><button class="btn" id="csv">Exportar CSV</button>${!DEMO ? `<button class="btn" id="logout">Sair</button>` : ""}</div>
-    </div>
-    <div class="filters">
-      <div class="seg" id="period">${[["hoje", "Hoje"], ["7d", "7 dias"], ["30d", "30 dias"], ["tudo", "Tudo"], ["custom", "Período"]].map(([k, l]) => `<button data-p="${k}" class="${F.period === k ? "on" : ""}">${l}</button>`).join("")}</div>
-      ${F.period === "custom" ? `<input type="date" id="from" value="${F.from}"><input type="date" id="to" value="${F.to}">` : ""}
-      <select id="fEntry"><option value="">Entrada: todas</option><option value="pergunta" ${F.entry === "pergunta" ? "selected" : ""}>Sem landing</option><option value="landing" ${F.entry === "landing" ? "selected" : ""}>Com landing</option></select>
-      <select id="fVsl"><option value="">VSL: todas</option><option value="A" ${F.vsl === "A" ? "selected" : ""}>VSL A</option><option value="B" ${F.vsl === "B" ? "selected" : ""}>VSL B</option></select>
-      <select id="fCamp"><option value="">Campanha: todas</option>${camps.map(c => `<option ${F.camp === c ? "selected" : ""}>${esc(c)}</option>`).join("")}</select>
-      <select id="fDev"><option value="">Dispositivo: todos</option><option value="mobile" ${F.dev === "mobile" ? "selected" : ""}>Mobile</option><option value="desktop" ${F.dev === "desktop" ? "selected" : ""}>Desktop</option></select>
-    </div>
-
-    <div class="kpis">
-      ${kpi(fn(n), "Sessões")}
-      ${kpi(fn(started), "Responderam ≥ 1", fp(pct(started, n)) + " das sessões")}
-      ${kpi(fn(diag), "Chegaram no diagnóstico", fp(pct(diag, n)) + " das sessões")}
-      ${kpi(fn(off), "Viram a oferta", fp(pct(off, n)) + " das sessões")}
-      ${kpi(fn(ck), "Clicaram no checkout", "<b style='font-size:.8rem'>" + fp(pct(ck, off)) + "</b> da oferta · " + fp(pct(ck, n)) + " da sessão")}
-      ${kpi(tOffer != null ? Math.round(tOffer / 60) + "min " + Math.round(tOffer % 60) + "s" : "–", "Tempo mediano até a oferta")}
-    </div>
-
-    <section>
-      <h2>Fluxo do funil — onde ela cai</h2>
-      <div class="card"><div class="scroll"><table><thead><tr><th>#</th><th>Etapa</th><th class="r">Chegaram</th><th class="r">% do início</th><th class="r">% da anterior</th><th class="r">Queda</th><th style="min-width:180px"></th></tr></thead><tbody>
-        ${fun.map((f, i) => `<tr><td class="num" style="color:var(--mute)">${i + 1}</td><td>${esc(f.label)}</td><td class="r num">${fn(f.n)}</td><td class="r num">${fp(f.ofStart)}</td><td class="r num ${f.ofPrev < 85 && i ? "drop" : ""}">${i ? fp(f.ofPrev) : "–"}</td><td class="r num ${f.drop > 0 && i ? "drop" : ""}">${i && f.drop > 0 ? "−" + fn(f.drop) : "–"}</td><td>${bar(f.n, maxN)}</td></tr>`).join("")}
-      </tbody></table></div><p class="note">Vermelho = etapa que perde mais de 15% da anterior. "Clique no checkout" é o último evento medido aqui; a venda fecha no checkout (UTMify / plataforma).</p></div>
-    </section>
-
-    <section>
-      <h2>Testes A/B</h2>
-      <div class="grid2">
-        <div class="card"><h3>Entrada: com landing × sem landing</h3><p class="sub" style="margin-bottom:8px">Paizão, BetterMe e Chia (teste #7) desligaram a landing. Aqui é a sua medição.</p>${abTable(abEntry)}</div>
-        <div class="card"><h3>VSL A × VSL B (entre quem viu a oferta)</h3><p class="sub" style="margin-bottom:8px">A = estrutura playbook · B = molde da VSL 2 do Paizão</p>${abTable(abVsl)}</div>
+    <div class="card" style="padding-top:14px">
+      <div class="tiles">
+        ${tile(N(pv), "PageViews", "pessoas que abriram o quiz · 1ª tela")}
+        ${tile(N(off), "Chegaram na oferta", `${P(pct(off, pv))} · ${N(off)} / ${N(pv)} · do pageview`)}
+        ${tile(N(approved.length), "Compras", sales.length ? "vendas aprovadas (webhook)" : "sem webhook ainda · ver setup §8")}
+        ${tile(P(pct(approved.length, pv), 1), "CVR PageView → Compra", `${N(approved.length)} / ${N(pv)} · compras / pageviews`)}
       </div>
-      <div class="card" style="margin-top:12px"><h3>Configuração dos testes (grava em Firestore · config/funnel)</h3>
-        <div class="ab">
-          <div><div class="row"><label>% do tráfego que vê a <b>landing</b></label><b class="num" id="vLanding">${config.split.landing}%</b></div><input type="range" min="0" max="100" step="5" id="rLanding" value="${config.split.landing}">
-               <div class="row"><label>% do tráfego que vê a <b>VSL B</b></label><b class="num" id="vVsl">${config.split.vslB}%</b></div><input type="range" min="0" max="100" step="5" id="rVsl" value="${config.split.vslB}"></div>
-          <div><div class="row"><label>Versão do teste (mudar re-sorteia todo mundo)</label><input type="number" id="ver" value="${config.split.version}" style="width:80px;border:1px solid var(--line2);border-radius:8px;padding:6px;background:var(--bg);color:var(--ink)"></div>
-               <div class="row"><label>Vagas exibidas na oferta</label><input type="number" id="vagas" value="${config.vagas}" style="width:80px;border:1px solid var(--line2);border-radius:8px;padding:6px;background:var(--bg);color:var(--ink)"></div>
-               <button class="btn pri" id="saveCfg" style="margin-top:14px" ${DEMO ? "disabled" : ""}>Salvar no Firestore</button><p class="note">O funil lê isso ao abrir. Sorteio fica salvo no navegador da pessoa (sticky) por versão de teste.</p></div>
-        </div></div>
-    </section>
+      <p class="foot"><b>PageView</b> = 1 sessão que abriu o quiz (entrada = <b>Onde quer secar</b>; com landing, a landing). <b>CVR</b> = compras ÷ pageviews. Funil espelha o <code>site/index.html</code>. Split hoje: landing <b>${config.split.landing}%</b> · VSL B <b>${config.split.vslB}%</b> · versão ${config.split.version}.</p>
+    </div>
 
-    <section>
-      <h2>Bifurcações e personalização — conversão por segmento</h2>
-      <div class="grid3">
-        ${segTable("Relação com a canetinha → abertura do mecanismo", canetaSeg, "Cada resposta abre a etapa ✗/✓ com uma frase diferente")}
-        ${segTable("Barreira → frase na tela \"faltam X kg\"", barreiraSeg)}
-        ${segTable("Faixa de IMC → frase do diagnóstico e GIF da oferta", faixas)}
-        ${segTable("Horário da Canetinha (rotina + fome)", horarios)}
-        ${segTable("Faltam X kg pra meta (peso − ideal)", faltaB, "\"até 5 kg\" é o segmento que o Chia mediu 20 pontos abaixo")}
-        ${segTable("Compromisso → linha no diagnóstico", compSeg)}
+    <div class="card">
+      <h2>1ª pergunta · Onde quer secar <span>· barriga / culotes / coxas / braços / glúteos / corpo todo</span></h2>
+      <p class="exp">Entrada (<code>/</code>). Resposta em <code>answers.areasalvo</code> (lista). Taxa = quem escolheu ÷ PageViews · Drop = PV − quem chegou em <b>Quantos kg</b>.</p>
+      <div class="tiles">
+        ${tile(N(ans1), "Responderam a 1ª", `${P(pct(ans1, pv))} · ${N(ans1)} / ${N(pv)} · do pageview`)}
+        ${tile(P(pct(ans1, pv)), "Taxa de resposta", `${N(ans1)} / ${N(pv)} PV`)}
+        ${tile(N(to2), "Foram pra 2ª (kg)", `${P(pct(to2, pv))} · ${N(to2)} / ${N(pv)} · do pageview`)}
+        ${tile(N(pv - to2), "Drop na 1ª", `${P(pct(pv - to2, pv))} · ${N(pv - to2)} / ${N(pv)} · pararam na 1ª tela`)}
       </div>
-    </section>
+      <p class="qtitle">Onde quer secar <span>· Pra começar: onde você mais quer secar?</span></p>
+      <div class="rows">${q1.items.map(([v, n]) => `<div class="row"><span class="lbl">${esc(v)}</span>${hbar(n, q1max)}<span class="v num"><b>${N(n)}</b><span>${P(pct(n, ans1))}</span></span></div>`).join("") || `<div class="empty">sem respostas ainda</div>`}</div>
+      <p class="foot">Contagem via <code>answers.areasalvo</code> (multi: uma pessoa pode contar em mais de uma). Taxa = quem respondeu a 1ª ÷ PageViews.</p>
+    </div>
 
-    <section>
+    <div class="card">
+      <h2>Vendas <span>· ${N(sl.length)} eventos · ${N(approved.length)} aprovadas · ticket ${approved.length ? BRL(rev / approved.length) : "–"} · CVR oferta ${P(pct(approved.length, off))} · CVR PV ${P(pct(approved.length, pv), 1)}</span></h2>
+      <div class="tiles" style="margin-top:12px">
+        ${tile(N(approved.length), "Compras", "vendas aprovadas na janela")}
+        ${tile(BRL(rev), "Receita", `ticket médio ${approved.length ? BRL(rev / approved.length) : "–"}`)}
+        ${tile(P(pct(approved.length, off)), "CVR Oferta → Compra", `${N(approved.length)} / ${N(off)} · compras / chegaram na oferta`)}
+        ${tile(P(pct(approved.length, pv), 1), "CVR PageView → Compra", `${N(approved.length)} / ${N(pv)}`)}
+      </div>
+      ${sl.length ? `<p class="qtitle">Receita por origem</p><div class="rows">${srcArr.map(([k, v]) => `<div class="row"><span class="lbl">${esc(k)}</span>${hbar(v, srcMax)}<span class="v num"><b>${BRL(v)}</b></span></div>`).join("")}</div>
+      <div class="scroll" style="margin-top:14px"><table><thead><tr><th>Quando</th><th>Status</th><th>Valor</th><th>Origem</th><th>Campanha</th><th>VSL</th></tr></thead><tbody>${recentSales.map(s => `<tr><td class="num">${new Date(s.at).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })}</td><td class="${/aprovad|paid|approved/i.test(s.status) ? "ok" : ""}">${esc(s.status)}</td><td class="num">${BRL(+s.value)}</td><td>${esc(s.source || "(sem origem)")}</td><td>${esc(s.campaign || "—")}</td><td>${esc(s.vsl || "—")}</td></tr>`).join("")}</tbody></table></div>`
+      : `<div class="empty" style="margin-top:14px">Nenhuma venda registrada. Configure o webhook da plataforma de pagamento → Firestore <code>sales</code> (campos: at, day, status, value, source, campaign, sid). Ver <code>ADMIN-SETUP.md</code> §8.</div>`}
+    </div>
+
+    ${abBlock(`A/B Entrada <span>· com landing × sem landing</span>`,
+      `<b>HOJE: ${config.split.landing}% landing</b> (config/funnel · sorteio sticky por versão ${config.split.version}). Paizão, BetterMe e Chia desligaram a landing nos testes deles. Forçar: <code>?v=landing</code> ou <code>?v=pergunta</code>. Compare quem respondeu a 1ª, chegou na oferta e clicou.`,
+      [{ label: "A · sem landing", desc: "entra direto na pergunta de áreas", rows: eA, on: config.split.landing < 50, tot: abTot }, { label: "B · com landing", desc: "headline + foto + botão antes do quiz", rows: eB, on: config.split.landing >= 50, tot: abTot }], abRows,
+      `Viram = sessões com essa entrada. "Pararam antes da 1ª" = abriram e não responderam nada (na landing: não clicaram no botão).`)}
+
+    ${abBlock(`A/B VSL da oferta <span>· A × B</span>`,
+      `<b>HOJE: ${config.split.vslB}% B</b>. A = estrutura do playbook (mecanismo → future pacing → pitch) · B = molde da VSL 2 do Paizão (valor → prova → medo → garantia condicional). Só conta quem chegou na oferta. Forçar: <code>?ab=A</code> / <code>?ab=B</code>.`,
+      [{ label: "A · playbook", desc: "vslEmbed", rows: oA, on: config.split.vslB < 50, tot: vslTot }, { label: "B · Paizão", desc: "vslEmbedB", rows: oB, on: config.split.vslB >= 50, tot: vslTot }], vslRows,
+      `CVR de venda por VSL fica no bloco Vendas quando o webhook estiver ligado (a venda leva <code>ab</code> na URL do checkout).`)}
+
+    <div class="card">
+      <h2>Pós-bifurcação · relação com a canetinha <span>· abre o mecanismo com uma frase diferente</span></h2>
+      <p class="exp">A resposta de <b>"qual a sua relação com a canetinha?"</b> muda a abertura da tela ✗/✓ (já usei e voltou / medo / caro / nunca pensei), um alerta no diagnóstico e o FAQ. Aqui: quem passou do mecanismo por resposta.</p>
+      <div class="quad">${canetaGroups.map(g => { const r = canRows(g.rows); return `<div class="side"><h3>${esc(CANETA[g.k])}</h3><p class="d">abertura "${g.k}"</p>${r.map(x => `<div class="ln"><span>${x[0]}</span><b class="${x[2] || ""}">${x[1]}${x[3] ? `<em>${x[3]}</em>` : ""}</b></div>`).join("")}</div>`; }).join("")}</div>
+    </div>
+
+    <div class="card">
+      <h2>Retenção por etapa <span>· por etapa alcançada · 🎧🎬 = mídia · ⏳ = loading</span></h2>
+      <div class="vbars">${ret.map((r, i) => `<div class="vb ${r.media ? "vid" : ""} ${i === 0 ? "gray" : ""}"><span class="pv">${P(r.ofStart, 1)}</span><div class="col"><i style="height:${Math.max(2, r.ofStart)}%"></i></div></div>`).join("")}</div>
+      <div class="vlabels">${ret.map(r => `<span title="${esc(r.label)}">${esc(r.label)}</span>`).join("")}</div>
+      <div class="rows">${ret.map((r, i) => `<div class="row pct"><span class="lbl ${i === 1 && r.ofPrev < 70 ? "hot" : ""}">${esc(r.label)}</span><span class="p ${i && r.ofPrev < 85 ? "hot" : ""}">${i ? P(r.ofPrev) : "100%"}</span>${hbar(r.n, maxN, r.media ? "vid" : i === 0 ? "gray" : "")}<span class="v num"><b>${N(r.n)}</b><span>(${P(r.ofStart)})</span>${i && r.drop > 0 ? `<i>−${N(r.drop)}</i>` : ""}</span></div>`).join("")}</div>
+      <p class="foot">Retenção pela etapa alcançada (<code>steps.{id}</code>), na ordem do funil. PageView = toda sessão que abriu o quiz (landing ou 1ª pergunta). % à esquerda = da etapa anterior; entre parênteses = do pageview; vermelho = queda. O drop grande na 2ª linha (Quantos kg) é o bounce na 1ª tela.</p>
+    </div>
+
+    <div class="card">
       <h2>Respostas por pergunta</h2>
-      <div class="grid3">${qCards}</div>
-    </section>
+      <p class="exp">Contagem em <code>answers.*</code>. Perguntas multi (áreas, benefícios) somam mais de 100%.</p>
+      ${QUESTIONS.map(([key, short, full]) => { const d = dist(rows, key); const max = Math.max(1, ...d.items.map(x => x[1])); return `<p class="qtitle">${esc(short)} <span>· ${esc(full)}</span></p><div class="rows">${d.items.map(([v, n]) => `<div class="row"><span class="lbl" title="${esc(String(v))}">${esc(key === "caneta" ? (CANETA[v] || v) : key === "barreira" ? (BARREIRA[v] || v) : key === "compromisso" ? (COMP[v] || v) : String(v))}</span>${hbar(n, max)}<span class="v num"><b>${N(n)}</b><span>${P(pct(n, d.base))}</span></span></div>`).join("") || `<div class="empty">sem respostas</div>`}</div>`; }).join("")}
+    </div>
 
-    <section>
-      <h2>Origem (UTM)</h2>
-      <div class="grid2">${utmTable(utmC, "Campanha")}${utmTable(utmK, "Criativo (utm_content)")}</div>
-    </section>
+    <div class="card">
+      <h2>Personalização <span>· o que o funil calculou e a conversão de cada segmento</span></h2>
+      <p class="exp">"ck" = clique no checkout ÷ chegou na oferta, dentro do segmento. É onde aparece se a personalização está pagando.</p>
+      ${segList("Faixa de IMC", faixas, "frase do diagnóstico e GIF da oferta")}
+      ${segList("Horário da Canetinha", horarios, "rotina + momento da fome")}
+      ${segList("Faltam pra meta", faltaB, "peso − ideal · \"até 5 kg\" o Chia mediu 20 pontos abaixo")}
+      ${segList("Barreira", barr, "abre a tela \"faltam X kg\"")}
+      ${segList("Compromisso", comp, "linha no diagnóstico")}
+    </div>
 
-    <section>
-      <h2>Tempo mediano por etapa (segundos)</h2>
-      <div class="card"><div class="q">${times.map(t => `<div class="row"><span class="lbl">${esc(t.label)}</span>${bar(t.med, maxT)}<span class="num" style="text-align:right">${Math.round(t.med)}s</span><span class="cv num">${fn(t.n)}</span></div>`).join("") || `<div class="empty">sem dados</div>`}</div></div>
-    </section>
+    <div class="card">
+      <h2>Configuração dos testes <span>· grava em Firestore config/funnel · o funil lê ao abrir</span></h2>
+      <div class="cfg">
+        <div><label>% do tráfego que vê a <b>landing</b><b id="vL">${config.split.landing}%</b></label><input type="range" min="0" max="100" step="5" id="rL" value="${config.split.landing}"></div>
+        <div><label>% do tráfego que vê a <b>VSL B</b><b id="vV">${config.split.vslB}%</b></label><input type="range" min="0" max="100" step="5" id="rV" value="${config.split.vslB}"></div>
+        <div><label>Versão do teste <span class="sub">(mudar re-sorteia todo mundo)</span></label><input type="number" id="ver" value="${config.split.version}"></div>
+        <div><label>Vagas exibidas na oferta</label><input type="number" id="vagas" value="${config.vagas}"></div>
+      </div>
+      <button class="btn pri" id="saveCfg" style="margin-top:14px" ${DEMO ? "disabled" : ""}>Salvar no Firestore</button>
+    </div>
 
-    <section>
-      <h2>Sessões recentes</h2>
-      <div class="card"><div class="scroll"><table><thead><tr><th>Quando</th><th>Entrada</th><th>VSL</th><th>Campanha</th><th>Chegou até</th><th>Corpo</th><th>kg → meta</th><th>Caneta</th><th>Fome</th><th>Checkout</th></tr></thead><tbody>
-        ${recent.map(s => `<tr><td class="num">${s.createdAt ? new Date(s.createdAt).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : s.day}</td><td>${s.entry === "landing" ? "landing" : "pergunta"}</td><td>${esc(s.vsl || "–")}</td><td>${esc(s.utm_campaign || "–")}</td><td>${esc((STEPS.find(x => x[0] === s.maxStepId) || [])[1] || s.maxStepId || "–")}</td><td>${esc((s.answers || {}).corpo || "–")}</td><td class="num">${(s.answers || {}).peso ? `${s.answers.peso} → ${s.answers.ideal || "?"}` : "–"}</td><td>${esc(CANETA[(s.answers || {}).caneta] || "–")}</td><td>${esc((s.answers || {}).fome || "–")}</td><td>${s.checkoutClicked ? `<span class="up">✓ CTA ${s.ctaN || ""}</span>` : "–"}</td></tr>`).join("") || `<tr><td colspan="10" class="empty">sem sessões no período</td></tr>`}
-      </tbody></table></div></div>
-    </section>
+    <div class="card">
+      <h2>Leads recentes <span>(${N(pv)} · mostrando ${N(recent.length)})</span></h2>
+      <div class="scroll" style="margin-top:10px"><table><thead><tr><th>Quando</th><th>Entrada</th><th>VSL</th><th>Origem</th><th>Áreas</th><th>Corpo</th><th>kg → meta</th><th>Canetinha</th><th>Fome</th><th>IMC</th><th>Etapa atingida</th><th>Checkout</th></tr></thead><tbody>
+      ${recent.map(s => `<tr><td class="num">${s.createdAt ? new Date(s.createdAt).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : s.day}</td><td>${s.entry === "landing" ? "landing" : "pergunta"}</td><td>${esc(s.vsl || "—")}</td><td>${esc(s.utm_source || "—")}</td><td>${esc(((s.answers || {}).areasalvo || []).join(", ") || "—")}</td><td>${esc((s.answers || {}).corpo || "—")}</td><td class="num">${(s.answers || {}).peso ? `${s.answers.peso} → ${s.answers.ideal || "?"}` : "—"}</td><td>${esc(CANETA[(s.answers || {}).caneta] || "—")}</td><td>${esc((s.answers || {}).fome || "—")}</td><td class="num">${s.imc || "—"}</td><td>${esc(stepLabel(s.maxStepId))}</td><td>${s.checkoutClicked ? `<span class="ok">✓ CTA ${s.ctaN || ""}</span>` : "—"}</td></tr>`).join("") || `<tr><td colspan="12"><div class="empty">sem sessões no período</div></td></tr>`}
+      </tbody></table></div>
+    </div>
   </div>`;
 
   // eventos
-  document.querySelectorAll("#period button").forEach(b => b.onclick = () => { F.period = b.dataset.p; render(); });
-  const on = (id, fn) => { const el = document.getElementById(id); if (el) el.onchange = fn; };
-  on("from", e => { F.from = e.target.value; render(); }); on("to", e => { F.to = e.target.value; render(); });
-  on("fEntry", e => { F.entry = e.target.value; render(); }); on("fVsl", e => { F.vsl = e.target.value; render(); }); on("fCamp", e => { F.camp = e.target.value; render(); }); on("fDev", e => { F.dev = e.target.value; render(); });
-  document.getElementById("reload").onclick = async () => { if (DEMO) all = demoData(); else await fetchSessions(); render(); };
-  document.getElementById("csv").onclick = () => exportCsv(rows);
-  const lo = document.getElementById("logout"); if (lo) lo.onclick = () => firebase.auth().signOut().then(() => location.reload());
-  const rl = document.getElementById("rLanding"), rv = document.getElementById("rVsl");
-  rl.oninput = () => document.getElementById("vLanding").textContent = rl.value + "%"; rv.oninput = () => document.getElementById("vVsl").textContent = rv.value + "%";
-  document.getElementById("saveCfg").onclick = async () => { const cfg = { split: { landing: +rl.value, vslB: +rv.value, version: +document.getElementById("ver").value }, vagas: +document.getElementById("vagas").value }; if (DEMO) return; await db.collection("config").doc("funnel").set(cfg, { merge: true }); config = { ...config, ...cfg }; alert("Salvo. O funil passa a usar na próxima abertura."); };
-  // tooltips
+  const on = (id, ev, fn) => { const el = document.getElementById(id); if (el) el[ev] = fn; };
+  on("from", "onchange", e => { F.from = e.target.value; refetch(); }); on("to", "onchange", e => { F.to = e.target.value; refetch(); });
+  on("fSource", "onchange", e => { F.source = e.target.value; render(); }); on("fEntry", "onchange", e => { F.entry = e.target.value; render(); }); on("fVsl", "onchange", e => { F.vsl = e.target.value; render(); });
+  on("clear", "onclick", () => { F = { from: dayStr(d7), to: "", source: "", entry: "", vsl: "" }; refetch(); });
+  on("reload", "onclick", refetch);
+  on("logout", "onclick", () => firebase.auth().signOut().then(() => location.reload()));
+  const rl = document.getElementById("rL"), rv = document.getElementById("rV");
+  rl.oninput = () => document.getElementById("vL").textContent = rl.value + "%"; rv.oninput = () => document.getElementById("vV").textContent = rv.value + "%";
+  on("saveCfg", "onclick", async () => { if (DEMO) return; const cfg = { split: { landing: +rl.value, vslB: +rv.value, version: +document.getElementById("ver").value }, vagas: +document.getElementById("vagas").value }; await db.collection("config").doc("funnel").set(cfg, { merge: true }); config = { ...config, ...cfg }; render(); });
   document.querySelectorAll("[data-tip]").forEach(el => { el.onmousemove = (e) => { tip.textContent = el.dataset.tip; tip.style.display = "block"; tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY + 12) + "px"; }; el.onmouseleave = () => tip.style.display = "none"; });
 }
+async function refetch() { if (DEMO) { const d = demoData(); all = d.out; sales = d.sl; } else { app.querySelector("h1") && (document.querySelector("#reload").textContent = "…"); await fetchAll(); } render(); }
 
-function exportCsv(rows) {
-  const cols = ["sid", "day", "entry", "vsl", "utm_source", "utm_campaign", "utm_content", "mobile", "maxStepId", "completed", "offerViewed", "checkoutClicked", "ctaN", "imc", "faixa", "horario", "falta"];
-  const qk = QUESTIONS.map(q => q[0]).concat(["peso", "altura", "ideal"]);
-  const head = cols.concat(qk.map(k => "a_" + k));
-  const lines = [head.join(";")].concat(rows.map(s => cols.map(c => s[c] ?? "").concat(qk.map(k => { const v = (s.answers || {})[k]; return Array.isArray(v) ? v.join("|") : (v ?? ""); })).map(v => `"${String(v).replace(/"/g, '""')}"`).join(";")));
-  const blob = new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
-  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `canetinha-sessoes-${dayStr(new Date())}.csv`; document.body.appendChild(a); a.click(); a.remove();
-}
-
-/* ============ Login ============ */
 function loginScreen(err = "") {
-  app.innerHTML = `<div class="login"><h1>Admin · Canetinha</h1><p class="sub" style="margin-top:4px">Entre com o e-mail cadastrado no Firebase Auth.</p><input id="em" type="email" placeholder="e-mail" autocomplete="username"><input id="pw" type="password" placeholder="senha" autocomplete="current-password"><button class="btn pri" id="go">Entrar</button>${err ? `<p class="err">${esc(err)}</p>` : ""}<p class="note">Sem banco ainda? Veja o painel com dados de exemplo: <a href="?demo=1">?demo=1</a></p></div>`;
+  app.innerHTML = `<div class="login"><h1>Canetinha · Leads</h1><p class="sub" style="margin-top:4px">Entre com o e-mail cadastrado no Firebase Auth.</p><input id="em" type="email" placeholder="e-mail" autocomplete="username"><input id="pw" type="password" placeholder="senha" autocomplete="current-password"><button class="btn pri" id="go">Entrar</button>${err ? `<p class="err">${esc(err)}</p>` : ""}<p class="sub" style="margin-top:10px">Ver com dados de exemplo: <a href="?demo=1" style="color:var(--accent)">?demo=1</a></p></div>`;
   document.getElementById("go").onclick = async () => { try { await firebase.auth().signInWithEmailAndPassword(document.getElementById("em").value, document.getElementById("pw").value); } catch (e) { loginScreen(e.message); } };
   document.getElementById("pw").onkeydown = (e) => { if (e.key === "Enter") document.getElementById("go").click(); };
 }
-
 (async () => {
-  if (DEMO) { all = demoData(); render(); return; }
-  app.innerHTML = `<div class="empty">Carregando…</div>`;
+  if (DEMO) { const d = demoData(); all = d.out; sales = d.sl; render(); return; }
+  app.innerHTML = `<div class="empty" style="margin:60px auto;max-width:400px">Carregando…</div>`;
   await initFirebase();
-  firebase.auth().onAuthStateChanged(async (u) => { if (!u) return loginScreen(); app.innerHTML = `<div class="empty">Buscando sessões…</div>`; try { await fetchSessions(); render(); } catch (e) { app.innerHTML = `<div class="login"><p class="err">Erro ao ler o Firestore: ${esc(e.message)}</p><p class="note">Confere as regras (firestore.rules) e se o e-mail está na lista de admins.</p></div>`; } });
+  firebase.auth().onAuthStateChanged(async (u) => { if (!u) return loginScreen(); app.innerHTML = `<div class="empty" style="margin:60px auto;max-width:400px">Buscando sessões…</div>`; try { await fetchAll(); render(); } catch (e) { app.innerHTML = `<div class="login"><p class="err">Erro ao ler o Firestore: ${esc(e.message)}</p></div>`; } });
 })();
 </script>
 </body>
