@@ -161,7 +161,7 @@ function demoData() {
       if (Math.random() < d) break;
     }
     const A = s.answers, has = (id) => s.steps[id] && (order.indexOf(id) < order.indexOf(s.maxStepId) || s.maxStepId === id);
-    if (s.steps.meta) A.areasalvo = [pickW([["Barriga", 6], ["Culotes", 3], ["Coxas", 2], ["Braços", 2], ["Glúteos", 1], ["Corpo todo", 2]])];
+    if (s.steps.meta) A.areasalvo = [pickW([["Barriga", 6], ["Culotes", 3], ["Glúteos", 2], ["Corpo todo", 3]])];
     if (s.steps.corpo) A.meta = meta;
     if (s.steps.impacto) A.corpo = pickW([["Médio", 2], ["Sobrepeso", 4], ["Acima do peso", 3], ["Plus size", 2]]);
     if (s.steps.feliz) A.impacto = pickW([["Minha autoestima tá lá embaixo", 5], ["Vivo cansada, sem energia pra nada", 3], ["Já tá mexendo com a saúde: pressão, dores, exames", 2], ["Tá afetando a minha vida íntima", 2]]);
@@ -277,7 +277,7 @@ function render() {
     </div>
 
     <div class="card">
-      <h2>1ª pergunta · Onde quer secar <span>· barriga / culotes / coxas / braços / glúteos / corpo todo</span></h2>
+      <h2>1ª pergunta · Onde quer secar <span>· barriga / culotes / glúteos / corpo todo</span></h2>
       <p class="exp">Entrada (<code>/</code>). Resposta em <code>answers.areasalvo</code> (lista). Taxa = quem escolheu ÷ PageViews · Drop = PV − quem chegou em <b>Quantos kg</b>.</p>
       <div class="tiles">
         ${tile(N(ans1), "Responderam a 1ª", `${P(pct(ans1, pv))} · ${N(ans1)} / ${N(pv)} · do pageview`)}
