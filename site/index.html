@@ -455,11 +455,11 @@ const DB = (() => {
   const secs = () => Math.round((Date.now() - t0) / 1000);
   return {
     sid,
-    step: (i, id) => write({ [`steps.${id}`]: { i, t: secs() }, maxStep: i, maxStepId: id, ...(id === "diagnostico" ? { completed: true } : {}), ...(id === "oferta" ? { offerViewed: true, offerAt: secs() } : {}) }),
-    answer: (key, val) => write({ [`answers.${key}`]: val }),
+    step: (i, id) => write({ steps: { [id]: { i, t: secs() } }, maxStep: i, maxStepId: id, ...(id === "diagnostico" ? { completed: true } : {}), ...(id === "oferta" ? { offerViewed: true, offerAt: secs() } : {}) }),
+    answer: (key, val) => write({ answers: { [key]: val } }),
     calc: (o) => write(o),
     checkout: (n) => write({ checkoutClicked: true, checkoutAt: secs(), ctaN: n, checkoutClicks: FS ? FS.FieldValue.increment(1) : 1 }),
-    audio: (id) => write({ [`audio.${id}`]: true }),
+    audio: (id) => write({ audio: { [id]: true } }),
   };
 })();
 const LANDING = { id: "landing", noBand: true, render: () => `
