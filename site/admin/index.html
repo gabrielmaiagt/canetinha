@@ -98,6 +98,10 @@ tr:last-child td{border-bottom:0}
 .cfg label{display:flex;justify-content:space-between;font-size:.84rem;color:var(--ink2)}.cfg label b{color:var(--ink)}
 .cfg input[type=range]{width:100%;accent-color:#a78bfa}
 .cfg input[type=number]{width:90px;background:var(--card2);color:var(--ink);border:1px solid var(--line2);border-radius:8px;padding:7px;font:500 .9rem var(--font)}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:-4px 0 4px}
+.ctl>span:first-child{font-weight:600}
+.ctl select{background:var(--bg);color:var(--ink);border:1px solid var(--line2);border-radius:9px;padding:8px 10px;font:600 .88rem var(--font)}
+.btn.sm{padding:7px 11px;font-size:.8rem}
 .tip{position:fixed;pointer-events:none;background:#fff;color:#111;font-size:.76rem;padding:6px 9px;border-radius:8px;z-index:50;display:none}
 </style>
 </head>
@@ -207,10 +211,15 @@ function dist(rows, key) { const c = {}; let base = 0; rows.forEach(s => { const
 function seg(rows, fn, labelOf = (x) => x) { const c = {}; rows.forEach(s => { const k = fn(s); if (k == null) return; c[k] = c[k] || { n: 0, off: 0, ck: 0, done: 0 }; c[k].n++; if (s.offerViewed) c[k].off++; if (s.checkoutClicked) c[k].ck++; if (s.completed) c[k].done++; }); return Object.entries(c).map(([k, v]) => ({ key: k, k: labelOf(k), ...v })).sort((a, b) => b.n - a.n); }
 
 /* ============ Blocos ============ */
-function abBlock(title, exp, groups, rowsFn, footNote) {
+function splitCtl(key, what) {
+  const v = config.split[key] || 0;
+  const opts = [[0, "Desligado · todo mundo vê A"], [10, "Ligado · 10% vê B"], [25, "Ligado · 25% vê B"], [50, "Ligado · 50/50"], [75, "Ligado · 75% vê B"], [100, "Só B · todo mundo vê B"]];
+  return `<div class="ctl"><span>Este teste está:</span><select data-split="${key}" ${DEMO ? "disabled" : ""}>${opts.map(([n, l]) => `<option value="${n}" ${n === v ? "selected" : ""}>${l}</option>`).join("")}</select><button class="btn sm" data-reset="${key}" ${DEMO ? "disabled" : ""} title="Quem já entrou continua vendo a mesma variante. Isso sorteia todo mundo de novo.">Reiniciar sorteio</button><span class="sub">${what}${DEMO ? " · desativado no demo" : " · salva na hora"}</span></div>`;
+}
+function abBlock(title, exp, groups, rowsFn, footNote, ctl = "") {
   // groups: [{k,label,desc,rows:[...sessions],on}]
   const sides = groups.map(g => { const r = rowsFn(g.rows); return `<div class="side ${g.on ? "on" : ""}"><h3>${esc(g.label)}</h3><p class="d">${g.desc}</p>${r.map(x => `<div class="ln"><span>${x[0]}</span><b class="${x[2] || ""}">${x[1]}${x[3] ? `<em>${x[3]}</em>` : ""}</b></div>`).join("")}${g.tot ? `<div class="tot">${g.tot(g.rows)}</div>` : ""}</div>`; }).join("");
-  return `<div class="card"><h2>${title}</h2><p class="exp">${exp}</p><div class="duo">${sides}</div>${footNote ? `<p class="foot">${footNote}</p>` : ""}</div>`;
+  return `<div class="card"><h2>${title}</h2><p class="exp">${exp}</p>${ctl}<div class="duo">${sides}</div>${footNote ? `<p class="foot">${footNote}</p>` : ""}</div>`;
 }
 
 function render() {
@@ -264,7 +273,7 @@ function render() {
         ${tile(N(approved.length), "Compras", sales.length ? "vendas aprovadas (webhook)" : "sem webhook ainda · ver setup §8")}
         ${tile(P(pct(approved.length, pv), 1), "CVR PageView → Compra", `${N(approved.length)} / ${N(pv)} · compras / pageviews`)}
       </div>
-      <p class="foot"><b>PageView</b> = 1 sessão que abriu o quiz (entrada = <b>Onde quer secar</b>; com landing, a landing). <b>CVR</b> = compras ÷ pageviews. Funil espelha o <code>site/index.html</code>. Split hoje: landing <b>${config.split.landing}%</b> · VSL B <b>${config.split.vslB}%</b> · versão ${config.split.version}.</p>
+      <p class="foot"><b>PageView</b> = 1 sessão que abriu o quiz (entrada = <b>Onde quer secar</b>; com landing, a landing). <b>CVR</b> = compras ÷ pageviews. Funil espelha o <code>site/index.html</code>.</p>
     </div>
 
     <div class="card">
@@ -295,14 +304,14 @@ function render() {
     </div>
 
     ${abBlock(`A/B Entrada <span>· com landing × sem landing</span>`,
-      `<b>HOJE: ${config.split.landing}% landing</b> (config/funnel · sorteio sticky por versão ${config.split.version}). Paizão, BetterMe e Chia desligaram a landing nos testes deles. Forçar: <code>?v=landing</code> ou <code>?v=pergunta</code>. Compare quem respondeu a 1ª, chegou na oferta e clicou.`,
+      `Paizão, BetterMe e Chia desligaram a landing nos testes deles — por isso começa desligado. Pra ver uma variante você mesmo: <code>?v=landing</code> ou <code>?v=pergunta</code>. Compare quem respondeu a 1ª, chegou na oferta e clicou.`,
       [{ label: "A · sem landing", desc: "entra direto na pergunta de áreas", rows: eA, on: config.split.landing < 50, tot: abTot }, { label: "B · com landing", desc: "headline + foto + botão antes do quiz", rows: eB, on: config.split.landing >= 50, tot: abTot }], abRows,
-      `Viram = sessões com essa entrada. "Pararam antes da 1ª" = abriram e não responderam nada (na landing: não clicaram no botão).`)}
+      `Viram = sessões com essa entrada. "Pararam antes da 1ª" = abriram e não responderam nada (na landing: não clicaram no botão).`, splitCtl("landing", "quem cai na landing"))}
 
     ${abBlock(`A/B VSL da oferta <span>· A × B</span>`,
-      `<b>HOJE: ${config.split.vslB}% B</b>. A = estrutura do playbook (mecanismo → future pacing → pitch) · B = molde da VSL 2 do Paizão (valor → prova → medo → garantia condicional). Só conta quem chegou na oferta. Forçar: <code>?ab=A</code> / <code>?ab=B</code>.`,
+      `A = estrutura do playbook (mecanismo → future pacing → pitch) · B = molde da VSL 2 do Paizão (valor → prova → medo → garantia condicional). Só conta quem chegou na oferta. Pra ver uma variante você mesmo: <code>?ab=A</code> / <code>?ab=B</code>.`,
       [{ label: "A · playbook", desc: "vslEmbed", rows: oA, on: config.split.vslB < 50, tot: vslTot }, { label: "B · Paizão", desc: "vslEmbedB", rows: oB, on: config.split.vslB >= 50, tot: vslTot }], vslRows,
-      `CVR de venda por VSL fica no bloco Vendas quando o webhook estiver ligado (a venda leva <code>ab</code> na URL do checkout).`)}
+      `CVR de venda por VSL fica no bloco Vendas quando o webhook estiver ligado (a venda leva <code>ab</code> na URL do checkout).`, splitCtl("vslB", "quem vê a VSL B"))}
 
     <div class="card">
       <h2>Pós-bifurcação · relação com a canetinha <span>· abre o mecanismo com uma frase diferente</span></h2>
@@ -334,16 +343,6 @@ function render() {
       ${segList("Compromisso", comp, "linha no diagnóstico")}
     </div>
 
-    <div class="card">
-      <h2>Configuração dos testes <span>· grava em Firestore config/funnel · o funil lê ao abrir</span></h2>
-      <div class="cfg">
-        <div><label>% do tráfego que vê a <b>landing</b><b id="vL">${config.split.landing}%</b></label><input type="range" min="0" max="100" step="5" id="rL" value="${config.split.landing}"></div>
-        <div><label>% do tráfego que vê a <b>VSL B</b><b id="vV">${config.split.vslB}%</b></label><input type="range" min="0" max="100" step="5" id="rV" value="${config.split.vslB}"></div>
-        <div><label>Versão do teste <span class="sub">(mudar re-sorteia todo mundo)</span></label><input type="number" id="ver" value="${config.split.version}"></div>
-        <div><label>Vagas exibidas na oferta</label><input type="number" id="vagas" value="${config.vagas}"></div>
-      </div>
-      <button class="btn pri" id="saveCfg" style="margin-top:14px" ${DEMO ? "disabled" : ""}>Salvar no Firestore</button>
-    </div>
 
     <div class="card">
       <h2>Leads recentes <span>(${N(pv)} · mostrando ${N(recent.length)})</span></h2>
@@ -360,9 +359,9 @@ function render() {
   on("clear", "onclick", () => { F = { from: dayStr(d7), to: "", source: "", entry: "", vsl: "" }; refetch(); });
   on("reload", "onclick", refetch);
   on("logout", "onclick", () => firebase.auth().signOut().then(() => location.reload()));
-  const rl = document.getElementById("rL"), rv = document.getElementById("rV");
-  rl.oninput = () => document.getElementById("vL").textContent = rl.value + "%"; rv.oninput = () => document.getElementById("vV").textContent = rv.value + "%";
-  on("saveCfg", "onclick", async () => { if (DEMO) return; const cfg = { split: { landing: +rl.value, vslB: +rv.value, version: +document.getElementById("ver").value }, vagas: +document.getElementById("vagas").value }; await db.collection("config").doc("funnel").set(cfg, { merge: true }); config = { ...config, ...cfg }; render(); });
+  const saveSplit = async (patch) => { if (DEMO) return; const split = { ...config.split, ...patch }; await db.collection("config").doc("funnel").set({ split }, { merge: true }); config.split = split; render(); };
+  document.querySelectorAll("[data-split]").forEach(el => el.onchange = () => saveSplit({ [el.dataset.split]: +el.value }));
+  document.querySelectorAll("[data-reset]").forEach(el => el.onclick = () => { if (confirm("Reiniciar o sorteio? Quem já entrou pode cair na outra variante na próxima visita.")) saveSplit({ version: (config.split.version || 1) + 1 }); });
   document.querySelectorAll("[data-tip]").forEach(el => { el.onmousemove = (e) => { tip.textContent = el.dataset.tip; tip.style.display = "block"; tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY + 12) + "px"; }; el.onmouseleave = () => tip.style.display = "none"; });
 }
 async function refetch() { if (DEMO) { const d = demoData(); all = d.out; sales = d.sl; } else { app.querySelector("h1") && (document.querySelector("#reload").textContent = "…"); await fetchAll(); } render(); }
