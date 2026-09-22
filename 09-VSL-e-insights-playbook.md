@@ -2,7 +2,7 @@
 
 ## 1. Copy da VSL — separada por bloco (estrutura do playbook, tamanho de low ticket)
 
-Formato: vertical, nutri pra câmera, legenda palavra por palavra, b-roll do app e da bebida. **≈2m30.** Botão da vturb aparece no início do Pitch (**1:38**). Fica no topo da etapa da oferta, página inteira embaixo.
+Formato: vertical, nutri pra câmera, legenda palavra por palavra, b-roll do app e da bebida. **≈2m20.** Botão da vturb aparece no início do Pitch (**1:30**). Fica no topo da etapa da oferta, página inteira embaixo.
 
 Voz: amiga que sabe o segredo. Frases curtas. "Você" o tempo todo.
 
@@ -14,34 +14,34 @@ Voz: amiga que sabe o segredo. Frases curtas. "Você" o tempo todo.
 > Pronto. Sua Canetinha de Pobre foi gerada com base no seu peso, no seu IMC e no horário que a fome mais te ataca. Não sai dessa página, tá? Ela é liberada uma vez só.
 > Nos próximos 2 minutos eu vou te mostrar por que a Virginia Fonseca, a Jojo Todynho, a Maraisa secaram na canetinha — o que ela faz por trás que ninguém conta — e a receitinha que muita famosa está usando no lugar dela pra eliminar até 10 quilos de gordura em 30 dias sem agulha e sem 3 mil reais.
 
-### 2 · MECANISMO DO PROBLEMA (0:20–0:45) — o vilão: a canetinha de verdade
-*(b-roll: prints de fofoca das famosas na canetinha → close da caneta → 3 ✗ na tela)*
+### 2 · RETOMADA DO MECANISMO (0:20–0:38) — ela já ouviu no áudio 1; aqui é só lembrar, com outras palavras
+*(b-roll: 3 ✗ na tela → copo pronto → barriga "queimando")*
 
-> A canetinha funciona. Ela segura a comida no estômago e desliga o sinal de fome no seu cérebro. Só que ela faz isso à força, e o preço é alto: deixa com aquela cara de doente, porque seca o rosto junto. Derrete músculo junto com a gordura — você fica magra e mole. E quando você para, o seu corpo não sabe mais mandar o sinal de "chega": a fome volta com tudo e o peso volta pior do que antes. Não é falta de força de vontade. É a caneta.
+> Você já sabe o que a canetinha cobra: o rosto, o músculo e o peso de volta. A receitinha faz o mesmo na fome — mas é o seu corpo mandando o sinal, não uma agulha. E o que ela faz que a caneta não faz: liga o seu metabolismo e deixa ligado, queimando gordura o dia inteiro, até dormindo. A gordura da barriga, do culote, da coxa — é essa que vai primeiro.
 
-### 3 · MECANISMO DA SOLUÇÃO (0:45–1:15) — a Canetinha de Pobre
-*(b-roll: ingredientes no balcão → copo pronto → relógio/lembrete → barriga "queimando")*
+### 3 · PROVA (0:38–1:05) — o que a Paizão e o Mounjaro colocam no lugar de re-explicar
+*(b-roll: prints do grupo / relatos em áudio de WhatsApp na tela · foto antes/depois da modelo · "5 kg em 17 dias")*
 
-> Por isso muita famosa trocou pela receitinha que eu vou te mandar agora. Ela faz o mesmo na fome — segura a comida no estômago e desliga o sinal de fome — mas do jeito natural, com o seu próprio corpo mandando o sinal. E ainda acelera o seu metabolismo pra queimar gordura 24 horas por dia, até dormindo. Derrete a gordura localizada: barriga, culote, coxa. São ingredientes de qualquer mercado, 5 minutos pra fazer, e você toma 30 minutos antes do momento que a fome te ataca — no horário que eu já marquei no seu protocolo. Você senta pra comer sem vontade de exagerar, e o corpo passa o resto do dia queimando gordura.
+> Olha o que as meninas do grupo mandam: "minha fome sumiu, 5 quilos em 17 dias". "Não sinto mais vontade de doce depois do almoço". "Gente, é sério que é isso que as famosas fazem? Baratinho e funcional". Não é dieta, não é academia, não é remédio. É um copo, 5 minutos, ingredientes de qualquer mercado, 30 minutos antes do momento que a fome te ataca — no horário que eu já marquei no seu protocolo.
 
-### 4 · FUTURE PACING (1:15–1:38) — o que ela vai ver, semana a semana
+### 4 · FUTURE PACING (1:05–1:30) — o que ela vai ver, semana a semana
 *(b-roll: antes/depois da modelo, calendário, roupa folgando; tela: 1ª · 2ª · 3ª · 4ª semana)*
 
 > Na primeira semana você já sente a fome cair e o corpo desinchar. Na segunda, o metabolismo acelera e você começa a acordar mais seca, sem ter feito nada dormindo. Na terceira, a calça que não fechava começa a folgar e a barriga some. E na quarta semana são até 10 quilos de gordura a menos — com o rosto igual e o corpo firme. Não se assusta quando perguntarem "o que você fez?". Você vai responder: a receitinha.
 
-### 5 · PITCH (1:38–2:10) — o que recebe + preço
-*(botão aparece em 1:38 · b-roll: app na tela passando os cards · texto: R$ 3.000/mês riscado → 8x de R$ 5)*
+### 5 · PITCH (1:30–2:02) — o que recebe + preço
+*(botão aparece em 1:30 · b-roll: app na tela passando os cards · texto: R$ 3.000/mês riscado → 8x de R$ 5)*
 
 > Dentro do app você recebe a receita com a dose certa pro seu peso, o Protocolo Sem Cara de Doente — o que as famosas fazem pra derreter gordura sem murchar o rosto —, o Anti-Sanfona pra o peso não voltar, o desafio de 21 dias, o grupo VIP com as outras meninas e o meu suporte no WhatsApp. A canetinha custa até 3 mil reais por mês. A Canetinha de Pobre custa 8 vezes de 5 reais — ou 37,90 à vista. Menos que uma pizza no fim de semana.
 
-### 6 · PÓS-PITCH (2:10–2:30) — segurança + ação
+### 6 · PÓS-PITCH (2:02–2:22) — segurança + ação
 *(selo 30 dias entra · nutri aponta pro botão · última frame: sorriso + seta)*
 
 > E eu assumo o risco por você: se em 30 dias sua barriga não desinchar e suas roupas não folgarem, eu devolvo cada centavo — e você ainda fica com o protocolo de graça. São só 7 vagas hoje e essa página expira. Clica no botão verde aqui embaixo, garante a sua Canetinha, e eu te vejo lá no grupo.
 
 ---
 
-**Total ≈ 2m30.** Cada bloco é gravado separado (facilita testar lead e close, como o Bumprotocolo: `CANETINHA | LEAD A | CLOSE 1`).
+**Total ≈ 2m20.** Blocos 2–3 foram encurtados de propósito: o mecanismo completo já foi entregue na tela ✗/✓ e no áudio 1 (doc 12), e nas referências a peça da oferta não re-explica — Mounjaro áudio 2 e Paizão Mini VSL 2 são pitch + prova. Cada bloco é gravado separado (facilita testar lead e close, como o Bumprotocolo: `CANETINHA | LEAD A | CLOSE 1`).
 
 ### 3 variações de abertura pra testar (o playbook manda fazer 3–5 leads)
 - **A — a que está acima** (protocolo gerado → famosas → problemas da caneta)
