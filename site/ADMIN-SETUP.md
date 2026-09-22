@@ -48,5 +48,11 @@ Painel → **Configuração dos testes** → % da landing, % da VSL B, versão, 
 ## 8. Venda
 O clique no checkout é o último evento aqui. A URL do checkout leva `sid`, `ab`, `entry`, `imc` e as UTMs — na Payt/Wiapy/Kirvano você cruza a venda com a sessão pelo `sid` (ou pelo UTMify, que casa pelo texto do botão).
 
-## 9. Publicar
-A pasta `site/` inteira sobe no Vercel/Netlify. O admin fica em `/admin/` (com `noindex`). Se quiser esconder mais, renomeia a pasta (ex.: `/painel-x7k2/`).
+## 9. Publicar no Netlify
+1. https://app.netlify.com → **Add new site → Import an existing project → GitHub → `gabrielmaiagt/canetinha`**.
+2. O `netlify.toml` na raiz já define `publish = site` e sem build. Só confirmar e **Deploy**.
+3. Anota o domínio gerado (`algo.netlify.app`) e depois liga o domínio próprio em **Domain management**.
+4. **Obrigatório**: Firebase → Authentication → Settings → **Authorized domains** → adicionar o `algo.netlify.app` **e** o domínio próprio. Sem isso o login anônimo falha em produção e o funil não grava nada (o quiz continua funcionando, só não mede).
+5. Testar: abrir o funil no celular, responder 2 perguntas, abrir `/admin` e ver a sessão.
+
+Cada `git push` na `main` publica sozinho. Rotas: `/` = funil · `/admin` = painel · `?v=landing|pergunta` e `?ab=A|B` forçam variantes.
