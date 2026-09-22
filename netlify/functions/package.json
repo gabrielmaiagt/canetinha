@@ -1,0 +1,1 @@
+{ "name": "canetinha-functions", "private": true, "dependencies": { "firebase-admin": "^12.4.0" } }

@@ -42,3 +42,8 @@
   from = "/back"
   to = "/back/index.html"
   status = 200
+
+# Webhook da Kirvano (netlify/functions/kirvano.js)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

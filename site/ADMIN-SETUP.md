@@ -45,8 +45,18 @@ Authentication → Settings → **Authorized domains** → adicionar o domínio 
 ## 7. Testes A/B pelo admin
 Painel → **Configuração dos testes** → % da landing, % da VSL B, versão, vagas → Salvar. Grava em `config/funnel`; o funil lê ao abrir. Mudar a **versão** re-sorteia todo mundo (a escolha fica salva no navegador da pessoa por versão). Forçar na mão: `?v=landing`, `?v=pergunta`, `?ab=A`, `?ab=B`.
 
-## 8. Venda
-O clique no checkout é o último evento aqui. A URL do checkout leva `sid`, `ab`, `entry`, `imc` e as UTMs — na Payt/Wiapy/Kirvano você cruza a venda com a sessão pelo `sid` (ou pelo UTMify, que casa pelo texto do botão).
+## 8. Venda (Kirvano → webhook → Firestore `sales`)
+
+Checkouts: principal R$ 37,90 `pay.kirvano.com/3d91f533-…` · backredirect R$ 24,90 `pay.kirvano.com/be75b426-…` (já em `CONFIG.checkout` e `back/CONFIG.checkoutBack`).
+
+A Kirvano só devolve no webhook as `utm_*` e o `src`. Por isso o botão manda `src=oferta|A|pergunta|<sid>` (e o back `bk-vsl|…` / `bk-bk|…`): a função separa em `src`, `ab`, `entry`, `sid` e cruza com a sessão.
+
+1. **Service account nova** (a antiga você apagou): Google Cloud → IAM → Service accounts → `firebase-adminsdk-…` → Keys → Add key (JSON). Converter em base64: `base64 -i arquivo.json | pbcopy`.
+2. **Netlify → Site → Environment variables:** `FIREBASE_SERVICE_ACCOUNT` = (o base64) · `KIRVANO_TOKEN` = uma string longa qualquer (ex.: `openssl rand -hex 24`).
+3. **Kirvano → Configurações → Webhooks → Novo:** URL `https://SEU-DOMINIO/.netlify/functions/kirvano?token=<KIRVANO_TOKEN>` · marcar todos os eventos (aprovada, recusada, reembolso, chargeback, pix gerado, carrinho abandonado) · nos dois produtos.
+4. Deploy. Teste com "Enviar evento de teste" na Kirvano e confira em Firestore → `sales`.
+
+Cada venda vira `sales/{sale_id}`: `at, day, status (aprovada/PENDING/REFUSED/CANCELED/REFUNDED/CHARGEBACK/ABANDONED_CART), value, product (principal/backredirect), bumps[], payment, source/medium/campaign/content/term, src, ab, entry, sid, customer{name,email,phone}`. A sessão ganha `sale{…}` e `purchased: true` quando aprovada — o admin usa isso pra CVR por VSL, entrada e segmento.
 
 ## 9. Publicar no Netlify
 1. https://app.netlify.com → **Add new site → Import an existing project → GitHub → `gabrielmaiagt/canetinha`**.

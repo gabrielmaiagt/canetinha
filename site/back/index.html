@@ -150,7 +150,7 @@ h2 .pk{color:var(--pink)}
    CONFIG do backredirect
    ===================================================================== */
 const CONFIG = {
-  checkoutBack: "https://pay.wiapy.com/SEU_LINK_BACK",   // checkout do produto a R$ 24,90
+  checkoutBack: "https://pay.kirvano.com/be75b426-7805-49ba-af3d-84512909f508",   // Kirvano · R$ 24,90
   cupom: "CANETINHA13",
   price: "24,90", priceBefore: "37,90", off: "R$ 13 OFF",
   avatar: "Dra. [Nome da Avatar]",
@@ -174,7 +174,7 @@ let search = location.search;
 try { if (search && search.length > 1) localStorage.setItem("utm_query", search); else search = localStorage.getItem("utm_query") || ""; } catch (e) {}
 const Q = new URLSearchParams(search);
 function checkoutUrl(src) {
-  try { const u = new URL(CONFIG.checkoutBack); Q.forEach((v, k) => u.searchParams.set(k, v)); u.searchParams.set("src", src); u.searchParams.set("cupom", CONFIG.cupom); return u.toString(); } catch (e) { return CONFIG.checkoutBack; }
+  try { const u = new URL(CONFIG.checkoutBack); Q.forEach((v, k) => u.searchParams.set(k, v)); u.searchParams.set("src", [src, Q.get("ab") || "", Q.get("entry") || "", Q.get("sid") || ""].join("|")); return u.toString(); } catch (e) { return CONFIG.checkoutBack; }
 }
 
 /* ===== Firestore: marca na sessão do funil (mesmo sid) ===== */

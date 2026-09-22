@@ -311,7 +311,7 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
    CONFIG — tudo que você mexe está aqui
    ===================================================================== */
 const CONFIG = {
-  checkout: "https://pay.wiapy.com/SEU_LINK",   // link do checkout (UTMs + IMC vão junto)
+  checkout: "https://pay.kirvano.com/3d91f533-62ad-4945-a86d-bea2aafa4e4c",   // Kirvano · R$ 37,90
   avatar:   "Dra. [Nome da Avatar]",           // nome no header, áudios e selo
   crn:      "",                                // ex.: "CRN 3 12345" — vazio esconde a linha
   price:    "37,90",
@@ -754,8 +754,10 @@ function checkoutParams() {
   new URLSearchParams(q).forEach((v, k) => { if (!["s", "v", "ab"].includes(k)) p.set(k, v); });
   p.set("imc", imc().toFixed(1)); if (DB) p.set("sid", DB.sid); p.set("ab", VSLV); p.set("entry", ENTRY); return p;
 }
+// Kirvano só devolve no webhook as utm_* e o `src` — então o src carrega tudo: onde|vsl|entrada|sid
+function srcTag(where) { return [where, VSLV, ENTRY, DB ? DB.sid : ""].join("|"); }
 function checkoutUrl() {
-  try { const u = new URL(CONFIG.checkout); checkoutParams().forEach((v, k) => u.searchParams.set(k, v)); return u.toString(); } catch { return CONFIG.checkout; }
+  try { const u = new URL(CONFIG.checkout); checkoutParams().forEach((v, k) => u.searchParams.set(k, v)); u.searchParams.set("src", srcTag("oferta")); return u.toString(); } catch { return CONFIG.checkout; }
 }
 /* BACKREDIRECT (modelo BumbumFlix /back/): na oferta, "voltar" cai em /back/ com os mesmos parâmetros */
 function armBackredirect() {
