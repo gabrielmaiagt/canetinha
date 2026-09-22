@@ -1,0 +1,8 @@
+{
+  "name": "canetinha",
+  "private": true,
+  "description": "Funil Canetinha de Pobre — site estático + webhook Kirvano (Netlify Function)",
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  }
+}
