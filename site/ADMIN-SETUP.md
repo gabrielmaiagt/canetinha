@@ -1,0 +1,52 @@
+# Setup do rastreamento + /admin (Firestore)
+
+## 1. Projeto Firebase (5 min)
+1. https://console.firebase.google.com → **Adicionar projeto** (ex.: `canetinha`). Analytics pode desligar.
+2. **Build → Firestore Database → Criar banco** → modo produção → região `southamerica-east1` (São Paulo).
+3. **Build → Authentication → Começar → Sign-in method**:
+   - ative **Anônimo** (é como o funil grava as sessões)
+   - ative **E-mail/senha** (é como você entra no /admin)
+4. **Authentication → Users → Adicionar usuário**: seu e-mail + senha (esse e-mail precisa estar na lista `isAdmin()` do `firestore.rules`).
+5. **Configurações do projeto (engrenagem) → Seus apps → Web (</>)** → registrar app → copiar o `firebaseConfig`:
+   ```js
+   { apiKey: "AIza…", authDomain: "canetinha.firebaseapp.com", projectId: "canetinha", appId: "1:…:web:…" }
+   ```
+
+## 2. Colar o config
+- `site/index.html` → `CONFIG.firebase = { apiKey, authDomain, projectId, appId }`
+- `site/admin/index.html` → `const FIREBASE = { … }` (o mesmo)
+
+Sem config, o funil roda normal e não grava nada; o admin abre em modo demo.
+
+## 3. Regras de segurança
+- Firestore → aba **Regras** → colar o conteúdo de `site/firestore.rules` → Publicar.
+- Editar a lista de e-mails em `isAdmin()`.
+
+## 4. Índice (o painel filtra por dia)
+Na primeira leitura o console mostra um link "the query requires an index" — clica e cria (campo `day`, desc). Ou: Firestore → Índices → composto → coleção `sessions`, campo `day` DESC.
+
+## 5. Domínio autorizado
+Authentication → Settings → **Authorized domains** → adicionar o domínio do funil (ex.: `quiz.canetinhadepobre.com`) e do admin.
+
+## 6. O que fica gravado (1 documento por sessão em `sessions/{sid}`)
+| Campo | O que é |
+|---|---|
+| `sid`, `uid`, `createdAt`, `updatedAt`, `day` | identidade e datas |
+| `entry` (`landing`/`pergunta`), `vsl` (`A`/`B`) | variantes sorteadas |
+| `utm_*`, `ref`, `ua`, `mobile` | origem |
+| `answers.{pergunta}` | cada resposta (áreas e benefícios são listas) |
+| `steps.{etapa}` = `{ i, t }` | cada etapa vista e o segundo em que chegou |
+| `maxStep`, `maxStepId`, `completed` | até onde foi; `completed` = chegou no diagnóstico |
+| `imc`, `faixa`, `horario`, `falta`, `corpo` | o que o funil calculou |
+| `offerViewed`, `offerAt`, `checkoutClicked`, `checkoutAt`, `ctaN`, `checkoutClicks`, `audio.*` | oferta e ação |
+
+~25 escritas por sessão. No plano gratuito (20 mil escritas/dia) cabem ~800 sessões/dia; acima disso é Blaze (centavos).
+
+## 7. Testes A/B pelo admin
+Painel → **Configuração dos testes** → % da landing, % da VSL B, versão, vagas → Salvar. Grava em `config/funnel`; o funil lê ao abrir. Mudar a **versão** re-sorteia todo mundo (a escolha fica salva no navegador da pessoa por versão). Forçar na mão: `?v=landing`, `?v=pergunta`, `?ab=A`, `?ab=B`.
+
+## 8. Venda
+O clique no checkout é o último evento aqui. A URL do checkout leva `sid`, `ab`, `entry`, `imc` e as UTMs — na Payt/Wiapy/Kirvano você cruza a venda com a sessão pelo `sid` (ou pelo UTMify, que casa pelo texto do botão).
+
+## 9. Publicar
+A pasta `site/` inteira sobe no Vercel/Netlify. O admin fica em `/admin/` (com `noindex`). Se quiser esconder mais, renomeia a pasta (ex.: `/painel-x7k2/`).

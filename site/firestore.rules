@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===== ADMINS: coloque aqui os e-mails que podem ler o painel =====
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in [
+          "gabrielmaiasantos0012@gmail.com"
+        ];
+    }
+
+    // Sessões do funil: o visitante (login anônimo) cria e atualiza SÓ a própria sessão.
+    // Só admin lê.
+    match /sessions/{sid} {
+      allow read: if isAdmin();
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.sid == sid;
+      allow update: if request.auth != null
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.uid == resource.data.uid;
+      allow delete: if false;
+    }
+
+    // Config do funil (split dos testes A/B, vagas): todo mundo lê, só admin escreve.
+    match /config/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# referências dos concorrentes (vídeos, código, playbook) — só local
+ref/
+# nunca subir chaves
+*firebase-adminsdk*.json
+*.pem
+.env
+node_modules/
+.DS_Store

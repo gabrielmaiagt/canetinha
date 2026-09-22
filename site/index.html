@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Avaliação gratuita · Canetinha de Pobre</title>
+<meta name="description" content="A receitinha que as famosas estão usando no lugar da canetinha. Avaliação gratuita de 2 minutos.">
+<meta property="og:title" content="Canetinha de Pobre — avaliação gratuita">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#f4eeff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<!-- ===== PIXEL (UTMify) — cole aqui o seu pixelId =====
+<script>window.pixelId="SEU_PIXEL_ID";var a=document.createElement("script");a.async=true;a.defer=true;a.src="https://cdn.utmify.com.br/scripts/pixel/pixel.js";document.head.appendChild(a);</script>
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+-->
+<style>
+:root{
+  --bg:#f4eeff; --bg2:#ece2fb; --card:#ffffff; --card2:#f7f3fe;
+  --line:rgba(91,46,158,.14); --line2:rgba(91,46,158,.28);
+  --ink:#281e44; --ink2:#5f5878; --mute:#9b94ad;
+  --accent:#7c3aed; --accent-deep:#5b21b6; --accent-soft:#ede7fb;
+  --grad:linear-gradient(180deg,#a98bf5 0%,#7c46e6 100%);
+  --red:#dc2626; --red-deep:#b91c1c; --red-soft:#fee2e2;
+  --green:#16a34a; --green-deep:#15803d; --green-soft:#dcfce7;
+  --warn-soft:#fef3c7; --info-soft:#dbeafe;
+  --r:20px; --r-sm:14px; --maxw:520px;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --shadow:0 18px 44px -18px rgba(76,29,149,.28);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+img{max-width:100%;display:block}
+p{margin:0}
+h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
+.q-title{font-size:1.28rem;font-weight:800;color:var(--ink);text-align:left;letter-spacing:-.01em}
+.q-title .hl{color:var(--accent)}
+.q-title .rd{color:var(--red)}
+.q-sub{color:var(--ink2);font-size:.92rem;margin-top:6px}
+.small{font-size:.85rem;color:var(--ink2)}
+.h3{font-size:1.05rem;font-weight:800;color:var(--ink)}
+.h3.c{text-align:center}
+
+/* ===== header ===== */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg)}
+.top-row{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:34px 1fr 34px;align-items:center;padding:6px 12px 4px;gap:6px}
+.back{width:34px;height:34px;border:0;background:transparent;color:var(--ink);font-size:22px;cursor:pointer;visibility:hidden;border-radius:10px}
+.back.on{visibility:visible}
+.brand{display:flex;align-items:center;justify-content:center;gap:9px;min-width:0}
+.logo{display:flex;align-items:center;gap:7px;font-weight:800;font-size:.95rem;color:var(--ink);letter-spacing:-.01em}
+.logo svg{width:22px;height:22px;color:var(--accent)}
+.logo b{color:var(--accent)}
+.ring{width:38px;height:38px;border-radius:50%;padding:2px;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);flex:0 0 auto}
+.ring div{width:100%;height:100%;border-radius:50%;background:var(--accent-soft);overflow:hidden;display:grid;place-items:center;font-size:18px;border:2px solid var(--bg)}
+.ring img{width:100%;height:100%;object-fit:cover}
+.brand .nm{font-weight:700;font-size:.86rem;color:var(--ink);line-height:1.15;display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .hd{font-size:.72rem;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .hd b{color:var(--ink2);font-weight:600}
+.band{background:linear-gradient(180deg,var(--red) 0%,var(--red-deep) 100%);color:#fff;text-align:center;padding:7px 12px;font-weight:800;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
+.band span{display:block;font-weight:700;font-size:.66rem;opacity:.95}
+.prog{height:5px;background:var(--bg2)}
+.prog i{display:block;height:100%;background:var(--grad);border-radius:0 99px 99px 0;transition:width .5s ease}
+
+/* ===== page ===== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:18px 16px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;min-height:60vh}
+.step{display:flex;flex-direction:column;gap:14px;animation:in .22s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== buttons ===== */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:58px;border:0;border-radius:var(--r);font-weight:800;font-size:1.05rem;color:#fff;background:var(--grad);cursor:pointer;padding:12px 18px;box-shadow:0 10px 26px -10px rgba(124,58,237,.6);transition:transform .08s}
+.btn:active{transform:scale(.985)}
+.btn.green{background:linear-gradient(180deg,#22c55e 0%,#15803d 100%);box-shadow:0 10px 26px -10px rgba(22,163,74,.6)}
+.btn.pulse{animation:pulse 1.7s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,.45)}70%{box-shadow:0 0 0 14px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+.btn.green.pulse{animation-name:pulseG}
+@keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 14px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+.btn[disabled]{opacity:.45;cursor:not-allowed;animation:none}
+.micro{text-align:center;font-size:.76rem;color:var(--mute);line-height:1.5}
+.micro b{color:var(--ink2);font-weight:600}
+
+/* ===== opções em lista ===== */
+.opts{display:grid;gap:9px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:var(--r-sm);padding:12px 14px;color:var(--ink);font-weight:500;font-size:.95rem;cursor:pointer;transition:border-color .12s,background .12s;box-shadow:0 6px 18px -14px rgba(76,29,149,.25)}
+.opt .dot{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:2px solid var(--line2);display:grid;place-items:center;color:#fff;font-size:12px;background:var(--card)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .dot{background:var(--accent);border-color:var(--accent)}
+.opt .lbl{flex:1}
+.opt .lbl small{display:block;color:var(--ink2);font-size:.78rem;font-weight:400;margin-top:1px}
+.opt:focus-visible,.btn:focus-visible,.pc:focus-visible,.back:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* ===== opções em cards com foto ===== */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc{position:relative;border:0;padding:0;background:var(--card);border-radius:var(--r-sm);overflow:hidden;cursor:pointer;text-align:left;box-shadow:0 10px 24px -14px rgba(76,29,149,.35);outline:2.5px solid transparent;transition:outline-color .12s}
+.pc .im{aspect-ratio:4/5;background:var(--card2);position:relative}
+.pc .im img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.pc .im .ph{position:absolute;inset:8px;border:2px dashed var(--line2);border-radius:10px;display:grid;place-items:center;text-align:center;color:var(--mute);font-size:.7rem;font-weight:600;padding:8px}
+.pc .bar{display:flex;align-items:center;justify-content:space-between;gap:6px;background:var(--grad);color:#fff;font-weight:700;font-size:.82rem;padding:9px 11px;line-height:1.2}
+.pc .bar i{font-style:normal;font-weight:800}
+.pc.sel{outline-color:var(--accent-deep)}
+.pc.sel .bar{background:linear-gradient(180deg,#6d28d9,#4c1d95)}
+.pc .chk{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--line2);display:grid;place-items:center;color:#fff;font-size:13px;font-weight:800}
+.pc.sel .chk{background:var(--accent);border-color:var(--accent)}
+
+/* ===== landing ===== */
+.land{display:flex;flex-direction:column;gap:12px}
+.land h1{font-size:1.55rem;font-weight:800;line-height:1.15;letter-spacing:-.015em}
+.land h1 .hl{color:var(--accent)}
+.land .sub{color:var(--ink2);font-size:.95rem}
+.land .photo{border-radius:var(--r);overflow:hidden;background:var(--card);aspect-ratio:4/4.2;position:relative;box-shadow:var(--shadow)}
+.land .photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.land .photo .ph{position:absolute;inset:12px;border:2px dashed var(--line2);border-radius:14px;display:grid;place-items:center;text-align:center;color:var(--mute);font-size:.8rem;font-weight:600;padding:16px}
+.land .photo .tag{position:absolute;left:12px;top:12px;background:#fff;color:var(--accent-deep);font-weight:800;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:8px;z-index:1}
+
+/* ===== alertas / cards ===== */
+.al{border-radius:var(--r-sm);padding:12px 14px;font-size:.9rem;line-height:1.45;color:var(--ink);background:var(--card);border:1px solid var(--line)}
+.al b{font-weight:700}
+.al.red{background:var(--red-soft);border-color:transparent;color:#7f1d1d}
+.al.warn{background:var(--warn-soft);border-color:transparent;color:#78350f}
+.al.info{background:var(--info-soft);border-color:transparent;color:#1e3a8a}
+.al.acc{background:var(--accent-soft);border-color:transparent;color:var(--ink)}
+.al.sm{font-size:.78rem;padding:8px 12px;width:max-content;max-width:100%;margin:0 auto;font-weight:700}
+
+/* ===== comparação ✗/✓ ===== */
+.cmp{display:grid;gap:10px}
+.cmp .col{background:var(--card);border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line)}
+.cmp .col h3{font-size:.86rem;font-weight:800;padding:10px 12px;color:#fff}
+.cmp .col.bad h3{background:linear-gradient(180deg,#ef4444,#b91c1c)}
+.cmp .col.good h3{background:linear-gradient(180deg,#22c55e,#15803d)}
+.cmp ul{list-style:none;margin:0;padding:6px 12px 10px;display:grid;gap:6px}
+.cmp li{display:flex;gap:9px;align-items:flex-start;font-size:.9rem;line-height:1.35}
+.cmp li i{font-style:normal;font-weight:900;flex:0 0 18px}
+.cmp .bad li i{color:var(--red)}.cmp .good li i{color:var(--green)}
+
+/* ===== áudio ===== */
+.audio{display:flex;align-items:center;gap:10px;background:#e7ffdb;border-radius:14px;padding:10px 12px;color:#1f2937}
+.audio .av{width:44px;height:44px;border-radius:50%;background:#cfe9c4;overflow:hidden;flex:0 0 auto;display:grid;place-items:center;font-size:20px}
+.audio .av img{width:100%;height:100%;object-fit:cover}
+.audio .play{width:36px;height:36px;border-radius:50%;border:0;background:#25d366;color:#fff;font-size:15px;cursor:pointer;flex:0 0 auto;display:grid;place-items:center}
+.audio .wave{flex:1;display:flex;align-items:center;gap:2px;height:28px}
+.audio .wave i{display:block;width:3px;background:#7a9c6c;border-radius:2px;opacity:.7}
+.audio .wave.on i{background:#25d366;opacity:1}
+.audio .meta{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:.68rem;color:#4b5563;min-width:44px}
+.audio .meta b{font-size:.74rem;color:#111827;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ===== depoimentos ===== */
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;display:flex;gap:12px}
+.quote .qa{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);flex:0 0 auto;display:grid;place-items:center;font-size:20px;overflow:hidden}
+.quote .qa img{width:100%;height:100%;object-fit:cover}
+.quote .qn{font-weight:700;font-size:.86rem;color:var(--ink)}
+.quote .qt{font-size:.88rem;color:var(--ink2);margin-top:2px}
+.quote .qm{margin-top:5px;font-size:.74rem;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.stars{color:#f59e0b;letter-spacing:1px}
+
+/* ===== placeholders de imagem ===== */
+.ph-img{border:2px dashed var(--line2);background:var(--card);border-radius:var(--r-sm);display:grid;place-items:center;color:var(--mute);font-size:.76rem;font-weight:600;text-align:center;padding:12px;width:100%}
+.fit{border-radius:var(--r-sm);overflow:hidden;background:var(--card)}
+.fit img{width:100%;height:100%;object-fit:cover}
+
+/* ===== sliders ===== */
+.slider{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0;background:var(--card);border-radius:var(--r);border:1px solid var(--line)}
+.slider .val{font-size:3rem;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1;margin-top:8px}
+.slider .val small{font-size:1.05rem;color:var(--ink2);font-weight:700;margin-left:4px}
+.slider input[type=range]{width:88%;accent-color:var(--accent);height:40px}
+.slider .rng{display:flex;justify-content:space-between;width:88%;font-size:.72rem;color:var(--mute);font-variant-numeric:tabular-nums;padding-bottom:10px}
+
+/* ===== antes/depois ===== */
+.ba{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--shadow)}
+.ba .labs{display:grid;grid-template-columns:1fr 24px 1fr;align-items:end;margin-bottom:8px}
+.ba .labs div{text-align:center}
+.ba .labs b{display:block;font-size:.78rem;font-weight:800;color:var(--ink)}
+.ba .labs b.goal{color:var(--accent)}
+.ba .labs small{font-size:.7rem;color:var(--mute)}
+.ba .shots{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center}
+.ba .shot{aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--card2);position:relative}
+.ba .shot img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.ba .shot .ph{position:absolute;inset:6px;border:2px dashed var(--line2);border-radius:10px;display:grid;place-items:center;text-align:center;color:var(--mute);font-size:.66rem;font-weight:600;padding:6px}
+.ba .arr{color:var(--accent);font-weight:900;text-align:center;font-size:18px;line-height:1}
+.ba .cap{text-align:center;font-size:.72rem;color:var(--ink2);margin-top:6px;font-weight:600}
+.ba .cap.goal{color:var(--accent)}
+.ba .imc{margin-top:12px;background:var(--accent-soft);border-radius:12px;padding:10px 12px;font-size:.88rem;color:var(--ink)}
+.ba .imc b{color:var(--accent-deep)}
+.ba .rows{margin-top:10px;display:grid;grid-template-columns:1fr 1px 1fr;gap:6px 10px;font-size:.78rem}
+.ba .rows .d{background:var(--line)}
+.ba .rows small{display:block;color:var(--mute);font-size:.66rem;text-transform:uppercase;letter-spacing:.05em}
+.ba .rows b{display:block;color:var(--ink);font-size:.86rem}
+.ba .rows b.goal{color:var(--accent)}
+
+/* ===== barra de IMC ===== */
+.metric{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px}
+.metric .mt{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-weight:800;color:var(--ink);font-size:.92rem}
+.metric .mt span{font-size:.76rem;color:var(--red);font-weight:700}
+.metric .mt span.ok{color:var(--green-deep)}
+.metric .bar{position:relative;height:10px;border-radius:99px;margin:20px 0 6px;background:linear-gradient(90deg,#60a5fa 0%,#4ade80 28%,#a3e635 42%,#facc15 60%,#f97316 78%,#ef4444 100%)}
+.metric .dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--ink);transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.metric .tip{position:absolute;bottom:18px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:.66rem;font-weight:700;padding:3px 7px;border-radius:6px;white-space:nowrap}
+.metric .lg{display:grid;grid-template-columns:repeat(5,1fr);font-size:.6rem;color:var(--ink2);text-align:center;font-weight:600}
+
+/* ===== loading ===== */
+.load-h{font-size:1.15rem;font-weight:800;text-align:center;color:var(--ink);min-height:3.2em;display:flex;align-items:center;justify-content:center}
+.load-h .dd i{display:inline-block;animation:blink 1.2s infinite;font-style:normal}
+.load-h .dd i:nth-child(2){animation-delay:.2s}.load-h .dd i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+.slide{border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:9/13;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide .ph{position:absolute;inset:10px;border:2px dashed var(--line2);border-radius:12px;display:grid;place-items:center;color:var(--mute);font-size:.78rem;font-weight:600;text-align:center;padding:14px}
+.dots{display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line2)}
+.dots i.on{background:var(--accent)}
+.lbar{height:6px;background:var(--bg2);border-radius:99px;overflow:hidden}
+.lbar i{display:block;height:100%;width:0;background:var(--grad);transition:width .3s linear}
+
+/* ===== tela motivacional ===== */
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.info-card .big{font-size:1.25rem;font-weight:800;color:var(--ink);line-height:1.2}
+.info-card .big .hl{color:var(--accent)}
+.mock{aspect-ratio:4/3;border-radius:var(--r-sm);overflow:hidden;background:var(--card2);position:relative}
+.mock img{width:100%;height:100%;object-fit:cover}
+.mock .ph{position:absolute;inset:8px;border:2px dashed var(--line2);border-radius:10px;display:grid;place-items:center;color:var(--mute);font-size:.74rem;font-weight:600;text-align:center;padding:10px}
+
+/* ===== oferta ===== */
+.vsl{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.vsl .vh{display:flex;align-items:center;gap:9px;padding:10px 12px}
+.vsl .vh .nm{font-weight:700;font-size:.84rem;color:var(--ink);display:flex;align-items:center;gap:4px}
+.vsl .vh .sp{font-size:.7rem;color:var(--mute)}
+.vsl .vh .more{margin-left:auto;color:var(--mute);font-weight:800}
+.vsl .cap{padding:0 12px 10px;font-weight:700;font-size:.92rem;color:var(--ink)}
+.vsl .frame{aspect-ratio:9/16;background:#0a0a0f;position:relative;display:grid;place-items:center;color:#fff}
+.vsl .frame .ph{text-align:center;padding:20px;color:#cbd5e1;font-size:.8rem}
+.vsl .frame .ph b{display:block;color:#fff;font-size:1rem;margin-bottom:6px}
+.vsl .frame .pl{width:64px;height:64px;border-radius:50%;background:#fff;color:var(--accent);display:grid;place-items:center;font-size:26px;margin:0 auto 10px}
+.vsl .frame iframe,.vsl .frame video,.vsl .frame vturb-smartplayer{position:absolute;inset:0;width:100%;height:100%}
+.vsl .acts{display:flex;gap:14px;padding:10px 12px;color:var(--ink);font-size:.8rem;font-weight:600}
+.cards4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cards4 div{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;text-align:center}
+.cards4 .em{font-size:24px}
+.cards4 b{display:block;color:var(--ink);font-size:1.05rem;margin-top:3px;font-variant-numeric:tabular-nums}
+.cards4 small{color:var(--mute);font-size:.7rem}
+.args{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.args .a{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+.args .a .ai{aspect-ratio:370/261;background:var(--accent-soft);display:grid;place-items:center;font-size:34px}
+.args .a .ai img{width:100%;height:100%;object-fit:cover}
+.args .a .at{padding:10px 12px 12px}
+.args .a b{display:block;color:var(--ink);font-size:.86rem;line-height:1.25}
+.args .a p{font-size:.75rem;margin-top:4px;color:var(--ink2)}
+.price{border:2px solid var(--accent);border-radius:var(--r);padding:20px 16px 16px;text-align:center;position:relative;background:var(--card);box-shadow:var(--shadow)}
+.price .feat{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:99px;white-space:nowrap}
+.price .pt{font-weight:800;color:var(--ink);font-size:1.05rem;margin-top:4px}
+.price .before{color:var(--mute);font-size:.85rem;text-decoration:line-through;margin-top:4px}
+.price .val{font-size:2.6rem;font-weight:800;color:var(--green-deep);line-height:1.1;font-variant-numeric:tabular-nums}
+.price .val small{font-size:1rem;vertical-align:top;margin-right:2px}
+.price .parc{font-size:.9rem;color:var(--ink);font-weight:700;margin-top:6px}
+.price .pix{font-size:.78rem;color:var(--ink2);margin-top:2px}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tl.two{grid-template-columns:1fr 1fr}
+.tl div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 8px 8px;text-align:center;font-size:.68rem;color:var(--ink);font-weight:600;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.tl .b{height:66px;display:flex;align-items:flex-end}
+.tl .b i{display:block;width:100%;border-radius:8px 8px 3px 3px}
+.tl .pc2{font-size:.8rem;font-weight:800;font-variant-numeric:tabular-nums}
+.timer{background:linear-gradient(180deg,var(--red),var(--red-deep));color:#fff;border-radius:var(--r-sm);padding:12px 14px;text-align:center;font-weight:700;font-size:.88rem}
+.timer b{font-size:1.5rem;font-variant-numeric:tabular-nums;display:block;letter-spacing:.04em}
+.faq{display:grid;gap:8px}
+.faq details{border:1px solid var(--line);border-radius:var(--r-sm);padding:0 14px;background:var(--card)}
+.faq summary{cursor:pointer;list-style:none;padding:12px 0;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;gap:10px;font-size:.9rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-weight:800;font-size:1.1rem}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 0 12px;font-size:.86rem;color:var(--ink2)}
+.stamp{display:flex;align-items:center;gap:12px;background:var(--info-soft);border-radius:var(--r-sm);padding:12px;color:#1e3a8a;font-size:.86rem}
+.stamp .sa{width:56px;height:56px;border-radius:14px;background:#fff;overflow:hidden;flex:0 0 auto;display:grid;place-items:center;font-size:26px}
+.stamp .sa img{width:100%;height:100%;object-fit:cover}
+.badges{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;color:var(--mute);font-size:.72rem;font-weight:600}
+.guar{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.guar .g{width:76px;height:76px;flex:0 0 auto;border-radius:50%;background:linear-gradient(180deg,#22c55e,#15803d);color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;line-height:1;font-size:.66rem;padding:6px}
+.guar .g b{display:block;font-size:1.5rem}
+.guar p{font-size:.84rem;color:var(--ink)}
+.car{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 0 6px;scrollbar-width:none}
+.car::-webkit-scrollbar{display:none}
+.car > *{flex:0 0 78%;scroll-snap-align:center;aspect-ratio:1/1}
+.car.tall > *{aspect-ratio:4/5}
+.appshot{aspect-ratio:9/16;max-width:220px;margin:0 auto;width:100%}
+.addq{display:flex;gap:8px}
+.addq input{flex:1;min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font-family:inherit;font-size:.9rem;background:var(--card)}
+.addq button{min-height:46px;border:0;border-radius:12px;background:var(--card2);color:var(--ink);font-weight:700;padding:0 14px;cursor:pointer}
+.toast{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:100;background:#fff;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:10px 12px;box-shadow:0 10px 30px rgba(40,30,68,.2);max-width:260px;font-size:.82rem;transform:translateX(calc(100% + 40px));visibility:hidden;pointer-events:none;transition:transform .35s ease,visibility 0s .35s}
+.toast.on{transform:none;visibility:visible;pointer-events:auto;transition:transform .35s ease,visibility 0s}
+.toast b{display:block;font-size:.86rem}.toast small{color:var(--mute)}
+.foot{text-align:center;font-size:.68rem;color:var(--mute);padding-top:14px;line-height:1.5}
+.sp1{height:4px}.sp2{height:14px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-row">
+    <button class="back" id="back" aria-label="Voltar">‹</button>
+    <div class="brand" id="brand"></div>
+    <div></div>
+  </div>
+  <div class="band" id="band">Sua avaliação gratuita já começou<span>Se você sair agora, sua vez passa pra próxima</span></div>
+  <div class="prog"><i id="prog"></i></div>
+</header>
+
+<main class="wrap" id="app"></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   CONFIG — tudo que você mexe está aqui
+   ===================================================================== */
+const CONFIG = {
+  checkout: "https://pay.wiapy.com/SEU_LINK",   // link do checkout (UTMs + IMC vão junto)
+  avatar:   "Dra. [Nome da Avatar]",           // nome no header, áudios e selo
+  crn:      "",                                // ex.: "CRN 3 12345" — vazio esconde a linha
+  price:    "37,90",
+  priceBefore: "87,90",
+  parcelas: "8x de R$ 5",
+  vagas:    7,
+  timerSeconds: 600,
+  // VSL da oferta: cole o embed da vturb (ou a URL de um mp4). Vazio = placeholder.
+  vslEmbed: "",              // VSL A
+  vslEmbedB: "",             // VSL B (sorteio conforme split.vslB)
+  vslMp4:   "",
+  // ===== TESTES A/B (padrão; o /admin sobrescreve via Firestore config/funnel) =====
+  split: { landing: 0, vslB: 0, version: 1 },   // % do tráfego que vê a landing / a VSL B; version muda = re-sorteia
+  // ===== FIREBASE (cole o config do projeto; vazio = não grava nada) =====
+  firebase: { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain: "canetinha-4bd2a.firebaseapp.com", projectId: "canetinha-4bd2a", appId: "1:298345331983:web:06f6d8092fcbc3e1d5527a" },
+  // ===== ASSETS: cole as URLs. Vazio = placeholder tracejado dizendo o que vai ali =====
+  assets: {
+    logo: "assets/logo-horizontal.png",   // logo horizontal (fundo transparente)
+    avatarRedondo: "",        // players de áudio e selo (prompt A1)
+    landingFoto: "",          // foto da landing — a sua (4:4.2)
+    avatarSentada: "",        // selo "protocolo gerado por" (A3)
+    bebidaProduto: "",        // etapa 7 e oferta (A6)
+    // A MODELO — mesma mulher em tudo (grupo C do doc 06)
+    corpoMedio: "", corpoPlus: "", corpoAcima: "", corpoSobrepeso: "",
+    areaCulotes: "", areaBracos: "", areaBarriga: "", areaCoxas: "", areaGluteos: "", areaCorpoTodo: "",
+    depoisSeca: "", depoisNatural: "",
+    // prova
+    depoimentoFoto1: "",
+    depoimentoPorCorpo: { "Médio": "", "Plus size": "", "Acima do peso": "", "Sobrepeso": "" },
+    loadingPrints: ["", "", ""],           // prints do feed/grupo (grupo E)
+    appMockup: "",                         // celular com o app (F8)
+    gifIMCnormal: "", gifIMCsobrepeso: "", gifIMCobesidade: "",
+    argumentos: ["", "", "", "", "", ""],
+    resultadosCarrossel: ["", "", "", "", "", "", "", ""],
+    printsCarrossel: ["", "", "", "", "", ""],
+    appPrint: "",
+    quotesAvatars: ["", "", "", "", ""],
+    audio1: "", audio3: "",               // mp3 (o áudio 2 virou a VSL)
+  }
+};
+
+/* =====================================================================
+   ESTADO + HELPERS
+   ===================================================================== */
+const S = JSON.parse(sessionStorage.getItem("cdp_state") || "{}");
+S.a = S.a || {}; S.i = S.i || 0;
+const save = () => sessionStorage.setItem("cdp_state", JSON.stringify(S));
+const imc = () => { const p = +S.a.peso || 0, h = (+S.a.altura || 0) / 100; return h ? p / (h * h) : 0; };
+const faixa = () => { const v = imc(); return v < 18.5 ? "magreza" : v < 25 ? "normal" : v < 30 ? "sobrepeso" : "obesidade"; };
+const track = (ev, data = {}) => { try { (window.dataLayer = window.dataLayer || []).push({ event: ev, ...data }); if (window.fbq) fbq("trackCustom", ev, data); } catch (e) {} };
+const A = CONFIG.assets;
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const dateBR = (offset) => { const d = new Date(); d.setDate(d.getDate() + offset); return d.toLocaleDateString("pt-BR", { day: "numeric", month: "short" }).replace(".", ""); };
+const VERIFIED = `<svg viewBox="0 0 24 24" width="14" height="14" aria-label="verificado"><path fill="#3897f0" d="M12 1.5l2.4 1.8 3 .2 1 2.8 2.3 1.9-.9 2.9.9 2.9-2.3 1.9-1 2.8-3 .2L12 22.5l-2.4-1.8-3-.2-1-2.8L3.3 15.8l.9-2.9-.9-2.9 2.3-1.9 1-2.8 3-.2z"/><path fill="#fff" d="M10.6 14.6l-2.2-2.2 1.1-1.1 1.1 1.1 3.3-3.3 1.1 1.1z"/></svg>`;
+
+const img = (src, label, ratio = "1/1", cls = "") => src ? `<div class="fit ${cls}" style="aspect-ratio:${ratio}"><img src="${src}" alt="${esc(label)}" loading="lazy"></div>` : `<div class="ph-img ${cls}" style="aspect-ratio:${ratio}">📷 ${esc(label)}</div>`;
+const btn = (label, cls = "", id = "next") => `<button class="btn ${cls}" id="${id}">${label}</button>`;
+const stars = () => `<span class="stars">★★★★★</span>`;
+const avRound = () => A.avatarRedondo ? `<img src="${A.avatarRedondo}" alt="">` : "👩‍⚕️";
+const audio = (src, id) => {
+  const bars = Array.from({ length: 34 }, (_, i) => `<i style="height:${6 + Math.round(Math.abs(Math.sin(i * 1.7 + id.length)) * 20)}px"></i>`).join("");
+  return `<div class="audio" data-src="${src}" id="${id}"><div class="av">${avRound()}</div><button class="play" aria-label="Ouvir áudio">▶</button><div class="wave">${bars}</div><div class="meta"><b>${esc(CONFIG.avatar)}</b><span class="dur">${src ? "0:00" : "áudio"}</span></div></div>`;
+};
+const quote = (name, text, meta, av) => `<div class="quote"><div class="qa">${av ? `<img src="${av}" alt="">` : "👩"}</div><div><div class="qn">${esc(name)}</div><p class="qt">${text}</p><div class="qm"><span>${meta || ""}</span>${stars()}</div></div></div>`;
+const carousel = (arr, label, tall = false) => `<div class="car ${tall ? "tall" : ""}">${arr.map((s, i) => img(s, `${label} ${i + 1}`, tall ? "4/5" : "1/1")).join("")}</div>`;
+const title = (h, sub) => `<h2 class="q-title">${h}</h2>${sub ? `<p class="q-sub">${sub}</p>` : ""}`;
+const list = (key, arr, { multi = false } = {}) => ({ multi, html: `<div class="opts" data-key="${key}" data-multi="${multi}">${arr.map((o, i) => `<button class="opt" data-v="${esc(o.v || o.l)}" data-i="${i}"><span class="dot">✓</span><span class="lbl">${o.l}${o.s ? `<small>${o.s}</small>` : ""}</span></button>`).join("")}</div>${multi ? btn("Continuar →") : ""}` });
+const photos = (key, arr, { multi = false } = {}) => ({ multi, html: `<div class="pgrid" data-key="${key}" data-multi="${multi}">${arr.map((o, i) => `<button class="pc" data-v="${esc(o.v || o.l)}" data-i="${i}"><div class="im">${o.img ? `<img src="${o.img}" alt="${esc(o.l)}" loading="lazy">` : `<div class="ph">📷 ${esc(o.ph || o.l)}</div>`}</div><div class="bar"><span>${o.l}</span><i>→</i></div>${multi ? `<span class="chk">✓</span>` : ""}</button>`).join("")}</div>${multi ? btn("Continuar →") : ""}` });
+
+/* ---- personalização derivada das respostas ---- */
+const P = {
+  falta: () => Math.max(0, (+S.a.peso || 0) - (+S.a.ideal || 0)),
+  mes1: () => { const f = P.falta(); return f ? Math.min(f, 10) : 10; },
+  meses: () => { const f = P.falta(); return f ? Math.max(1, Math.ceil(f / 8)) : 1; },
+  foco: () => ((S.a.areasalvo || [])[0] || "barriga").toLowerCase(),
+  horario: () => {
+    const f = S.a.fome, r = S.a.rotina || "";
+    if (f === "manhã") return r.startsWith("Trabalho fora") ? "logo ao acordar, antes de sair" : "logo ao acordar";
+    if (f === "tarde") return r.startsWith("Trabalho fora") ? "30 min antes do almoço, no trabalho" : "30 min antes do almoço";
+    if (f === "noite") return "30 min antes do jantar";
+    return "de manhã e 30 min antes do jantar";
+  },
+  beneficio: () => (S.a.beneficios || [])[0] || "",
+  empatia: () => ({
+    "Minha autoestima tá lá embaixo": "Você disse que a autoestima tá lá embaixo. Em 30 dias o que muda primeiro é o espelho.",
+    "Vivo cansada, sem energia pra nada": "Você disse que vive cansada. Quando a fome para de mandar, a energia volta na primeira semana.",
+    "Já tá mexendo com a saúde: pressão, dores, exames": "Você disse que já tá mexendo na saúde. Por isso o horário e a dose são calculados pro seu corpo, não genéricos.",
+    "Tá afetando a minha vida íntima": "Você disse que tá afetando a sua vida íntima. Secar só a gordura, mantendo as curvas, é exatamente o que a Canetinha faz.",
+  }[S.a.impacto] || "Não é falta de força de vontade. É a fome que a canetinha desliga à força — e que a Canetinha de Pobre desliga do jeito natural, enquanto coloca seu corpo pra queimar gordura 24 horas por dia."),
+  barreira: () => ({
+    fome: "A fome vence — e é isso que a Canetinha corta primeiro.",
+    tempo: "Falta tempo — por isso são 5 minutos de preparo, 1 vez por dia.",
+    financeiro: "É caro — por isso é R$ 37 e ingrediente de mercado, não R$ 3 mil.",
+    constancia: "Você larga na 2ª semana — quando a fome some, manter deixa de ser esforço.",
+  }[S.a.barreira] || ""),
+};
+
+/* =====================================================================
+   ETAPAS (20)
+   ===================================================================== */
+/* ENTRADA: padrão SEM landing (Paizão, BetterMe e Chia teste #7 provaram). ?v=landing liga a landing pra testar. */
+const QS = new URLSearchParams(location.search);
+const pick = (key, pct, force) => { // sorteio sticky por versão de teste
+  const k = `cdp_ab_${key}_v${CONFIG.split.version}`;
+  if (force) { try { localStorage.setItem(k, force); } catch (e) {} return force; }
+  try { const v = localStorage.getItem(k); if (v) return v; } catch (e) {}
+  const v = Math.random() * 100 < pct ? "B" : "A";
+  try { localStorage.setItem(k, v); } catch (e) {}
+  return v;
+};
+const ENTRY = QS.get("v") === "landing" ? "landing" : QS.get("v") === "pergunta" ? "pergunta" : (pick("landing", CONFIG.split.landing) === "B" ? "landing" : "pergunta");
+const VSLV = pick("vsl", CONFIG.split.vslB, ["A", "B"].includes(QS.get("ab")) ? QS.get("ab") : null);
+
+/* =====================================================================
+   FIRESTORE — 1 doc por sessão em sessions/{sid}; config/funnel sobrescreve split
+   ===================================================================== */
+const DB = (() => {
+  const fb = CONFIG.firebase; if (!fb.apiKey) return null;
+  let sid = null; try { sid = localStorage.getItem("cdp_sid"); } catch (e) {}
+  if (!sid) { sid = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); try { localStorage.setItem("cdp_sid", sid); } catch (e) {} }
+  const t0 = (() => { try { return +sessionStorage.getItem("cdp_t0") || 0; } catch (e) { return 0; } })() || Date.now();
+  try { sessionStorage.setItem("cdp_t0", String(t0)); } catch (e) {}
+  const q = new URLSearchParams(location.search);
+  const meta = { sid, entry: ENTRY, vsl: VSLV, utm_source: q.get("utm_source") || null, utm_medium: q.get("utm_medium") || null, utm_campaign: q.get("utm_campaign") || null, utm_content: q.get("utm_content") || null, utm_term: q.get("utm_term") || null, ref: document.referrer || null, ua: navigator.userAgent.slice(0, 160), mobile: /Mobi|Android|iPhone/i.test(navigator.userAgent), day: new Date().toISOString().slice(0, 10) };
+  let ready = null, db = null, FS = null;
+  const load = (src) => new Promise((res, rej) => { const el = document.createElement("script"); el.src = src; el.onload = res; el.onerror = rej; document.head.appendChild(el); });
+  const init = async () => {
+    const v = "10.12.0";
+    await load(`https://www.gstatic.com/firebasejs/${v}/firebase-app-compat.js`);
+    await load(`https://www.gstatic.com/firebasejs/${v}/firebase-auth-compat.js`);
+    await load(`https://www.gstatic.com/firebasejs/${v}/firebase-firestore-compat.js`);
+    const app = firebase.initializeApp(fb); db = firebase.firestore(); FS = firebase.firestore;
+    try { await firebase.auth().signInAnonymously(); } catch (e) { console.warn("[cdp] auth anônimo falhou:", e.message); }
+    // config remota (split de testes, vagas)
+    try { const c = await db.collection("config").doc("funnel").get(); if (c.exists) { const d = c.data(); if (d.split) Object.assign(CONFIG.split, d.split); if (d.vagas) CONFIG.vagas = d.vagas; } } catch (e) {}
+    const uid = (firebase.auth().currentUser || {}).uid || null;
+    await db.collection("sessions").doc(sid).set({ ...meta, uid, createdAt: FS.FieldValue.serverTimestamp(), updatedAt: FS.FieldValue.serverTimestamp() }, { merge: true });
+  };
+  ready = init().catch(e => { console.warn("[cdp] firestore off:", e.message); db = null; });
+  const write = (patch) => { ready.then(() => { if (!db) return; db.collection("sessions").doc(sid).set({ ...patch, updatedAt: FS.FieldValue.serverTimestamp() }, { merge: true }).catch(() => {}); }); };
+  const secs = () => Math.round((Date.now() - t0) / 1000);
+  return {
+    sid,
+    step: (i, id) => write({ [`steps.${id}`]: { i, t: secs() }, maxStep: i, maxStepId: id, ...(id === "diagnostico" ? { completed: true } : {}), ...(id === "oferta" ? { offerViewed: true, offerAt: secs() } : {}) }),
+    answer: (key, val) => write({ [`answers.${key}`]: val }),
+    calc: (o) => write(o),
+    checkout: (n) => write({ checkoutClicked: true, checkoutAt: secs(), ctaN: n, checkoutClicks: FS ? FS.FieldValue.increment(1) : 1 }),
+    audio: (id) => write({ [`audio.${id}`]: true }),
+  };
+})();
+const LANDING = { id: "landing", noBand: true, render: () => `
+    <div class="land">
+      <h1>Elimine até <span class="hl">10 kg de gordura em 30 dias</span> com a receitinha que as famosas estão usando no lugar da canetinha</h1>
+      <p class="sub">Corta a fome igual a caneta e coloca seu corpo pra queimar gordura 24 horas por dia — até dormindo. Fiz uma avaliação gratuita pra ver se funciona no seu corpo.</p>
+      <div class="photo"><span class="tag">Canetinha de Pobre</span>${A.landingFoto ? `<img src="${A.landingFoto}" alt="">` : `<div class="ph">📷 sua foto da landing (slot landingFoto, 4:4.2)</div>`}</div>
+      ${btn("Quero a minha avaliação gratuita →", "pulse")}
+      <p class="micro">⏱ Leva 2 minutinhos · <b>100% gratuito</b> · sem cartão<br>Você responde uma vez só</p>
+    </div>` };
+
+const STEPS = [
+  ...(ENTRY === "landing" ? [LANDING] : []),
+
+  /* 02 — áreas (cards com foto, multi) */
+  { id: "areas", title: "Pra começar: <span class='hl'>onde</span> você mais quer secar?", sub: "Pode marcar mais de uma.",
+    ...photos("areasalvo", [
+      { l: "Barriga", img: A.areaBarriga, ph: "modelo · barriga marcada" }, { l: "Culotes", img: A.areaCulotes, ph: "modelo · culotes marcados" },
+      { l: "Coxas", img: A.areaCoxas, ph: "modelo · coxas marcadas" }, { l: "Braços", img: A.areaBracos, ph: "modelo · braços marcados" },
+      { l: "Glúteos", img: A.areaGluteos, ph: "modelo · glúteos (costas)" }, { l: "Corpo todo", img: A.areaCorpoTodo, ph: "modelo · contorno" }], { multi: true }) },
+
+  /* 03 — quantos kg (Mounjaro etapa 2) */
+  { id: "meta", title: "E quantos quilos você quer <span class='hl'>eliminar</span>?",
+    ...list("meta", [{ l: "Até 5 kg" }, { l: "De 6 a 10 kg" }, { l: "De 11 a 19 kg" }, { l: "20 kg ou mais" }]) },
+
+  /* 04 — tipo de corpo */
+  { id: "corpo", title: "Sem julgamento: como tá o seu <span class='hl'>corpo hoje</span>?", sub: "É só o ponto de partida.",
+    ...photos("corpo", [
+      { l: "Médio", img: A.corpoMedio, ph: "modelo · médio" }, { l: "Sobrepeso", img: A.corpoSobrepeso, ph: "modelo · sobrepeso" },
+      { l: "Acima do peso", img: A.corpoAcima, ph: "modelo · acima do peso" }, { l: "Plus size", img: A.corpoPlus, ph: "modelo · plus size" }]) },
+
+  /* 04 — impacto */
+  { id: "impacto", title: "Me fala a real: como o peso tem <span class='rd'>atrapalhado</span> a sua vida?",
+    ...list("impacto", [{ l: "Minha autoestima tá lá embaixo" }, { l: "Vivo cansada, sem energia pra nada" }, { l: "Já tá mexendo com a saúde: pressão, dores, exames" }, { l: "Tá afetando a minha vida íntima" }]) },
+
+  /* 06 — está feliz? (Mounjaro etapa 6) */
+  { id: "feliz", title: "Você tá <span class='rd'>feliz</span> com a sua aparência hoje?",
+    ...list("feliz", [{ l: "Não, quero emagrecer pra me sentir melhor" }, { l: "Sim, mas sei que posso melhorar" }]) },
+
+  /* 07 — relação com a canetinha (aprovada) — alimenta a abertura do mecanismo, o alerta do diagnóstico e o FAQ */
+  { id: "caneta", title: "E a <span class='hl'>canetinha de verdade</span>, qual a sua relação com ela?",
+    ...list("caneta", [{ l: "Já usei e o peso voltou", v: "usei" }, { l: "Quero usar, mas tenho medo dos efeitos", v: "medo" }, { l: "Queria, mas não tenho R$ 3 mil por mês", v: "caro" }, { l: "Nunca pensei nisso", v: "nunca" }]) },
+
+  /* 06 — barreira */
+  { id: "barreira", title: "E o que mais te <span class='rd'>impede</span> de emagrecer?",
+    ...list("barreira", [
+      { l: "A fome vence", s: "Começo a dieta e não aguento, principalmente à noite", v: "fome" },
+      { l: "Falta tempo", s: "Rotina agitada, não sobra tempo pra mim", v: "tempo" },
+      { l: "É caro demais", s: "Canetinha, nutri, academia… não cabe no bolso", v: "financeiro" },
+      { l: "Não tenho constância", s: "Começo animada e largo na segunda semana", v: "constancia" }]) },
+
+  /* 07 — mecanismo: a caneta como vilão */
+  { id: "mecanismo", render: () => {
+    const open = {
+      usei: `<b>Você já usou a canetinha e o peso voltou.</b> Não foi culpa sua — é o que ela faz com quase todo mundo que para. Olha só 👇`,
+      medo: `<b>Você tem medo dos efeitos da canetinha.</b> Faz sentido — eles são reais. Olha o que ninguém conta 👇`,
+      caro: `<b>R$ 3 mil por mês não cabe no bolso de ninguém.</b> E a boa notícia é que nem precisa. Olha só 👇`,
+      nunca: `<b>Você já viu a Virginia Fonseca, a Jojo Todynho, a Maraisa secando na canetinha.</b> O que ninguém conta é o que ela faz por trás 👇`,
+    }[S.a.caneta] || `<b>Você já viu a Virginia Fonseca, a Jojo Todynho, a Maraisa secando na canetinha.</b> O que ninguém conta é o que ela faz por trás 👇`;
+    return `
+    <div class="al acc">${open}</div>
+    <h2 class="q-title">A Canetinha de Pobre age na <span class="hl">causa principal</span> do ganho de peso — e a canetinha de verdade não</h2>
+    <div class="cmp">
+      <div class="col bad"><h3>❌ A canetinha de verdade</h3><ul>
+        <li><i>✗</i><span>Deixa com <b>cara de doente</b> — seca o rosto junto</span></li>
+        <li><i>✗</i><span>Quando para, a fome volta e <b>o peso volta pior</b>, mais mole</span></li>
+        <li><i>✗</i><span>Perde <b>músculo</b> junto com a gordura: fica magra e flácida</span></li>
+        <li><i>✗</i><span>Até <b>R$ 3 mil por mês</b>, com agulha e receita médica</span></li></ul></div>
+      <div class="col good"><h3>✅ A Canetinha de Pobre</h3><ul>
+        <li><i>✓</i><span><b>Corta a fome do mesmo jeito</b> — segura a comida no estômago e desliga o sinal de fome</span></li>
+        <li><i>✓</i><span><b>Acelera o metabolismo</b> e coloca o corpo pra <b>queimar gordura 24 horas por dia</b>, até dormindo</span></li>
+        <li><i>✓</i><span><b>Derrete a gordura localizada</b> — barriga, culote, coxa — e mantém bumbum, curvas e firmeza</span></li>
+        <li><i>✓</i><span><b>O peso não volta</b>, porque não cria dependência</span></li>
+        <li><i>✓</i><span>Ingredientes de mercado, <b>5 minutos</b>, R$ 37</span></li></ul></div>
+    </div>
+    ${img(A.bebidaProduto, "foto do copo com a bebida (prompt A6)", "16/9")}
+    <p class="small"><b>Por isso as famosas estão trocando.</b> A Canetinha de Pobre estimula o mesmo hormônio da saciedade que a caneta e ainda acelera o metabolismo: seu corpo passa a <b>queimar gordura 24 horas por dia, mesmo enquanto você dorme</b> — e você começa a secar já nos primeiros dias. O horário certo de tomar eu calculo nas próximas perguntas.</p>
+    ${btn("Entendi, continuar →", "pulse")}`; } },
+
+  /* 08 — benefícios */
+  { id: "beneficios", title: "O que você mais quer <span class='hl'>sentir</span> nos próximos 30 dias?", sub: "Marca tudo que se aplica.",
+    ...list("beneficios", [{ l: "Parar de beliscar e comer besteira" }, { l: "Me olhar no espelho e gostar" }, { l: "Usar qualquer roupa sem marcar a barriga" }, { l: "Ouvir \"o que você fez pra emagrecer?\"" }, { l: "Meu parceiro me olhando com desejo" }, { l: "Subir escada sem cansar" }], { multi: true }) },
+
+  /* 09 — prova */
+  { id: "prova", render: () => `
+    <h2 class="q-title">Ouve isso <span class="hl">antes de continuar</span>:</h2>
+    ${audio(A.audio1, "audio1")}
+    <p class="small">${S.a.corpo ? `Resultado de quem tinha o corpo <b>${esc(S.a.corpo).toLowerCase()}</b>, igual você marcou:` : "Resultado real com a Canetinha de Pobre:"}</p>
+    ${img((A.depoimentoPorCorpo || {})[S.a.corpo] || A.depoimentoFoto1, "antes/depois — corpo " + (S.a.corpo || ""), "4/3")}
+    ${quote("Marluce Andrade", "Eu já tinha tentado de tudo e sempre desistia porque a fome vencia. Com a Canetinha de Pobre, em 3 dias eu não tava mais pensando em comida o dia inteiro. Perdi 17 kg em 2 meses sem passar fome e sem gastar com caneta nenhuma — e a barriga foi a primeira a secar.", "📍 Salvador - BA", A.quotesAvatars[0])}
+    ${btn("Continuar →", "pulse")}` },
+
+  /* 10–12 — dados */
+  { id: "peso", title: "Quase lá! Qual é o seu <span class='hl'>peso</span> hoje?", sub: "Fica só entre nós 🔒 É pra calcular a sua dose.", slider: { key: "peso", min: 40, max: 200, def: 75, unit: "kg" } },
+  { id: "altura", title: "E a sua <span class='hl'>altura</span>?", sub: "Vou calcular o seu IMC.", slider: { key: "altura", min: 140, max: 210, def: 165, unit: "cm" } },
+  { id: "ideal", title: "E qual peso você quer <span class='hl'>chegar</span>?", slider: { key: "ideal", min: 40, max: 200, def: 62, unit: "kg" } },
+
+  /* 13 — tela motivacional (BetterMe) — usa meta + barreira */
+  { id: "motiva", render: () => `
+    <div class="info-card">
+      <p class="big">${P.falta() ? `Faltam <span class="hl">${P.falta()} kg</span> pra sua meta. Dá pra fazer <span class="hl">sem passar fome.</span>` : `Dá pra chegar lá <span class="hl">sem passar fome.</span>`}</p>
+      <p class="small">Pelo seu perfil, a Canetinha de Pobre prevê <b>até ${P.mes1()} kg no primeiro mês</b>${P.meses() > 1 ? ` e a meta completa em cerca de <b>${P.meses()} meses</b>` : ""} — comendo arroz e feijão — com a fome cortada e o metabolismo queimando gordura o dia inteiro, até dormindo.</p>
+      ${P.barreira() ? `<div class="al acc">${P.barreira()}</div>` : ""}
+      <div class="mock">${A.appMockup ? `<img src="${A.appMockup}" alt="App">` : `<div class="ph">📷 mockup do celular com o app: receita + dose + horário (prompt F8)</div>`}</div>
+      <p class="small">Faltam 4 perguntinhas pra eu fechar o seu <b>horário da Canetinha</b>.</p>
+    </div>
+    ${btn("Continuar →", "pulse")}` },
+
+  /* 14–16 — rotina, sono, fome */
+  { id: "rotina", title: "Como é o seu <span class='hl'>dia a dia</span>?", sub: "Ajuda a definir a hora de tomar.",
+    ...list("rotina", [{ l: "Trabalho fora, rotina corrida" }, { l: "Trabalho em casa, horário flexível" }, { l: "Fico em casa cuidando da família" }, { l: "Outro" }]) },
+  { id: "sono", title: "Quantas horas você <span class='hl'>dorme</span> por noite?", sub: "Dormir pouco aumenta a fome no dia seguinte.",
+    ...list("sono", [{ l: "Menos de 5 horas" }, { l: "Entre 5 e 7 horas" }, { l: "Entre 7 e 9 horas" }, { l: "Mais de 9 horas" }]) },
+  { id: "fome", title: "Em que momento a <span class='rd'>fome</span> mais te ataca?", sub: "É isso que define o horário da sua Canetinha.",
+    ...list("fome", [{ l: "De manhã, acordo com fome", v: "manhã" }, { l: "À tarde, depois do almoço", v: "tarde" }, { l: "À noite, depois do jantar", v: "noite" }, { l: "O dia inteiro, vivo beliscando", v: "o dia inteiro" }]) },
+
+  /* 17 — corpo que quer */
+  { id: "corpoalvo", title: "E como você quer se <span class='hl'>ver</span> daqui a 30 dias?",
+    ...photos("corpoalvo", [{ l: "Seca e definida", img: A.depoisSeca, ph: "modelo · seca (C10)", v: "Em forma" }, { l: "Magra e natural", img: A.depoisNatural, ph: "modelo · natural (C11)", v: "Natural" }]) },
+
+  /* 18 — compromisso */
+  { id: "compromisso", title: "Última, e é a que mais vale: você tá <span class='hl'>disposta</span> a tomar a Canetinha todo dia por 30 dias?",
+    ...list("compromisso", [{ l: "Tô pronta, pode vir 🙏", v: "pronta" }, { l: "Quero, mas tenho medo de não conseguir", v: "medo" }]) },
+
+  /* 19 — loading */
+  { id: "loading", noBack: true, render: () => `
+    <h2 class="load-h" id="lh"></h2>
+    <div class="lbar"><i id="lf"></i></div>
+    <div class="slide" id="ls"></div>
+    <div class="dots" id="ld"><i class="on"></i><i></i><i></i></div>`,
+    mount: () => {
+      const beats = [`Calma… tô montando a sua Canetinha pra secar ${P.foco()}`, `Cruzando seu peso, seu IMC e o momento que a fome te ataca`, `Pronto. A sua Canetinha vai ser tomada <b>${P.horario()}</b>. Gerando o protocolo`];
+      const lh = document.getElementById("lh"), lf = document.getElementById("lf"), ls = document.getElementById("ls"), ld = document.getElementById("ld");
+      const dd = `<span class="dd"><i>.</i><i>.</i><i>.</i></span>`;
+      let k = -1; const total = 13500;
+      const setBeat = (n) => { k = n; lh.innerHTML = beats[k] + dd; const src = A.loadingPrints[k]; ls.innerHTML = src ? `<img src="${src}" alt="">` : `<div class="ph">📷 print do grupo/app ${k + 1} com resultado de aluna (grupo E)</div>`; [...ld.children].forEach((d, j) => d.classList.toggle("on", j === k)); };
+      setBeat(0);
+      const t0 = performance.now();
+      const tick = (now) => { const p = Math.min(1, (now - t0) / total); lf.style.width = (p * 100) + "%"; const nk = Math.min(2, Math.floor(p * 3)); if (nk !== k) setBeat(nk); if (p < 1) requestAnimationFrame(tick); else if (STEPS[S.i].id === "loading") { track("Lead", { content_name: "quiz_completo" }); next(); } };
+      requestAnimationFrame(tick);
+    } },
+
+  /* 20 — diagnóstico */
+  { id: "diagnostico", render: () => {
+    const v = imc(), f = faixa(); const pos = Math.max(3, Math.min(97, ((v - 15) / 25) * 100));
+    const frase = {
+      magreza: `Seu IMC deu <b>${v.toFixed(1)}</b>, abaixo da faixa — mas fome descontrolada também acumula gordura localizada. A Canetinha regula isso.`,
+      normal: `Seu IMC deu <b>${v.toFixed(1)}</b>, dentro da faixa. Mas seu metabolismo pode estar lento, acumulando gordura localizada — e é isso que a Canetinha vai derreter.`,
+      sobrepeso: `Seu IMC deu <b>${v.toFixed(1)}</b>: sobrepeso. Seu corpo está no modo <b>acúmulo de gordura</b> — metabolismo lento, retendo líquido — e cada mês que passa fica mais difícil de reverter sem ajuda.`,
+      obesidade: `Seu IMC deu <b>${v.toFixed(1)}</b>: obesidade. Seu corpo está no modo <b>acúmulo de gordura</b> e a sua saúde tem que vir primeiro. Chegou o limite de deixar pra depois — a Canetinha começa hoje.`,
+    }[f];
+    const beforeImg = { "Médio": A.corpoMedio, "Plus size": A.corpoPlus, "Acima do peso": A.corpoAcima, "Sobrepeso": A.corpoSobrepeso }[S.a.corpo] || "";
+    const afterImg = S.a.corpoalvo === "Natural" ? A.depoisNatural : A.depoisSeca;
+    const sono = S.a.sono === "Menos de 5 horas" ? `<div class="al warn">😴 <b>Você dorme menos de 5 horas.</b> Isso sozinho aumenta a fome no dia seguinte — sua dose vai ter um ajuste específico pra quem dorme pouco.</div>` : "";
+    const cn = S.a.caneta === "usei" ? `<div class="al red">💉 <b>Você já usou a canetinha e o peso voltou.</b> Foi o rebote: a fome voltou sem o sinal artificial. Dessa vez o sinal vem do seu próprio corpo — por isso não volta.</div>` : "";
+    const medo = S.a.compromisso === "medo" ? `<div class="al acc">🤝 <b>Você disse que tem medo de não conseguir.</b> Normal. Por isso tem o grupo, o suporte no WhatsApp e 30 dias de garantia — você não vai estar sozinha.</div>` : "";
+    return `
+    <h2 class="q-title">Seu corpo nos <span class="hl">próximos 30 dias</span></h2>
+    <div class="ba">
+      <div class="labs"><div><b>Agora</b><small>Hoje</small></div><div></div><div><b class="goal">Seu objetivo</b><small>${dateBR(30)}</small></div></div>
+      <div class="shots">
+        <div class="shot">${beforeImg ? `<img src="${beforeImg}" alt="Agora">` : `<div class="ph">📷 seu corpo hoje (${esc(S.a.corpo || "modelo")})</div>`}</div>
+        <div class="arr">›››</div>
+        <div class="shot">${afterImg ? `<img src="${afterImg}" alt="Objetivo">` : `<div class="ph">📷 objetivo (${esc(S.a.corpoalvo || "seca")})</div>`}</div>
+      </div>
+      <div class="shots"><div class="cap">você tá aqui</div><div></div><div class="cap goal">${S.a.corpoalvo === "Natural" ? "magra e natural" : "seca e no lugar"}</div></div>
+      <div class="imc">${frase}</div>
+      <div class="rows">
+        <div><small>Peso</small><b>${S.a.peso || "–"} kg</b></div><div class="d"></div><div><small>Meta</small><b class="goal">${S.a.ideal || "–"} kg</b></div>
+        <div><small>Foco</small><b>${esc((S.a.areasalvo || []).join(", ") || "corpo todo")}</b></div><div class="d"></div><div><small>Sua Canetinha</small><b class="goal">${P.horario()}</b></div>
+      </div>
+    </div>
+    <div class="metric"><div class="mt"><span>IMC ${v.toFixed(1)}</span><span class="${f === "normal" ? "ok" : ""}">${f === "normal" ? "faixa saudável" : "⚠️ zona de alerta"}</span></div><div class="bar"><span class="tip" style="left:${pos}%">Você</span><span class="dot" style="left:${pos}%"></span></div><div class="lg"><span>Magreza</span><span>Baixo</span><span>Normal</span><span>Sobrepeso</span><span>Obesidade</span></div></div>
+    ${cn}${sono}${medo}
+    <div class="al info">🧡 ${P.empatia()}</div>
+    ${btn("RECEBER A MINHA CANETINHA →", "pulse")}`; } },
+
+  /* 21 — oferta */
+  { id: "oferta", render: () => {
+    const v = imc(), f = faixa();
+    const gif = f === "obesidade" ? A.gifIMCobesidade : f === "sobrepeso" ? A.gifIMCsobrepeso : A.gifIMCnormal;
+    const gord = f === "obesidade" ? ["35-40%", "25-29%"] : f === "sobrepeso" ? ["29-34%", "20-25%"] : ["25-29%", "15-25%"];
+    const areas = (S.a.areasalvo || []).join(", ") || "Corpo todo";
+    const ben = P.beneficio();
+    const args = [
+      ["A Receita da Canetinha de Pobre", "O preparo exato, os ingredientes de mercado e a dose certa pro seu peso pra cortar a fome e ativar a queima de gordura 24h.", "🥤"],
+      ["Protocolo Sem Cara de Doente", "O que as famosas fazem pra derreter gordura localizada sem murchar o rosto nem perder as curvas.", "✨"],
+      ["Definição de metas diárias", "Pra acompanhar o resultado todo dia e se manter no caminho.", "🎯"],
+      ["Anti Efeito Sanfona", "Pra o peso não voltar depois — sem depender de caneta nenhuma.", "🔁"],
+      ["Desafio de 21 dias", "Com as outras meninas, pra maximizar o resultado.", "🗓️"],
+      ["Grupo VIP + Suporte no WhatsApp", "Pra tirar dúvida, postar resultado e não desistir.", "💬"],
+    ];
+    const price = (feat) => `<div class="price"><span class="feat">${feat}</span><div class="pt">Canetinha de Pobre</div><div class="before">de R$ ${CONFIG.priceBefore} por</div><div class="val"><small>R$</small>${CONFIG.price}</div><div class="parc">ou ${CONFIG.parcelas}</div><div class="pix">à vista no Pix ou cartão</div></div>`;
+    const cta = (n) => `<button class="btn green pulse cta" data-n="${n}">Quero a minha Canetinha de Pobre</button>`;
+    const bar = (pct, color, legend) => `<div><div class="b"><i style="height:${pct}%;background:${color}"></i></div><span class="pc2" style="color:${color}">${pct}%</span><span>${legend}</span></div>`;
+    const faq = [
+      ["Isso é a mesma coisa que a canetinha?", "Não. A canetinha é um remédio injetável de uso controlado. A Canetinha de Pobre é um preparo natural que estimula o mesmo hormônio da saciedade e acelera o metabolismo pra queimar gordura — sem agulha, sem receita e sem os efeitos da caneta (cara de doente, rebote, perda de músculo)."],
+      ["Já usei a canetinha e o peso voltou. Funciona pra mim?", "É justamente pra isso. O rebote acontece porque a fome volta sem o sinal artificial. Aqui o sinal vem do seu corpo, então não tem rebote."],
+      ["Tenho medo de começar e não conseguir.", "Por isso tem o grupo, o suporte no WhatsApp e 30 dias de garantia. Se não sentir a fome diminuir, devolvo tudo e você fica com o protocolo."],
+      ["Sou gestante ou estou amamentando, posso tomar?", "Lactantes só se o bebê tiver mais de 6 meses. Gestantes não é recomendado."],
+      ["Sou hipertensa, posso tomar?", "Sim — no app tem as instruções certas pra quem tem pressão alta."],
+      ["Em quanto tempo vejo resultado?", "A fome costuma diminuir nos primeiros 3 dias e o peso na primeira semana."],
+      ["Tem efeito colateral?", "É 100% natural. Na primeira semana pode dar leve dor de cabeça e mais idas ao banheiro."],
+      ["Como recebo o acesso?", "No e-mail cadastrado na compra, na hora."],
+    ];
+    const vsl = (VSLV === "B" && CONFIG.vslEmbedB) ? CONFIG.vslEmbedB : CONFIG.vslEmbed ? CONFIG.vslEmbed : CONFIG.vslMp4 ? `<video src="${CONFIG.vslMp4}" controls playsinline></video>` : `<div class="ph"><div class="pl">▶</div><b>VSL da oferta (1m55)</b>roteiro na seção "VSL" do mapa · cole o embed da vturb em CONFIG.vslEmbed</div>`;
+    return `
+    <h2 class="q-title">A sua Canetinha de Pobre <span class="hl">foi gerada!</span></h2>
+    <p class="small">Ela é exclusiva e gerada uma vez só. Não sai dessa página pra não perder.</p>
+    <p class="h3">Dá o play e veja o que você vai receber 👇</p>
+    <div class="vsl"><div class="frame">${vsl}</div></div>
+    ${img(gif, "GIF “depois do protocolo” — faixa " + f, "16/9")}
+    <div class="cards4"><div><small>Gordura corporal · hoje</small><b>${gord[0]}</b></div><div style="background:var(--accent-soft)"><small>Gordura corporal · em 30 dias</small><b>${gord[1]}</b></div></div>
+    <p class="h3">Seu perfil:</p>
+    <div class="cards4">
+      <div><div class="em">📊</div><b>${v.toFixed(1)}</b><small>IMC atual</small></div>
+      <div><div class="em">🎯</div><b style="font-size:.9rem">${esc(areas)}</b><small>áreas alvo</small></div>
+      <div><div class="em">⚖️</div><b>${S.a.peso || "–"} kg</b><small>peso atual</small></div>
+      <div><div class="em">🏁</div><b>${S.a.ideal || "–"} kg</b><small>meta</small></div>
+    </div>
+    <div class="al acc" style="text-align:center">🕒 Horário da sua Canetinha: <b>${P.horario()}</b>${P.falta() ? ` · previsão <b>até ${P.mes1()} kg de gordura</b> no 1º mês` : ""}</div>
+    <p class="h3">Seu protocolo inclui:</p>
+    <div class="args">${args.map((a, i) => `<div class="a"><div class="ai">${A.argumentos[i] ? `<img src="${A.argumentos[i]}" alt="">` : a[2]}</div><div class="at"><b>${a[0]}</b><p>${a[1]}</p></div></div>`).join("")}</div>
+    <div class="sp2"></div>
+    ${price("Protocolo Completo")}
+    ${cta(1)}
+    <div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div>
+    <div class="sp2"></div>
+    <p class="h3">Quem fez a troca tem resultado 😉👇</p>
+    ${carousel(A.resultadosCarrossel, "resultado")}
+    <div class="sp2"></div>
+    <p class="h3">Nos próximos 30 dias:</p>
+    <div class="tl">${bar(10, "#dc2626", "Hoje: fome o dia todo, compulsão à noite")}${bar(40, "#f59e0b", "1ª semana: fome cortada, corpo desinchando e desintoxicando")}${bar(60, "#2563eb", "2ª semana: metabolismo acelerado, queimando gordura até dormindo")}</div>
+    <div class="tl two">${bar(80, "#7c3aed", "3ª semana: gordura localizada derretendo, roupas folgando")}${bar(100, "#16a34a", `4ª semana: até ${P.mes1()} kg de gordura a menos${ben ? ` — ${ben.toLowerCase()}` : ", rosto igual, corpo firme"}`)}</div>
+    <div class="sp1"></div>
+    <div class="al red sm">🔴 Vagas disponíveis hoje: ${CONFIG.vagas}</div>
+    <div class="al"><b>Já parou pra pensar o quanto gastou até hoje tentando emagrecer?</b>
+      <p style="font-size:.86rem;line-height:1.8;margin-top:8px">👨‍⚕️ Consultas + exames <b>R$ 500</b><br>🏋️ Academia + personal <b>R$ 400</b><br>🥗 Dietas + suplementos <b>R$ 450</b><br>💉 Canetinha de verdade <b>R$ 3.000/mês</b><br>💜 Canetinha de Pobre <b style="color:var(--green-deep)">${CONFIG.parcelas}</b></p>
+      <p style="margin-top:8px;font-size:.88rem">Pelo preço de uma pizza você faz a mesma troca que as famosas fizeram — um método natural que corta a fome e queima gordura, sem agulha, sem receita e com resultado já nos primeiros dias.</p></div>
+    ${price("Mais vendido")}
+    ${cta(2)}
+    <div class="sp2"></div>
+    <p class="h3 c">Tudo num aplicativo de fácil acesso 📲</p>
+    <div class="appshot">${img(A.appPrint, "print do app (prompt F7)", "9/16")}</div>
+    <div class="sp2"></div>
+    <div class="guar"><div class="g"><b>30</b>dias de<br>garantia</div><p><b>Garantia de Reembolso ⭐⭐⭐⭐⭐</b><br>A lei obriga 7 dias; eu dou 30. Se em 30 dias sua barriga não desinchar e suas roupas não folgarem, devolvo cada centavo — e você ainda fica com o protocolo de graça. É só mandar um e-mail pro suporte ou pedir pelo app.</p></div>
+    <div class="stamp"><div class="sa">${A.avatarSentada ? `<img src="${A.avatarSentada}" alt="">` : avRound()}</div><div><b>Protocolo gerado por: ${esc(CONFIG.avatar)}</b>${CONFIG.crn ? `<br>Nutricionista · ${esc(CONFIG.crn)}` : ""}</div></div>
+    <div class="timer">Sua Canetinha fica reservada por<b id="timer">10:00</b>depois disso a página é apagada pra dar lugar a novas avaliações</div>
+    <div class="sp2"></div>
+    <p class="h3">Depoimentos</p>
+    ${quote("Rafaela Nascimento", "Muito bom! Recomendo, minha fome sumiu e já perdi 5 kg nos últimos 17 dias.", "📍 Recife - PE", A.quotesAvatars[1])}
+    ${quote("Luana Dias", "Tô usando tem 2 semanas e não sinto mais aquela vontade de doce depois do almoço. Perdi peso e desinchei bastante! 🥰", "📍 Curitiba - PR", A.quotesAvatars[2])}
+    ${quote("Andressa Soares", "Oiii comprei hoje, uma amiga me indicou… posso tomar mais de uma vez ao dia se eu quiser? 😅", "📍 Goiânia - GO", A.quotesAvatars[3])}
+    ${quote("Beatriz Mattos", "gente é sério que isso é o que as famosas fazem? kkk baratinho e funcional", "📍 Belém - PA", A.quotesAvatars[4])}
+    <div class="addq"><input id="addq" placeholder="Adicionar depoimento" aria-label="Adicionar depoimento"><button type="button">Enviar</button></div>
+    <div class="sp2"></div>
+    <p class="small"><b>Ficou com alguma dúvida?</b> Ouve isso:</p>
+    ${audio(A.audio3, "audio3")}
+    <div class="sp1"></div>
+    ${carousel(A.printsCarrossel, "print / relato", true)}
+    <div class="sp1"></div>
+    ${cta(3)}
+    <div class="sp1"></div>
+    <p class="h3">Perguntas frequentes</p>
+    <div class="faq">${faq.map((q, i) => `<details ${i === 0 ? "open" : ""}><summary>${q[0]}</summary><div class="ans">${q[1]}</div></details>`).join("")}</div>
+    <div class="sp1"></div>
+    ${cta(4)}
+    <p class="foot">Este produto não substitui orientação médica. Consulte um profissional de saúde. Resultados variam de pessoa para pessoa.<br>© ${new Date().getFullYear()} Canetinha de Pobre</p>`; },
+    mount: () => {
+      let t = CONFIG.timerSeconds; const te = document.getElementById("timer");
+      const tk = () => { if (!te || !document.body.contains(te)) return; te.textContent = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`; if (t-- > 0) setTimeout(tk, 1000); }; tk();
+      const msgs = ["🔔 4 pessoas estão comprando", "Beatriz Oliveira acabou de garantir a dela", "🔔 2 pessoas estão preenchendo pagamento", "Cláudia Maria acabou de garantir a dela"];
+      let k = 0; const toast = document.getElementById("toast");
+      const show = () => { if (STEPS[S.i].id !== "oferta") return; toast.innerHTML = `<b>${msgs[k++ % msgs.length]}</b><small>⏰ Neste minuto</small>`; toast.classList.add("on"); setTimeout(() => toast.classList.remove("on"), 5000); setTimeout(show, 20000); };
+      setTimeout(show, 2500);
+      document.querySelectorAll(".cta").forEach(b => b.addEventListener("click", () => { track("InitiateCheckout", { cta: b.dataset.n, imc: imc().toFixed(1) }); if (DB) DB.checkout(+b.dataset.n); setTimeout(() => { window.location.href = checkoutUrl(); }, 150); }));
+      track("ViewOffer", { imc: imc().toFixed(1), faixa: faixa() });
+    } },
+];
+
+/* =====================================================================
+   ENGINE
+   ===================================================================== */
+const app = document.getElementById("app"), prog = document.getElementById("prog"), back = document.getElementById("back"), band = document.getElementById("band");
+document.getElementById("brand").innerHTML = A.logo ? `<img src="${A.logo}" alt="Canetinha de Pobre" style="height:40px;width:auto;margin:0 auto">` : `<span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l3.5-1L18 8.5a2.1 2.1 0 0 0-3-3L4.5 16z"/><path d="M13 7l4 4"/><path d="M6 15l3 3"/></svg>Canetinha <b>de Pobre</b></span>`;
+
+function checkoutUrl() {
+  try { const u = new URL(CONFIG.checkout); new URLSearchParams(location.search).forEach((v, k) => u.searchParams.set(k, v)); u.searchParams.set("imc", imc().toFixed(1)); if (DB) u.searchParams.set("sid", DB.sid); u.searchParams.set("ab", VSLV); u.searchParams.set("entry", ENTRY); return u.toString(); } catch { return CONFIG.checkout; }
+}
+function next() { if (S.i < STEPS.length - 1) { S.i++; save(); render(); } }
+function prev() { if (S.i > 0) { S.i--; if (STEPS[S.i].id === "loading") S.i--; save(); render(); } }
+back.addEventListener("click", prev);
+// preview: ?s=N pula pra etapa N
+{ const s0 = parseInt(new URLSearchParams(location.search).get("s"), 10); if (!isNaN(s0) && s0 >= 0 && s0 < STEPS.length) S.i = s0; }
+
+function render() {
+  const st = STEPS[S.i];
+  const p = S.i / (STEPS.length - 1); prog.style.width = Math.round((1 - Math.pow(1 - p, 3)) * 100) + "%"; // progresso "cheio" rápido
+  back.classList.toggle("on", S.i > 0 && !st.noBack && st.id !== "oferta");
+  band.hidden = !!st.noBand;
+  let h = "";
+  if (st.render) h = st.render();
+  else {
+    h += title(st.title, st.sub);
+    if (st.slider) { const s = st.slider, cur = S.a[s.key] ?? s.def; h += `<div class="slider"><div class="val"><span id="sv">${cur}</span><small>${s.unit}</small></div><input type="range" id="sl" min="${s.min}" max="${s.max}" value="${cur}" aria-label="${st.title.replace(/<[^>]+>/g, "")}"><div class="rng"><span>${s.min} ${s.unit}</span><span>${s.max} ${s.unit}</span></div></div>${btn("Continuar →")}`; }
+    else h += st.html;
+  }
+  app.innerHTML = `<section class="step">${h}</section>`;
+  window.scrollTo({ top: 0, behavior: "instant" });
+  track("QuizStep", { step: S.i + 1, id: st.id });
+  if (DB) { DB.step(S.i, st.id); if (st.id === "diagnostico") DB.calc({ imc: +imc().toFixed(1), faixa: faixa(), horario: P.horario(), falta: P.falta(), corpo: S.a.corpo || null }); }
+
+  const nb = document.getElementById("next");
+  if (nb) nb.addEventListener("click", () => { if (st.slider) { S.a[st.slider.key] = +document.getElementById("sl").value; if (DB) DB.answer(st.slider.key, S.a[st.slider.key]); } save(); next(); });
+  const sl = document.getElementById("sl");
+  if (sl) { const upd = () => { document.getElementById("sv").textContent = sl.value; S.a[st.slider.key] = +sl.value; save(); }; sl.addEventListener("input", upd); upd(); }
+
+  const og = app.querySelector("[data-key]");
+  if (og) {
+    const key = og.dataset.key, multi = og.dataset.multi === "true", cls = og.classList.contains("pgrid") ? ".pc" : ".opt";
+    if (multi && nb) nb.disabled = !(S.a[key] || []).length;
+    const saved = S.a[key];
+    og.querySelectorAll(cls).forEach(o => {
+      if (multi ? (saved || []).includes(o.dataset.v) : saved === o.dataset.v) o.classList.add("sel");
+      o.addEventListener("click", () => {
+        if (multi) { o.classList.toggle("sel"); S.a[key] = [...og.querySelectorAll(cls + ".sel")].map(x => x.dataset.v); save(); if (nb) nb.disabled = !S.a[key].length; if (DB) DB.answer(key, S.a[key]); }
+        else { og.querySelectorAll(cls).forEach(x => x.classList.remove("sel")); o.classList.add("sel"); S.a[key] = o.dataset.v; save(); if (DB) DB.answer(key, S.a[key]); setTimeout(next, 240); }
+      });
+    });
+  }
+  app.querySelectorAll(".audio").forEach(a => {
+    const src = a.dataset.src, pl = a.querySelector(".play"), w = a.querySelector(".wave"), d = a.querySelector(".dur"); let au = null;
+    pl.addEventListener("click", () => {
+      if (!src) { w.classList.toggle("on"); pl.textContent = w.classList.contains("on") ? "❚❚" : "▶"; return; }
+      if (!au) { au = new Audio(src); au.addEventListener("timeupdate", () => { const s = Math.floor(au.currentTime); d.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; }); au.addEventListener("ended", () => { w.classList.remove("on"); pl.textContent = "▶"; }); }
+      if (au.paused) { au.play(); w.classList.add("on"); pl.textContent = "❚❚"; track("AudioPlay", { id: a.id }); if (DB) DB.audio(a.id); } else { au.pause(); w.classList.remove("on"); pl.textContent = "▶"; }
+    });
+  });
+  app.querySelectorAll(".car").forEach(c => { const n = c.children.length; let i = 0; const go = () => { if (!document.body.contains(c)) return; i = (i + 1) % n; c.scrollTo({ left: c.children[i].offsetLeft - 16, behavior: "smooth" }); setTimeout(go, 2600); }; setTimeout(go, 2600); });
+  if (st.mount) st.mount();
+}
+render();
+</script>
+</body>
+</html>

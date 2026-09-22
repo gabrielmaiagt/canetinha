@@ -1,0 +1,4081 @@
+{
+  "id": 119839,
+  "hash": "iMnUz7",
+  "title": "Canetinha de Pobre",
+  "slug": "canetinhadepobre",
+  "description": "",
+  "domain": "quiz.canetinhadepobre.com",
+  "origin": "R2",
+  "status": 1,
+  "steps": [
+    {
+      "id": "NUTPZH",
+      "title": "lead",
+      "layers": [
+        {
+          "id": "fHmZgV",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": {
+            "basis": "97",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "image": {
+              "type": "image",
+              "src": "[SUBSTITUIR: 2SehF-4.webp]",
+              "width": 735,
+              "height": 1135
+            },
+            "id": "jWx26f",
+            "name": "HMkQeH"
+          },
+          "step": "NUTPZH"
+        },
+        {
+          "id": "2RLt14",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "success",
+            "basis": 100,
+            "bubble": true,
+            "fixed": false,
+            "pulse": true
+          },
+          "content": {
+            "name": "85xkxH",
+            "type": "next",
+            "label": "Descobrir o Truque",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "W0lwNq"
+          },
+          "step": "NUTPZH"
+        },
+        {
+          "id": "V7zJ3X",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "danger",
+            "basis": "54",
+            "contrast": true,
+            "padding": "p-2",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong class=\"ql-size-small\" style=\"color: rgb(255, 255, 255);\">🚨 Apenas 1 avaliação por pessoa</strong></p>",
+            "id": "HPs5sn",
+            "name": "Y7PzWF"
+          },
+          "step": "NUTPZH"
+        }
+      ],
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "MlpcTY",
+      "title": "objetivo",
+      "layers": [
+        {
+          "id": "sxUnpF",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Quantos quilos você quer eliminar?</strong></h2>",
+            "id": "4hdqlF",
+            "name": "l51SfZ"
+          }
+        },
+        {
+          "id": "FVJEAo",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-2",
+            "orientation": "vertical",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 85,
+            "background": "default",
+            "horizontalAlign": "mx-auto",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "meta",
+            "required": false,
+            "introType": "none",
+            "options": [
+              {
+                "id": "hJ4Dyh",
+                "label": "<p>Até&nbsp;5&nbsp;kg</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: YIn74-1.webp]",
+                  "width": 200,
+                  "height": 188
+                }
+              },
+              {
+                "id": "uqHvT1",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: YIn74-1.webp]",
+                  "width": 200,
+                  "height": 188
+                },
+                "label": "<p>de&nbsp;6&nbsp;a&nbsp;10&nbsp;kg</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "2lYNEP",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: YIn74-1.webp]",
+                  "width": 200,
+                  "height": 188
+                },
+                "label": "<p>de&nbsp;11&nbsp;a&nbsp;19&nbsp;kg</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "5Dvrk0",
+                "label": "<p>20kg&nbsp;ou&nbsp;mais</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: YIn74-1.webp]",
+                  "width": 200,
+                  "height": 188
+                }
+              }
+            ],
+            "id": "UyL4C0"
+          }
+        },
+        {
+          "id": "bbnJOc",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "vertical",
+            "order": "default",
+            "transparentImage": true,
+            "basis": "43",
+            "background": "default",
+            "horizontalAlign": "mx-auto",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_yRmNPn",
+            "required": false,
+            "introType": "none",
+            "options": [
+              {
+                "id": "cYtZ9J",
+                "label": "<p>Perder&nbsp;só&nbsp;barriga</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 7slsw-2.webp]",
+                  "width": 200,
+                  "height": 188
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "f1EO5D"
+          }
+        }
+      ],
+      "position": {
+        "x": 288,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "QP3QYQ",
+      "title": "seu corpo?",
+      "layers": [
+        {
+          "id": "1H53td",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Qual é o seu tipo de corpo hoje?</strong></h2>",
+            "id": "OltBHs",
+            "name": "TGXjzW"
+          }
+        },
+        {
+          "id": "WwKi4G",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-2",
+            "orientation": "vertical",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 85,
+            "horizontalAlign": "mx-auto",
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_Y4aZxK",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "yHS207",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 2k8qz-cbd82899e2baa59ad7da-1.png]",
+                  "width": 200,
+                  "height": 200
+                },
+                "label": "<p>Médio</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ywY73c",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 6v0w9-cea5af30ae6e1ea9aa00-1.png]",
+                  "width": 200,
+                  "height": 200
+                },
+                "label": "<p>Plus size</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "R5Q4tN",
+                "label": "<p>Acima do peso</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: tyi56-c08d4d459472d8c43c73.png]",
+                  "width": 200,
+                  "height": 200
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "WL2jAo",
+                "label": "<p>Sobrepeso</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 439ip-c340b6e397ea8992b8f6.png]",
+                  "width": 200,
+                  "height": 200
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "84DpO7"
+          }
+        }
+      ],
+      "position": {
+        "x": 576,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "Q7AjaJ",
+      "title": "areas alvo",
+      "layers": [
+        {
+          "id": "llnqB5",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>E em quais áreas você quer eliminar gordura?</strong></h2>",
+            "id": "x2MX1p",
+            "name": "gS5nwd"
+          }
+        },
+        {
+          "id": "EN0753",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "areasalvo",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "j5q59J",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: TYvQN-sm-ez9f2-asdas.webp]",
+                  "width": 200,
+                  "height": 200
+                },
+                "label": "<p>Culotes</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ADXXUN",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: SsRs2-sm-3ei7p-image-fx.webp]",
+                  "width": 200,
+                  "height": 200
+                },
+                "label": "<p>Braços</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "20Wunt",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: D8X8A-sm-cgtdy-image-fx-1.webp]",
+                  "width": 200,
+                  "height": 200
+                },
+                "label": "<p>Barriga</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "uXlpdZ",
+                "label": "<p>Coxas</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: IuGbv-sm-q5jub-asfqwfwq.webp]",
+                  "width": 200,
+                  "height": 200
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "MgoESg",
+                "label": "<p>Glúteos</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: mTAhc-sm-x7me5-asdwqa.webp]",
+                  "width": 200,
+                  "height": 200
+                }
+              },
+              {
+                "id": "ulfRvM",
+                "label": "<p class=\"ql-align-center\">Corpo&nbsp;Todo</p>",
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "DGZ0Wb",
+            "multiple": true,
+            "awaitSubmit": true
+          }
+        },
+        {
+          "id": "5ot02T",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true
+          },
+          "content": {
+            "name": "NPeWxP",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "H6IzFo"
+          }
+        }
+      ],
+      "position": {
+        "x": 864,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "pizpvr",
+      "title": "como impacta sua vida?",
+      "layers": [
+        {
+          "id": "NWyTDz",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Como o seu peso tem impactado na sua vida?</strong></h2>",
+            "id": "sS3VRz",
+            "name": "P7kYyD"
+          }
+        },
+        {
+          "id": "GbKKt7",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_pyPz7l",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "QYv5Tl",
+                "label": "<p>Me&nbsp;sinto&nbsp;&nbsp;com&nbsp;autoestima&nbsp;baixa</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "🪞"
+                }
+              },
+              {
+                "id": "rPWcOk",
+                "label": "<p>Me&nbsp;sinto&nbsp;cansado(a)&nbsp;e&nbsp;sem&nbsp;energia&nbsp;no&nbsp;dia&nbsp;a&nbsp;dia</p>",
+                "chosen": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "⚡"
+                },
+                "selected": false
+              },
+              {
+                "id": "F3Z0NG",
+                "label": "<p>Tenho&nbsp;complicações&nbsp;de&nbsp;saúde&nbsp;por&nbsp;conta&nbsp;do&nbsp;peso:&nbsp;pressão,&nbsp;dores,&nbsp;exames&nbsp;alterados...</p>",
+                "chosen": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "🩺"
+                },
+                "selected": false
+              },
+              {
+                "id": "EJ4OxD",
+                "label": "<p>Meu&nbsp;peso&nbsp;afeta&nbsp;minha&nbsp;vida&nbsp;íntima</p><p>&nbsp;</p>",
+                "image": {
+                  "type": "emoji",
+                  "src": "❤️"
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "hFNEaz",
+                "label": "<p class=\"ql-align-center\">Nenhuma&nbsp;das&nbsp;acima</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "emoji",
+                  "src": null
+                }
+              }
+            ],
+            "id": "7wrPSZ",
+            "awaitSubmit": false,
+            "multiple": false
+          }
+        }
+      ],
+      "position": {
+        "x": 1440,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "DZHwV9",
+      "title": "voce esta feliz?",
+      "layers": [
+        {
+          "id": "zcGRKg",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Você está feliz com sua aparência atualmente?</strong></h2>",
+            "id": "IJWTJQ",
+            "name": "YToXiD"
+          }
+        },
+        {
+          "id": "eAO5bF",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_XXTDjh",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "Rjirf6",
+                "image": {
+                  "type": "emoji",
+                  "src": "😪"
+                },
+                "label": "<p>Não,&nbsp;quero&nbsp;emagrecer&nbsp;para&nbsp;poder&nbsp;me&nbsp;sentir&nbsp;melhor</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "KZ66VD",
+                "image": {
+                  "type": "emoji",
+                  "src": "🙂‍↕️"
+                },
+                "label": "<p>Sim,&nbsp;mas&nbsp;sei&nbsp;que&nbsp;posso&nbsp;melhorar&nbsp;mais</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "DILZ9W"
+          }
+        }
+      ],
+      "position": {
+        "x": 1728,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "ZJrfts",
+      "title": "o que te impede",
+      "layers": [
+        {
+          "id": "JsT1XF",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>O que mais te impede de emagrecer?</strong></h2>",
+            "id": "D6wcoR",
+            "name": "MvsRim"
+          }
+        },
+        {
+          "id": "XweO1L",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_lJVJIN",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "60WPxh",
+                "image": {
+                  "type": "emoji",
+                  "src": "😬"
+                },
+                "label": "Fome e compulsão<br>Começo a dieta e a fome vence, principalmente à noite",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "lQdGO6",
+                "image": {
+                  "type": "emoji",
+                  "src": "🕗"
+                },
+                "label": "Tempo<br>Rotina agitada, falta de tempo livre",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "RbFTm6",
+                "image": {
+                  "type": "emoji",
+                  "src": "💸"
+                },
+                "label": "Financeiro<br>Canetinha, nutri e academia custam caro demais",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "Krv6Yw",
+                "label": "Constância<br>Começo e paro, não consigo manter um plano",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "😓"
+                }
+              }
+            ],
+            "id": "BybPYG"
+          }
+        }
+      ],
+      "position": {
+        "x": 2016,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "DjLFJG",
+      "title": "como funciona",
+      "layers": [
+        {
+          "id": "H7vRIz",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Você não precisa da canetinha.</strong></h2><h2 class=\"ql-align-center\"><strong>Precisa do <strong style=\"color: #7c3aed;\">truque</strong> que ela usa.</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">A canetinha das famosas custa até R$ 3.000 por mês. O que ela faz é uma coisa só: <strong>ligar o hormônio da saciedade</strong> — e isso dá pra fazer com um preparo de 5 minutos, com ingredientes de mercado.</span></p>",
+            "id": "eSU1Af",
+            "name": "vFTc5I"
+          }
+        },
+        {
+          "id": "4DeMHS",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: q4iaN-como-o-mounjaro-de-pobre-funciona.png]",
+              "type": "image",
+              "width": 1080,
+              "height": 1080
+            },
+            "id": "lWkONU",
+            "name": "GJq5qX"
+          }
+        },
+        {
+          "id": "boEk2y",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>A Canetinha de Pobre</strong> liga o mesmo hormônio da saciedade que a caneta liga — sua fome diminui, a compulsão some e você passa a comer menos <strong>sem esforço e sem passar vontade</strong>. É o Truque das Famosas, sem a agulha e sem os R$ 3.000.</p>",
+            "id": "8QiiVJ",
+            "name": "JxQi57"
+          }
+        },
+        {
+          "id": "rIiyRB",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true,
+            "pulse": true
+          },
+          "content": {
+            "name": "L6aKzJ",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "GceBCA"
+          }
+        }
+      ],
+      "position": {
+        "x": 2304,
+        "y": 0
+      },
+      "options": {
+        "show_progress": true
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "CbvKQX",
+      "title": "beneficios",
+      "layers": [
+        {
+          "id": "snwdhY",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Quais desses benefícios você gostaria de ter?</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Vamos personalizar o seu protocolo de acordo com o seu objetivo</span></p>",
+            "id": "JiMGwN",
+            "name": "nDd2dc"
+          },
+          "step": "CbvKQX"
+        },
+        {
+          "id": "Xu96r4",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "verticalAlign": "self-auto",
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "beneficios",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "Zqphn4",
+                "image": {
+                  "type": "emoji",
+                  "src": "🪞"
+                },
+                "label": "Olhar no espelho e sentir bem consigo mesma, confiante",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "30RdOU",
+                "label": "Parar de sentir vontade de beliscar e comer besteira",
+                "image": {
+                  "type": "emoji",
+                  "src": "🍫"
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "0z1xOZ",
+                "label": "Poder usar qualquer roupa sem sentir vergonha ou sem marcar a barriga",
+                "chosen": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "👙"
+                },
+                "selected": false
+              },
+              {
+                "id": "lN09QZ",
+                "label": "Receber elogios e perguntarem \"o que você fez pra emagrecer?\"",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "🗣"
+                }
+              },
+              {
+                "id": "SxzSu5",
+                "label": "Ver seu parceiro te olhando com mais desejo",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "🔥"
+                }
+              },
+              {
+                "id": "R63HzV",
+                "label": "Poder correr, agachar, subir escadas ou viajar com conforto",
+                "chosen": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "🦵"
+                },
+                "selected": false
+              }
+            ],
+            "id": "SAvMSH",
+            "multiple": true,
+            "awaitSubmit": true
+          },
+          "step": "CbvKQX"
+        },
+        {
+          "id": "E6EuMj",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true
+          },
+          "content": {
+            "name": "546CyR",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "js8biH"
+          },
+          "step": "CbvKQX"
+        }
+      ],
+      "position": {
+        "x": 2592,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "eNDD4o",
+      "title": "depoimento",
+      "layers": [
+        {
+          "id": "NSwg5N",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Escute o áudio:</strong></h3>",
+            "id": "weOQhe",
+            "name": "fyzTkC"
+          }
+        },
+        {
+          "id": "Gz97ul",
+          "title": "Áudio",
+          "icon": "volume",
+          "type": "audio",
+          "design": {
+            "theme": "light",
+            "model": "whatsapp",
+            "basis": 100
+          },
+          "content": {
+            "audio": {
+              "src": "[UPLOAD: audio-Gz97ul.mp3]",
+              "type": "audio"
+            },
+            "image": {
+              "type": "image",
+              "src": "[UPLOAD: avatar-redondo.png]"
+            },
+            "id": "BL3wrb",
+            "name": "Sso2ic",
+            "sender": "[NOME DA AVATAR]"
+          }
+        },
+        {
+          "id": "1uWdyh",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>🔥 Histórias reais de quem fez o Truque das Famosas</strong></h3>",
+            "id": "2Hkswy",
+            "name": "cknPvX"
+          }
+        },
+        {
+          "id": "8dSlfa",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: hIIlP-2fc795a0e4da18f9f4db2b24a666b245.jpg]",
+              "type": "image",
+              "width": 500,
+              "height": 500
+            },
+            "id": "GVz4mJ",
+            "name": "dWT2bS"
+          }
+        },
+        {
+          "id": "29MacF",
+          "title": "Depoimentos",
+          "icon": "quoteRight",
+          "type": "quotes",
+          "design": [],
+          "content": {
+            "quotes": [
+              {
+                "id": "8I6bth",
+                "text": "Eu já tinha tentado de tudo e sempre desistia porque a fome vencia. Quando comecei a Canetinha de Pobre, em 3 dias eu percebi que não tava mais pensando em comida o dia inteiro. Perdi 17kg em 2 meses sem passar fome e sem gastar com caneta nenhuma. Minha compulsão simplesmente sumiu...",
+                "activity": "📍 Salvador - BA",
+                "name": "Marluce Andrade",
+                "rate": 5,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: uI6du-captura-de-tela-2026-05-15-110715.png]",
+                  "width": 263,
+                  "height": 247
+                }
+              }
+            ],
+            "id": "vLiA1U",
+            "name": "XIFwOD"
+          }
+        },
+        {
+          "id": "1lDRjN",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true,
+            "pulse": true
+          },
+          "content": {
+            "name": "ammD2s",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "2T83IG"
+          }
+        }
+      ],
+      "position": {
+        "x": 2880,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "Dbwb9e",
+      "title": "peso",
+      "layers": [
+        {
+          "id": "qoXGHU",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Qual é o seu peso atual?</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Quase lá! Vamos ajustar sua dose de acordo com o seu corpo</span></p>",
+            "id": "Y42dgh",
+            "name": "pj4Ppw"
+          }
+        },
+        {
+          "id": "FK5hv3",
+          "title": "Peso",
+          "icon": "weight",
+          "type": "weight",
+          "design": [],
+          "content": {
+            "value": 70,
+            "type": "metric",
+            "id": "bOVaKM",
+            "name": "peso"
+          }
+        },
+        {
+          "id": "hSRXP9",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true
+          },
+          "content": {
+            "name": "jm2KX4",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "WtKqMk"
+          }
+        }
+      ],
+      "position": {
+        "x": 3168,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "XNv980",
+      "title": "altura",
+      "layers": [
+        {
+          "id": "KmYCVx",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Qual é a sua altura?</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Vamos calcular seu IMC</span></p>",
+            "id": "P86ycQ",
+            "name": "Fv3BeP"
+          }
+        },
+        {
+          "id": "e8VSRU",
+          "title": "Altura",
+          "icon": "rulerVertical",
+          "type": "height",
+          "design": [],
+          "content": {
+            "value": 180,
+            "type": "metric",
+            "id": "Btn5zY",
+            "name": "altura"
+          }
+        },
+        {
+          "id": "zMiQbu",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true
+          },
+          "content": {
+            "name": "2rkxIm",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "NQqaXX"
+          }
+        }
+      ],
+      "position": {
+        "x": 3456,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "46lxVR",
+      "title": "peso ideal",
+      "layers": [
+        {
+          "id": "XaQJ5u",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>E qual é o peso que você quer alcançar?</strong></h2>",
+            "id": "YDCDtk",
+            "name": "0b6lNn"
+          }
+        },
+        {
+          "id": "iI4iaA",
+          "title": "Peso",
+          "icon": "weight",
+          "type": "weight",
+          "design": [],
+          "content": {
+            "value": 70,
+            "type": "metric",
+            "id": "beecaz",
+            "name": "ideal"
+          }
+        },
+        {
+          "id": "DGKxwa",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true,
+            "fixed": false
+          },
+          "content": {
+            "name": "eZ32oz",
+            "type": "next",
+            "label": "Continuar",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "YDPW45"
+          }
+        }
+      ],
+      "position": {
+        "x": 3744,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "zPE0Ib",
+      "title": "dia a dia",
+      "layers": [
+        {
+          "id": "NHNn9q",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": {
+            "basis": 100
+          },
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Como é o seu dia a dia?</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Sua rotina define o melhor horário pra tomar</span></p>",
+            "id": "3JzfYJ",
+            "name": "E1zYbo"
+          }
+        },
+        {
+          "id": "getJPu",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_n7XLd8",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "qpnkNY",
+                "image": {
+                  "type": "emoji",
+                  "src": "💼"
+                },
+                "label": "<p>Trabalho fora e tenho uma rotina agitada</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ELzb6I",
+                "image": {
+                  "type": "emoji",
+                  "src": "💻"
+                },
+                "label": "<p>Trabalho em casa e tenho uma rotina flexível</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "t4qLFa",
+                "image": {
+                  "type": "emoji",
+                  "src": "🏠"
+                },
+                "label": "<p>Fico em casa cuidando da família</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "eJYOqp",
+                "label": "<p>Outro</p>",
+                "image": {
+                  "type": "emoji",
+                  "src": "😶"
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "PoZbKP"
+          }
+        }
+      ],
+      "position": {
+        "x": 4032,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "YgnOld",
+      "title": "sono",
+      "layers": [
+        {
+          "id": "cLModm",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Quantas horas de sono você tem por noite?</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Dormir pouco desliga o hormônio da saciedade e aumenta a fome no dia seguinte</span></p>",
+            "id": "s5lULf",
+            "name": "8CWqhR"
+          }
+        },
+        {
+          "id": "BSANSP",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_LmdY1v",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "YpZl9t",
+                "image": {
+                  "type": "emoji",
+                  "src": "😴"
+                },
+                "label": "<p>Menos de 5 horas&nbsp;</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "1HlHN5",
+                "image": {
+                  "type": "emoji",
+                  "src": "🛌"
+                },
+                "label": "<p>Entre 5 a 7 horas&nbsp;</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "zdwutg",
+                "image": {
+                  "type": "emoji",
+                  "src": "💤"
+                },
+                "label": "<p>Entre 7 a 9 horas&nbsp;</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "Wj7klI",
+                "label": "<p>Mais de 9 horas&nbsp;</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "emoji",
+                  "src": "🛏"
+                }
+              }
+            ],
+            "id": "xpTsD4"
+          }
+        }
+      ],
+      "position": {
+        "x": 4320,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "YmhBp8",
+      "title": "agua",
+      "layers": [
+        {
+          "id": "LWU3sF",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Em que momento do dia a fome mais te ataca?</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Isso define o horário da sua Canetinha</span></p>",
+            "id": "qRqGUK",
+            "name": "wbDMPT"
+          }
+        },
+        {
+          "id": "hTgasj",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-1",
+            "orientation": "horizontal",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 100,
+            "background": "default",
+            "border": "border-[2px]"
+          },
+          "content": {
+            "name": "opcoes_HFCuTq",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "YYOH3v",
+                "image": {
+                  "type": "emoji",
+                  "src": "🌅"
+                },
+                "label": "De manhã, acordo com fome",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "x0gWua",
+                "image": {
+                  "type": "emoji",
+                  "src": "🕛"
+                },
+                "label": "À tarde, depois do almoço",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "VIRcdm",
+                "image": {
+                  "type": "emoji",
+                  "src": "🌙"
+                },
+                "label": "À noite, depois do jantar",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "EJ8p5j",
+                "label": "O dia inteiro, vivo beliscando",
+                "image": {
+                  "type": "emoji",
+                  "src": "🔁"
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "0vF0Og"
+          }
+        }
+      ],
+      "position": {
+        "x": 4608,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "pCMUV8",
+      "title": "perfil",
+      "layers": [
+        {
+          "id": "NbQ4pI",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>⚠️ <strong style=\"color: rgb(220, 38, 38);\">ATENÇÃO!</strong> Pelas suas respostas e IMC, seu hormônio da saciedade está <strong style=\"color: rgb(220, 38, 38);\">DESLIGADO</strong></strong></h3>",
+            "id": "ccBIWZ",
+            "name": "VqMbC0"
+          }
+        },
+        {
+          "id": "aLJ7t5",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "CIRm2W",
+            "name": "GJ71MU"
+          }
+        },
+        {
+          "id": "4SPdcB",
+          "title": "Nível",
+          "icon": "slidersH",
+          "type": "metric",
+          "design": {
+            "type": "dotted",
+            "color": "gradient",
+            "basis": 100
+          },
+          "content": {
+            "title": "Seu IMC é: calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+            "name": "onKRY8",
+            "subtitle": "⚠️ Zona de Alerta",
+            "percent": "30",
+            "show_title": true,
+            "show_percent": false,
+            "show_dot": true,
+            "id": "ujRCyn",
+            "tooltip": "Você",
+            "legends": "Magreza, Baixo peso, Normal, Sobrepeso, Obesidade"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<",
+                "value": "18.5"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "DBMBau",
+          "title": "Nível",
+          "icon": "slidersH",
+          "type": "metric",
+          "design": {
+            "type": "dotted",
+            "color": "gradient",
+            "basis": 100
+          },
+          "content": {
+            "title": "Seu IMC é: calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+            "name": "DLcqGl",
+            "subtitle": "⚠️ Zona de Alerta",
+            "percent": "50",
+            "show_title": true,
+            "show_percent": false,
+            "show_dot": true,
+            "id": "Mcxejg",
+            "tooltip": "Você",
+            "legends": "Magreza, Baixo peso, Normal, Sobrepeso, Obesidade"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "18.5"
+              },
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "24.9"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "R7P0r4",
+          "title": "Nível",
+          "icon": "slidersH",
+          "type": "metric",
+          "design": {
+            "type": "dotted",
+            "color": "gradient",
+            "basis": 100
+          },
+          "content": {
+            "title": "Seu IMC é: calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+            "name": "UeDnEH",
+            "subtitle": "⚠️ Zona de Alerta",
+            "percent": "70",
+            "show_title": true,
+            "show_percent": false,
+            "show_dot": true,
+            "id": "M7hGOj",
+            "tooltip": "Você",
+            "legends": "Magreza, Baixo peso, Normal, Sobrepeso, Obesidade"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "25"
+              },
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "29.9"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "2WEJky",
+          "title": "Nível",
+          "icon": "slidersH",
+          "type": "metric",
+          "design": {
+            "type": "dotted",
+            "color": "gradient",
+            "basis": 100
+          },
+          "content": {
+            "title": "Seu IMC é: calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+            "name": "Ur2s96",
+            "subtitle": "⚠️ Zona de Alerta",
+            "percent": "90",
+            "show_title": true,
+            "show_percent": false,
+            "show_dot": true,
+            "id": "Et0aVy",
+            "tooltip": "Você",
+            "legends": "Magreza, Baixo peso, Normal, Sobrepeso, Obesidade"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "30"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "W5hI3f",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "enldyy",
+            "name": "nYzfwL"
+          }
+        },
+        {
+          "id": "dtXaLb",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Índice de Massa Corporal (IMC)</strong></h3>",
+            "id": "6IVv5o",
+            "name": "gwQyQu"
+          }
+        },
+        {
+          "id": "lBZzyj",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": {
+            "basis": "80",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: 6tin0-unnamed.jpg]",
+              "type": "image",
+              "width": 424,
+              "height": 263
+            },
+            "id": "lmrhKC",
+            "name": "7JdnYc"
+          }
+        },
+        {
+          "id": "v2r1zP",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "DqQP0w",
+            "name": "OTIzCo"
+          }
+        },
+        {
+          "id": "bxkAQG",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "warning",
+            "basis": 100,
+            "contrast": false
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>⚠️ Sua fome pode estar te sabotando sem que você perceba!</strong></p><p class=\"ql-align-center\"><strong>Mesmo estando no peso normal</strong>, quando o hormônio da saciedade está desligado seu corpo pede comida o tempo todo, acumula gordura localizada e te deixa sem energia.</p>",
+            "id": "IfyNK3",
+            "name": "I7qiAz"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "24.9"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "q1Dztq",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "warning",
+            "basis": 100,
+            "contrast": false
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>⚠️ Sua fome está te sabotando sem que você perceba!</strong></p><p class=\"ql-align-center\">Seu IMC indicou <strong>sobrepeso</strong> — seu hormônio da saciedade está desligado, seu cérebro pede comida mesmo sem precisar e o corpo estoca tudo como gordura.</p>",
+            "id": "JTzLQ9",
+            "name": "Nphkfk"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "25"
+              },
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "29.9"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "snqSiu",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "warning",
+            "basis": 100,
+            "contrast": false
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>⚠️ Sua fome está te sabotando sem que você perceba!</strong></p><p class=\"ql-align-center\">Seu IMC indicou <strong>obesidade</strong> — seu hormônio da saciedade está desligado, você come sem sentir que comeu e o corpo estoca tudo como gordura.</p>",
+            "id": "VAlRDR",
+            "name": "9am1hx"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "30"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "ixC0kK",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "danger",
+            "basis": 100,
+            "contrast": false
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>🚨 Alguns sinais de alerta:</strong></p><p class=\"ql-align-center\">❌ Fome pouco tempo depois de comer e vontade de beliscar à noite.<br>❌ Começar dieta e desistir em poucos dias porque \"a fome venceu\".<br>❌ Acúmulo de gordura em áreas específicas, principalmente na barriga.</p>",
+            "id": "N3Hsxh",
+            "name": "tC9bHf"
+          }
+        },
+        {
+          "id": "mRrruP",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "info",
+            "basis": 100,
+            "contrast": false
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>💡 É exatamente isso que a canetinha das famosas corrige — e a Canetinha de Pobre faz o mesmo, naturalmente!</strong></p><p class=\"ql-align-center\">A combinação certa de ingredientes liga o hormônio da saciedade, corta a compulsão e reduz a retenção.<br>🔽 Descubra como o Truque das Famosas vai funcionar no seu corpo</p>",
+            "id": "36Lu9H",
+            "name": "L2hd01"
+          }
+        },
+        {
+          "id": "UWrYUW",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "LB5kta",
+            "name": "GHzOuL"
+          }
+        },
+        {
+          "id": "EqC1zv",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>A Canetinha de Pobre vai transformar seu corpo, igual fez com o da Rosane!</strong></h3>",
+            "id": "FZ4B1g",
+            "name": "ye64CB"
+          }
+        },
+        {
+          "id": "4TSyxS",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: rxp85-96084343-1817315278411133-5702942186484531200-n.jpg]",
+              "type": "image",
+              "width": 960,
+              "height": 960
+            },
+            "id": "51GjZR",
+            "name": "gV1O0o"
+          }
+        },
+        {
+          "id": "HduzQx",
+          "title": "Depoimentos",
+          "icon": "quoteRight",
+          "type": "quotes",
+          "design": [],
+          "content": {
+            "quotes": [
+              {
+                "id": "nKqMzP",
+                "text": "Já se foram mais de 15kg tomando todo dia de manhã. O que mais me impressionou foi a fome: eu era escrava de doce depois do almoço e isso simplesmente parou. Me sinto muito mais LEVE. Agradeço às meninas do grupo que me ajudaram 🥰",
+                "activity": "📍 Belo Horizonte - MG",
+                "name": "Rosane Alves",
+                "rate": 5,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: hg7uo-487484531-122124837026784994-153744016718310861-n.jpg]",
+                  "width": 60,
+                  "height": 60
+                }
+              }
+            ],
+            "id": "yVC1Jc",
+            "name": "oRjGBF"
+          }
+        },
+        {
+          "id": "W1OeQW",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "theme",
+            "basis": 100,
+            "bubble": true,
+            "pulse": true
+          },
+          "content": {
+            "name": "CM6gew",
+            "type": "next",
+            "label": "Gerar minha Canetinha",
+            "destination": "next",
+            "pulse": false,
+            "target": false,
+            "id": "DdCvyc"
+          }
+        }
+      ],
+      "position": {
+        "y": 100,
+        "x": 5284
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "1POsPB",
+      "title": "carregando",
+      "layers": [
+        {
+          "id": "Narql9",
+          "title": "Loading",
+          "icon": "circleNotch",
+          "type": "loading",
+          "design": {
+            "style": "default"
+          },
+          "content": {
+            "title": "Analisando seu perfil de fome e saciedade",
+            "name": "0pfwlI",
+            "description": "<h3 class=\"ql-align-center\"><br></h3>",
+            "seconds": 2,
+            "starts": 0,
+            "destination": "next",
+            "show_title": true,
+            "show_percent": true,
+            "show_progress": true,
+            "id": "yWmOhX",
+            "type": "none"
+          }
+        },
+        {
+          "id": "NcroZB",
+          "title": "Loading",
+          "icon": "circleNotch",
+          "type": "loading",
+          "design": {
+            "style": "default"
+          },
+          "content": {
+            "title": "Identificando metas e barreiras",
+            "name": "LBslLN",
+            "description": "<h3 class=\"ql-align-center\"><br></h3>",
+            "seconds": 2,
+            "starts": 2,
+            "destination": "next",
+            "show_title": true,
+            "show_percent": true,
+            "show_progress": true,
+            "id": "RMcUpH",
+            "type": "none"
+          },
+          "effects": {
+            "starts": 2
+          }
+        },
+        {
+          "id": "b7ml51",
+          "title": "Loading",
+          "icon": "circleNotch",
+          "type": "loading",
+          "design": {
+            "style": "default"
+          },
+          "content": {
+            "title": "Preparando o seu Protocolo da Canetinha de Pobre",
+            "name": "d3bPNQ",
+            "description": "<h3 class=\"ql-align-center\"><br></h3>",
+            "seconds": 2,
+            "starts": 4,
+            "destination": "next",
+            "show_title": true,
+            "show_percent": true,
+            "show_progress": true,
+            "id": "BUzr14",
+            "type": "next"
+          },
+          "effects": {
+            "starts": 4
+          }
+        },
+        {
+          "id": "u2ggTB",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "GRCzLJ",
+            "name": "XRo684"
+          }
+        },
+        {
+          "id": "199V89",
+          "title": "Carrossel",
+          "icon": "tvAlt",
+          "type": "carousel",
+          "design": {
+            "style": null,
+            "basis": 100
+          },
+          "content": {
+            "centered": true,
+            "spoiler": true,
+            "pagination": true,
+            "layout": "image",
+            "items": [
+              {
+                "id": "c271Xi",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: jtn7u-lg-m7rkf-2.png]",
+                  "width": 800,
+                  "height": 800
+                },
+                "text": "<p class=\"ql-align-center\">Exemplo de descrição</p>",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "x2rbh5",
+                "image": {
+                  "src": "[SUBSTITUIR: 3u0gh-4.png]",
+                  "type": "image",
+                  "width": 800,
+                  "height": 800
+                },
+                "text": "<p class='ql-align-center'>Exemplo de descrição</p>",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "JgaJQ1",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: ypq02-2.png]",
+                  "type": "image",
+                  "width": 800,
+                  "height": 800
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "eXTDOI",
+            "name": "xsabmi",
+            "autoplay": true,
+            "delay": "2"
+          }
+        }
+      ],
+      "position": {
+        "x": 4896,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "bR6EHa",
+      "title": "corpo que quer ter",
+      "layers": [
+        {
+          "id": "u9ZFOv",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>Qual o tipo de corpo você quer ter?</strong></h2>",
+            "id": "zYlGkK",
+            "name": "uITFWV"
+          },
+          "step": "bR6EHa"
+        },
+        {
+          "id": "y6RA6s",
+          "title": "Opções",
+          "icon": "clipboardList",
+          "type": "options",
+          "design": {
+            "icon": "select",
+            "iconPosition": "end",
+            "grid": "grid-cols-2",
+            "orientation": "vertical",
+            "order": "default",
+            "transparentImage": true,
+            "basis": 85,
+            "horizontalAlign": "mx-auto",
+            "background": "default"
+          },
+          "content": {
+            "name": "opcoes_iGfVhj",
+            "required": true,
+            "introType": "none",
+            "options": [
+              {
+                "id": "aOXnNl",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: qVj5x-asf.jpg]",
+                  "width": 500,
+                  "height": 500
+                },
+                "label": "<p>Em Forma</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "iwqBAI",
+                "label": "<p>Natural</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 0rZdE-safas.jpg]",
+                  "width": 500,
+                  "height": 500
+                }
+              }
+            ],
+            "id": "tEYMAt"
+          },
+          "step": "bR6EHa"
+        }
+      ],
+      "position": {
+        "x": 5760,
+        "y": 0
+      },
+      "chosen": false,
+      "selected": false
+    },
+    {
+      "id": "kZaFtv",
+      "title": "oferta",
+      "layers": [
+        {
+          "id": "vjMLKt",
+          "title": "Notificação",
+          "icon": "commentAltExclamation",
+          "type": "notification",
+          "design": {
+            "style": "theme",
+            "basis": 100
+          },
+          "content": {
+            "title": "<p><strong>@1</strong></p>",
+            "text": "<p>⏰ Neste minuto</p>",
+            "position": "top-right",
+            "duration": 5,
+            "interval": "20",
+            "variables": [
+              {
+                "id": "NhqMM7",
+                "name": "@1",
+                "values": [
+                  "🔔 4 pessoas estão comprando",
+                  "Beatriz Oliveira acabou de adquirir",
+                  "🔔 2 pessoas estão preenchendo pagamento",
+                  "Cláudia Maria acabou de adquirir"
+                ]
+              },
+              {
+                "id": "pTkuZY",
+                "name": "@2",
+                "values": [
+                  null,
+                  null,
+                  null,
+                  null
+                ]
+              },
+              {
+                "id": "9Vr7x3",
+                "name": "@3",
+                "values": [
+                  null,
+                  null,
+                  null,
+                  null
+                ]
+              }
+            ],
+            "id": "v9KEGo",
+            "name": "sunJiC"
+          },
+          "effects": {
+            "starts": null
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "2jwqx0",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h2 class=\"ql-align-center\"><strong>A sua Canetinha de Pobre foi gerada!</strong></h2><p class=\"ql-align-center\"><span class=\"ql-size-small\">Ela é exclusiva e gerada só uma vez, não saia dessa página para não perdê-la</span></p>",
+            "id": "mD1aQx",
+            "name": "1qZCcN"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "31Xiba",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: WmKuD-apos-o-protocolo-1.gif]",
+              "type": "image",
+              "width": 686,
+              "height": 586
+            },
+            "id": "nylqSc",
+            "name": "ZbeW7D"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "24.9"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "NaX5RQ",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "light",
+            "basis": "50",
+            "padding": "p-2"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Gordura Corporal</strong></p><p class=\"ql-align-center\">25-29%</p>",
+            "id": "oSU37L",
+            "name": "O0dBQA"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "24.9"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "qSAWJG",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "light",
+            "basis": "50",
+            "padding": "p-2"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Gordura Corporal</strong></p><p class=\"ql-align-center\">15-25%</p>",
+            "id": "n8HXB7",
+            "name": "yWw99t"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "24.9"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "D7YJd0",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: K5Joz-apos-o-protocolo-2.gif]",
+              "type": "image",
+              "width": 686,
+              "height": 586
+            },
+            "id": "l6K279",
+            "name": "DpM2gR"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "25"
+              },
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "29.9"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "BiVnMZ",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "light",
+            "basis": "50",
+            "padding": "p-2"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Gordura Corporal</strong></p><p class=\"ql-align-center\">25-29%</p>",
+            "id": "y9Do1S",
+            "name": "5NxPaD"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "25"
+              },
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "29.9"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "euCXju",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "light",
+            "basis": "50",
+            "padding": "p-2"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Gordura Corporal</strong></p><p class=\"ql-align-center\">15-25%</p>",
+            "id": "Z46CLX",
+            "name": "cCQrZR"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "25"
+              },
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": "<=",
+                "value": "29.9"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "Dk5vVf",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: o7NeE-apos-o-protocolo.gif]",
+              "type": "image",
+              "width": 686,
+              "height": 586
+            },
+            "id": "Evcee0",
+            "name": "qYsjJt"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "30"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "mlKkVu",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "light",
+            "basis": "50",
+            "padding": "p-2"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Gordura Corporal</strong></p><p class=\"ql-align-center\">25-29%</p>",
+            "id": "k3WhNL",
+            "name": "4AUPK7"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "30"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "SN9ElW",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "light",
+            "basis": "50",
+            "padding": "p-2"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Gordura Corporal</strong></p><p class=\"ql-align-center\">15-25%</p>",
+            "id": "zAiEpy",
+            "name": "T33yHt"
+          },
+          "roles": [
+            [
+              {
+                "variable": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "compare": ">=",
+                "value": "30"
+              }
+            ]
+          ],
+          "step": "kZaFtv"
+        },
+        {
+          "id": "meWyUr",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Seu perfil:</strong></h3>",
+            "id": "RYcqxB",
+            "name": "8G7Asw"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "tYovZO",
+          "title": "Depoimentos",
+          "icon": "quoteRight",
+          "type": "quotes",
+          "design": [],
+          "content": {
+            "quotes": [
+              {
+                "id": "nKqMzP",
+                "text": "calc({{peso}}/(({{altura}}/100)*({{altura}}/100)))",
+                "activity": null,
+                "name": "IMC",
+                "rate": null,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 6htgz-captura-de-tela-2025-05-05-234746.png]",
+                  "width": 181,
+                  "height": 174
+                }
+              },
+              {
+                "id": "hb7Arr",
+                "text": "{{areasalvo}}",
+                "activity": null,
+                "name": "Área Alvo",
+                "rate": null,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: gzdb5-man-reached-goal.png]",
+                  "width": 120,
+                  "height": 120
+                }
+              },
+              {
+                "id": "yofxTI",
+                "text": "{{peso}}kg",
+                "activity": null,
+                "name": "Peso atual",
+                "rate": null,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: r2y3n-captura-de-tela-2025-05-05-234743.png]",
+                  "width": 186,
+                  "height": 224
+                }
+              },
+              {
+                "id": "TdgSLK",
+                "text": "{{ideal}}kg",
+                "activity": null,
+                "name": "Meta",
+                "rate": null,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: ar9gk-captura-de-tela-2025-05-05-234739.png]",
+                  "width": 199,
+                  "height": 250
+                }
+              }
+            ],
+            "id": "Pb484e",
+            "name": "Q0VWZT",
+            "layout": "grid"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "W5URXE",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "XLIXnT",
+            "name": "QAd887"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "rCNdaS",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Escute o áudio e veja o que vai receber:</strong></h3>",
+            "id": "EOnf0h",
+            "name": "dM3ZFO"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "spdfWV",
+          "title": "Áudio",
+          "icon": "volume",
+          "type": "audio",
+          "design": {
+            "theme": "light",
+            "model": "whatsapp",
+            "basis": 100
+          },
+          "content": {
+            "audio": {
+              "src": "[UPLOAD: audio-spdfWV.mp3]",
+              "type": "audio"
+            },
+            "image": {
+              "type": "image",
+              "src": "[UPLOAD: avatar-redondo.png]"
+            },
+            "id": "alTXgw",
+            "name": "aIT7f7",
+            "sender": "[NOME DA AVATAR]"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "qcpl8q",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "hGBxCU",
+            "name": "RtuTWK"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "BIwSwW",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Seu protocolo inclui:</strong></h3>",
+            "id": "ViHiWQ",
+            "name": "9XGu4g"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "heXZRC",
+          "title": "Argumentos",
+          "icon": "bookAlt",
+          "type": "arguments",
+          "design": [],
+          "content": {
+            "cols": "grid-cols-2",
+            "order": "default",
+            "arguments": [
+              {
+                "id": "bWhy6N",
+                "text": "<p class=\"ql-align-center\"><strong>A Receita da Canetinha de Pobre</strong></p><p class=\"ql-align-center\">O preparo exato, os ingredientes de mercado e a dose certa pro seu peso pra ligar o hormônio da saciedade já no primeiro dia.</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: jyuet-woman-drinks-green-loose-leaf-260nw-2452729767.jpg]",
+                  "width": 370,
+                  "height": 261
+                }
+              },
+              {
+                "id": "bfjaNB",
+                "text": "<p class=\"ql-align-center\"><strong>O Truque das Famosas</strong></p><p class=\"ql-align-center\">O que a nutricionista das famosas faz junto com a caneta (e que ninguém conta) pra potencializar o efeito — sem a caneta.</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: b2qlc-2.jpg]",
+                  "width": 370,
+                  "height": 261
+                }
+              },
+              {
+                "id": "LEUNIL",
+                "text": "<p class=\"ql-align-center\"><strong>Definição de metas diárias</strong></p><p class=\"ql-align-center\">Para você acompanhar seus resultados todos os dias e se manter no caminho certo.</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: ard87-3.jpg]",
+                  "width": 370,
+                  "height": 261
+                }
+              },
+              {
+                "id": "X6F7Sq",
+                "text": "<p class=\"ql-align-center\"><strong>Anti Efeito Sanfona</strong></p><p class=\"ql-align-center\">Programa pra manter o peso depois que sair da Canetinha e nunca mais voltar a engordar.</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 39ehi-4.jpg]",
+                  "width": 370,
+                  "height": 261
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "PwTKXN",
+                "text": "<p class=\"ql-align-center\"><strong>Desafio de 21 dias</strong></p><p class=\"ql-align-center\">Desafio pra maximizar ainda mais seus resultados.</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: y46nx-sadafs.png]",
+                  "width": 370,
+                  "height": 261
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "s6ul8Y",
+                "text": "<p class=\"ql-align-center\"><strong>Grupo VIP + Acompanhamento</strong></p><p class=\"ql-align-center\">Com todas as outras meninas pra se motivar, postar resultados e tirar dúvidas.</p>",
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: isr48-woman-drinks-green-loose-leaf-260nw-2452729767-copiar.jpg]",
+                  "width": 370,
+                  "height": 261
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "JhWaev",
+            "name": "uLATsU"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "plF0bS",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "soVTZL",
+            "name": "cFl3iK"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "6COkfq",
+          "title": "Preço",
+          "icon": "usdCircle",
+          "type": "price",
+          "design": {
+            "style": "theme",
+            "basis": 100
+          },
+          "content": {
+            "title": "Canetinha de Pobre",
+            "value": "R$ 37,90",
+            "before": "de 87,90 por",
+            "after": null,
+            "redirect": true,
+            "id": "hrHDfE",
+            "name": "Kyuh5K",
+            "featured": "Protocolo Completo"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "BGDhjq",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "success",
+            "basis": 100,
+            "pulse": true,
+            "bubble": true
+          },
+          "content": {
+            "name": "botao1",
+            "type": "redirect",
+            "label": "Quero a minha Canetinha de Pobre",
+            "destination": "https://pay.wiapy.com/SEU_LINK",
+            "pulse": false,
+            "target": false,
+            "id": "zV8VPg"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "TIfLCX",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": {
+            "basis": "75",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: SJTNd-md-y7m5n-image-removebg-preview-9.png]",
+              "type": "image",
+              "width": 400,
+              "height": 36
+            },
+            "id": "gEVmd9",
+            "name": "kDyBjB"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "oZLLEB",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "1uOxaN",
+            "name": "2zdfnm"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "MZxRMR",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Quem fez o truque tem resultado 😉👇</strong></h3>",
+            "id": "WPVUlm",
+            "name": "FKVfoy"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "xY2i0g",
+          "title": "Vídeo",
+          "icon": "film",
+          "type": "video",
+          "design": {
+            "basis": "50",
+            "ratio": "mobile"
+          },
+          "content": {
+            "title": null,
+            "description": null,
+            "id": "ZEYtz4",
+            "name": "fNUtux",
+            "video": "<iframe width=\"360\" height=\"640\" src=\"https://www.youtube.com/embed/ZUFTwMp5F5c\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "wO9hk7",
+          "title": "Vídeo",
+          "icon": "film",
+          "type": "video",
+          "design": {
+            "basis": "50",
+            "ratio": "mobile"
+          },
+          "content": {
+            "title": null,
+            "description": null,
+            "id": "DGByAW",
+            "name": "QrOce0",
+            "video": "<iframe width=\"360\" height=\"640\" src=\"https://www.youtube.com/embed/EudZGrEhmQg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "TlsDgC",
+          "title": "Carrossel",
+          "icon": "tvAlt",
+          "type": "carousel",
+          "design": {
+            "style": null
+          },
+          "content": {
+            "centered": true,
+            "spoiler": true,
+            "pagination": true,
+            "layout": "image",
+            "items": [
+              {
+                "id": "olC4V3",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: b8t9u-3.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "MZg5c0",
+                "image": {
+                  "src": "[SUBSTITUIR: LuRTa-1.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "text": "<p class=\"ql-align-center\">Exemplo de descrição</p>",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "FnLohP",
+                "image": {
+                  "src": "[SUBSTITUIR: 3n6kZ-10.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "text": "<p class='ql-align-center'>Exemplo de descrição</p>",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "G8vNmO",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: PX4uN-4.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "AtQDoN",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: qzBp6-5.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ArWdrA",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: 3HnAI-6.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "6o9MSp",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: DHZLB-7.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "hQ7zS3",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: 9AD06-8.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "mDvNMr",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: NA9aL-9.jpg]",
+                  "type": "image",
+                  "width": 500,
+                  "height": 500
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "rjYZpD",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: jqyeu-1asf.jpg]",
+                  "type": "image",
+                  "width": 736,
+                  "height": 618
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ac2BI3",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: rpvog-eb50fbb1e42c58f992643d95eb6b5265.jpg]",
+                  "type": "image",
+                  "width": 736,
+                  "height": 736
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "FRbp64",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: tUjrL-transformation-carla-f1ocfzig.jpg]",
+                  "type": "image",
+                  "width": 1440,
+                  "height": 1646
+                }
+              },
+              {
+                "id": "L2WPHK",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: IxATx-sem-titulo-1.jpg]",
+                  "type": "image",
+                  "width": 640,
+                  "height": 597
+                }
+              }
+            ],
+            "id": "GN59nP",
+            "name": "CvhYRT",
+            "autoplay": true,
+            "delay": "2"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "uuBTjS",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "F9gvqs",
+            "name": "1NJTY1"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "g8sN97",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Nos próximos 30 dias:</strong></h3>",
+            "id": "4Hy4xQ",
+            "name": "ppp86h"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "b3mmJj",
+          "title": "Métricas",
+          "icon": "fileChartLine",
+          "type": "graphics",
+          "design": [],
+          "content": {
+            "cols": "grid-cols-3",
+            "order": "default",
+            "graphics": [
+              {
+                "id": "7XqdTh",
+                "type": "bar",
+                "style": "#dc2626",
+                "percent": "10",
+                "legend": "Hoje: fome o dia todo, compulsão à noite",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "xayfUm",
+                "type": "bar",
+                "style": "#fbbf24",
+                "percent": "40",
+                "legend": "1ª semana: hormônio da saciedade ligado, para de beliscar",
+                "chosen": false,
+                "selected": false,
+                "customColor": "#fbbf24"
+              },
+              {
+                "id": "4r5sKO",
+                "type": "bar",
+                "legend": "2ª semana: comendo menos sem esforço e desinchando",
+                "percent": "60",
+                "style": "#3b82f6",
+                "chosen": false,
+                "selected": false,
+                "customColor": "#3b82f6"
+              }
+            ],
+            "id": "S1YgSZ",
+            "name": "Thhh4X"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "3GZecb",
+          "title": "Métricas",
+          "icon": "fileChartLine",
+          "type": "graphics",
+          "design": [],
+          "content": {
+            "cols": "grid-cols-3",
+            "order": "default",
+            "graphics": [
+              {
+                "id": "J2T9oJ",
+                "type": "bar",
+                "style": "theme",
+                "percent": "80",
+                "legend": "3ª semana: compulsão zerada e roupas folgando",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "k0GtxS",
+                "type": "bar",
+                "style": "theme",
+                "percent": "100",
+                "legend": "4ª semana: até 10kg a menos e barriga visivelmente menor",
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "SVmjp1",
+            "name": "YJhqKx"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "BlJt0q",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "R5t7s0",
+            "name": "dIhJIZ"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "OGNQaD",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "danger",
+            "basis": "82",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>🔴 Vagas disponíveis no momento: 7</strong></p>",
+            "id": "BEPWLP",
+            "name": "qatk8F"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "URL3y4",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "VfDnei",
+            "name": "tmCSMd"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "OuVVy7",
+          "title": "Argumentos",
+          "icon": "bookAlt",
+          "type": "arguments",
+          "design": [],
+          "content": {
+            "cols": "grid-cols-1",
+            "order": "default",
+            "arguments": [
+              {
+                "id": "Y6U0GB",
+                "text": "<p class=\"ql-align-center\"><strong>Já parou pra pensar o quanto gastou até hoje tentando emagrecer?</strong></p><p class=\"ql-align-center\">👨‍⚕️ Consultas + exames R$ 500<br>🏋️ Academia + personal R$ 400<br>🥗 Dietas + suplementos R$ 450<br>💉 <strong>Canetinha das famosas R$ 3.000/mês</strong><br>💜 <strong>Canetinha de Pobre R$ 37,90</strong><br>Pelo preço de uma pizza você faz o mesmo truque que as famosas fazem, sem agulha, sem receita e com resultado já nos primeiros dias.</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": null
+                }
+              }
+            ],
+            "id": "qLqNvG",
+            "name": "z7Jj0F"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "9IizcQ",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "e5VH3e",
+            "name": "XckkXV"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "o552li",
+          "title": "Preço",
+          "icon": "usdCircle",
+          "type": "price",
+          "design": {
+            "style": "theme",
+            "basis": 100
+          },
+          "content": {
+            "title": "Canetinha de Pobre",
+            "value": "R$ 37,90",
+            "before": "de 87,90 por",
+            "after": null,
+            "redirect": true,
+            "id": "rY30rd",
+            "name": "xfyY7D",
+            "featured": "MAIS VENDIDO"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "AehO7c",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "success",
+            "basis": 100,
+            "pulse": true,
+            "bubble": true
+          },
+          "content": {
+            "name": "botao2",
+            "type": "redirect",
+            "label": "Quero a minha Canetinha de Pobre",
+            "destination": "https://pay.wiapy.com/SEU_LINK",
+            "pulse": false,
+            "target": false,
+            "id": "oCoo0E"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "OU2wKk",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": {
+            "basis": "69",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "id": "FgVvoF",
+            "image": {
+              "type": "image",
+              "src": "[SUBSTITUIR: NfVML-selo-garantia-768x205-480x480.png]",
+              "width": 480,
+              "height": 128
+            },
+            "name": "1yfnch"
+          },
+          "data-type": "image",
+          "step": "kZaFtv"
+        },
+        {
+          "id": "GwmJPY",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "1C9Ank",
+            "name": "lbGIuE"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "tJmxnI",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Todas as instruções e bônus em um aplicativo de fácil acesso 📲</strong></h3>",
+            "id": "knLLTp",
+            "name": "rcDkgI"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "rbR464",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": {
+            "basis": "70",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "id": "QqXUxt",
+            "image": {
+              "type": "image",
+              "src": "[SUBSTITUIR: y3BCj-sem-titulo-3.png]",
+              "width": 400,
+              "height": 866
+            },
+            "name": "CoYg7C"
+          },
+          "data-type": "image",
+          "step": "kZaFtv"
+        },
+        {
+          "id": "LeJwiU",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "SPQgx2",
+            "name": "YfpncU"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "0noRu6",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": {
+            "basis": "51",
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "image": {
+              "src": "[SUBSTITUIR: 7lWvm-sm-rn3v2-selo-de-garantia-de-30-dias-png-transparente-sem-fundo.png]",
+              "type": "image",
+              "width": 200,
+              "height": 200
+            },
+            "id": "aGIVC5",
+            "name": "9UFRQM"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "xdVA90",
+          "title": "Argumentos",
+          "icon": "bookAlt",
+          "type": "arguments",
+          "design": {
+            "basis": "100"
+          },
+          "content": {
+            "cols": "grid-cols-1",
+            "order": "default",
+            "arguments": [
+              {
+                "id": "Q2XYJG",
+                "text": "<p class=\"ql-align-center\"><strong>Garantia de Reembolso</strong></p><p class=\"ql-align-center\">⭐⭐⭐⭐⭐<br>Todo produto é obrigado a oferecer no mínimo 7 dias de garantia, porém confiamos tanto no Truque que oferecemos 30 dias corridos.<br>Ou seja, se você não sentir a fome diminuir ou não perder 1kg sequer no primeiro mês de uso, nós reembolsaremos cada centavo que você pagou, sem questionar.<br>Basta enviar um e-mail para o suporte ou pedir direto pelo aplicativo!</p>",
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": null
+                }
+              }
+            ],
+            "id": "uuPJfN",
+            "name": "jHPFxo"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "AAYPx0",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "DR4GF0",
+            "name": "z6cJ9e"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "eC9jop",
+          "title": "Imagem",
+          "icon": "image",
+          "type": "image",
+          "design": [],
+          "content": {
+            "image": {
+              "type": "image",
+              "src": "[SUBSTITUIR: SSnSL-dra-fabiana-santos.png]",
+              "width": 1254,
+              "height": 1254
+            },
+            "id": "Mdd4Hj",
+            "name": "JI4Le9"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "7qPwY4",
+          "title": "Alerta",
+          "icon": "exclamationTriangle",
+          "type": "alert",
+          "design": {
+            "style": "info",
+            "basis": "87",
+            "padding": "p-4",
+            "contrast": true,
+            "horizontalAlign": "mx-auto"
+          },
+          "content": {
+            "text": "<p class=\"ql-align-center\"><strong>Protocolo gerado por: [NOME DA AVATAR]</strong></p><p class=\"ql-align-center\">Nutricionista: [CRN]</p>",
+            "id": "H0Ej3y",
+            "name": "wdOywh"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "b4ASbQ",
+          "title": "Timer",
+          "icon": "clock",
+          "type": "timer",
+          "design": {
+            "style": "danger",
+            "basis": 100
+          },
+          "content": {
+            "text": "Sua Canetinha fica reservada por [time] minutos, após isso a página será apagada para dar espaço para novas avaliações!",
+            "time": "600",
+            "id": "mijavo",
+            "name": "oEex71"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "JlrTD7",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "vlmzpr",
+            "name": "TD56IH"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "c0r9BX",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>Depoimentos</strong></h3>",
+            "id": "HA0FI3",
+            "name": "RG7nkg"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "1iA6VJ",
+          "title": "Depoimentos",
+          "icon": "quoteRight",
+          "type": "quotes",
+          "design": [],
+          "content": {
+            "quotes": [
+              {
+                "id": "DVpCsm",
+                "text": "Muito bom! Recomendo, minha fome sumiu e já perdi 5kg nos últimos 17 dias.",
+                "activity": null,
+                "name": "Rafaela Nascimento",
+                "rate": 5,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 21yb8-499707532-690580170385426-2846021272690627764-n.jpg]",
+                  "width": 60,
+                  "height": 60
+                }
+              },
+              {
+                "id": "7fCuKr",
+                "text": "Recomendo muito. estou usando tem 2 semanas e não sinto mais aquela vontade de doce depois do almoço, perdi peso e desinchei bastante! obrigada!! 🥰🥰",
+                "activity": null,
+                "name": "Luana Dias",
+                "rate": 5,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: 2hpfw-483914306-674686381905246-2583032974264245499-n.jpg]",
+                  "width": 60,
+                  "height": 60
+                }
+              },
+              {
+                "id": "tMeuxl",
+                "text": "Oiii comprei hoje uma amiga me indicou...estou com uma dúvida. eu posso tomar mais de uma vez ao dia se eu quiser? 😅",
+                "activity": null,
+                "name": "Andressa Soares",
+                "rate": 5,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: rx2uc-453157592-3451781488447775-6605026255174735724-n.jpg]",
+                  "width": 60,
+                  "height": 60
+                }
+              },
+              {
+                "id": "RwXVGq",
+                "text": "gente é sério que isso é o que as famosas fazem? kkk baratinho e funcional",
+                "activity": null,
+                "name": "Beatriz Mattos",
+                "rate": 5,
+                "chosen": false,
+                "selected": false,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: mxj14-498231559-122128837256785920-1434122653962451032-n.jpg]",
+                  "width": 60,
+                  "height": 60
+                }
+              }
+            ],
+            "id": "yGbIyt",
+            "name": "pX7u0c"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "yRvenv",
+          "title": "Opções",
+          "icon": "gameBoard",
+          "type": "options",
+          "design": {
+            "icon": "none",
+            "iconPosition": "start",
+            "grid": "grid-cols-1",
+            "orientation": "vertical",
+            "order": "default",
+            "transparentImage": true,
+            "aspectImage": "aspect-[1/1]",
+            "basis": 100
+          },
+          "content": {
+            "name": "opcoes_oRAasr",
+            "required": false,
+            "introType": "text",
+            "introduction": null,
+            "options": [
+              {
+                "id": "GszGcB",
+                "image": {
+                  "type": "image",
+                  "src": null
+                },
+                "score": 4,
+                "value": "D",
+                "label": "<p class=\"ql-align-center\">Adicionar&nbsp;depoimento</p>",
+                "destination": "next",
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "type": "options",
+            "id": "lmKbKx",
+            "awaitSubmit": true
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "g6CYnX",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[2rem]",
+            "id": "ZYzsXv",
+            "name": "RoUw54"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "vujlTR",
+          "title": "Áudio",
+          "icon": "volume",
+          "type": "audio",
+          "design": {
+            "theme": "light",
+            "model": "whatsapp"
+          },
+          "content": {
+            "audio": {
+              "src": "[UPLOAD: audio-vujlTR.mp3]",
+              "type": "audio"
+            },
+            "image": {
+              "type": "image",
+              "src": "[UPLOAD: avatar-redondo.png]"
+            },
+            "id": "foFlek",
+            "name": "7uXc6x",
+            "sender": "[NOME DA AVATAR]"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "tM2Gz1",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "EZ1ALN",
+            "name": "UcZswv"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "fe0kux",
+          "title": "Carrossel",
+          "icon": "tvAlt",
+          "type": "carousel",
+          "design": {
+            "style": null
+          },
+          "content": {
+            "centered": true,
+            "spoiler": true,
+            "pagination": true,
+            "layout": "image",
+            "items": [
+              {
+                "id": "QqLgXo",
+                "image": {
+                  "src": "[SUBSTITUIR: s8hDL-1.jpg]",
+                  "type": "image",
+                  "width": 370,
+                  "height": 645
+                },
+                "text": "<p class=\"ql-align-center\">Exemplo&nbsp;de&nbsp;descrição</p>",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "dR1JG3",
+                "text": null,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: IWKD4-lg-kwn0r-lg-zbwpj-f34071c8-68f8-4a67-a669-e4ef0fc9bedc.jpg]",
+                  "width": 580,
+                  "height": 476
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ERkdIY",
+                "image": {
+                  "src": "[SUBSTITUIR: XL556-2.jpg]",
+                  "type": "image",
+                  "width": 370,
+                  "height": 645
+                },
+                "text": "<p class=\"ql-align-center\">Exemplo&nbsp;de&nbsp;descrição</p>",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "K3KTyc",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: 2v0rk-a0646663bb8e429ea2e2ce9b35293a6f.jpg]",
+                  "type": "image",
+                  "width": 735,
+                  "height": 728
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "ZdVk57",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: 9q4nc-3.jpg]",
+                  "type": "image",
+                  "width": 370,
+                  "height": 645
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "RzntXL",
+                "text": null,
+                "image": {
+                  "type": "image",
+                  "src": "[SUBSTITUIR: zk9va-3f886fd19b414edfb359b5a8cd02719c2fe36b52.jpg]",
+                  "width": 720,
+                  "height": 705
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "K54Ess",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: 68NeM-4.jpg]",
+                  "type": "image",
+                  "width": 370,
+                  "height": 645
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "6c9hLR",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: qfomt-lg-avypk-0e9bfd2547e712bf14c384a9a15db679.jpg]",
+                  "type": "image",
+                  "width": 736,
+                  "height": 736
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "art5pA",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: wNlOG-lg-jx08z-design-sem-nome-53.png]",
+                  "type": "image",
+                  "width": 800,
+                  "height": 800
+                },
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "xZvm5r",
+                "text": null,
+                "image": {
+                  "src": "[SUBSTITUIR: y27LQ-joana-serafim.png]",
+                  "type": "image",
+                  "width": 600,
+                  "height": 600
+                },
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "cSBSUq",
+            "name": "ffHLPB",
+            "autoplay": true,
+            "delay": "3"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "2tMBlV",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "eZdDgw",
+            "name": "wnS8Jh"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "kYshz4",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "success",
+            "basis": 100,
+            "pulse": true,
+            "bubble": true
+          },
+          "content": {
+            "name": "botao3",
+            "type": "redirect",
+            "label": "Quero a minha Canetinha de Pobre",
+            "destination": "https://pay.wiapy.com/SEU_LINK",
+            "pulse": false,
+            "target": false,
+            "id": "ceRlkF"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "iyz6xB",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "LjICIX",
+            "name": "MzFC1f"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "4bDq2L",
+          "title": "Texto",
+          "icon": "text",
+          "type": "text",
+          "design": [],
+          "content": {
+            "text": "<h3 class=\"ql-align-center\"><strong>FAQ:</strong></h3>",
+            "id": "h8AwSb",
+            "name": "xZ18BY"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "mR8Mgr",
+          "title": "FAQ",
+          "icon": "listAlt",
+          "type": "faq",
+          "design": {
+            "icon": "chevron"
+          },
+          "content": {
+            "firstQuestionOpened": true,
+            "questions": [
+              {
+                "id": "g7SSX8",
+                "question": "Isso é a mesma coisa que a canetinha?",
+                "answer": "Não. A canetinha é um remédio injetável de uso controlado. A Canetinha de Pobre é um preparo natural que estimula o mesmo hormônio da saciedade — sem agulha, sem receita e sem os efeitos colaterais da caneta.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "QhvsKn",
+                "question": "Sou gestante ou estou amamentando, posso tomar?",
+                "answer": "Lactantes só podem consumir se o bebê tiver mais de 6 meses. Gestantes não é recomendado.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "fHGhJG",
+                "question": "Sou hipertensa, posso tomar?",
+                "answer": "Sim, no app terá as instruções certas de como consumir se você tem pressão alta.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "lH64BV",
+                "question": "Em quanto tempo vejo os resultados?",
+                "answer": "Varia de pessoa pra pessoa, mas a diminuição da fome costuma ser sentida nos primeiros 3 dias e o peso na primeira semana.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "C0fHLA",
+                "question": "Tem efeito colateral?",
+                "answer": "É composta por ingredientes 100% naturais, mas na primeira semana pode causar leve dor de cabeça e aumento das idas ao banheiro.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "9FPjAs",
+                "question": "Tenho que tomar todos os dias?",
+                "answer": "Sim, a Canetinha de Pobre deve ser consumida todos os dias, no horário indicado no seu protocolo, até atingir o objetivo desejado.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "VQ76QB",
+                "question": "Como tenho acesso ao aplicativo?",
+                "answer": "O acesso será enviado ao e-mail cadastrado no ato da compra.",
+                "chosen": false,
+                "selected": false
+              },
+              {
+                "id": "wGCrA7",
+                "question": "O site é seguro?",
+                "answer": "Sim, o pagamento é processado por uma das maiores plataformas de pagamento digital do Brasil, com nota máxima no Reclame Aqui.<br>CNPJ: [CNPJ DA PLATAFORMA].",
+                "chosen": false,
+                "selected": false
+              }
+            ],
+            "id": "hqbbpE",
+            "name": "M5U5xp"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "fCRY02",
+          "title": "Espaço",
+          "icon": "arrowsV",
+          "type": "clear",
+          "design": [],
+          "content": {
+            "clear": "h-[1rem]",
+            "id": "vVXQoA",
+            "name": "XPVMiG"
+          },
+          "step": "kZaFtv"
+        },
+        {
+          "id": "Sga3aP",
+          "title": "Botão",
+          "icon": "rectangleWide",
+          "type": "button",
+          "design": {
+            "style": "success",
+            "basis": 100,
+            "pulse": true,
+            "bubble": true
+          },
+          "content": {
+            "name": "botao4",
+            "type": "redirect",
+            "label": "Quero a minha Canetinha de Pobre",
+            "destination": "https://pay.wiapy.com/SEU_LINK",
+            "pulse": false,
+            "target": false,
+            "id": "TNCCSO"
+          },
+          "step": "kZaFtv"
+        }
+      ],
+      "position": {
+        "y": 100,
+        "x": 6148
+      },
+      "chosen": false,
+      "selected": false
+    }
+  ],
+  "design": {
+    "logo": {
+      "type": "image",
+      "src": "[UPLOAD: logo-canetinha-de-pobre.png]",
+      "width": 1372,
+      "height": 404
+    },
+    "themeColor": "#7c3aed",
+    "contentColor": "#6b7280",
+    "titleColor": "#030712",
+    "backgroundColor": "#ffffff",
+    "featuredFont": "inter",
+    "contentFont": "inter",
+    "titleSize": 0.5,
+    "contentSize": "14",
+    "rounded": "rounded-2xl",
+    "elementSize": "56px",
+    "header": {
+      "progress": "default"
+    },
+    "verticalAlign": "justify-between",
+    "container": "max-w-[28rem]",
+    "gap": ".2",
+    "logoSize": "default"
+  },
+  "navigation": {
+    "W0lwNq": "next",
+    "uqHvT1": "next",
+    "2lYNEP": "next",
+    "yHS207": "next",
+    "ywY73c": "next",
+    "j5q59J": "next",
+    "ADXXUN": "next",
+    "20Wunt": "next",
+    "H6IzFo": "next",
+    "Rjirf6": "next",
+    "KZ66VD": "next",
+    "60WPxh": "next",
+    "lQdGO6": "next",
+    "RbFTm6": "next",
+    "GceBCA": "next",
+    "Zqphn4": "next",
+    "js8biH": "next",
+    "2T83IG": "next",
+    "WtKqMk": "next",
+    "NQqaXX": "next",
+    "YDPW45": "next",
+    "qpnkNY": "next",
+    "ELzb6I": "next",
+    "t4qLFa": "next",
+    "YpZl9t": "next",
+    "1HlHN5": "next",
+    "zdwutg": "next",
+    "YYOH3v": "next",
+    "x0gWua": "next",
+    "VIRcdm": "next",
+    "DdCvyc": "next",
+    "yWmOhX": "next",
+    "RMcUpH": "next",
+    "BUzr14": "next",
+    "aOXnNl": "next",
+    "GszGcB": "next"
+  },
+  "scripts": {
+    "header": "[UTMIFY PIXEL — trocar pixelId]",
+    "footer": "[UTMIFY UTMS SCRIPT]"
+  },
+  "webhook": [],
+  "seo": [],
+  "traffic": false,
+  "version": "v2",
+  "schemaVersion": 2
+}
