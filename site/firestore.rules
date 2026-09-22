@@ -23,6 +23,12 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // Vendas (gravadas pelo webhook com a service account, que ignora regras): só admin lê.
+    match /sales/{id} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     // Config do funil (split dos testes A/B, vagas): todo mundo lê, só admin escreve.
     match /config/{doc} {
       allow read: if true;
