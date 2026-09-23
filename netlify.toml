@@ -47,3 +47,8 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/upsell"
+  to = "/upsell/index.html"
+  status = 200

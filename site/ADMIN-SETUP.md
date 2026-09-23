@@ -78,3 +78,16 @@ Modelo: `bumbum-pessego.com/back/` (BumbumFlix) — mesma mecânica do R$ 27 do 
 - **Firestore:** grava na mesma sessão (`sessions/{sid}`): `backLeft` (apertou voltar), `backViewed`, `backOpened` (abriu o presente), `backCheckout` = `bk-vsl` | `bk-bk`, `backCta`.
 - **Webhook de venda:** mandar `product: "backredirect"` e, se der, `src` (vem na URL do checkout) pra separar botão × voltar-de-novo.
 - **Testar:** abrir `/index.html?s=21` (oferta), apertar voltar.
+
+
+## 11. Upsell e downsell (`/upsell/`)
+
+Página de 1 clique mostrada depois do pagamento aprovado. Dois estados na mesma página: upsell R$ 47 → se recusar, downsell R$ 27. Copy e racional no doc `13-CHECKOUT-bump-e-upsell.md`.
+
+1. **Kirvano:** criar os produtos "Protocolo Desparasita 7 Dias" (R$ 47) e a versão downsell (R$ 27), com upsell de 1 clique ativado, e pegar os links de oferta de cada um.
+2. **Colar em `site/upsell/index.html` → `CONFIG`:** `linkSim` (R$ 47), `linkSim2` (R$ 27), `linkFim` (pra onde vai quem recusa tudo — área de membros ou página de obrigado) e, se gravar, `vsl` (embed de 40s).
+3. **No produto principal da Kirvano**, apontar a página de obrigado / pós-compra para `https://SEU-DOMINIO/upsell/` (passando os parâmetros da compra, se a plataforma permitir — é assim que o `sid` chega).
+4. **Order bump** (R$ 9,90, "Shot Acelerador de Intestino") é configurado dentro do produto principal, não tem página.
+5. Registrar os `checkout_id` do upsell e do downsell em `PRODUCT`, em `netlify/functions/kirvano.js`.
+
+Grava na mesma sessão: `upsellViewed`, `upsellClicked`, `upsellRecusado`, `downsellViewed`, `downsellClicked`, `downsellRecusado`.
