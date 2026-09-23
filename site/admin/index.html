@@ -318,7 +318,7 @@ function render() {
       `Viram = sessões com essa entrada. "Pararam antes da 1ª" = abriram e não responderam nada (na landing: não clicaram no botão).`, splitCtl("landing", "quem cai na landing"))}
 
     ${abBlock(`A/B VSL da oferta <span>· A × B</span>`,
-      `A = estrutura do playbook (mecanismo → future pacing → pitch) · B = molde da VSL 2 do Paizão (valor → prova → medo → garantia condicional). Só conta quem chegou na oferta. Pra ver uma variante você mesmo: <code>?ab=A</code> / <code>?ab=B</code>.`,
+      `<b>Hoje só existe a VSL B</b> (molde da VSL 2 do Paizão: valor → prova → medo → garantia condicional), então 100% vê ela e este painel fica todo de um lado. Quando a <b>A</b> (estrutura do playbook: mecanismo → future pacing → pitch) for gravada, põe 50/50 aqui, reinicia o sorteio e o teste começa. Só conta quem chegou na oferta. Forçar: <code>?ab=A</code> / <code>?ab=B</code>.`,
       [{ label: "A · playbook", desc: "vslEmbed", rows: oA, on: config.split.vslB < 50, tot: vslTot }, { label: "B · Paizão", desc: "vslEmbedB", rows: oB, on: config.split.vslB >= 50, tot: vslTot }], vslRows,
       `CVR de venda por VSL fica no bloco Vendas quando o webhook estiver ligado (a venda leva <code>ab</code> na URL do checkout).`, splitCtl("vslB", "quem vê a VSL B"))}
 

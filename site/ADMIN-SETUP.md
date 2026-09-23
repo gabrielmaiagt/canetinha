@@ -45,6 +45,14 @@ Authentication → Settings → **Authorized domains** → adicionar o domínio 
 ## 7. Testes A/B pelo admin
 Painel → **Configuração dos testes** → % da landing, % da VSL B, versão, vagas → Salvar. Grava em `config/funnel`; o funil lê ao abrir. Mudar a **versão** re-sorteia todo mundo (a escolha fica salva no navegador da pessoa por versão). Forçar na mão: `?v=landing`, `?v=pergunta`, `?ab=A`, `?ab=B`.
 
+## 7b. VSL: só a B por enquanto
+
+Plano: gravar e rodar **só a VSL B**, medir, editar, e só depois gravar a **A** pra fazer o A/B de verdade.
+
+Por isso `CONFIG.split.vslB = 100` e o funil tem uma trava: **se só uma das duas VSLs estiver preenchida, todo mundo vê ela**, independente do sorteio, e a sessão é gravada com a variante que a pessoa realmente viu (nada de meio tráfego caindo num player vazio nem de dado sujo).
+
+Quando a A existir: preencher `CONFIG.vslEmbed`, pôr 50/50 no painel e clicar em **Reiniciar sorteio** (senão quem já entrou continua preso na B).
+
 ## 8. Venda (Kirvano → webhook → Firestore `sales`)
 
 Checkouts: principal R$ 37,90 `pay.kirvano.com/3d91f533-…` · backredirect R$ 24,90 `pay.kirvano.com/be75b426-…` (já em `CONFIG.checkout` e `back/CONFIG.checkoutBack`).

@@ -330,7 +330,8 @@ const CONFIG = {
   vslEmbedB: "",             // VSL B (sorteio conforme split.vslB)
   vslMp4:   "",
   // ===== TESTES A/B (padrão; o /admin sobrescreve via Firestore config/funnel) =====
-  split: { landing: 0, vslB: 0, version: 1 },   // % do tráfego que vê a landing / a VSL B; version muda = re-sorteia
+  split: { landing: 0, vslB: 100, version: 1 },  // % do tráfego que vê a landing / a VSL B; version muda = re-sorteia
+  //   hoje só existe a VSL B: com uma VSL só, o funil ignora o sorteio e serve a que existe (ver VSLV abaixo)
   // ===== FIREBASE (cole o config do projeto; vazio = não grava nada) =====
   firebase: { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain: "canetinha-4bd2a.firebaseapp.com", projectId: "canetinha-4bd2a", appId: "1:298345331983:web:06f6d8092fcbc3e1d5527a" },
   // ===== ASSETS: cole as URLs. Vazio = placeholder tracejado dizendo o que vai ali =====
@@ -445,7 +446,10 @@ const pick = (key, pct, force) => { // sorteio sticky por versão de teste
   return v;
 };
 const ENTRY = QS.get("v") === "landing" ? "landing" : QS.get("v") === "pergunta" ? "pergunta" : (pick("landing", CONFIG.split.landing) === "B" ? "landing" : "pergunta");
-const VSLV = pick("vsl", CONFIG.split.vslB, ["A", "B"].includes(QS.get("ab")) ? QS.get("ab") : null);
+let VSLV = pick("vsl", CONFIG.split.vslB, ["A", "B"].includes(QS.get("ab")) ? QS.get("ab") : null);
+// enquanto existir só uma VSL gravada, todo mundo vê ela (e o dado não fica poluído com uma variante que ninguém viu)
+if (CONFIG.vslEmbedB && !CONFIG.vslEmbed) VSLV = "B";
+else if (CONFIG.vslEmbed && !CONFIG.vslEmbedB) VSLV = "A";
 
 /* =====================================================================
    FIRESTORE — 1 doc por sessão em sessions/{sid}; config/funnel sobrescreve split
@@ -694,7 +698,7 @@ const STEPS = [
       ["Tem efeito colateral?", "É 100% natural. Na primeira semana pode dar leve dor de cabeça e mais idas ao banheiro."],
       ["Como recebo o acesso?", "No e-mail cadastrado na compra, na hora."],
     ];
-    const vsl = (VSLV === "B" && CONFIG.vslEmbedB) ? CONFIG.vslEmbedB : CONFIG.vslEmbed ? CONFIG.vslEmbed : CONFIG.vslMp4 ? `<video src="${CONFIG.vslMp4}" controls playsinline></video>` : `<div class="ph"><div class="pl">▶</div><b>VSL da oferta (1m55)</b>roteiro na seção "VSL" do mapa · cole o embed da vturb em CONFIG.vslEmbed</div>`;
+    const vsl = (VSLV === "B" && CONFIG.vslEmbedB) ? CONFIG.vslEmbedB : (VSLV === "A" && CONFIG.vslEmbed) ? CONFIG.vslEmbed : (CONFIG.vslEmbedB || CONFIG.vslEmbed) ? (CONFIG.vslEmbedB || CONFIG.vslEmbed) : CONFIG.vslMp4 ? `<video src="${CONFIG.vslMp4}" controls playsinline></video>` : `<div class="ph"><div class="pl">▶</div><b>VSL da oferta (1m55)</b>roteiro na seção "VSL" do mapa · cole o embed da vturb em CONFIG.vslEmbed</div>`;
     return `
     <h2 class="q-title">A sua Canetinha de Pobre <span class="hl">foi gerada!</span></h2>
     <p class="small">Ela é exclusiva e gerada uma vez só. Não sai dessa página pra não perder.</p>
