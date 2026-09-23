@@ -41,8 +41,11 @@ p{margin:12px 0 0}
 .stepbar .track i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#a98bf5,#7c46e6);display:grid;place-items:center;color:#fff;font-size:.68rem;font-weight:800}
 .vsub{text-align:center;font-weight:700;color:var(--ink2);margin-top:14px;font-size:.95rem}
 .ok{background:var(--green-soft);border:1px solid #bbf7d0;color:var(--green-deep);border-radius:var(--r-sm);padding:12px 14px;font-weight:700;font-size:.92rem;text-align:center}
-.ph{border:2px dashed var(--line2);border-radius:var(--r);background:var(--card2);color:var(--ink2);display:grid;place-items:center;text-align:center;font-size:.85rem;font-weight:600;padding:16px;aspect-ratio:16/9;margin-top:16px}
+.ph{border:2px dashed var(--line2);border-radius:var(--r);background:var(--card2);color:var(--ink2);display:grid;place-items:center;text-align:center;font-size:.85rem;font-weight:600;padding:16px;aspect-ratio:9/16;max-height:62vh;margin:16px auto 0}
 .ph img,.ph video,.ph iframe{width:100%;height:100%;object-fit:cover;border:0;border-radius:var(--r)}
+.vslbox{margin:16px auto 0;border-radius:var(--r);overflow:hidden;max-width:100%}
+.vslbox>*{display:block;width:100%}
+.vslbox video,.vslbox iframe{aspect-ratio:9/16;max-height:62vh;border:0}
 .inc{margin-top:14px;display:grid;gap:9px}
 .inc .it{background:var(--card2);border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 13px;display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;font-size:.92rem}
 .inc .it b{font-weight:700}
@@ -72,7 +75,7 @@ p{margin:12px 0 0}
 <div class="wrap" id="s1">
   <div class="stepbar"><div class="t"><span>Personalização do seu pedido</span><b>✅ pagamento aprovado</b></div><div class="track"><i style="width:75%">Etapa 2 de 3</i></div></div>
   <h1><span class="mk">ESPERA!</span> Tem uma coisa travando o seu intestino — e ela vai segurar o resultado da sua Canetinha.</h1>
-  <p class="vsub">↓ Dá o play antes de começar a sua Canetinha de Pobre ↓</p>
+  <p class="vsub">↓ Dá o play: no fim do vídeo eu libero <b>os 7 dias de graça no grupo VIP</b> pra quem assistir até o fim ↓</p>
   <div class="ph" id="video" style="margin-top:12px">🎬 VSL de 40s · cole o embed da vturb em CONFIG.vsl — vazio, a página sobe só com o texto</div>
   <p class="lead">A sua Canetinha de Pobre já tá liberada. Só que antes de ela começar a queimar gordura, eu preciso te contar uma coisa que eu vejo todo dia nas mulheres que <b>não desincham</b> nas primeiras semanas.</p>
   <p class="lead">Quando o intestino tá travado e inflamado, o seu corpo <b>segura líquido</b>, segura a barriga estufada e desacelera tudo. Você pode estar comendo certo e tomando a Canetinha todo dia — e mesmo assim a barriga não baixa.</p>
@@ -167,7 +170,7 @@ $("p1").textContent = CONFIG.preco; $("p1a").textContent = CONFIG.precoAntes; $(
 $("p2").textContent = CONFIG.preco2; $("p2a").textContent = CONFIG.preco2Antes; $("p2b").textContent = CONFIG.preco2;
 document.querySelectorAll(".p1c").forEach(e => e.textContent = CONFIG.preco);
 $("disc1").textContent = DISC; $("disc2").textContent = DISC;
-if (CONFIG.vsl) { $("video").innerHTML = CONFIG.vsl; $("video").classList.remove("ph"); } else { $("video").remove(); document.querySelector(".vsub").remove(); }
+if (CONFIG.vsl) { $("video").innerHTML = CONFIG.vsl; $("video").className = "vslbox"; $("video").removeAttribute("style"); } else { $("video").remove(); document.querySelector(".vsub").remove(); }
 
 $("sim").href = link(CONFIG.linkSim, "upsell");
 $("sim").onclick = () => { if (DB) DB.write({ upsellClicked: true, upsellAt: now() }); track("InitiateCheckout", { src: "upsell" }); };

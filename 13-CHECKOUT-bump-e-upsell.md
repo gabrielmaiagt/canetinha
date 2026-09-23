@@ -61,7 +61,21 @@ Elimine mais de 1 kg de gordura pelas fezes tomando esse shot específico antes 
 
 Página de 1 clique, mostrada **depois do pagamento aprovado**. Sem novo cadastro de cartão. Está em `site/upsell/index.html` (upsell + downsell no mesmo arquivo).
 
-**Modelo:** `protocolodesparasitacao.online/upselldietade3fases/` (upsell real do mesmo nicho) + o upsell do Paizão. Os dois são **headline + VSL + botão** (na página de referência o player da vturb está quebrado, mas é vturb: o CTA aparece dentro do vídeo num tempo definido).
+**Modelos (os dois abertos e analisados):**
+
+| | `protocolodesparasitacao.online/upselldietade3fases/` | `avaliacaogratuitapaizao.com.br/upsell` |
+|---|---|---|
+| Topo | barra vermelha "não atualize, volte ou feche" | header de post do Instagram (@oficial_carlaopersonal ✓ · Patrocinado) |
+| Enquadramento | "Personalização de Pedido — Etapa 2 de 3" + barra 75% | nenhum |
+| Headline | "IMPORTANTE: ANTES DE COMEÇAR A DESPARASITAÇÃO, VEJA ISSO ↓" | "Calma filhota, antes de você começar o paizão tem um presente — **eu vou devolver seu dinheiro** se você assistir esse vídeo até o fim" |
+| Vídeo | vturb 16:9 (quebrado na hora que abri) | vturb **vertical**, autoplay mudo, "clique para ouvir" |
+| Resto da página | nada | nada |
+| Botão | dentro do player | "Comprar agora", revelado pelo player |
+| Altura | 1.117px | 844px (uma tela) |
+
+Os dois são **headline + VSL + botão**, sem preço escrito, sem bullets, sem garantia. O Paizão é o melhor dos dois em uma coisa: **dá um motivo concreto pra assistir até o fim na primeira linha** ("vou devolver seu dinheiro"). Copiamos isso com o que a gente tem pra dar: os 7 dias de graça no grupo VIP.
+
+**Onde a nossa difere de propósito:** mantivemos o texto completo abaixo do vídeo. Enquanto a VSL não existir, a página precisa vender sozinha; quando existir, quem dá play clica no botão do player e quem não dá play lê. Se depois você quiser testar a versão "uma tela só" do Paizão, é só esvaziar o texto.
 
 Dois elementos que copiei de lá e valem mais que o vídeo:
 - **Barra vermelha fixa no topo:** "PARA EVITAR COBRANÇA DUPLICADA, NÃO ATUALIZE, VOLTE OU FECHE ESTA PÁGINA" — trava o reflexo de fechar/voltar.
