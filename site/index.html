@@ -202,7 +202,9 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 .metric .lg{display:grid;grid-template-columns:repeat(5,1fr);font-size:.6rem;color:var(--ink2);text-align:center;font-weight:600}
 
 /* ===== loading ===== */
-.load-h{font-size:1.15rem;font-weight:800;text-align:center;color:var(--ink);min-height:3.2em;display:flex;align-items:center;justify-content:center}
+.load-h{font-size:1.15rem;font-weight:800;line-height:1.4;text-align:center;color:var(--ink);min-height:4.5em;display:flex;align-items:center;justify-content:center;margin:0;padding:0 4px}
+.load-h>span{display:inline}
+.load-h .dd{white-space:nowrap}
 .load-h .dd i{display:inline-block;animation:blink 1.2s infinite;font-style:normal}
 .load-h .dd i:nth-child(2){animation-delay:.2s}.load-h .dd i:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
@@ -618,11 +620,11 @@ const STEPS = [
     <div class="slide" id="ls"></div>
     <div class="dots" id="ld"><i class="on"></i><i></i><i></i></div>`,
     mount: () => {
-      const beats = [`Calma… tô montando a sua Canetinha pra secar ${P.foco()}`, `Cruzando seu peso, seu IMC e o momento que a fome te ataca`, `Pronto. A sua Canetinha vai ser tomada <b>${P.horario()}</b>. Gerando o protocolo`];
+      const beats = [`Calma… tô montando a sua Canetinha de Pobre pra secar ${P.foco()}`, `Cruzando seu peso, seu IMC e o momento que a fome te ataca`, `Pronto. A sua Canetinha de Pobre vai ser tomada <b>${P.horario()}</b>. Gerando o protocolo`];
       const lh = document.getElementById("lh"), lf = document.getElementById("lf"), ls = document.getElementById("ls"), ld = document.getElementById("ld");
       const dd = `<span class="dd"><i>.</i><i>.</i><i>.</i></span>`;
       let k = -1; const total = 13500;
-      const setBeat = (n) => { k = n; lh.innerHTML = beats[k] + dd; const src = A.loadingPrints[k]; ls.innerHTML = src ? `<img src="${src}" alt="">` : `<div class="ph">📷 print do grupo/app ${k + 1} com resultado de aluna (grupo E)</div>`; [...ld.children].forEach((d, j) => d.classList.toggle("on", j === k)); };
+      const setBeat = (n) => { k = n; lh.innerHTML = `<span>${beats[k]}${dd}</span>`; const src = A.loadingPrints[k]; ls.innerHTML = src ? `<img src="${src}" alt="">` : `<div class="ph">📷 print do grupo/app ${k + 1} com resultado de aluna (grupo E)</div>`; [...ld.children].forEach((d, j) => d.classList.toggle("on", j === k)); };
       setBeat(0);
       const t0 = performance.now();
       const tick = (now) => { const p = Math.min(1, (now - t0) / total); lf.style.width = (p * 100) + "%"; const nk = Math.min(2, Math.floor(p * 3)); if (nk !== k) setBeat(nk); if (p < 1) requestAnimationFrame(tick); else if (STEPS[S.i].id === "loading") { track("Lead", { content_name: "quiz_completo" }); next(); } };
