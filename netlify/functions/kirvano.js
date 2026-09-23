@@ -14,7 +14,13 @@ function db() {
 }
 const STATUS = { SALE_APPROVED: "aprovada", SALE_REFUSED: "REFUSED", SALE_REFUNDED: "REFUNDED", SALE_CHARGEBACK: "CHARGEBACK", PIX_GENERATED: "PENDING", BANK_SLIP_GENERATED: "PENDING", PIX_EXPIRED: "CANCELED", BANK_SLIP_EXPIRED: "CANCELED", ABANDONED_CART: "ABANDONED_CART", SUBSCRIPTION_CANCELED: "CANCELED", SUBSCRIPTION_RENEWED: "aprovada", SUBSCRIPTION_EXPIRED: "CANCELED" };
 const money = (v) => typeof v === "number" ? v : parseFloat(String(v || "0").replace(/[^\d,.-]/g, "").replace(/\.(?=\d{3})/g, "").replace(",", ".")) || 0;
-const PRODUCT = { "3d91f533-62ad-4945-a86d-bea2aafa4e4c": "principal", "be75b426-7805-49ba-af3d-84512909f508": "backredirect" };
+// checkout_id → nome do produto no /admin. Colar aqui os ids do upsell e do downsell quando criar na Kirvano.
+const PRODUCT = {
+  "3d91f533-62ad-4945-a86d-bea2aafa4e4c": "principal",
+  "be75b426-7805-49ba-af3d-84512909f508": "backredirect",
+  // "xxxxxxxx-...": "upsell desparasita",
+  // "xxxxxxxx-...": "downsell desparasita",
+};
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") return { statusCode: 405, body: "POST only" };
