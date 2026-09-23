@@ -59,17 +59,31 @@ Elimine mais de 1 kg de gordura pelas fezes tomando esse shot específico antes 
 
 ## 3. Upsell 1 — Protocolo Desparasita 7 Dias (R$ 47)
 
-Página de 1 clique, mostrada **depois do pagamento aprovado**. Sem novo cadastro de cartão.
+Página de 1 clique, mostrada **depois do pagamento aprovado**. Sem novo cadastro de cartão. Está em `site/upsell/index.html` (upsell + downsell no mesmo arquivo).
+
+**Modelo:** `protocolodesparasitacao.online/upselldietade3fases/` (upsell real do mesmo nicho) + o upsell do Paizão. Os dois são **headline + VSL + botão** (na página de referência o player da vturb está quebrado, mas é vturb: o CTA aparece dentro do vídeo num tempo definido).
+
+Dois elementos que copiei de lá e valem mais que o vídeo:
+- **Barra vermelha fixa no topo:** "PARA EVITAR COBRANÇA DUPLICADA, NÃO ATUALIZE, VOLTE OU FECHE ESTA PÁGINA" — trava o reflexo de fechar/voltar.
+- **"Personalização do seu pedido · Etapa 2 de 3" com barra de progresso** — enquadra o upsell como continuação do pedido que ela já fez, não como uma venda nova. O downsell vira "Etapa 3 de 3".
+- Rodapé de não-afiliação ao Facebook (eles usam, é padrão de quem roda Meta Ads).
 
 ### Barra do topo
 ```
-✅ Pagamento aprovado! Mas não feche essa página — falta 1 passo do seu protocolo.
+PARA EVITAR COBRANÇA DUPLICADA, NÃO ATUALIZE, VOLTE OU FECHE ESTA PÁGINA
+```
+### Passo do pedido
+```
+Personalização do seu pedido — Etapa 2 de 3 · ✅ pagamento aprovado
 ```
 
-### Headline
+### Headline (+ chamada pro vídeo)
 ```
 ESPERA! Tem uma coisa travando o seu intestino — e ela vai segurar o resultado da sua Canetinha.
+
+↓ Dá o play antes de começar a sua Canetinha de Pobre ↓
 ```
+**VSL de 40s** logo abaixo (slot `CONFIG.vsl`). Sem o vídeo, a página sobe só com o texto — mas as duas referências usam vídeo, então gravar na mesma diária da VSL B.
 
 ### Corpo (o problema)
 ```
