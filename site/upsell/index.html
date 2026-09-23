@@ -33,12 +33,14 @@ h2{font-size:1.1rem;font-weight:800;margin:26px 0 0}
 p{margin:12px 0 0}
 .lead{font-size:1rem;color:var(--ink2)}
 .lead b{color:var(--ink)}
-.warn{position:sticky;top:0;z-index:30;background:var(--red);color:#fff;font-weight:800;font-size:.8rem;line-height:1.3;text-align:center;padding:calc(9px + env(safe-area-inset-top,0px)) 14px 9px}
-.stepbar{margin-top:16px}
-.stepbar .t{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;font-weight:700;color:var(--ink2)}
-.stepbar .t b{color:var(--green-deep)}
-.stepbar .track{height:14px;border-radius:99px;background:var(--card2);border:1px solid var(--line);margin-top:6px;overflow:hidden;position:relative}
-.stepbar .track i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#a98bf5,#7c46e6);display:grid;place-items:center;color:#fff;font-size:.68rem;font-weight:800}
+.warn{position:sticky;top:0;z-index:30;background:#241633;color:#f6d9e4;font-weight:600;font-size:.74rem;letter-spacing:.01em;line-height:1.35;text-align:center;padding:calc(8px + env(safe-area-inset-top,0px)) 16px 8px}
+.warn b{color:#ff8fab;font-weight:700}
+.stepbar{margin-top:18px;display:flex;align-items:center;gap:12px}
+.stepbar .segs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:5px;flex:1}
+.stepbar .segs i{height:5px;border-radius:99px;background:var(--card2);border:1px solid var(--line)}
+.stepbar .segs i.on{background:linear-gradient(90deg,#a98bf5,#7c46e6);border-color:transparent}
+.stepbar .lb{font-size:.74rem;font-weight:700;color:var(--mute);white-space:nowrap;letter-spacing:.02em}
+.paid{display:inline-flex;align-items:center;gap:6px;background:var(--green-soft);color:var(--green-deep);border-radius:99px;padding:5px 11px;font-size:.76rem;font-weight:700;margin-top:14px}
 .vsub{text-align:center;font-weight:700;color:var(--ink2);margin-top:14px;font-size:.95rem}
 .ok{background:var(--green-soft);border:1px solid #bbf7d0;color:var(--green-deep);border-radius:var(--r-sm);padding:12px 14px;font-weight:700;font-size:.92rem;text-align:center}
 .ph{border:2px dashed var(--line2);border-radius:var(--r);background:var(--card2);color:var(--ink2);display:grid;place-items:center;text-align:center;font-size:.85rem;font-weight:600;padding:16px;aspect-ratio:9/16;max-height:62vh;margin:16px auto 0}
@@ -71,9 +73,10 @@ p{margin:12px 0 0}
 <body>
 
 <!-- ===== 1 · UPSELL ===== -->
-<div class="warn">PARA EVITAR COBRANÇA DUPLICADA, NÃO ATUALIZE, VOLTE OU FECHE ESTA PÁGINA</div>
+<div class="warn">Não atualize nem feche esta página — <b>sua compra pode ser cobrada duas vezes</b></div>
 <div class="wrap" id="s1">
-  <div class="stepbar"><div class="t"><span>Personalização do seu pedido</span><b>✅ pagamento aprovado</b></div><div class="track"><i style="width:75%">Etapa 2 de 3</i></div></div>
+  <div class="stepbar"><div class="segs"><i class="on"></i><i class="on"></i><i></i></div><span class="lb">etapa 2 de 3</span></div>
+  <span class="paid">✅ Pagamento aprovado</span>
   <h1><span class="mk">ESPERA!</span> Tem uma coisa travando o seu intestino — e ela vai segurar o resultado da sua Canetinha.</h1>
   <p class="vsub">↓ Dá o play: no fim do vídeo eu libero <b>os 7 dias de graça no grupo VIP</b> pra quem assistir até o fim ↓</p>
   <div class="ph" id="video" style="margin-top:12px">🎬 VSL de 40s · cole o embed da vturb em CONFIG.vsl — vazio, a página sobe só com o texto</div>
@@ -107,8 +110,9 @@ p{margin:12px 0 0}
 
 <!-- ===== 2 · DOWNSELL ===== -->
 <div class="wrap" id="s2" hidden>
-  <div class="stepbar"><div class="t"><span>Personalização do seu pedido</span><b>✅ pagamento aprovado</b></div><div class="track"><i style="width:92%">Etapa 3 de 3</i></div></div>
-  <p class="lead" style="margin-top:14px">Sua Canetinha de Pobre continua garantida — o acesso já foi pro seu e-mail.</p>
+  <div class="stepbar"><div class="segs"><i class="on"></i><i class="on"></i><i class="on"></i></div><span class="lb">etapa 3 de 3</span></div>
+  <span class="paid">✅ Pagamento aprovado</span>
+  <p class="lead">Sua Canetinha de Pobre continua garantida — o acesso já foi pro seu e-mail.</p>
   <h1>Entendi. Então deixa eu <span class="mk">fazer uma coisa por você</span>:</h1>
   <p class="lead">Eu tiro o cardápio dos 7 dias e o suporte, e te deixo <b>só o protocolo</b> — o passo a passo da limpeza.</p>
   <p class="lead">É a mesma coisa que faz a barriga baixar. Só sem os extras.</p>
