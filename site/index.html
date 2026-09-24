@@ -67,6 +67,9 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 /* ===== page ===== */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:18px 16px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;min-height:60vh}
 .step{display:flex;flex-direction:column;gap:14px;animation:in .22s ease}
+#ctaTop,#rest{display:flex;flex-direction:column;gap:14px}
+#ctaTop{margin-top:4px}
+#rest{margin-top:8px}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
@@ -652,6 +655,7 @@ const STEPS = [
   /* 20 — diagnóstico */
   { id: "diagnostico", render: () => {
     const v = imc(), f = faixa(); const pos = Math.max(3, Math.min(97, ((v - 15) / 25) * 100));
+    const gord = f === "obesidade" ? ["35-40%", "25-29%"] : f === "sobrepeso" ? ["29-34%", "20-25%"] : ["25-29%", "15-25%"];
     const frase = {
       magreza: `Seu IMC deu <b>${v.toFixed(1)}</b>, abaixo da faixa, mas fome descontrolada também acumula gordura localizada. A Canetinha de Pobre regula isso.`,
       normal: `Seu IMC deu <b>${v.toFixed(1)}</b>, dentro da faixa. Mas seu metabolismo pode estar lento, acumulando gordura localizada, e é isso que a Canetinha de Pobre vai derreter.`,
@@ -673,6 +677,7 @@ const STEPS = [
         <div class="shot">${afterImg ? `<img src="${afterImg}" alt="Objetivo">` : `<div class="ph">📷 objetivo (${esc(S.a.corpoalvo || "seca")})</div>`}</div>
       </div>
       <div class="shots"><div class="cap">você tá aqui</div><div></div><div class="cap goal">${S.a.corpoalvo === "Natural" ? "magra e natural" : "seca e no lugar"}</div></div>
+      <div class="cards4" style="margin-top:12px"><div><small>Gordura corporal · hoje</small><b>${gord[0]}</b></div><div style="background:var(--accent-soft)"><small>Gordura corporal · em 30 dias</small><b>${gord[1]}</b></div></div>
       <div class="imc">${frase}</div>
       <div class="rows">
         <div><small>Peso</small><b>${S.a.peso || "–"} kg</b></div><div class="d"></div><div><small>Meta</small><b class="goal">${S.a.ideal || "–"} kg</b></div>
@@ -687,8 +692,6 @@ const STEPS = [
   /* 21 — oferta */
   { id: "oferta", render: () => {
     const v = imc(), f = faixa();
-    const gif = f === "obesidade" ? A.gifIMCobesidade : f === "sobrepeso" ? A.gifIMCsobrepeso : A.gifIMCnormal;
-    const gord = f === "obesidade" ? ["35-40%", "25-29%"] : f === "sobrepeso" ? ["29-34%", "20-25%"] : ["25-29%", "15-25%"];
     const areas = P.areas().join(", ") || "Corpo todo";
     const ben = P.beneficio();
     const args = [
@@ -721,7 +724,6 @@ const STEPS = [
     <div class="vsl"><div class="frame">${vsl}</div></div>
     <div id="ctaTop" hidden>${cta(1)}<div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div></div>
     <div id="rest" hidden>
-    <div class="cards4"><div><small>Gordura corporal · hoje</small><b>${gord[0]}</b></div><div style="background:var(--accent-soft)"><small>Gordura corporal · em 30 dias</small><b>${gord[1]}</b></div></div>
     <div class="al acc" style="text-align:center">🕒 Horário da sua Canetinha de Pobre: <b>${P.horario()}</b>${P.falta() ? ` · previsão <b>até ${P.mes1()} kg de gordura</b> no 1º mês` : ""}</div>
     <p class="h3">Seu plano inclui:</p>
     <div class="args">${args.map((a, i) => `<div class="a"><div class="ai">${A.argumentos[i] ? `<img src="${A.argumentos[i]}" alt="">` : a[2]}</div><div class="at"><b>${a[0]}</b><p>${a[1]}</p></div></div>`).join("")}</div>
