@@ -15,11 +15,11 @@ Slots no código: `CONFIG.assets.audio1` e `CONFIG.assets.audio3` (mp3). O playe
 
 > Oi, eu sou a nutricionista **[Nome]**, especialista em emagrecimento feminino há mais de dez anos.
 >
-> Você deve estar se perguntando por que responder tudo isso antes de receber a receita. É porque a combinação e a quantidade mudam pro seu corpo — eu não vou te passar nada genérico da internet.
+> Você deve estar se perguntando por que responder tudo isso antes de receber a receita. É porque a combinação e a quantidade mudam pro seu corpo, eu não vou te passar nada genérico da internet.
 >
 > Você já viu a Virginia, a Jojo, a Maraisa secando na canetinha. O que pouca gente conta é o que vem junto: a canetinha deixa com cara de doente, derrete músculo junto com a gordura, e quando para, o peso volta pior.
 >
-> Por isso muitas delas trocaram por uma receita natural que faz a mesma coisa na fome — segura a comida no estômago e desliga o sinal de fome — e ainda acelera o metabolismo pra queimar gordura vinte e quatro horas por dia, até dormindo. Derrete a gordura localizada, sem agulha, sem receita e sem os três mil reais por mês.
+> Por isso muitas delas trocaram por uma receita natural que faz a mesma coisa na fome, segura a comida no estômago e desliga o sinal de fome, e ainda acelera o metabolismo pra queimar gordura vinte e quatro horas por dia, até dormindo. Derrete a gordura localizada, sem agulha, sem receita e sem os três mil reais por mês.
 >
 > É isso que eu chamo de **Canetinha de Pobre**.
 >
@@ -37,9 +37,9 @@ Slots no código: `CONFIG.assets.audio1` e `CONFIG.assets.audio3` (mp3). O playe
 >
 > Eu entendo. A internet é cheia de golpe, e os bons pagam pelos maus. Só que o protocolo está numa plataforma certificada, com CNPJ ativo, e o acesso chega no seu e-mail na hora.
 >
-> Por lei são sete dias de garantia. Eu dou trinta. Faço isso porque, se você tomar a Canetinha todo dia do jeito que eu ensino, é impossível a fome não cair nos primeiros dias e o seu corpo não entrar em modo queima de gordura — vinte e quatro horas por dia, até dormindo, derretendo a gordura da barriga e dos culotes sem levar o seu rosto e o seu músculo junto, que é o que a canetinha de três mil faz. E se não acontecer, você manda uma mensagem, eu devolvo cada centavo e você ainda fica com o protocolo.
+> Por lei são sete dias de garantia. Eu dou trinta. Faço isso porque, se você tomar a Canetinha todo dia do jeito que eu ensino, é impossível a fome não cair nos primeiros dias e o seu corpo não entrar em modo queima de gordura, vinte e quatro horas por dia, até dormindo, derretendo a gordura da barriga e dos culotes sem levar o seu rosto e o seu músculo junto, que é o que a canetinha de três mil faz. E se não acontecer, você manda uma mensagem, eu devolvo cada centavo e você ainda fica com o protocolo.
 >
-> Trinta e sete e noventa é praticamente uma taxa de comprometimento — pra gente não perder tempo com quem não tem intenção de mudar.
+> Trinta e sete e noventa é praticamente uma taxa de comprometimento, pra gente não perder tempo com quem não tem intenção de mudar.
 >
 > Clica no botão verde, e te vejo lá dentro do grupo.
 

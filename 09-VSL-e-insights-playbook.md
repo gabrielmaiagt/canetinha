@@ -12,32 +12,32 @@ Voz: amiga que sabe o segredo. Frases curtas. "Você" o tempo todo.
 *(nutri no consultório/cozinha, copo na mão)*
 
 > Pronto. Sua Canetinha de Pobre foi gerada com base no seu peso, no seu IMC e no horário que a fome mais te ataca. Não sai dessa página, tá? Ela é liberada uma vez só.
-> Nos próximos 2 minutos eu vou te mostrar por que a Virginia Fonseca, a Jojo Todynho, a Maraisa secaram na canetinha — o que ela faz por trás que ninguém conta — e a receitinha que muita famosa está usando no lugar dela pra eliminar até 10 quilos de gordura em 30 dias sem agulha e sem 3 mil reais.
+> Nos próximos 2 minutos eu vou te mostrar por que a Virginia Fonseca, a Jojo Todynho, a Maraisa secaram na canetinha, o que ela faz por trás que ninguém conta, e a receitinha que muita famosa está usando no lugar dela pra eliminar até 10 quilos de gordura em 30 dias sem agulha e sem 3 mil reais.
 
 ### 2 · RETOMADA DO MECANISMO (0:20–0:38) — ela já ouviu no áudio 1; aqui é só lembrar, com outras palavras
 *(b-roll: 3 ✗ na tela → copo pronto → barriga "queimando")*
 
-> Você já sabe o que a canetinha cobra: o rosto, o músculo e o peso de volta. A receitinha faz o mesmo na fome — mas é o seu corpo mandando o sinal, não uma agulha. E o que ela faz que a caneta não faz: liga o seu metabolismo e deixa ligado, queimando gordura o dia inteiro, até dormindo. A gordura da barriga, do culote, da coxa — é essa que vai primeiro.
+> Você já sabe o que a canetinha cobra: o rosto, o músculo e o peso de volta. A receitinha faz o mesmo na fome, mas é o seu corpo mandando o sinal, não uma agulha. E o que ela faz que a caneta não faz: liga o seu metabolismo e deixa ligado, queimando gordura o dia inteiro, até dormindo. A gordura da barriga, do culote, da coxa, é essa que vai primeiro.
 
 ### 3 · PROVA (0:38–1:05) — o que a Paizão e o Mounjaro colocam no lugar de re-explicar
 *(b-roll: prints do grupo / relatos em áudio de WhatsApp na tela · foto antes/depois da modelo · "5 kg em 17 dias")*
 
-> Olha o que as meninas do grupo mandam: "minha fome sumiu, 5 quilos em 17 dias". "Não sinto mais vontade de doce depois do almoço". "Gente, é sério que é isso que as famosas fazem? Baratinho e funcional". Não é dieta, não é academia, não é remédio. É um copo, 5 minutos, ingredientes de qualquer mercado, 30 minutos antes do momento que a fome te ataca — no horário que eu já marquei no seu protocolo.
+> Olha o que as meninas do grupo mandam: "minha fome sumiu, 5 quilos em 17 dias". "Não sinto mais vontade de doce depois do almoço". "Gente, é sério que é isso que as famosas fazem? Baratinho e funcional". Não é dieta, não é academia, não é remédio. É um copo, 5 minutos, ingredientes de qualquer mercado, 30 minutos antes do momento que a fome te ataca, no horário que eu já marquei no seu protocolo.
 
 ### 4 · FUTURE PACING (1:05–1:30) — o que ela vai ver, semana a semana
 *(b-roll: antes/depois da modelo, calendário, roupa folgando; tela: 1ª · 2ª · 3ª · 4ª semana)*
 
-> Na primeira semana você já sente a fome cair e o corpo desinchar. Na segunda, o metabolismo acelera e você começa a acordar mais seca, sem ter feito nada dormindo. Na terceira, a calça que não fechava começa a folgar e a barriga some. E na quarta semana são até 10 quilos de gordura a menos — com o rosto igual e o corpo firme. Não se assusta quando perguntarem "o que você fez?". Você vai responder: a receitinha.
+> Na primeira semana você já sente a fome cair e o corpo desinchar. Na segunda, o metabolismo acelera e você começa a acordar mais seca, sem ter feito nada dormindo. Na terceira, a calça que não fechava começa a folgar e a barriga some. E na quarta semana são até 10 quilos de gordura a menos, com o rosto igual e o corpo firme. Não se assusta quando perguntarem "o que você fez?". Você vai responder: a receitinha.
 
 ### 5 · PITCH (1:30–2:02) — o que recebe + preço
 *(botão aparece em 1:30 · b-roll: app na tela passando os cards · texto: R$ 3.000/mês riscado → 8x de R$ 5)*
 
-> Dentro do app você recebe a receita com a dose certa pro seu peso, o Protocolo Sem Cara de Doente — o que as famosas fazem pra derreter gordura sem murchar o rosto —, o Anti-Sanfona pra o peso não voltar, o desafio de 21 dias, o grupo VIP com as outras meninas e o meu suporte no WhatsApp. A canetinha custa até 3 mil reais por mês. A Canetinha de Pobre custa 8 vezes de 5 reais — ou 37,90 à vista. Menos que uma pizza no fim de semana.
+> Dentro do app você recebe a receita com a dose certa pro seu peso, o Protocolo Sem Cara de Doente, o que as famosas fazem pra derreter gordura sem murchar o rosto —, o Anti-Sanfona pra o peso não voltar, o desafio de 21 dias, o grupo VIP com as outras meninas e o meu suporte no WhatsApp. A canetinha custa até 3 mil reais por mês. A Canetinha de Pobre custa 8 vezes de 5 reais, ou 37,90 à vista. Menos que uma pizza no fim de semana.
 
 ### 6 · PÓS-PITCH (2:02–2:22) — segurança + ação
 *(selo 30 dias entra · nutri aponta pro botão · última frame: sorriso + seta)*
 
-> E eu assumo o risco por você: se em 30 dias sua barriga não desinchar e suas roupas não folgarem, eu devolvo cada centavo — e você ainda fica com o protocolo de graça. São só 7 vagas hoje e essa página expira. Clica no botão verde aqui embaixo, garante a sua Canetinha, e eu te vejo lá no grupo.
+> E eu assumo o risco por você: se em 30 dias sua barriga não desinchar e suas roupas não folgarem, eu devolvo cada centavo, e você ainda fica com o protocolo de graça. São só 7 vagas hoje e essa página expira. Clica no botão verde aqui embaixo, garante a sua Canetinha, e eu te vejo lá no grupo.
 
 ---
 
