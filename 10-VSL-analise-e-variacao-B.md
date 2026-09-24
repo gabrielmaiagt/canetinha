@@ -109,7 +109,7 @@ Premissa: expert fraco → a credibilidade vem das **famosas** (superestrutura),
 
 > Dentro do app você recebe a receita da Canetinha com a dose certa pro seu peso — e tem um videozinho meu de 2 minutos mostrando o preparo, pra você não errar nada. Recebe o horário exato de tomar, que eu já calculei pra você. Recebe o Protocolo Sem Cara de Doente, que é o que as famosas fazem pra derreter gordura sem murchar o rosto. O Anti-Sanfona, pra quando você chegar na meta o peso não voltar. E o desafio de 21 dias com as outras meninas no grupo VIP, onde eu respondo no WhatsApp. É tudo lá dentro, no seu celular, em 2 minutos depois do pagamento.
 
-### B4 · PROVA + BÔNUS DA HORA (1:20–1:45)
+### B4 · PROVA + BÔNUS "DA HORA" (1:20–1:45)
 *(antes/depois da Marluce → print do grupo → texto: TODA SEMANA, 5 MENINAS)*
 
 > A Marluce chegou exatamente aí onde você tá — já tinha tentado de tudo e a fome vencia. Em 3 dias parou de pensar em comida, em 2 meses foram 17 quilos. E não foi só ela, o grupo tá cheio de foto de calça folgando. E ó, tem uma coisa que é da hora: toda semana eu escolho 5 meninas do grupo, as que mais postaram, e ajusto a dose delas ao vivo comigo no WhatsApp. Eu quero você entre as cinco.
@@ -117,12 +117,12 @@ Premissa: expert fraco → a credibilidade vem das **famosas** (superestrutura),
 ### B5 · PREÇO COM ANCORAGEM E REASON WHY (1:45–2:10)
 *(botão aparece em 1:45 · R$ 3.000/mês riscado → R$ 500 nutri riscado → 8x de R$ 5)*
 
-> Aí você já pensa que isso deve ser caro. A canetinha custa até 3 mil reais por mês. Uma consulta de nutri, 500. A Canetinha de Pobre, com tudo isso dentro, custa 8 vezes de 5 reais. Ou 37,90 à vista — menos que uma pizza no fim de semana. E o preço é esse porque eu quero o máximo de meninas dentro do grupo tendo resultado: quanto mais foto de antes e depois, mais gente descobre que não precisa de caneta.
+> Aí você fala: "isso deve ser caro". A canetinha custa até 3 mil reais por mês. Uma consulta de nutri, 500. A Canetinha de Pobre, com tudo isso dentro, custa 8 vezes de 5 reais. Ou 37,90 à vista — menos que uma pizza no fim de semana. E o preço é esse porque eu quero o máximo de meninas dentro do grupo tendo resultado: quanto mais foto de antes e depois, mais gente descobre que não precisa de caneta.
 
 ### B6 · MEDO + GARANTIA CONDICIONAL (2:10–2:32)
 *(selo 30 dias · nutri fala mais devagar)*
 
-> Eu sei que você tá se perguntando se vai conseguir dessa vez. É normal. Sozinha, talvez não — com o grupo, é outra história. E eu assumo o risco: toma a Canetinha por 30 dias no seu horário, posta no grupo, e se sua barriga não desinchar e sua roupa não folgar, eu devolvo cada centavo. E você ainda fica com o protocolo de graça.
+> Eu sei que você tá pensando "será que eu vou conseguir dessa vez?". É normal. Sozinha, talvez não — com o grupo, é outra história. E eu assumo o risco: toma a Canetinha por 30 dias no seu horário, posta no grupo, e se sua barriga não desinchar e sua roupa não folgar, eu devolvo cada centavo. E você ainda fica com o protocolo de graça.
 
 ### B7 · ESCASSEZ COM MOTIVO + CLOSE (2:32–2:48)
 *(texto: SÓ 7 VAGAS HOJE · seta pro botão)*
