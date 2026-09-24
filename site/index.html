@@ -700,8 +700,8 @@ const STEPS = [
     ];
     const vsl = (VSLV === "B" && CONFIG.vslEmbedB) ? CONFIG.vslEmbedB : (VSLV === "A" && CONFIG.vslEmbed) ? CONFIG.vslEmbed : (CONFIG.vslEmbedB || CONFIG.vslEmbed) ? (CONFIG.vslEmbedB || CONFIG.vslEmbed) : CONFIG.vslMp4 ? `<video src="${CONFIG.vslMp4}" controls playsinline></video>` : `<div class="ph"><div class="pl">▶</div><b>VSL da oferta (1m55)</b>roteiro na seção "VSL" do mapa · cole o embed da vturb em CONFIG.vslEmbed</div>`;
     return `
-    <h2 class="q-title">A sua Canetinha de Pobre <span class="hl">foi gerada!</span></h2>
-    <p class="small">Ela é exclusiva e gerada uma vez só. Não sai dessa página pra não perder.</p>
+    <h2 class="q-title">O seu protocolo <span class="hl">foi gerado!</span></h2>
+    <p class="small">Ele é exclusivo e gerado uma vez só. Não sai dessa página pra não perder.</p>
     <p class="h3">Dá o play e veja o que você vai receber 👇</p>
     <div class="vsl"><div class="frame">${vsl}</div></div>
     ${img(gif, "GIF depois do protocolo, faixa " + f, "16/9")}
@@ -714,7 +714,7 @@ const STEPS = [
       <div><div class="em">🏁</div><b>${S.a.ideal || "–"} kg</b><small>meta</small></div>
     </div>
     <div class="al acc" style="text-align:center">🕒 Horário da sua Canetinha de Pobre: <b>${P.horario()}</b>${P.falta() ? ` · previsão <b>até ${P.mes1()} kg de gordura</b> no 1º mês` : ""}</div>
-    <p class="h3">Seu protocolo inclui:</p>
+    <p class="h3">Seu plano inclui:</p>
     <div class="args">${args.map((a, i) => `<div class="a"><div class="ai">${A.argumentos[i] ? `<img src="${A.argumentos[i]}" alt="">` : a[2]}</div><div class="at"><b>${a[0]}</b><p>${a[1]}</p></div></div>`).join("")}</div>
     <div class="sp2"></div>
     ${price("Protocolo Completo")}
@@ -764,10 +764,6 @@ const STEPS = [
     mount: () => {
       let t = CONFIG.timerSeconds; const te = document.getElementById("timer");
       const tk = () => { if (!te || !document.body.contains(te)) return; te.textContent = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`; if (t-- > 0) setTimeout(tk, 1000); }; tk();
-      const msgs = ["🔔 4 pessoas estão comprando", "Beatriz Oliveira acabou de garantir a dela", "🔔 2 pessoas estão preenchendo pagamento", "Cláudia Maria acabou de garantir a dela"];
-      let k = 0; const toast = document.getElementById("toast");
-      const show = () => { if (STEPS[S.i].id !== "oferta") return; toast.innerHTML = `<b>${msgs[k++ % msgs.length]}</b><small>⏰ Neste minuto</small>`; toast.classList.add("on"); setTimeout(() => toast.classList.remove("on"), 5000); setTimeout(show, 20000); };
-      setTimeout(show, 2500);
       document.querySelectorAll(".cta").forEach(b => b.addEventListener("click", () => { track("InitiateCheckout", { cta: b.dataset.n, imc: imc().toFixed(1) }); if (DB) DB.checkout(+b.dataset.n); setTimeout(() => { window.location.href = checkoutUrl(); }, 150); }));
       track("ViewOffer", { imc: imc().toFixed(1), faixa: faixa() });
       armBackredirect();
