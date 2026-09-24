@@ -258,6 +258,15 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 .price .val small{font-size:1rem;vertical-align:top;margin-right:2px}
 .price .parc{font-size:.9rem;color:var(--ink);font-weight:700;margin-top:6px}
 .price .pix{font-size:.78rem;color:var(--ink2);margin-top:2px}
+.wk{display:grid;gap:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.wk .w{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center;padding:13px 14px;border-top:1px solid var(--line);position:relative}
+.wk .w:first-child{border-top:0}
+.wk .w .lb{font-size:.74rem;font-weight:800;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+.wk .w .tx{font-size:.9rem;line-height:1.45;color:var(--ink2)}
+.wk .w .tx b{color:var(--ink)}
+.wk .w::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--bar,var(--line2))}
+.wk .w.on{background:var(--green-soft)}
+.wk .w.on .lb,.wk .w.on .tx b{color:var(--green-deep)}
 .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tl.two{grid-template-columns:1fr 1fr}
 .tl div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 8px 8px;text-align:center;font-size:.68rem;color:var(--ink);font-weight:600;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
@@ -289,6 +298,9 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 .addq{display:flex;gap:8px}
 .addq input{flex:1;min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font-family:inherit;font-size:.9rem;background:var(--card)}
 .addq button{min-height:46px;border:0;border-radius:12px;background:var(--card2);color:var(--ink);font-weight:700;padding:0 14px;cursor:pointer}
+#rest[hidden]{display:none}
+.revealbox{text-align:center;color:var(--ink2);font-size:.88rem;padding:18px 10px}
+.revealbox b{display:block;color:var(--ink);font-weight:700;margin-bottom:4px}
 .toast{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:100;background:#fff;color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:10px 12px;box-shadow:0 10px 30px rgba(40,30,68,.2);max-width:260px;font-size:.82rem;transform:translateX(calc(100% + 40px));visibility:hidden;pointer-events:none;transition:transform .35s ease,visibility 0s .35s}
 .toast.on{transform:none;visibility:visible;pointer-events:auto;transition:transform .35s ease,visibility 0s}
 .toast b{display:block;font-size:.86rem}.toast small{color:var(--mute)}
@@ -324,6 +336,7 @@ const CONFIG = {
   parcelas: "9x de R$ 5,50",
   vagas:    7,
   timerSeconds: 600,
+  vslCtaAt: 95,              // segundo da VSL em que o botão e o resto da página aparecem (a vturb pode chamar revealOffer())
   backredirect: true,        // "voltar" na oferta → /back/ (cupom R$ 24,90). false = desliga
   // VSL da oferta: cole o embed da vturb (ou a URL de um mp4). Vazio = placeholder.
   vslEmbed: "",              // VSL A
@@ -486,6 +499,7 @@ const DB = (() => {
     calc: (o) => write(o),
     checkout: (n) => write({ checkoutClicked: true, checkoutAt: secs(), ctaN: n, checkoutClicks: FS ? FS.FieldValue.increment(1) : 1 }),
     back: () => write({ backLeft: true, backLeftAt: secs() }),
+    reveal: () => write({ offerRevealed: true, offerRevealedAt: secs() }),
     audio: (id) => write({ audio: { [id]: true } }),
   };
 })();
@@ -687,6 +701,7 @@ const STEPS = [
     ];
     const price = (feat) => `<div class="price"><span class="feat">${feat}</span><div class="pt">Canetinha de Pobre</div><div class="before">de R$ ${CONFIG.priceBefore} por</div><div class="val"><small>R$</small>${CONFIG.price}</div><div class="parc">ou ${CONFIG.parcelas}</div><div class="pix">à vista no Pix ou cartão</div></div>`;
     const cta = (n) => `<button class="btn green pulse cta" data-n="${n}">Quero a minha Canetinha de Pobre</button>`;
+    const wk = (lb, color, tx, on) => `<div class="w ${on ? "on" : ""}" style="--bar:${color}"><span class="lb">${lb}</span><span class="tx">${tx}</span></div>`;
     const bar = (pct, color, legend) => `<div><div class="b"><i style="height:${pct}%;background:${color}"></i></div><span class="pc2" style="color:${color}">${pct}%</span><span>${legend}</span></div>`;
     const faq = [
       ["Isso é a mesma coisa que a canetinha?", "Não. A canetinha é um remédio injetável de uso controlado. A Canetinha de Pobre é um preparo natural que estimula o mesmo hormônio da saciedade e acelera o metabolismo pra queimar gordura, sem agulha, sem receita e sem os efeitos da caneta (cara de doente, rebote, perda de músculo)."],
@@ -704,29 +719,28 @@ const STEPS = [
     <p class="small">Ele é exclusivo e gerado uma vez só. Não sai dessa página pra não perder.</p>
     <p class="h3">Dá o play e veja o que você vai receber 👇</p>
     <div class="vsl"><div class="frame">${vsl}</div></div>
-    ${img(gif, "GIF depois do protocolo, faixa " + f, "16/9")}
+    <div id="ctaTop" hidden>${cta(1)}<div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div></div>
+    <div id="rest" hidden>
     <div class="cards4"><div><small>Gordura corporal · hoje</small><b>${gord[0]}</b></div><div style="background:var(--accent-soft)"><small>Gordura corporal · em 30 dias</small><b>${gord[1]}</b></div></div>
-    <p class="h3">Seu perfil:</p>
-    <div class="cards4">
-      <div><div class="em">📊</div><b>${v.toFixed(1)}</b><small>IMC atual</small></div>
-      <div><div class="em">🎯</div><b style="font-size:.9rem">${esc(areas)}</b><small>áreas alvo</small></div>
-      <div><div class="em">⚖️</div><b>${S.a.peso || "–"} kg</b><small>peso atual</small></div>
-      <div><div class="em">🏁</div><b>${S.a.ideal || "–"} kg</b><small>meta</small></div>
-    </div>
     <div class="al acc" style="text-align:center">🕒 Horário da sua Canetinha de Pobre: <b>${P.horario()}</b>${P.falta() ? ` · previsão <b>até ${P.mes1()} kg de gordura</b> no 1º mês` : ""}</div>
     <p class="h3">Seu plano inclui:</p>
     <div class="args">${args.map((a, i) => `<div class="a"><div class="ai">${A.argumentos[i] ? `<img src="${A.argumentos[i]}" alt="">` : a[2]}</div><div class="at"><b>${a[0]}</b><p>${a[1]}</p></div></div>`).join("")}</div>
     <div class="sp2"></div>
     ${price("Protocolo Completo")}
-    ${cta(1)}
+    ${cta(2)}
     <div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div>
     <div class="sp2"></div>
     <p class="h3">Quem fez a troca tem resultado 😉👇</p>
     ${carousel(A.resultadosCarrossel, "resultado")}
     <div class="sp2"></div>
     <p class="h3">Nos próximos 30 dias:</p>
-    <div class="tl">${bar(10, "#dc2626", "Hoje: fome o dia todo, compulsão à noite")}${bar(40, "#f59e0b", "1ª semana: fome cortada, corpo desinchando e desintoxicando")}${bar(60, "#2563eb", "2ª semana: metabolismo acelerado, queimando gordura até dormindo")}</div>
-    <div class="tl two">${bar(80, "#7c3aed", "3ª semana: gordura localizada derretendo, roupas folgando")}${bar(100, "#16a34a", `4ª semana: até ${P.mes1()} kg de gordura a menos${ben ? `, ${ben.toLowerCase()}` : ", rosto igual, corpo firme"}`)}</div>
+    <div class="wk">
+      ${wk("Hoje", "#dc2626", "Fome o dia todo e compulsão à noite.")}
+      ${wk("1ª semana", "#f59e0b", "A <b>fome cai</b> e o corpo começa a desinchar.")}
+      ${wk("2ª semana", "#2563eb", "Metabolismo acelerado, <b>queimando gordura até dormindo</b>.")}
+      ${wk("3ª semana", "#7c3aed", "Gordura localizada derretendo, <b>roupa folgando</b>.")}
+      ${wk("4ª semana", "#16a34a", `<b>Até ${P.mes1()} kg de gordura a menos</b>${ben ? `, ${ben.toLowerCase()}` : ", rosto igual e corpo firme"}.`, true)}
+    </div>
     <div class="sp1"></div>
     <div class="al red sm">🔴 Vagas disponíveis hoje: ${CONFIG.vagas}</div>
     <div class="al"><b>Já parou pra pensar o quanto gastou até hoje tentando emagrecer?</b>
@@ -752,18 +766,24 @@ const STEPS = [
     <p class="small"><b>Ficou com alguma dúvida?</b> Ouve isso:</p>
     ${audio(A.audio3, "audio3")}
     <div class="sp1"></div>
-    ${carousel(A.printsCarrossel, "print / relato", true)}
-    <div class="sp1"></div>
     ${cta(3)}
     <div class="sp1"></div>
     <p class="h3">Perguntas frequentes</p>
     <div class="faq">${faq.map((q, i) => `<details ${i === 0 ? "open" : ""}><summary>${q[0]}</summary><div class="ans">${q[1]}</div></details>`).join("")}</div>
     <div class="sp1"></div>
     ${cta(4)}
+    </div>
     <p class="foot">Este produto não substitui orientação médica. Consulte um profissional de saúde. Resultados variam de pessoa para pessoa.<br>© ${new Date().getFullYear()} Canetinha de Pobre</p>`; },
     mount: () => {
       let t = CONFIG.timerSeconds; const te = document.getElementById("timer");
       const tk = () => { if (!te || !document.body.contains(te)) return; te.textContent = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`; if (t-- > 0) setTimeout(tk, 1000); }; tk();
+      // revela o botão e o resto da página no segundo do pitch (a vturb pode chamar window.revealOffer())
+      const ctaTop = document.getElementById("ctaTop"), rest = document.getElementById("rest");
+      let revealed = false;
+      window.revealOffer = () => { if (revealed || !ctaTop) return; revealed = true; ctaTop.hidden = false; rest.hidden = false; track("OfferRevealed"); if (DB) DB.reveal(); };
+      const temVsl = !!(CONFIG.vslEmbed || CONFIG.vslEmbedB || CONFIG.vslMp4);
+      if (!temVsl) revealOffer();                       // sem VSL, a página abre inteira
+      else setTimeout(revealOffer, (CONFIG.vslCtaAt || 95) * 1000);
       document.querySelectorAll(".cta").forEach(b => b.addEventListener("click", () => { track("InitiateCheckout", { cta: b.dataset.n, imc: imc().toFixed(1) }); if (DB) DB.checkout(+b.dataset.n); setTimeout(() => { window.location.href = checkoutUrl(); }, 150); }));
       track("ViewOffer", { imc: imc().toFixed(1), faixa: faixa() });
       armBackredirect();
