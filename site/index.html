@@ -571,7 +571,7 @@ const STEPS = [
 
   /* 08 — benefícios */
   { id: "beneficios", title: "O que você mais quer <span class='hl'>sentir</span> nos próximos 30 dias?", sub: "Pode marcar mais de uma.",
-    ...list("beneficios", [{ l: "Parar de beliscar e comer besteira" }, { l: "Me olhar no espelho e gostar" }, { l: "Usar qualquer roupa sem marcar a barriga" }, { l: "Ouvir \"o que você fez pra emagrecer?\"" }, { l: "Meu parceiro me olhando com desejo" }, { l: "Subir escada sem cansar" }], { multi: true }) },
+    ...list("beneficios", [{ l: "Parar de beliscar e comer besteira" }, { l: "Me olhar no espelho e gostar" }, { l: "Usar qualquer roupa sem marcar a barriga" }, { l: "Perguntarem o que eu fiz pra emagrecer" }, { l: "Meu parceiro me olhando com desejo" }, { l: "Subir escada sem cansar" }], { multi: true }) },
 
   /* 09 — prova */
   { id: "prova", render: () => `
@@ -704,7 +704,7 @@ const STEPS = [
     <p class="small">Ela é exclusiva e gerada uma vez só. Não sai dessa página pra não perder.</p>
     <p class="h3">Dá o play e veja o que você vai receber 👇</p>
     <div class="vsl"><div class="frame">${vsl}</div></div>
-    ${img(gif, "GIF “depois do protocolo” — faixa " + f, "16/9")}
+    ${img(gif, "GIF depois do protocolo — faixa " + f, "16/9")}
     <div class="cards4"><div><small>Gordura corporal · hoje</small><b>${gord[0]}</b></div><div style="background:var(--accent-soft)"><small>Gordura corporal · em 30 dias</small><b>${gord[1]}</b></div></div>
     <p class="h3">Seu perfil:</p>
     <div class="cards4">
