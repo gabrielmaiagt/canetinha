@@ -518,23 +518,23 @@ const LANDING = { id: "landing", noBand: true, render: () => `
 const STEPS = [
   ...(ENTRY === "landing" ? [LANDING] : []),
 
-  /* 02 — áreas (cards com foto, multi) */
-  { id: "areas", title: "Pra começar: <span class='hl'>onde</span> você mais quer secar?",
-    ...photos("areasalvo", [
-      { l: "Barriga", img: A.areaBarriga, ph: "modelo · barriga marcada" }, { l: "Culotes", img: A.areaCulotes, ph: "modelo · culotes marcados" },
-      { l: "Corpo todo", img: A.areaCorpoTodo, ph: "modelo · contorno", wide: true }]) },
-
-  /* 03 — quantos kg (Mounjaro etapa 2) */
-  { id: "meta", title: "Quantos quilos você quer <span class='hl'>eliminar</span>?",
+  /* 02 — quantos kg · 1ª tela (Mounjaro e Chia abrem assim; o teste #4 do Chia confirmou) */
+  { id: "meta", title: "Pra começar: quantos quilos você quer <span class='hl'>eliminar</span>?",
     ...list("meta", [{ l: "Até 5 kg" }, { l: "De 6 a 10 kg" }, { l: "De 11 a 19 kg" }, { l: "20 kg ou mais" }]) },
 
-  /* 04 — tipo de corpo */
+  /* 03 — tipo de corpo */
   { id: "corpo", title: "Sem julgamento: como tá o seu <span class='hl'>corpo hoje</span>?", sub: "É só o ponto de partida.",
     ...photos("corpo", [
       { l: "Médio", img: A.corpoMedio, ph: "modelo · médio" }, { l: "Sobrepeso", img: A.corpoSobrepeso, ph: "modelo · sobrepeso" },
       { l: "Acima do peso", img: A.corpoAcima, ph: "modelo · acima do peso" }, { l: "Plus size", img: A.corpoPlus, ph: "modelo · plus size" }]) },
 
-  /* 04 — impacto */
+  /* 04 — áreas (cards com foto) */
+  { id: "areas", title: "E <span class='hl'>onde</span> você mais quer secar?",
+    ...photos("areasalvo", [
+      { l: "Barriga", img: A.areaBarriga, ph: "modelo · barriga marcada" }, { l: "Culotes", img: A.areaCulotes, ph: "modelo · culotes marcados" },
+      { l: "Corpo todo", img: A.areaCorpoTodo, ph: "modelo · contorno", wide: true }]) },
+
+  /* 05 — impacto */
   { id: "impacto", title: "Me fala a real: como o peso tem <span class='rd'>atrapalhado</span> a sua vida?",
     ...list("impacto", [{ l: "Minha autoestima tá lá embaixo" }, { l: "Vivo cansada, sem energia pra nada" }, { l: "Já tá mexendo com a saúde: pressão, dores, exames" }, { l: "Tá afetando a minha vida íntima" }]) },
 

@@ -115,11 +115,11 @@ const FIREBASE = { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain
 
 /* ============ Estrutura do funil (espelha site/index.html) ============ */
 const STEPS = [
-  ["landing", "Landing", "/?v=landing"], ["areas", "Onde quer secar", "/"], ["meta", "Quantos kg", "meta"], ["corpo", "Corpo hoje", "corpo"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["caneta", "Relação c/ canetinha", "caneta"], ["barreira", "O que impede", "barreira"], ["mecanismo", "Mecanismo ✗/✓", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["fome", "Momento da fome", "fome"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Diagnóstico", "diagnostico"], ["oferta", "🎬 Oferta (VSL)", "oferta"], ["checkout", "Clique checkout", "checkout"],
+  ["landing", "Landing", "/?v=landing"], ["meta", "Quantos kg", "/"], ["corpo", "Corpo hoje", "corpo"], ["areas", "Onde quer secar", "areas"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["caneta", "Relação c/ canetinha", "caneta"], ["barreira", "O que impede", "barreira"], ["mecanismo", "Mecanismo ✗/✓", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["fome", "Momento da fome", "fome"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Diagnóstico", "diagnostico"], ["oferta", "🎬 Oferta (VSL)", "oferta"], ["checkout", "Clique checkout", "checkout"],
 ];
 const MEDIA = new Set(["prova", "loading", "oferta"]);
 const QUESTIONS = [
-  ["areasalvo", "Onde quer secar", "Pra começar: onde você mais quer secar?"], ["meta", "Quantos kg", "Quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["futuro", "Daqui 1 ano", "Se nada mudar: como você se imagina daqui 1 ano?"], ["caneta", "Canetinha", "Me fala uma coisa: qual a sua relação com a canetinha de verdade?"], ["barreira", "O que impede", "O que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha de Pobre todo dia por 30 dias?"],
+  ["meta", "Quantos kg", "Pra começar: quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["areasalvo", "Onde quer secar", "E onde você mais quer secar?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["futuro", "Daqui 1 ano", "Se nada mudar: como você se imagina daqui 1 ano?"], ["caneta", "Canetinha", "Me fala uma coisa: qual a sua relação com a canetinha de verdade?"], ["barreira", "O que impede", "O que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha de Pobre todo dia por 30 dias?"],
 ];
 const CANETA = { usei: "Já usei e o peso voltou", medo: "Medo dos efeitos", caro: "Não tenho R$ 3 mil", nunca: "Nunca pensei nisso" };
 const BARREIRA = { fome: "A fome vence", tempo: "Falta tempo", financeiro: "É caro demais", constancia: "Sem constância" };
@@ -153,7 +153,7 @@ function demoData() {
     const entry = Math.random() < 0.3 ? "landing" : "pergunta", vsl = Math.random() < 0.5 ? "A" : "B";
     const created = now - R(7 * 864e5);
     const s = { sid: "demo" + k, entry, vsl, day: dayStr(new Date(created)), createdAt: created, mobile: Math.random() < 0.92, utm_source: pickW([["facebook", 7], ["instagram", 2], [null, 1]]), utm_campaign: pickW([["famosas-caneta v2", 5], ["cara-de-doente v1", 3], ["10kg-30dias", 2], [null, 1]]), utm_content: pickW([["reel-01", 4], ["reel-02", 3], ["carrossel-01", 2]]), answers: {}, steps: {} };
-    let t = 0; const drops = { areas: 0.52, meta: 0.04, corpo: 0.04, impacto: 0.05, feliz: 0.02, futuro: 0.03, caneta: 0.03, barreira: 0.03, mecanismo: 0.10, beneficios: 0.04, prova: 0.09, peso: 0.04, altura: 0.01, ideal: 0.01, motiva: 0.03, rotina: 0.02, sono: 0.01, fome: 0.01, corpoalvo: 0.01, compromisso: 0.02, loading: 0.01, diagnostico: 0.12, oferta: 0 };
+    let t = 0; const drops = { meta: 0.52, areas: 0.04, corpo: 0.04, impacto: 0.05, feliz: 0.02, futuro: 0.03, caneta: 0.03, barreira: 0.03, mecanismo: 0.10, beneficios: 0.04, prova: 0.09, peso: 0.04, altura: 0.01, ideal: 0.01, motiva: 0.03, rotina: 0.02, sono: 0.01, fome: 0.01, corpoalvo: 0.01, compromisso: 0.02, loading: 0.01, diagnostico: 0.12, oferta: 0 };
     const meta = pickW([["Até 5 kg", 25], ["De 6 a 10 kg", 35], ["De 11 a 19 kg", 28], ["20 kg ou mais", 12]]);
     if (entry === "landing") { s.steps.landing = { i: 0, t: 0 }; if (Math.random() < 0.45) { out.push(s); continue; } }
     for (let i = 0; i < order.length; i++) {
@@ -232,12 +232,12 @@ function render() {
   const approved = sl.filter(s => /aprovad|paid|approved/i.test(s.status)); const rev = approved.reduce((a, s) => a + (+s.value || 0), 0);
   const sources = [...new Set(all.map(s => s.utm_source || "(sem origem)"))].sort();
   const ret = retention(rows); const maxN = Math.max(1, ...ret.map(r => r.n));
-  const q1 = dist(rows, "areasalvo"); const q1max = Math.max(1, ...q1.items.map(x => x[1]));
-  const ans1 = rows.filter(s => (s.answers || {}).areasalvo).length, to2 = rows.filter(s => reachedStep(s, "meta")).length;
+  const q1 = dist(rows, "meta"); const q1max = Math.max(1, ...q1.items.map(x => x[1]));
+  const ans1 = rows.filter(s => (s.answers || {}).meta).length, to2 = rows.filter(s => reachedStep(s, "corpo")).length;
 
   // A/B entrada
   const eA = rows.filter(s => s.entry === "pergunta"), eB = rows.filter(s => s.entry === "landing");
-  const abRows = (r) => { const n = r.length, first = r.filter(s => (s.answers || {}).areasalvo).length, d = r.filter(s => s.completed).length, o = r.filter(s => s.offerViewed).length, c = r.filter(s => s.checkoutClicked).length; return [["Viram esta variante", N(n), "", `(${P(pct(n, pv))})`], ["Responderam a 1ª pergunta", N(first), "green", `(${P(pct(first, n))})`], ["Pararam antes da 1ª", N(n - first), "red"], ["Chegaram no diagnóstico", N(d), "", `(${P(pct(d, n))})`], ["Chegaram na oferta", N(o), "", `(${P(pct(o, n))})`], ["Clicaram no checkout", N(c), "green", `(${P(pct(c, o))} da oferta)`], ["Compraram", N(r.filter(s => s.purchased).length), "green", `(${P(pct(r.filter(s => s.purchased).length, n), 1)} do pageview)`]]; };
+  const abRows = (r) => { const n = r.length, first = r.filter(s => (s.answers || {}).meta).length, d = r.filter(s => s.completed).length, o = r.filter(s => s.offerViewed).length, c = r.filter(s => s.checkoutClicked).length; return [["Viram esta variante", N(n), "", `(${P(pct(n, pv))})`], ["Responderam a 1ª pergunta", N(first), "green", `(${P(pct(first, n))})`], ["Pararam antes da 1ª", N(n - first), "red"], ["Chegaram no diagnóstico", N(d), "", `(${P(pct(d, n))})`], ["Chegaram na oferta", N(o), "", `(${P(pct(o, n))})`], ["Clicaram no checkout", N(c), "green", `(${P(pct(c, o))} da oferta)`], ["Compraram", N(r.filter(s => s.purchased).length), "green", `(${P(pct(r.filter(s => s.purchased).length, n), 1)} do pageview)`]]; };
   const abTot = (r) => { const n = r.length, o = r.filter(s => s.offerViewed).length, c = r.filter(s => s.checkoutClicked).length; return `Oferta/pageview: <b>${P(pct(o, n))}</b> · Checkout/oferta: <b>${P(pct(c, o))}</b> · Checkout/pageview: <b>${P(pct(c, n), 1)}</b>`; };
   // A/B VSL
   const oA = rows.filter(s => s.offerViewed && s.vsl === "A"), oB = rows.filter(s => s.offerViewed && s.vsl === "B");
@@ -285,17 +285,17 @@ function render() {
     </div>
 
     <div class="card">
-      <h2>1ª pergunta · Onde quer secar <span>· barriga / culotes / corpo todo · escolha única, 1 toque</span></h2>
-      <p class="exp">Entrada (<code>/</code>). Resposta em <code>answers.areasalvo</code>. Taxa = quem escolheu ÷ PageViews · Drop = PV − quem chegou em <b>Quantos kg</b>.</p>
+      <h2>1ª pergunta · Quantos kg <span>· até 5 / 6 a 10 / 11 a 19 / 20+ · escolha única, 1 toque</span></h2>
+      <p class="exp">Entrada (<code>/</code>). Resposta em <code>answers.meta</code>. Taxa = quem escolheu ÷ PageViews · Drop = PV − quem chegou em <b>Corpo hoje</b>.</p>
       <div class="tiles">
         ${tile(N(ans1), "Responderam a 1ª", `${P(pct(ans1, pv))} · ${N(ans1)} / ${N(pv)} · do pageview`)}
         ${tile(P(pct(ans1, pv)), "Taxa de resposta", `${N(ans1)} / ${N(pv)} PV`)}
-        ${tile(N(to2), "Foram pra 2ª (kg)", `${P(pct(to2, pv))} · ${N(to2)} / ${N(pv)} · do pageview`)}
+        ${tile(N(to2), "Foram pra 2ª (corpo)", `${P(pct(to2, pv))} · ${N(to2)} / ${N(pv)} · do pageview`)}
         ${tile(N(pv - to2), "Drop na 1ª", `${P(pct(pv - to2, pv))} · ${N(pv - to2)} / ${N(pv)} · pararam na 1ª tela`)}
       </div>
-      <p class="qtitle">Onde quer secar <span>· Pra começar: onde você mais quer secar?</span></p>
+      <p class="qtitle">Quantos kg <span>· Pra começar: quantos quilos você quer eliminar?</span></p>
       <div class="rows">${q1.items.map(([v, n]) => `<div class="row"><span class="lbl">${esc(v)}</span>${hbar(n, q1max)}<span class="v num"><b>${N(n)}</b><span>${P(pct(n, ans1))}</span></span></div>`).join("") || `<div class="empty">sem respostas ainda</div>`}</div>
-      <p class="foot">Contagem via <code>answers.areasalvo</code>. Taxa = quem respondeu a 1ª ÷ PageViews.</p>
+      <p class="foot">Contagem via <code>answers.meta</code>. Taxa = quem respondeu a 1ª ÷ PageViews.</p>
     </div>
 
     <div class="card">
