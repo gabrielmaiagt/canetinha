@@ -254,8 +254,8 @@ function setup() {
   $("sFome").onclick = (e) => { const b = e.target.closest("[data-f]"); if (!b) return;
     fome = b.dataset.f; [...$("sFome").children].forEach(x => x.classList.toggle("on", x === b)); ok(); };
   $("sGo").onclick = () => {
-    S = { peso, peso0: peso, fome, inicio: hoje(), tarefas: {}, dias: {}, pesos: [{ d: hoje(), p: peso }] };
-    save(); start();
+    S = { peso, peso0: peso, fome, inicio: hoje(), tarefas: {}, dias: {}, pesos: [{ d: hoje(), p: peso }], viuReceita: false };
+    save(); aba = "receita"; start();
   };
 }
 
@@ -336,10 +336,17 @@ V.hoje = () => {
 };
 
 V.receita = () => {
-  const d = dose(S.peso), f = fomeInfo();
+  const d = dose(S.peso), f = fomeInfo(), nova = !S.viuReceita;
   return `
-  <h1>A <span class="hl">Canetinha de Pobre</span></h1>
-  <p class="small">5 minutos de preparo. Ingredientes de qualquer mercado. Tomar <b>${f[2]}</b>.</p>
+  ${nova ? `<span class="pill g">✅ Pagamento aprovado · acesso liberado</span>` : ""}
+  <h1>${nova ? "Pronto. Essa é a <span class=\"hl\">sua Canetinha de Pobre</span>." : "A <span class=\"hl\">Canetinha de Pobre</span>"}</h1>
+  <p class="small">${nova ? `Calculada pro seu peso de <b>${S.peso} kg</b> e pro horário em que a fome te ataca. 5 minutos de preparo, tudo de mercado.` : `5 minutos de preparo. Ingredientes de qualquer mercado. Tomar <b>${f[2]}</b>.`}</p>
+  ${nova ? `<div class="card flat"><h3>Como funciona daqui pra frente</h3>
+    <div class="passos" style="margin-top:10px">
+      <div class="passo"><p>Faz a sua Canetinha com a receita abaixo.</p></div>
+      <div class="passo"><p>Toma <b>${f[2]}</b>, todo dia.</p></div>
+      <div class="passo"><p>Volta aqui e marca no <b>Hoje</b>. Em 21 dias você fecha o desafio.</p></div>
+    </div></div>` : ""}
 
   <div class="card">
     <span class="pill">Sua dose · ${S.peso} kg</span>
@@ -389,7 +396,9 @@ V.receita = () => {
     <div class="alert g">2. No máximo 2 vezes por dia.</div>
     <div class="alert g">3. Mínimo 2 litros de água no dia. Fibra sem água trava o intestino.</div>
     <div class="alert g">4. Ela corta a fome, não substitui refeição. Pular refeição é o caminho da cara de doente.</div>
-  </div>`;
+  </div>
+  ${nova ? `<button class="btn green" id="viuReceita" type="button">Entendi, ver o meu plano de hoje →</button>
+  <p class="foot">A receita fica salva aqui na aba <b>Receita</b>, é só voltar quando quiser.</p>` : ""}`;
 };
 
 V.desafio = () => {
@@ -491,6 +500,7 @@ document.addEventListener("click", (e) => {
     S.pesos = (S.pesos || []).filter(x => x.d !== hoje()); S.pesos.push({ d: hoje(), p: v });
     S.pesos.sort((a, b) => a.d < b.d ? -1 : 1); S.peso = v; save(); render(); return;
   }
+  if (e.target.id === "viuReceita") { S.viuReceita = true; save(); aba = "hoje"; render(); return; }
   if (e.target.id === "refazer") {
     if (!confirm("Refazer a calibragem? Seu histórico de peso e o desafio continuam salvos.")) return;
     $("app").classList.add("hidden"); $("setup").classList.remove("hidden");
@@ -500,7 +510,7 @@ document.addEventListener("click", (e) => {
 });
 
 /* ---------- boot ---------- */
-if (S && S.peso) start(); else setup();
+if (S && S.peso) { if (!S.viuReceita) aba = "receita"; start(); } else setup();
 </script>
 </body>
 </html>
