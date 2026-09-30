@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Minha Canetinha de Pobre</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f4eeff">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="%237c3aed"/><g fill="none" stroke="%23fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l3-.9L17.5 8.6a2 2 0 0 0-2.8-2.8L5.2 15.4z"/><path d="M13 7.5l3.5 3.5"/></g></svg>'>
+<link rel="manifest" href='data:application/json,{"name":"Minha Canetinha de Pobre","short_name":"Canetinha","display":"standalone","background_color":"%23f4eeff","theme_color":"%237c3aed"}'>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#f4eeff; --bg2:#ece2fb; --card:#ffffff; --card2:#f7f3fe;
+  --line:rgba(91,46,158,.14); --line2:rgba(91,46,158,.28);
+  --ink:#281e44; --ink2:#5f5878; --mute:#9b94ad;
+  --accent:#7c3aed; --accent-deep:#5b21b6; --accent-soft:#ede7fb;
+  --grad:linear-gradient(180deg,#a98bf5 0%,#7c46e6 100%);
+  --red:#dc2626; --red-soft:#fee2e2; --green:#16a34a; --green-deep:#15803d; --green-soft:#dcfce7;
+  --amber:#b45309; --amber-soft:#fef3c7; --blue-soft:#dbeafe;
+  --r:20px; --r-sm:14px; --maxw:520px;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --shadow:0 18px 44px -18px rgba(76,29,149,.28);
+  --tab:72px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select{font-family:inherit}
+.app{max-width:var(--maxw);margin:0 auto;padding:0 16px calc(var(--tab) + 26px + env(safe-area-inset-bottom,0px))}
+/* topo */
+header{position:sticky;top:0;z-index:30;background:var(--bg);padding:calc(10px + env(safe-area-inset-top,0px)) 0 8px}
+.head{max-width:var(--maxw);margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:10px}
+.head .logo{display:flex;align-items:center;gap:7px;font-weight:800;font-size:.95rem;letter-spacing:-.01em}
+.head .logo svg{width:20px;height:20px;color:var(--accent)}
+.head .logo b{color:var(--accent)}
+.head .av{margin-left:auto;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-size:15px;font-weight:800;color:var(--accent-deep)}
+h1{font-size:1.32rem;font-weight:800;letter-spacing:-.01em;margin:16px 0 0}
+h1 .hl{color:var(--accent)}
+h2{font-size:1.05rem;font-weight:800;margin:26px 0 0}
+h3{font-size:.95rem;font-weight:800;margin:0}
+p{margin:8px 0 0;color:var(--ink2)}
+.small{font-size:.86rem;color:var(--ink2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-top:12px;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none;background:var(--card2)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent-deep);border-radius:99px;padding:5px 11px;font-size:.76rem;font-weight:700}
+.pill.g{background:var(--green-soft);color:var(--green-deep)}
+.pill.a{background:var(--amber-soft);color:var(--amber)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border:0;border-radius:var(--r);font-weight:800;font-size:1rem;color:#fff;background:var(--grad);cursor:pointer;padding:12px 18px;box-shadow:0 10px 26px -12px rgba(124,58,237,.7);margin-top:14px}
+.btn:active{transform:scale(.985)}
+.btn.green{background:linear-gradient(180deg,#22c55e 0%,#15803d 100%);box-shadow:0 10px 26px -12px rgba(22,163,74,.7)}
+.btn.ghost{background:none;color:var(--accent-deep);border:1px solid var(--line2);box-shadow:none;min-height:46px;font-size:.92rem}
+/* hoje */
+.hero{background:var(--card);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);border:1px solid var(--line);margin-top:14px}
+.hero .lin{display:flex;align-items:center;gap:12px}
+.ring{width:66px;height:66px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1.05rem;color:var(--accent-deep);background:conic-gradient(var(--accent) var(--p,0%),var(--bg2) 0)}
+.ring i{width:52px;height:52px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-style:normal;font-size:.95rem}
+.hero .txt b{display:block;font-size:1.02rem;font-weight:800}
+.hero .txt span{font-size:.85rem;color:var(--ink2)}
+.tasks{margin-top:14px;display:grid;gap:8px}
+.task{display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start;background:var(--card2);border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 13px;cursor:pointer;text-align:left;width:100%}
+.task .bx{width:24px;height:24px;border-radius:8px;border:2px solid var(--line2);display:grid;place-items:center;font-size:13px;color:transparent;background:var(--card)}
+.task.on .bx{background:var(--green);border-color:var(--green);color:#fff}
+.task b{font-size:.92rem;font-weight:700;display:block}
+.task span{font-size:.78rem;color:var(--ink2);display:block;margin-top:1px}
+.task.on b{text-decoration:line-through;color:var(--mute)}
+/* dose */
+.dose{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.dose.tres{grid-template-columns:repeat(3,1fr)}
+.dose.tres b{font-size:1rem}
+.dose div{background:var(--accent-soft);border-radius:var(--r-sm);padding:12px}
+.dose small{display:block;font-size:.72rem;color:var(--accent-deep);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.dose b{display:block;font-size:1.12rem;font-weight:800;margin-top:2px}
+/* receita */
+.ing{display:grid;gap:0;margin-top:10px}
+.ing div{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 2px;border-top:1px solid var(--line);font-size:.93rem}
+.ing div:first-child{border-top:0}
+.ing b{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.passos{counter-reset:p;margin-top:12px;display:grid;gap:10px}
+.passo{display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start}
+.passo::before{counter-increment:p;content:counter(p);width:26px;height:26px;border-radius:9px;background:var(--accent);color:#fff;font-size:.8rem;font-weight:800;display:grid;place-items:center}
+.passo p{margin:2px 0 0;font-size:.92rem}
+.alert{border-radius:var(--r-sm);padding:12px 14px;font-size:.88rem;line-height:1.5;margin-top:12px;border:1px solid var(--line)}
+.alert.a{background:var(--amber-soft);border-color:#fde68a;color:#78350f}
+.alert.g{background:var(--green-soft);border-color:#bbf7d0;color:var(--green-deep)}
+.alert.r{background:var(--red-soft);border-color:#fecaca;color:#991b1b}
+.alert.b{background:var(--blue-soft);border-color:#bfdbfe;color:#1e3a8a}
+/* desafio */
+.grid21{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:12px}
+.d21{aspect-ratio:1;border-radius:11px;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;font-size:.85rem;font-weight:800;color:var(--ink2);cursor:pointer;padding:0}
+.d21.on{background:var(--green);border-color:var(--green);color:#fff}
+.d21.hoje{border:2px solid var(--accent);color:var(--accent-deep)}
+.d21.on.hoje{color:#fff}
+.d21:disabled{opacity:.45;cursor:default}
+.wk{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.wk span{font-size:.76rem;color:var(--ink2);background:var(--card2);border:1px solid var(--line);border-radius:99px;padding:4px 10px}
+/* peso */
+.pesoin{display:flex;gap:8px;margin-top:12px}
+.pesoin input{flex:1;background:var(--card2);border:1px solid var(--line2);border-radius:var(--r-sm);padding:12px 14px;font-size:1rem;font-weight:700;color:var(--ink);min-width:0}
+.pesoin button{border:0;border-radius:var(--r-sm);background:var(--accent);color:#fff;font-weight:800;padding:0 18px;font-size:.9rem;cursor:pointer}
+.bars{display:flex;align-items:flex-end;gap:6px;height:110px;margin-top:14px}
+.bars div{flex:1;background:var(--accent-soft);border-radius:7px 7px 3px 3px;position:relative;min-height:6px}
+.bars div:last-child{background:var(--grad)}
+.bars span{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:.66rem;font-weight:700;color:var(--ink2);white-space:nowrap}
+.bars i{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:.62rem;color:var(--mute);font-style:normal;white-space:nowrap}
+/* faq */
+.faq{display:grid;gap:8px;margin-top:12px}
+.faq details{background:var(--card2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px}
+.faq summary{font-weight:700;font-size:.92rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--mute);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{margin-top:8px;font-size:.88rem;color:var(--ink2);line-height:1.55}
+/* tabs */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tab{background:none;border:0;padding:9px 2px 8px;display:grid;justify-items:center;gap:3px;cursor:pointer;color:var(--mute);font-size:.66rem;font-weight:700}
+.tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tab.on{color:var(--accent)}
+/* setup */
+.setup{max-width:var(--maxw);margin:0 auto;padding:30px 18px 60px}
+.opt{width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;font-size:.95rem;font-weight:600;color:var(--ink);cursor:pointer;margin-top:9px}
+.opt.on{border-color:var(--accent);background:var(--accent-soft)}
+.hidden{display:none!important}
+.foot{color:var(--mute);font-size:.72rem;line-height:1.6;margin-top:26px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ===================== SETUP (1ª vez) ===================== -->
+<section class="setup" id="setup">
+  <span class="pill">🎉 Acesso liberado</span>
+  <h1 style="margin-top:12px">Bem-vinda! Vamos <span class="hl">calibrar a sua Canetinha</span> em 30 segundos.</h1>
+  <p class="small">São 2 perguntas. É o que define a sua dose e o seu horário.</p>
+
+  <h2>1. Quanto você pesa hoje?</h2>
+  <div class="pesoin"><input id="sPeso" type="number" inputmode="decimal" placeholder="Ex.: 78" min="35" max="250"><button type="button" id="sPesoOk">kg</button></div>
+
+  <h2>2. Em que momento a fome mais te ataca?</h2>
+  <div id="sFome"></div>
+
+  <button class="btn" id="sGo" disabled>Liberar minha Canetinha →</button>
+  <p class="foot">Seus dados ficam só neste aparelho.</p>
+</section>
+
+<!-- ===================== APP ===================== -->
+<div id="app" class="hidden">
+<header><div class="head">
+  <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l3.5-1L18 8.5a2.1 2.1 0 0 0-3-3L4.5 16z"/><path d="M13 7l4 4"/><path d="M6 15l3 3"/></svg>Canetinha <b>de Pobre</b></span>
+  <span class="av" id="avatar">🙂</span>
+</div></header>
+
+<main class="app" id="main"></main>
+
+<nav><div class="tabs" id="tabs"></div></nav>
+</div>
+
+<script>
+/* =====================================================================
+   DADOS DO PRODUTO
+   ===================================================================== */
+const CONFIG = {
+  whatsapp: "https://chat.whatsapp.com/SEU_LINK_DO_GRUPO",
+  suporte:  "https://wa.me/55SEUNUMERO",
+  avatar:   "Fabiana",
+};
+
+const FOMES = [
+  ["manha",  "De manhã, acordo com fome",        "logo ao acordar",              "07:00"],
+  ["tarde",  "À tarde, depois do almoço",        "30 min antes do almoço",       "11:30"],
+  ["noite",  "À noite, depois do jantar",        "30 min antes do jantar",       "18:30"],
+  ["sempre", "O dia inteiro, vivo beliscando",   "de manhã e 30 min antes do jantar", "07:00 e 18:30"],
+];
+
+/* dose de fibra por faixa de peso (colher de sopa cheia) */
+function dose(p) {
+  if (!p) return { chia: 1, agua: 200 };
+  if (p < 70) return { chia: 1, agua: 200 };
+  if (p < 90) return { chia: 1.5, agua: 250 };
+  return { chia: 2, agua: 300 };
+}
+const colher = (n) => n === 1 ? "1 colher de sopa" : n === 1.5 ? "1 colher e meia de sopa" : n + " colheres de sopa";
+
+const TAREFAS = [
+  ["canetinha", "Tomei a minha Canetinha", "no horário calculado pra você"],
+  ["agua",      "Bebi 2 litros de água",   "a fibra só funciona com água"],
+  ["proteina",  "Proteína nas 3 refeições","é o que segura o músculo e o rosto"],
+  ["beliscar",  "Não belisquei fora de hora", "se bateu vontade, água com gelo primeiro"],
+  ["movimento", "Me movimentei 20 minutos", "caminhada conta, faxina conta"],
+];
+
+const DESAFIO = [
+  [1,  "Hoje é só começar", "Toma a sua Canetinha no horário e bebe os 2 litros de água. Só isso. Não muda mais nada na comida ainda."],
+  [2,  "Anota o peso", "Pesa em jejum, antes de comer, e anota na aba Peso. É o seu ponto zero."],
+  [3,  "Proteína no café", "Ovo, queijo, iogurte, o que tiver. A fome da tarde nasce no café da manhã fraco."],
+  [4,  "A primeira mudança", "A fome já deve ter caído. Repare em que horas você costumava beliscar e não belisca mais."],
+  [5,  "Água antes da vontade", "Toda vez que bater vontade fora de hora: 1 copo de água gelada e espera 10 minutos."],
+  [6,  "Prato na ordem certa", "Come primeiro a proteína e a salada, o carboidrato por último. Mesma comida, menos quantidade."],
+  [7,  "1ª semana fechada", "Pesa de novo. Desinchou? Tira foto de frente e de lado, você vai querer comparar depois."],
+  [8,  "Sem pular refeição", "Pular refeição é o atalho pra cara de doente. A Canetinha corta a fome, não substitui comida."],
+  [9,  "20 minutos de movimento", "Caminhada, escada, dançar na sala. Não é treino, é sinal pro corpo não queimar músculo."],
+  [10, "O doce da tarde", "Se bater vontade de doce: fruta gelada depois da Canetinha. Nunca de estômago vazio."],
+  [11, "Sono é dose", "Dormir menos de 6h aumenta a fome no dia seguinte. Hoje a meta é deitar 30 min mais cedo."],
+  [12, "Revisão do preparo", "Confere se você está hidratando a fibra os 10 minutos inteiros. Sem gel, não segura a fome."],
+  [13, "A roupa que não fechava", "Experimenta aquela peça. Não é pra caber ainda, é pra você sentir a diferença."],
+  [14, "2ª semana fechada", "Pesa e anota. Da segunda semana em diante a gordura sai mais rápido que o inchaço."],
+  [15, "Aumenta 1 copo de água", "Mais fibra pedindo mais água. Se sentir o intestino travado, é isso."],
+  [16, "Sal e inchaço", "Hoje, comida feita em casa. Ultraprocessado segura líquido e esconde o resultado da balança."],
+  [17, "Foto de comparação", "Mesma roupa, mesma luz, mesmo ângulo do dia 7. É aqui que a maioria se surpreende."],
+  [18, "O dia difícil", "Todo mundo tem um. Se saiu da linha hoje, não compensa amanhã: só volta pro horário."],
+  [19, "Planeja o fim de semana", "Escolhe agora qual vai ser a refeição livre. Escolhida antes, não vira descontrole."],
+  [20, "Prepara o depois", "Amanhã acaba o desafio e começa o Anti-Sanfona. Dá uma lida na aba antes."],
+  [21, "Você fechou 🎉", "Pesa, fotografa e posta no grupo. E abre o Anti-Sanfona: é ele que faz o peso não voltar."],
+];
+
+const FAQ = [
+  ["Posso tomar mais de uma vez por dia?", "Pode, até 2 vezes. Mais que isso não acelera nada e só sobrecarrega o intestino. Se o seu horário já é duas vezes, mantém assim."],
+  ["Esqueci de tomar, e agora?", "Toma no próximo horário. Não dobra a dose pra compensar."],
+  ["Posso deixar pronta de véspera?", "Não. O gel precisa ser tomado em até 20 minutos depois de pronto, senão ele fica pesado e perde o efeito de volume."],
+  ["Não gostei do sabor.", "Usa uma das variações da aba Receita. A base é a mesma, só muda o que você mistura junto."],
+  ["Deu dor de cabeça nos primeiros dias.", "Costuma ser pouca água. Sobe pra 2,5 litros e veja se passa. Se continuar depois de 3 dias, para e procura um profissional."],
+  ["Deu prisão de ventre.", "É fibra sem água suficiente. Aumenta a água antes de aumentar a dose."],
+  ["Posso tomar grávida ou amamentando?", "Grávida, não. Amamentando, só com o bebê acima de 6 meses e com o ok do seu médico."],
+  ["Tomo remédio de pressão ou tireoide. Posso?", "Fala com quem te acompanha antes. Fibra pode atrapalhar a absorção de medicamento: nesse caso, toma o remédio pelo menos 1 hora antes ou 2 horas depois da Canetinha."],
+  ["Quando vou ver resultado?", "A fome costuma cair nos primeiros 3 dias. O inchaço sai na primeira semana. A gordura começa a aparecer na balança a partir da segunda."],
+];
+
+/* =====================================================================
+   ESTADO
+   ===================================================================== */
+const KEY = "cdp_app_v1";
+const hoje = () => new Date().toISOString().slice(0, 10);
+const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch (e) { return null; } };
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+let S = load();
+
+/* parâmetros que vêm do checkout, se vierem */
+const QS = new URLSearchParams(location.search);
+if (!S && (QS.get("peso") || QS.get("fome"))) {
+  S = { peso: +QS.get("peso") || 0, peso0: +QS.get("peso") || 0, fome: QS.get("fome") || "noite", inicio: hoje(), tarefas: {}, dias: {}, pesos: [] };
+  if (S.peso) S.pesos = [{ d: hoje(), p: S.peso }];
+  save();
+}
+
+/* =====================================================================
+   SETUP
+   ===================================================================== */
+const $ = (id) => document.getElementById(id);
+function setup() {
+  $("sFome").innerHTML = FOMES.map(f => `<button class="opt" type="button" data-f="${f[0]}">${f[1]}</button>`).join("");
+  let peso = 0, fome = "";
+  const ok = () => $("sGo").disabled = !(peso >= 35 && fome);
+  $("sPeso").oninput = (e) => { peso = +e.target.value; ok(); };
+  $("sFome").onclick = (e) => { const b = e.target.closest("[data-f]"); if (!b) return;
+    fome = b.dataset.f; [...$("sFome").children].forEach(x => x.classList.toggle("on", x === b)); ok(); };
+  $("sGo").onclick = () => {
+    S = { peso, peso0: peso, fome, inicio: hoje(), tarefas: {}, dias: {}, pesos: [{ d: hoje(), p: peso }] };
+    save(); start();
+  };
+}
+
+/* =====================================================================
+   APP
+   ===================================================================== */
+const TABS = [
+  ["hoje",    "Hoje",     '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>'],
+  ["receita", "Receita",  '<path d="M8 2v7a4 4 0 0 0 8 0V2"/><path d="M12 13v9"/>'],
+  ["desafio", "21 dias",  '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'],
+  ["peso",    "Peso",     '<path d="M3 20h18"/><path d="M6 20V10M12 20V4M18 20v-7"/>'],
+  ["mais",    "Mais",     '<circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>'],
+];
+let aba = "hoje";
+
+function diaDoDesafio() {
+  const d = Math.floor((new Date(hoje()) - new Date(S.inicio)) / 864e5) + 1;
+  return Math.max(1, Math.min(21, d));
+}
+function fomeInfo() { return FOMES.find(f => f[0] === S.fome) || FOMES[2]; }
+function feitasHoje() { return Object.keys(S.tarefas[hoje()] || {}).filter(k => S.tarefas[hoje()][k]).length; }
+function sequencia() {
+  let n = 0;
+  for (let i = 0; i < 60; i++) {
+    const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
+    const t = S.tarefas[d] || {};
+    if (t.canetinha) n++; else if (i > 0) break;
+  }
+  return n;
+}
+function perdidos() {
+  const p0 = S.peso0 || (S.pesos && S.pesos[0] && S.pesos[0].p);
+  const pn = S.pesos && S.pesos.length ? S.pesos[S.pesos.length - 1].p : p0;
+  if (!p0 || !pn) return 0;
+  return Math.max(0, +(p0 - pn).toFixed(1));
+}
+
+/* ---------- abas ---------- */
+const V = {};
+
+V.hoje = () => {
+  const f = fomeInfo(), d = dose(S.peso), dia = diaDoDesafio(), t = S.tarefas[hoje()] || {};
+  const pct = Math.round(100 * feitasHoje() / TAREFAS.length);
+  const desafio = DESAFIO[dia - 1];
+  return `
+  <h1>Dia ${dia} <span class="hl">de 21</span></h1>
+  <p class="small">${sequencia() > 1 ? `🔥 ${sequencia()} dias seguidos tomando a sua Canetinha.` : "Bora começar o dia."}</p>
+
+  <div class="hero">
+    <div class="lin">
+      <div class="ring" style="--p:${pct}%"><i>${pct}%</i></div>
+      <div class="txt"><b>${feitasHoje()} de ${TAREFAS.length} metas de hoje</b><span>${pct === 100 ? "Dia fechado, parabéns 💜" : "Vai marcando conforme for fazendo."}</span></div>
+    </div>
+    <div class="tasks">
+      ${TAREFAS.map(([k, tit, sub]) => `<button class="task ${t[k] ? "on" : ""}" data-t="${k}" type="button"><span class="bx">✓</span><span><b>${tit}</b><span>${sub}</span></span></button>`).join("")}
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🕒 O horário da sua Canetinha</h3>
+    <p class="small">Você disse que a fome ataca ${f[1].toLowerCase()}. Então o seu horário é <b>${f[2]}</b>.</p>
+    <div class="dose">
+      <div><small>Tomar às</small><b>${f[3]}</b></div>
+      <div><small>Sua dose</small><b>${colher(d.chia)}</b></div>
+    </div>
+    <button class="btn ghost" data-go="receita" type="button">Ver o preparo passo a passo →</button>
+  </div>
+
+  <div class="card flat">
+    <span class="pill a">🗓️ Missão do dia ${dia}</span>
+    <h3 style="margin-top:10px">${desafio[1]}</h3>
+    <p class="small">${desafio[2]}</p>
+  </div>
+
+  <h2>Enquanto isso</h2>
+  <div class="card flat"><h3>💬 Grupo VIP</h3><p class="small">É onde as meninas postam o antes e depois e onde eu respondo dúvida.</p>
+    <a class="btn ghost" href="${CONFIG.whatsapp}" target="_blank" rel="noopener">Entrar no grupo →</a></div>`;
+};
+
+V.receita = () => {
+  const d = dose(S.peso), f = fomeInfo();
+  return `
+  <h1>A <span class="hl">Canetinha de Pobre</span></h1>
+  <p class="small">5 minutos de preparo. Ingredientes de qualquer mercado. Tomar <b>${f[2]}</b>.</p>
+
+  <div class="card">
+    <span class="pill">Sua dose · ${S.peso} kg</span>
+    <h3 style="margin-top:10px">Ingredientes</h3>
+    <div class="ing">
+      <div><span>Chia (ou psyllium, se preferir)</span><b>${colher(d.chia)}</b></div>
+      <div><span>Água gelada</span><b>${d.agua} ml</b></div>
+      <div><span>Limão espremido na hora</span><b>½ unidade</b></div>
+      <div><span>Canela em pó</span><b>1 pitada</b></div>
+      <div><span>Gengibre ralado (ou em pó)</span><b>1 cm / ½ colher de chá</b></div>
+      <div><span>Gelo</span><b>a gosto</b></div>
+    </div>
+    <div class="alert b">A dose de fibra é calculada pelo seu peso. Se você mudar de faixa, ela se ajusta sozinha aqui quando você atualizar o peso.</div>
+  </div>
+
+  <div class="card">
+    <h3>Preparo</h3>
+    <div class="passos">
+      <div class="passo"><p>Põe ${colher(d.chia)} de chia em ${d.agua} ml de água gelada e mexe bem.</p></div>
+      <div class="passo"><p><b>Deixa descansar 10 minutos.</b> É nesse tempo que a fibra vira gel. Sem isso, não segura a fome.</p></div>
+      <div class="passo"><p>Mexe de novo, espreme o limão, joga a canela e o gengibre.</p></div>
+      <div class="passo"><p>Bebe devagar, em até 20 minutos depois de pronta, <b>${f[2]}</b>.</p></div>
+      <div class="passo"><p>Nos 30 minutos seguintes, mais 1 copo de água pura.</p></div>
+    </div>
+    <div class="alert a">⚠️ Nunca tome a chia seca e depois a água. A fibra tem que estar em gel <b>antes</b> de chegar no estômago.</div>
+  </div>
+
+  <div class="card">
+    <h3>Por que isso corta a fome</h3>
+    <p class="small">A fibra da chia absorve água e vira um gel que <b>ocupa volume no estômago</b> e atrasa o esvaziamento. O estômago cheio manda o sinal de saciedade pro cérebro. É o mesmo sinal que a canetinha de farmácia força com agulha, só que aqui vindo do seu próprio corpo. A canela e o gengibre entram pra manter o corpo aquecido e gastando energia entre as refeições, e o limão ajuda no inchaço.</p>
+  </div>
+
+  <div class="card">
+    <h3>Variações (a base é sempre a mesma)</h3>
+    <div class="ing">
+      <div><span>🍓 Com morango amassado</span><b>2 unidades</b></div>
+      <div><span>🍍 Abacaxi com hortelã</span><b>1 fatia</b></div>
+      <div><span>☕ Café gelado (só de manhã)</span><b>½ xícara</b></div>
+      <div><span>🥒 Pepino com limão</span><b>3 rodelas</b></div>
+    </div>
+    <p class="small">Nada de açúcar, mel ou adoçante líquido junto. Se precisar adoçar, meia colher de chá de adoçante em pó.</p>
+  </div>
+
+  <div class="card">
+    <h3>As 4 regras que não se quebram</h3>
+    <div class="alert g">1. Sempre 10 minutos de hidratação da fibra.</div>
+    <div class="alert g">2. No máximo 2 vezes por dia.</div>
+    <div class="alert g">3. Mínimo 2 litros de água no dia. Fibra sem água trava o intestino.</div>
+    <div class="alert g">4. Ela corta a fome, não substitui refeição. Pular refeição é o caminho da cara de doente.</div>
+  </div>`;
+};
+
+V.desafio = () => {
+  const dia = diaDoDesafio();
+  const feitos = Object.keys(S.dias).filter(k => S.dias[k]).length;
+  return `
+  <h1>Desafio de <span class="hl">21 dias</span></h1>
+  <p class="small">${feitos} de 21 concluídos. Cada dia tem uma missão de 1 minuto.</p>
+  <div class="card">
+    <div class="grid21">
+      ${DESAFIO.map(([n]) => `<button class="d21 ${S.dias[n] ? "on" : ""} ${n === dia ? "hoje" : ""}" data-d="${n}" type="button" ${n > dia ? "disabled" : ""}>${n}</button>`).join("")}
+    </div>
+    <div class="wk"><span>🟩 feito</span><span>🟪 hoje</span><span>⬜ ainda vem</span></div>
+  </div>
+  ${DESAFIO.map(([n, tit, txt]) => n <= dia ? `<div class="card flat"><span class="pill ${S.dias[n] ? "g" : ""}">Dia ${n}${S.dias[n] ? " · feito" : ""}</span><h3 style="margin-top:9px">${tit}</h3><p class="small">${txt}</p></div>` : "").reverse().join("")}
+  ${dia < 21 ? `<p class="foot">As missões dos próximos dias abrem uma por dia.</p>` : ""}`;
+};
+
+V.peso = () => {
+  const lista = S.pesos || [], p0 = lista[0], pn = lista[lista.length - 1];
+  const min = Math.min(...lista.map(x => x.p)) - 1, max = Math.max(...lista.map(x => x.p)) + 1;
+  return `
+  <h1>Meu <span class="hl">peso</span></h1>
+  <p class="small">Pesa sempre de manhã, em jejum, antes de comer ou beber.</p>
+  <div class="card">
+    <div class="dose tres">
+      <div><small>Hoje</small><b>${pn ? pn.p + " kg" : "–"}</b></div>
+      <div style="background:var(--card2)"><small>No começo</small><b>${(S.peso0 || (p0 && p0.p) || "–")}${S.peso0 ? " kg" : ""}</b></div>
+      <div style="background:var(--green-soft)"><small>Já saíram</small><b style="color:var(--green-deep)">${perdidos()} kg</b></div>
+    </div>
+    <div class="pesoin"><input id="novoPeso" type="number" inputmode="decimal" placeholder="Peso de hoje"><button type="button" id="addPeso">Salvar</button></div>
+    ${lista.length > 1 ? `<div class="bars">${lista.slice(-8).map((x, i, a) => {
+      const h = max === min ? 50 : Math.max(8, Math.round(100 * (x.p - min) / (max - min)));
+      return `<div style="height:${h}%"><span>${x.p}</span><i>${x.d.slice(8)}/${x.d.slice(5, 7)}</i></div>`; }).join("")}</div><div style="height:22px"></div>` : ""}
+  </div>
+  <div class="card flat"><h3>Por que a balança pode travar</h3>
+    <p class="small">Na primeira semana sai muito líquido e o número desce rápido. Depois ele desacelera porque começa a sair gordura, que é mais lenta. Se a balança parar mas a roupa continuar folgando, está funcionando. Mede a cintura também.</p></div>`;
+};
+
+V.mais = () => `
+  <h1>Mais</h1>
+
+  <div class="card">
+    <span class="pill">✨ Incluso</span>
+    <h3 style="margin-top:9px">Protocolo Sem Cara de Doente</h3>
+    <p class="small">É o que separa emagrecer de murchar. Quem perde peso rápido sem proteína e sem movimento perde músculo junto, e é daí que vem o rosto encovado e a flacidez.</p>
+    <div class="alert g"><b>Proteína nas 3 refeições.</b> Ovo, frango, carne, peixe, queijo, iogurte. Uma porção do tamanho da sua mão em cada uma.</div>
+    <div class="alert g"><b>Nunca pule refeição.</b> A Canetinha corta a fome; se você pular, o corpo come o músculo.</div>
+    <div class="alert g"><b>20 minutos de movimento por dia.</b> Caminhada conta. É o sinal que segura o músculo.</div>
+    <div class="alert g"><b>Água e sal com moderação.</b> Pouca água resseca a pele; muito ultraprocessado incha o rosto.</div>
+    <div class="alert g"><b>Dormir 7 horas.</b> É dormindo que o corpo recupera o que você não quer perder.</div>
+  </div>
+
+  <div class="card">
+    <span class="pill">🔁 Depois do dia 21</span>
+    <h3 style="margin-top:9px">Anti Efeito Sanfona</h3>
+    <p class="small">O peso volta quando a pessoa para de tudo de uma vez. Aqui a saída é gradual:</p>
+    <div class="alert b"><b>Semanas 4 a 6:</b> Canetinha 5 dias por semana, no mesmo horário.</div>
+    <div class="alert b"><b>Semana 7 em diante:</b> 3 dias por semana, e nos dias de evento ou restaurante.</div>
+    <div class="alert b"><b>Regra dos 2 dias:</b> saiu da linha? Não compensa nem pula. Volta no próximo horário. Um dia não engorda; duas semanas sim.</div>
+    <div class="alert b"><b>Pesagem semanal:</b> mesmo dia, mesma hora. Subiu 2 kg do seu menor peso? Volta pros 21 dias por uma semana.</div>
+  </div>
+
+  <div class="card">
+    <h3>Perguntas frequentes</h3>
+    <div class="faq">${FAQ.map(([q, a], i) => `<details ${i === 0 ? "open" : ""}><summary>${q}</summary><div class="ans">${a}</div></details>`).join("")}</div>
+  </div>
+
+  <div class="card">
+    <h3>Suporte e comunidade</h3>
+    <a class="btn ghost" href="${CONFIG.whatsapp}" target="_blank" rel="noopener">💬 Grupo VIP das meninas</a>
+    <a class="btn ghost" href="${CONFIG.suporte}" target="_blank" rel="noopener">🎧 Falar com o suporte</a>
+    <button class="btn ghost" id="refazer" type="button">Recalibrar dose e horário</button>
+  </div>
+
+  <p class="foot">Este material é educativo e não substitui orientação médica ou nutricional. Não é medicamento. Consulte um profissional de saúde antes de iniciar, especialmente se estiver gestante, amamentando, tiver alguma condição de saúde ou fizer uso de medicamentos. Resultados variam de pessoa para pessoa.<br><br>© ${new Date().getFullYear()} Canetinha de Pobre</p>`;
+
+/* ---------- render ---------- */
+function render() {
+  $("main").innerHTML = V[aba]();
+  $("tabs").innerHTML = TABS.map(([k, lab, ic]) => `<button class="tab ${k === aba ? "on" : ""}" data-tab="${k}" type="button"><svg viewBox="0 0 24 24">${ic}</svg>${lab}</button>`).join("");
+  $("avatar").textContent = (CONFIG.avatar || "🙂").slice(0, 1).toUpperCase();
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+function start() { $("setup").classList.add("hidden"); $("app").classList.remove("hidden"); render(); }
+
+/* ---------- eventos ---------- */
+document.addEventListener("click", (e) => {
+  const tab = e.target.closest("[data-tab]");
+  if (tab) { aba = tab.dataset.tab; render(); return; }
+  const go = e.target.closest("[data-go]");
+  if (go) { aba = go.dataset.go; render(); return; }
+  const t = e.target.closest("[data-t]");
+  if (t) { const d = hoje(); S.tarefas[d] = S.tarefas[d] || {}; S.tarefas[d][t.dataset.t] = !S.tarefas[d][t.dataset.t]; save(); render(); return; }
+  const d21 = e.target.closest("[data-d]");
+  if (d21 && !d21.disabled) { const n = d21.dataset.d; S.dias[n] = !S.dias[n]; save(); render(); return; }
+  if (e.target.id === "addPeso") {
+    const v = +$("novoPeso").value; if (!(v >= 35 && v <= 250)) return;
+    S.pesos = (S.pesos || []).filter(x => x.d !== hoje()); S.pesos.push({ d: hoje(), p: v });
+    S.pesos.sort((a, b) => a.d < b.d ? -1 : 1); S.peso = v; save(); render(); return;
+  }
+  if (e.target.id === "refazer") {
+    if (!confirm("Refazer a calibragem? Seu histórico de peso e o desafio continuam salvos.")) return;
+    $("app").classList.add("hidden"); $("setup").classList.remove("hidden");
+    const antigo = S; setup();
+    $("sGo").onclick = () => { S = { ...antigo, peso: +$("sPeso").value, fome: [...$("sFome").children].find(x => x.classList.contains("on")).dataset.f }; save(); start(); };
+  }
+});
+
+/* ---------- boot ---------- */
+if (S && S.peso) start(); else setup();
+</script>
+</body>
+</html>

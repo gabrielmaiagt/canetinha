@@ -52,3 +52,8 @@
   from = "/upsell"
   to = "/upsell/index.html"
   status = 200
+
+[[redirects]]
+  from = "/minha-canetinha"
+  to = "/minha-canetinha/index.html"
+  status = 200
