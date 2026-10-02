@@ -99,3 +99,42 @@ barriga: BAR-27D-C 17  · Dá pra secar a pança em 27 dias comendo doce
 | Botão da VSL dentro do player | ⏳ hoje é por tempo (`vslCtaAt`), com `revealOffer()` pronta pra vturb chamar |
 | Conteúdo da oferta fora do DOM antes do pitch | ✅ `#rest` só existe depois da revelação |
 | Rodízio de headline com peso | ❌ não temos (uma headline só) |
+
+
+---
+
+# Recrawl de 02/10/2026 — o que mudou em 11 dias
+
+Baixei de novo os fontes de todos e comparei por hash com o que capturamos em 21/09.
+
+| Funil | Estado |
+|---|---|
+| **Paizão** | **mudou muito** (quiz-data.js de 34 KB → 52 KB) |
+| Mounjaro de Chia | `app.js` **byte a byte idêntico** |
+| Mounjaro de Pobre | mesma estrutura, **uma opção nova na 1ª pergunta** |
+| Bumprotocolo | uma pontuação no título, nada mais |
+| BumbumFlix `/back/` | mesma oferta (cupom BUMBUM50, `src=bk-vsl` e `bk-bk`), 500 bytes a menos |
+
+## Paizão — virou um funil de bumbum, com vídeo montado por resposta
+
+**1. Trocou culote por barriga na 1ª tela.** Agora é bumbum / barriga / coxa / corpo todo. A anotação diz: *"Culote saiu (leads antigos ainda caem no persona)"*.
+
+**2. As perguntas viraram específicas de bumbum.** Antes era genérico de corpo; agora:
+- *"o que você mais quer ver **no bumbum** nessas 4 semaninhas?"* com opções novas: secar em volta e afinar a lateral / ele empinado e com formato / os dois juntos, enxugar e levantar
+- *"Onde **seu bumbum** tá hoje?"*: tô no peso mas ele é reto dos lados / magrinha demais, sem nada atrás / uns quilinhos a mais e com celulite / caído, molenga, e dessa vez eu vou
+
+**3. O maior salto: VSL montada por combinação de respostas.** A anotação chama de **TRUQUE DAS FAMOSAS**.
+
+> Mini VSL 1: **40 takes, 48 montagens**. `byMontagem` escolhe o vídeo pela **parte × onde o bumbum está hoje × o que ela quer** e **vence o abTest**. Pasta na Vturb: `MINI VSL 1 - Truque das Famosas / BU·BA·CX·CO / <data> / Mini1_<sigla>_<data>_TRUQUE_<truque>_<foco>_QUIZ`. Grava `answers.vsl1_montagem`.
+
+São 4 partes × 4 estados × 3 objetivos = 48 vídeos diferentes, um por caminho.
+
+> Mini VSL 2 (oferta): **13 takes, 16 montagens**, escolhidas por **faixa de IMC × parte da 1ª tela**. IMC1 abaixo · IMC2 saudável · IMC3 acima · IMC4 alto. Grava `answers.vsl2_montagem`.
+
+Ou seja: o A/B de VSL dele virou coadjuvante. O que decide qual vídeo ela vê é a combinação das respostas, e o A/B só roda quando falta resposta.
+
+## Mounjaro de Pobre — opção nova na 1ª pergunta
+
+A pergunta continua "Quantos quilos você quer eliminar?", mas agora tem **5 opções em vez de 4**: Até 5 kg · de 6 a 10 · de 11 a 19 · 20 kg ou mais · **"Perder só barriga"**.
+
+Acrescentaram uma saída que não é de peso na pergunta de peso. Vale olhar: é o mesmo problema que a gente discutiu ao trocar a nossa 1ª tela, e eles resolveram somando uma opção em vez de trocar a pergunta.
