@@ -12,6 +12,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<!-- UTMify Pixel (decodificado do script ofuscado) -->
+<script>window.pixelId="6afd40662d87d7031cc86ff2";var a=document.createElement("script");a.async=true;a.defer=true;a.src="https://cdn.utmify.com.br/scripts/pixel/pixel.js";document.head.appendChild(a);</script>
+<!-- UTMify UTMs (script original ofuscado; decodificado = cdn.utmify.com.br/scripts/utms/latest.js) -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 <!-- ===== PIXEL (UTMify) — cole aqui o seu pixelId =====
 <script>window.pixelId="SEU_PIXEL_ID";var a=document.createElement("script");a.async=true;a.defer=true;a.src="https://cdn.utmify.com.br/scripts/pixel/pixel.js";document.head.appendChild(a);</script>
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
@@ -343,7 +347,7 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
    CONFIG — tudo que você mexe está aqui
    ===================================================================== */
 const CONFIG = {
-  checkout: "https://pay.kirvano.com/3d91f533-62ad-4945-a86d-bea2aafa4e4c",   // TODO: produto novo na Kirvano ("Dieta do Sangue"). Hoje aponta pro da Canetinha.
+  checkout: "https://pay.kirvano.com/3d91f533-62ad-4945-a86d-bea2aafa4e4c",   // mesmo link da Canetinha, produto trocado pra Dieta do Sangue na Kirvano
   produto:  "Dieta do Sangue",
   avatar:   "Fabiana",
   crn:      "",
@@ -353,7 +357,7 @@ const CONFIG = {
   vagas:    7,
   timerSeconds: 600,
   vslCtaAt: 95,
-  backredirect: false,       // o /back/ atual é da Canetinha. Ligar quando existir um /sangue/back/
+  backredirect: true,        // voltar na oferta cai em /sangue/back/ (cupom R$ 13 OFF)
   vslEmbed: "",
   vslEmbedB: "",
   vslMp4:   "",
