@@ -6,3 +6,6 @@ ref/
 .env
 node_modules/
 .DS_Store
+# originais pesados das imagens geradas — só local
+site/sangue/assets/_png/
+site/sangue/assets/modelo-base/
