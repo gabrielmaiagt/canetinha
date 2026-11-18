@@ -143,6 +143,25 @@ nav button.on .i{filter:none;opacity:1}
 .foot{font-size:.72rem;color:var(--mute);text-align:center;margin-top:28px}
 .toast{position:fixed;left:50%;bottom:calc(var(--tab) + 20px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-size:.84rem;font-weight:600;opacity:0;transition:.25s;z-index:60;pointer-events:none}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+/* extras */
+.vit{position:relative;background:linear-gradient(160deg,#fff 0%,#fff1f3 100%);border:2px solid var(--accent);border-radius:var(--r);padding:16px;margin-top:14px;box-shadow:var(--shadow)}
+.vit .tag{position:absolute;top:-11px;left:14px;background:var(--accent);color:#fff;font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:.03em}
+.vit h3{font-size:1.02rem;display:flex;gap:8px;align-items:center}
+.vit ul{list-style:none;padding:0;margin:10px 0 0}
+.vit li{font-size:.84rem;padding:3px 0 3px 22px;position:relative;color:var(--ink)}
+.vit li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.vit .pr{display:flex;align-items:baseline;gap:8px;margin-top:10px}
+.vit .pr s{color:var(--mute);font-size:.85rem}
+.vit .pr b{font-size:1.35rem;font-weight:800;color:var(--green-deep)}
+.vit .btn{margin-top:10px;min-height:50px;font-size:.95rem}
+.vit.mini{padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.vit.mini .e{font-size:1.6rem}
+.vit.mini b{display:block;font-size:.9rem}
+.vit.mini span{font-size:.78rem;color:var(--ink2)}
+.vit.mini .go{margin-left:auto;font-weight:800;color:var(--accent);white-space:nowrap;font-size:.85rem}
+.vit.own{border-color:var(--green);background:linear-gradient(160deg,#fff 0%,#f0fdf4 100%)}
+.vit.own .go{color:var(--green-deep)}
+.back{border:0;background:none;color:var(--accent-deep);font-weight:700;padding:14px 0 0;cursor:pointer;font-size:.9rem}
 </style>
 </head>
 <body>
@@ -160,6 +179,7 @@ nav button.on .i{filter:none;opacity:1}
 </div></nav>
 <div class="toast" id="toast"></div>
 
+<script src="extras.js"></script>
 <script>
 /* =====================================================================
    CONFIG — o que falta ligar
@@ -280,9 +300,20 @@ const DESINCHA = [
    ===================================================================== */
 const KEY = "dds_app_v1";
 const store = { get() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }, set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} } };
-const S = Object.assign({ tipo: "", peso: 0, inicio: "", feitos: {}, pesos: [], compras: {}, desincha: {}, tab: "hoje" }, store.get());
+const S = Object.assign({ tipo: "", peso: 0, inicio: "", feitos: {}, pesos: [], compras: {}, desincha: {}, extras: {}, barriga: {}, ups: {}, acel: {}, intest: {}, perfis: [], tab: "hoje" }, store.get());
+if (S.tab.startsWith("x_")) S.tab = "hoje";
 const save = () => store.set(S);
 const QS = new URLSearchParams(location.search);
+// liberação de extra: link de obrigado da Kirvano (?libera=CODIGO) ou código digitado em Mais
+const liberar = (cod) => {
+  const c = String(cod || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const k = Object.keys(EXTRAS).find((k) => EXTRAS[k].codigo === c); if (k) { S.extras[k] = true; save(); return k; }
+  const u = Object.keys(UPSELLS).find((u) => UPSELLS[u].codigos[c]); if (!u) return null;
+  if (S.ups[u] !== "full") S.ups[u] = UPSELLS[u].codigos[c]; save(); return u;
+};
+const nomeDe = (k) => (EXTRAS[k] || UPSELLS[k]).nome;
+const LIBEROU = QS.get("libera") ? liberar(QS.get("libera")) : null;
+if (LIBEROU) { S.tab = "x_" + LIBEROU; history.replaceState(null, "", location.pathname); }
 if (QS.get("tipo") && TIPOS[QS.get("tipo").toUpperCase()] && !S.tipo) S.tipo = QS.get("tipo").toUpperCase();
 if (+QS.get("peso") && !S.peso) S.peso = +QS.get("peso");
 
@@ -345,7 +376,9 @@ const TABS = {
     <div class="card flat"><p style="margin:0;color:var(--ink);font-weight:600">${MISSOES[d - 1]}</p></div>
     <h2>🍽️ O que comer hoje</h2>
     <div class="card">${refeicoes(c)}</div>
-    ${d <= 7 ? `<div class="al g">🥤 Você está na <b>semana Desincha</b>. Não esquece da Água Desincha em jejum. Está na aba Receitas.</div>` : ""}`;
+    ${d <= 7 ? `<div class="al g">🥤 Você está na <b>semana Desincha</b>. Não esquece da Água Desincha em jejum. Está na aba Receitas.</div>` : ""}
+    ${Object.keys(S.ups).length || S.extras.barriga ? `<h2>🎁 Seus produtos</h2>${Object.keys(S.ups).map(miniUp).join("")}${S.extras.barriga ? mini("barriga") : ""}` : ""}
+    ${vitrine(d >= 18 ? "fase2" : d >= 4 ? "doces" : "barriga")}`;
   },
   cardapio() {
     const d0 = diaAtual(); const sel = TABS._dia || d0; const c = cardapio(sel);
@@ -356,7 +389,8 @@ const TABS = {
     <div class="card">${sel > d0 ? `<p style="text-align:center;margin:10px 0">🔒 O dia ${sel} libera em ${sel - d0} dia${sel - d0 > 1 ? "s" : ""}.</p>` : refeicoes(c)}</div>
     <h2>📏 Como medir as porções</h2>
     <div class="card flat small"><p style="margin:0"><b>Proteína:</b> ${porc().p} g é mais ou menos o tamanho e a grossura da palma da sua mão.<br><b>Carboidrato:</b> colher de sopa cheia, sem montinho.<br><b>Verdura:</b> à vontade. Metade do prato no almoço e no jantar.</p></div>
-    <div class="al">Não gostou de uma refeição? Repita a de outro dia já liberado. Só não troque por nada da lista vermelha.</div>`;
+    <div class="al">Não gostou de uma refeição? Repita a de outro dia já liberado. Só não troque por nada da lista vermelha.</div>
+    ${S.extras.fase2 ? mini("fase2") : vitrine("fase2")}`;
   },
   listas() {
     const v = TABS._lista || "aceita", t = T();
@@ -376,6 +410,7 @@ const TABS = {
     const t = S.tipo;
     return `
     <h1>Receitas</h1>
+    ${S.extras.doces ? mini("doces") : ""}
     <details open><summary><span class="e">🥤</span>Receita Desincha 7 Dias</summary><div class="dbody">
       <p style="margin-top:0">A Água Desincha ajuda a soltar o líquido retido na primeira semana, enquanto o corpo se acostuma sem o que o tipo ${t} rejeita.</p>
       <b>Ingredientes (1 copo de 300 ml)</b><ul><li>2 fatias de abacaxi com a casca bem lavada</li><li>1 rodela fina de gengibre</li><li>5 folhas de hortelã</li><li>Suco de meio limão</li><li>300 ml de água gelada</li></ul>
@@ -385,7 +420,8 @@ const TABS = {
       ${DESINCHA.map(([d, tx], i) => `<div class="dz ${S.desincha[i] ? "on" : ""}" data-z="${i}"><span class="n">${S.desincha[i] ? "✓" : i + 1}</span><div><b>${d}</b><br>${tx}</div></div>`).join("")}
     </div></details>
     ${RECEITAS[t].map(([e, n, ing, prep]) => `<details><summary><span class="e">${e}</span>${n}</summary><div class="dbody"><b>Ingredientes</b><ul>${ing.map((x) => `<li>${x}</li>`).join("")}</ul><b>Preparo</b><ol>${prep.map((x) => `<li>${x}</li>`).join("")}</ol></div></details>`).join("")}
-    <p class="small" style="margin-top:14px">Todas as receitas usam só o que está na sua lista verde.</p>`;
+    <p class="small" style="margin-top:14px">Todas as receitas usam só o que está na sua lista verde.</p>
+    ${S.extras.doces ? "" : vitrine("doces")}`;
   },
   mais() {
     const ini = S.pesos[0]?.kg, ult = S.pesos[S.pesos.length - 1]?.kg, saiu = ini && ult ? ini - ult : 0;
@@ -399,6 +435,11 @@ const TABS = {
       <div class="wrow"><input id="npeso" type="number" inputmode="decimal" placeholder="Peso de hoje (kg)"><button class="btn" id="addp" type="button">Salvar</button></div>
       <p class="small">Pese-se sempre no mesmo horário, de manhã, depois do banheiro.</p>
     </div>
+    ${Object.keys(S.ups).length ? `<h2>🎁 Seus produtos</h2>${Object.keys(S.ups).map(miniUp).join("")}` : ""}
+    <h2>⭐ Turbine o seu protocolo</h2>
+    ${Object.keys(EXTRAS).map(mini).join("")}
+    <div class="card flat small"><b>Já comprou e não liberou?</b> Digite o código que veio no seu PDF de acesso.
+      <div class="wrow"><input id="cod" placeholder="Código" autocapitalize="characters"><button class="btn" id="libcod" type="button">Liberar</button></div></div>
     <h2>📚 Seus guias</h2>
     <details><summary><span class="e">🔁</span>Anti Efeito Sanfona</summary><div class="dbody">
       <p style="margin-top:0">Depois dos 30 dias o corpo já desinchou. O que segura o resultado é não voltar ao que o seu tipo rejeita todo dia.</p>
@@ -435,6 +476,117 @@ const RECEITAS = {
   AB: [["🐟", "Atum com salada morna", ["1 lata de atum em água", "Brócolis e abobrinha", "Azeite e limão"], ["Cozinha os legumes no vapor por 5 minutos.", "Mistura o atum.", "Tempera com azeite, limão e sal."]], ["🥣", "Iogurte com aveia e uva", ["1 pote de iogurte natural", "2 colheres de aveia", "Uvas cortadas e nozes"], ["Mistura tudo na hora de comer."]], ["🧈", "Tofu mexido com cúrcuma", ["1/2 bloco de tofu", "Cúrcuma, cebola, salsa"], ["Esfarela o tofu com o garfo.", "Refoga com cebola e cúrcuma por 4 minutos.", "Finaliza com salsa."]], ["🍲", "Creme de abobrinha com ricota", ["3 abobrinhas", "1 cebola", "2 colheres de ricota"], ["Cozinha a abobrinha com cebola em pouca água.", "Bate com a ricota no liquidificador.", "Acerta o sal."]]],
 };
 
+/* ===== extras: vitrine, atalho e telas ===== */
+const buyUrl = (k) => { const x = EXTRAS[k]; if (!x.checkout) return ""; try { const u = new URL(x.checkout); u.searchParams.set("src", "app|" + k + "|" + S.tipo); return u.toString(); } catch (e) { return x.checkout; } };
+function vitrine(k) {
+  const x = EXTRAS[k]; if (S.extras[k]) return "";
+  return `<div class="vit"><span class="tag">SÓ PRA QUEM JÁ É DO PROTOCOLO</span>
+    <h3><span>${x.emoji}</span>${x.nome}</h3>
+    <p class="small">${x.gancho}</p>
+    <ul>${x.bullets.map((b) => `<li>${b.replace("seu tipo", "tipo " + S.tipo)}</li>`).join("")}</ul>
+    <div class="pr"><s>R$ ${x.de}</s><b>R$ ${x.preco}</b><span class="small">pagamento único</span></div>
+    <button class="btn green buy" data-x="${k}" type="button">Quero liberar agora</button>
+    <p class="small" style="text-align:center;margin-top:8px">🔒 Libera aqui no app na hora · 30 dias de garantia</p></div>`;
+}
+function mini(k) {
+  const x = EXTRAS[k], own = !!S.extras[k];
+  return `<div class="vit mini ${own ? "own" : ""}" data-open="${k}"><span class="e">${x.emoji}</span><div><b>${x.nome}</b><span>${own ? "Liberado ✓" : "R$ " + x.preco}</span></div><span class="go">${own ? "Abrir →" : "Ver →"}</span></div>`;
+}
+const voltar = `<button class="back" data-voltar type="button">← Voltar</button>`;
+TABS.x_doces = () => {
+  const x = EXTRAS.doces, t = S.tipo;
+  return `${voltar}<h1>${x.emoji} Doces Liberados · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    ${x.porTipo[t].map(([e, n, ing, prep], i) => `<details ${i ? "" : "open"}><summary><span class="e">${e}</span>${n}</summary><div class="dbody"><b>Ingredientes</b><ul>${ing.map((y) => `<li>${y}</li>`).join("")}</ul><b>Preparo</b><ol>${prep.map((y) => `<li>${y}</li>`).join("")}</ol></div></details>`).join("")}
+    <div class="al">Tem alguém em casa de outro tipo? Troque o tipo em Mais → Meus dados e veja os doces dele.</div>`;
+};
+TABS.x_barriga = () => {
+  const x = EXTRAS.barriga, t = S.tipo, b = S.barriga;
+  const ini = b.inicio || hoje(), dia = Math.max(1, Math.min(21, Math.floor((new Date(hoje()) - new Date(ini)) / 864e5) + 1));
+  return `${voltar}<h1>${x.emoji} Barriga Chapada · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    ${b.inicio ? `<div class="card"><div class="hero"><div class="ring" style="--p:${dia / 21 * 100}%"><i>${dia}/21</i></div><div><b>Dia ${dia} de 21</b><span>${x.fases[dia <= 7 ? 0 : dia <= 14 ? 1 : 2][0]}</span></div></div>
+      ${[["shot", "Shot da manhã"], ["cha", "Chá da noite"], ["regras", "Regras da fase de hoje"]].map(([k, l]) => { const on = (b[dia] || {})[k]; return `<div class="task bt ${on ? "on" : ""}" data-k="${k}" data-d="${dia}"><span class="ck">${on ? "✓" : ""}</span><div class="tt">${l}</div></div>`; }).join("")}</div>`
+      : `<button class="btn" id="bstart" type="button">Começar os 21 dias hoje</button>`}
+    <h2>🥤 Suas 2 receitas</h2>
+    ${x.shots[t].map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
+    <h2>🚫 O que estufa o tipo ${t}</h2><div class="card"><div class="chips">${x.estufa[t].map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
+    <h2>📅 As 3 fases</h2>
+    ${x.fases.map(([n, r], i) => `<details ${b.inicio && (dia <= 7 ? 0 : dia <= 14 ? 1 : 2) === i ? "open" : ""}><summary><span class="e">${["1️⃣", "2️⃣", "3️⃣"][i]}</span>${n}</summary><div class="dbody"><ul>${r.map((y) => `<li>${y}</li>`).join("")}</ul></div></details>`).join("")}`;
+};
+TABS.x_fase2 = () => {
+  const x = EXTRAS.fase2, t = S.tipo, m = MEALS[t], m2 = x.meals[t];
+  const sel = TABS._f2 || 31;
+  const i = sel - 31, c = { cafe: fill(m.cafe[(i * 2) % m.cafe.length]), almoco: fill((i % 2 ? m2.almoco : m.almoco)[i % (i % 2 ? m2.almoco : m.almoco).length]), lanche: fill(m.lanche[(i * 7) % m.lanche.length]), jantar: fill((i % 3 === 0 ? m.jantar : m2.jantar)[(i * 3) % (i % 3 === 0 ? m.jantar : m2.jantar).length]) };
+  return `${voltar}<h1>${x.emoji} Fase 2 · <span class="hl">dias 31 a 90</span></h1><p class="small">${x.intro}</p>
+    <div class="days">${Array.from({ length: 60 }, (_, k) => k + 31).map((n) => `<button class="day f2 ${n === sel ? "sel" : ""}" data-d="${n}"><small>DIA</small>${n}</button>`).join("")}</div>
+    <div class="card">${refeicoes(c)}</div>
+    <h2>🧱 Quando a balança parar</h2>${x.plato.map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
+    <h2>🎉 Fim de semana e festa</h2><div class="card"><ul class="small" style="margin:0;padding-left:18px">${x.fds.map((y) => `<li>${y}</li>`).join("")}</ul></div>
+    <h2>🔒 Manutenção</h2><div class="card"><ul class="small" style="margin:0;padding-left:18px">${x.manut.map((y) => `<li>${y}</li>`).join("")}</ul></div>`;
+};
+
+/* ===== upsells do funil: só aparecem pra quem comprou ===== */
+function miniUp(k) {
+  const x = UPSELLS[k], down = S.ups[k] === "down";
+  const sub = k === "familia" ? (down ? "+1 perfil" : "+3 perfis") : down ? "versão essencial" : "completo";
+  return `<div class="vit mini own" data-up="${k}"><span class="e">${x.emoji}</span><div><b>${x.nome}</b><span>Liberado ✓ · ${sub}</span></div><span class="go">Abrir →</span></div>`;
+}
+const comPerfil = (p, fn) => { const t = S.tipo, w = S.peso; S.tipo = p.tipo; S.peso = p.peso; try { return fn(); } finally { S.tipo = t; S.peso = w; } };
+const provavel = () => { const v = (id) => { const e = document.getElementById(id); return e && e.checked; }; const a = v("fq2"), b = v("fq3"); return a && b ? "AB" : a ? "A" : b ? "B" : "O"; };
+const ul = (a) => `<ul class="small" style="margin:6px 0 0;padding-left:18px">${a.map((y) => `<li>${y}</li>`).join("")}</ul>`;
+
+TABS.x_acel = () => {
+  const x = UPSELLS.acel, t = S.tipo, full = S.ups.acel === "full", a = S.acel, m = x.menu[t];
+  const dia = a.inicio ? Math.max(1, Math.min(21, Math.floor((new Date(hoje()) - new Date(a.inicio)) / 864e5) + 1)) : 1;
+  const sel = TABS._ac || dia, fi = sel <= 7 ? 0 : sel <= 14 ? 1 : 2, i = sel - 1;
+  const c = { cafe: fill(m.cafe[i % m.cafe.length]), almoco: fill(m.almoco[(i * 2) % m.almoco.length]), lanche: fi === 0 ? "Só se der fome: 1 fruta da lista verde" : fill(MEALS[t].lanche[i % MEALS[t].lanche.length]), jantar: fill(m.jantar[(i * 3) % m.jantar.length]) + (fi === 2 && i % 2 ? ` + ${porc().c} col. de carboidrato da lista verde` : "") };
+  return `${voltar}<h1>${x.emoji} Acelerador 21 Dias · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    ${a.inicio ? (full ? `<div class="card"><div class="hero"><div class="ring" style="--p:${dia / 21 * 100}%"><i>${dia}/21</i></div><div><b>Check-in do dia ${dia}</b><span>${x.fases[fi][0]}</span></div></div>
+      ${[["suco", "Suco da manhã"], ["menu", "Cardápio do dia, sem sair dele"], ["zero", "Nada da lista Zero Absoluto"], ...(dia > 7 ? [["cha", "Chá da noite"]] : [])].map(([k, l]) => { const on = (a[dia] || {})[k]; return `<div class="task ac ${on ? "on" : ""}" data-k="${k}" data-d="${dia}"><span class="ck">${on ? "✓" : ""}</span><div class="tt">${l}</div></div>`; }).join("")}</div>` : "")
+      : `<button class="btn" id="astart" type="button">Começar os 21 dias hoje</button>`}
+    <h2>📅 Fase ${fi + 1}: ${x.fases[fi][0].split("· ")[1]}</h2><div class="card flat small"><p style="margin:0">${x.fases[fi][1]}</p></div>
+    <div class="days">${Array.from({ length: 21 }, (_, k) => k + 1).map((n) => `<button class="day acd ${n === sel ? "sel" : ""}" data-d="${n}"><small>DIA</small>${n}</button>`).join("")}</div>
+    <div class="card">${refeicoes(c)}</div>
+    <h2>⛔ Zero Absoluto do tipo ${t}</h2><p class="small">Nos 21 dias, nem um pedacinho.</p><div class="card"><div class="chips">${x.zero[t].map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
+    ${full ? `<h2>🥤 Suco e chá do tipo ${t}</h2>${x.bebidas[t].map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
+      <a class="btn green" ${CONFIG.grupoVip ? `href="${CONFIG.grupoVip}" target="_blank" rel="noopener"` : `href="#" data-off`}>Entrar no grupo do Desafio 21 Dias</a>` : ""}`;
+};
+TABS.x_intest = () => {
+  const x = UPSELLS.intest, t = S.tipo, full = S.ups.intest === "full", g = x.ingredientes[t];
+  return `${voltar}<h1>${x.emoji} Intestino · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    <h2>🕐 A ordem certa</h2><div class="card">${x.ordem[t].map(([h, r]) => `<div class="meal"><span class="ic">⏰</span><div><small>${h}</small><b>${r}</b></div></div>`).join("")}</div>
+    <h2>🧺 Ingredientes de limpeza do tipo ${t}</h2><div class="card"><h3 style="font-size:.86rem">Usar</h3><div class="chips">${g.usar.map((y) => `<span class="chip ok">${y}</span>`).join("")}</div>
+      <h3 style="font-size:.86rem;margin-top:14px">Evitar, mesmo sendo "natural"</h3><div class="chips">${g.evitar.map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
+    <h2>✅ Passo a passo dos 7 dias</h2><div class="card">${x.passos.map(([d, tx], i) => `<div class="dz it7 ${S.intest[i] ? "on" : ""}" data-z="${i}"><span class="n">${S.intest[i] ? "✓" : i + 1}</span><div><b>${d}</b><br><span class="small">${tx}</span>${full ? `<br><span class="small" style="color:var(--accent-deep)">🍽️ ${x.menu[t][i]}</span>` : ""}</div></div>`).join("")}</div>
+    ${full ? `<h2>📈 O que esperar</h2><div class="card">${ul(x.esperar)}</div>` : ""}`;
+};
+TABS.x_familia = () => {
+  const x = UPSELLS.familia, full = S.ups.familia === "full", max = full ? 3 : 1, d = diaAtual();
+  const todos = [{ nome: "Você", tipo: S.tipo, peso: S.peso }, ...S.perfis];
+  const card = (p, i) => { const c = comPerfil(p, () => cardapio(d)), T = TIPOS[p.tipo];
+    return `<div class="card"><div style="display:flex;align-items:center;gap:10px">${drop(p.tipo)}<div><b>${esc(p.nome)}</b><br><span class="small">Tipo ${p.tipo} · ${T.nome}${p.provavel ? " · perfil provável" : ""} · ${String(p.peso).replace(".", ",")} kg</span></div></div>
+      <div class="chips" style="margin-top:10px">${Object.values(T.rejeita).flat().slice(0, 5).map((y) => `<span class="chip no">${y}</span>`).join("")}</div>
+      <h3 style="margin-top:12px;font-size:.86rem">Hoje (dia ${d})</h3>${refeicoes(c)}
+      <button class="btn ghost" data-rm="${i}" type="button" style="color:var(--red)">Remover perfil</button></div>`; };
+  const quem = {}; todos.forEach((p) => Object.entries(TIPOS[p.tipo].aceita).forEach(([gr, arr]) => { if (/Bebidas|Gorduras/.test(gr)) return; arr.forEach((it) => { const n = it.replace(/ \(.*\)/, ""); (quem[n] = quem[n] || new Set()).add(p.nome); }); }));
+  const rej = (n) => todos.filter((p) => Object.values(TIPOS[p.tipo].rejeita).flat().some((r) => r.toLowerCase().includes(n.toLowerCase().split(" ")[0]))).map((p) => p.nome);
+  const comuns = Object.keys(quem).filter((n) => quem[n].size === todos.length && !rej(n).length);
+  const lista = Object.keys(quem).sort((a, b) => quem[b].size - quem[a].size);
+  return `${voltar}<h1>${x.emoji} Protocolo da Família</h1><p class="small">${x.intro} Você tem <b>${max} perfi${max > 1 ? "s" : "l"}</b> extra${max > 1 ? "s" : ""}.</p>
+    ${S.perfis.map((p, i) => card(p, i)).join("")}
+    ${S.perfis.length < max ? `<h2>➕ Adicionar pessoa (${S.perfis.length}/${max})</h2><div class="card">
+      <div class="wrow"><input id="fnome" placeholder="Nome (ex: Marcos)"></div>
+      <div class="wrow"><select id="ftipo" style="flex:1;border:1px solid var(--line2);border-radius:var(--r-sm);padding:12px;font-size:1rem;background:var(--card);color:var(--ink);font-family:inherit"><option value="">Tipo sanguíneo</option><option>O</option><option>A</option><option>B</option><option>AB</option><option value="?">Não sei o tipo</option></select><input id="fpeso" type="number" inputmode="decimal" placeholder="Peso (kg)"></div>
+      <div id="fq" hidden class="small" style="margin-top:10px"><b>Teste rápido do perfil provável:</b>
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="fq1"> Pão e macarrão deixam inchado(a)</label>
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="fq2"> Carne vermelha pesa no estômago</label>
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="fq3"> Leite e queijo caem bem</label></div>
+      <button class="btn" id="fadd" type="button">Adicionar</button></div>` : ""}
+    ${full && S.perfis.length ? `<h2>🍲 Cardápio da casa</h2><div class="card small"><p style="margin:0"><b>Base que serve todo mundo:</b> ${comuns.slice(0, 8).join(", ") || "monte pela proteína de cada um e a verdura em comum"}.</p>
+      <p><b>No prato de cada um:</b></p>${ul(todos.map((p) => `<b>${esc(p.nome)}</b> (tipo ${p.tipo}): evita ${Object.values(TIPOS[p.tipo].rejeita).flat().slice(0, 4).join(", ").toLowerCase()}`))}</div>
+      <h2>🔁 Trocas rápidas</h2>${x.trocas.map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}` : ""}
+    ${S.perfis.length ? `<h2>🛒 Lista de compras da casa</h2><div class="card">${lista.map((n) => `<div class="shop ${S.compras["f:" + n] ? "on" : ""}" data-x="f:${esc(n)}"><span class="ck">${S.compras["f:" + n] ? "✓" : ""}</span>${esc(n)}<em>${[...quem[n]].map(esc).join(", ")}</em></div>`).join("")}</div>` : ""}`;
+};
+
 function refeicoes(c) {
   return [["☕", "Café da manhã", c.cafe], ["🍽️", "Almoço", c.almoco], ["🍎", "Lanche", c.lanche], ["🌙", "Jantar", c.jantar]].map(([i, l, t]) => `<div class="meal"><span class="ic">${i}</span><div><small>${l}</small><b>${esc(t)}</b></div></div>`).join("");
 }
@@ -469,6 +621,25 @@ function bind() {
   const tr = $("#trocar"); if (tr) tr.onclick = () => { const t = S.tipo; S.tipo = ""; setup(); S.tipo = t; };
   const zr = $("#zerar"); if (zr) zr.onclick = () => { if (zr.dataset.ok) { S.inicio = hoje(); S.feitos = {}; S.desincha = {}; S.pesos = [{ d: hoje(), kg: S.peso }]; save(); S.tab = "hoje"; render(); toast("Recomeçou do dia 1"); } else { zr.dataset.ok = 1; zr.textContent = "Toque de novo pra confirmar"; } };
   document.querySelectorAll("[data-off]").forEach((a) => a.onclick = (e) => { e.preventDefault(); toast("Link ainda não configurado"); });
+  document.querySelectorAll(".buy").forEach((e) => e.onclick = () => { const u = buyUrl(e.dataset.x); if (!u) return toast("Checkout ainda não configurado"); location.href = u; });
+  document.querySelectorAll("[data-open]").forEach((e) => e.onclick = () => { const k = e.dataset.open; if (S.extras[k]) { S.tab = "x_" + k; save(); render(); scrollTo(0, 0); } else { const u = buyUrl(k); u ? (location.href = u) : toast("Checkout ainda não configurado"); } });
+  document.querySelectorAll("[data-voltar]").forEach((e) => e.onclick = () => { S.tab = "mais"; save(); render(); scrollTo(0, 0); });
+  document.querySelectorAll(".day.f2").forEach((e) => e.onclick = () => { TABS._f2 = +e.dataset.d; render(); });
+  document.querySelectorAll(".day.acd").forEach((e) => e.onclick = () => { TABS._ac = +e.dataset.d; render(); });
+  document.querySelectorAll("[data-up]").forEach((e) => e.onclick = () => { S.tab = "x_" + e.dataset.up; save(); render(); scrollTo(0, 0); });
+  document.querySelectorAll(".bt").forEach((e) => e.onclick = () => { const d = e.dataset.d; S.barriga[d] = S.barriga[d] || {}; S.barriga[d][e.dataset.k] = !S.barriga[d][e.dataset.k]; save(); render(); });
+  const bs = $("#bstart"); if (bs) bs.onclick = () => { S.barriga.inicio = hoje(); save(); render(); toast("Dia 1 começou 🔥"); };
+  const lc = $("#libcod"); if (lc) lc.onclick = () => { const k = liberar($("#cod").value); if (!k) return toast("Código não encontrado"); toast(nomeDe(k) + " liberado!"); S.tab = "x_" + k; save(); render(); scrollTo(0, 0); };
+  document.querySelectorAll(".ac").forEach((e) => e.onclick = () => { const d = e.dataset.d; S.acel[d] = S.acel[d] || {}; S.acel[d][e.dataset.k] = !S.acel[d][e.dataset.k]; save(); render(); });
+  const as = $("#astart"); if (as) as.onclick = () => { S.acel.inicio = hoje(); save(); render(); toast("Acelerador começou ⚡"); };
+  document.querySelectorAll(".it7").forEach((e) => e.onclick = () => { S.intest[e.dataset.z] = !S.intest[e.dataset.z]; save(); const open = [...document.querySelectorAll("details")].map((d) => d.open); render(); document.querySelectorAll("details").forEach((d, i) => d.open = open[i]); });
+  const fa = $("#fadd"); if (fa) fa.onclick = () => {
+    const nome = $("#fnome").value.trim(), tipo = $("#ftipo").value, peso = parseFloat(String($("#fpeso").value).replace(",", "."));
+    if (!nome) return toast("Coloque o nome"); if (!tipo) return toast("Escolha o tipo"); if (!(peso >= 15 && peso <= 250)) return toast("Coloque o peso em kg");
+    const t = tipo === "?" ? provavel() : tipo; S.perfis.push({ nome, tipo: t, peso, provavel: tipo === "?" }); save(); render(); toast(nome + " adicionado");
+  };
+  document.querySelectorAll("[data-rm]").forEach((e) => e.onclick = () => { if (e.dataset.ok) { S.perfis.splice(+e.dataset.rm, 1); save(); render(); } else { e.dataset.ok = 1; e.textContent = "Toque de novo pra remover"; } });
+  const ft = $("#ftipo"); if (ft) ft.onchange = () => { const q = $("#fq"); if (q) q.hidden = ft.value !== "?"; };
 }
 document.querySelectorAll("nav button").forEach((b) => b.onclick = () => { S.tab = b.dataset.t; TABS._dia = 0; save(); render(); scrollTo(0, 0); });
 $("#tchip").onclick = () => { S.tab = "listas"; TABS._lista = "aceita"; save(); render(); };
