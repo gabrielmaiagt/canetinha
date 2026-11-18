@@ -150,7 +150,7 @@ nav button.on .i{filter:none;opacity:1}
 .vit ul{list-style:none;padding:0;margin:10px 0 0}
 .vit li{font-size:.84rem;padding:3px 0 3px 22px;position:relative;color:var(--ink)}
 .vit li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
-.vit .pr{display:flex;align-items:baseline;gap:8px;margin-top:10px}
+.vit .pr{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-top:10px}
 .vit .pr s{color:var(--mute);font-size:.85rem}
 .vit .pr b{font-size:1.35rem;font-weight:800;color:var(--green-deep)}
 .vit .btn{margin-top:10px;min-height:50px;font-size:.95rem}
@@ -161,6 +161,8 @@ nav button.on .i{filter:none;opacity:1}
 .vit.mini .go{margin-left:auto;font-weight:800;color:var(--accent);white-space:nowrap;font-size:.85rem}
 .vit.own{border-color:var(--green);background:linear-gradient(160deg,#fff 0%,#f0fdf4 100%)}
 .vit.own .go{color:var(--green-deep)}
+.lk{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:600;color:var(--ink2);opacity:.8}
+.lk .lock{margin-left:auto}
 .back{border:0;background:none;color:var(--accent-deep);font-weight:700;padding:14px 0 0;cursor:pointer;font-size:.9rem}
 </style>
 </head>
@@ -301,7 +303,7 @@ const DESINCHA = [
 const KEY = "dds_app_v1";
 const store = { get() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }, set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} } };
 const S = Object.assign({ tipo: "", peso: 0, inicio: "", feitos: {}, pesos: [], compras: {}, desincha: {}, extras: {}, barriga: {}, ups: {}, acel: {}, intest: {}, perfis: [], tab: "hoje" }, store.get());
-if (S.tab.startsWith("x_")) S.tab = "hoje";
+if (S.tab.startsWith("x_") || S.tab.startsWith("v_")) S.tab = "hoje";
 const save = () => store.set(S);
 const QS = new URLSearchParams(location.search);
 // liberação de extra: link de obrigado da Kirvano (?libera=CODIGO) ou código digitado em Mais
@@ -485,14 +487,44 @@ function vitrine(k) {
     <p class="small">${x.gancho}</p>
     <ul>${x.bullets.map((b) => `<li>${b.replace("seu tipo", "tipo " + S.tipo)}</li>`).join("")}</ul>
     <div class="pr"><s>R$ ${x.de}</s><b>R$ ${x.preco}</b><span class="small">pagamento único</span></div>
-    <button class="btn green buy" data-x="${k}" type="button">Quero liberar agora</button>
-    <p class="small" style="text-align:center;margin-top:8px">🔒 Libera aqui no app na hora · 30 dias de garantia</p></div>`;
+    <button class="btn green" data-venda="${k}" type="button">Ver como funciona →</button>
+    <p class="small" style="text-align:center;margin-top:8px">Tem uma amostra grátis pro tipo ${S.tipo} lá dentro</p></div>`;
 }
 function mini(k) {
   const x = EXTRAS[k], own = !!S.extras[k];
   return `<div class="vit mini ${own ? "own" : ""}" data-open="${k}"><span class="e">${x.emoji}</span><div><b>${x.nome}</b><span>${own ? "Liberado ✓" : "R$ " + x.preco}</span></div><span class="go">${own ? "Abrir →" : "Ver →"}</span></div>`;
 }
 const voltar = `<button class="back" data-voltar type="button">← Voltar</button>`;
+/* ===== página de venda de cada extra (abre antes do checkout) ===== */
+const AMOSTRA = {
+  doces: (x, t) => { const [e, n, ing, prep] = x.porTipo[t][0];
+    return `<details open><summary><span class="e">${e}</span>${n} <span class="chip ok" style="margin-left:auto">GRÁTIS</span></summary><div class="dbody"><b>Ingredientes</b><ul>${ing.map((y) => `<li>${y}</li>`).join("")}</ul><b>Preparo</b><ol>${prep.map((y) => `<li>${y}</li>`).join("")}</ol></div></details>
+      ${x.porTipo[t].slice(1).map(([e, n]) => `<div class="card flat lk"><span class="e">${e}</span>${n}<span class="lock">🔒</span></div>`).join("")}`; },
+  barriga: (x, t) => `<div class="card flat"><h3>🚫 O que mais estufa o tipo ${t}</h3><div class="chips">${x.estufa[t].slice(0, 2).map((y) => `<span class="chip no">${y}</span>`).join("")}<span class="chip">+ ${Math.max(0, x.estufa[t].length - 2)} liberados na compra 🔒</span></div><p class="small" style="margin-top:8px">Já dá pra tirar esses 2 do prato hoje e sentir a diferença.</p></div>
+      ${x.shots[t].map(([n]) => `<div class="card flat lk"><span class="e">🥤</span>${n}<span class="lock">🔒</span></div>`).join("")}`,
+  fase2: (x, t) => `<div class="card flat"><h3>🍽️ Um almoço da Fase 2 pro tipo ${t}, na porção do seu peso</h3><p class="small">${fill(x.meals[t].almoco[0])}</p></div>
+      ${x.plato.map(([n]) => `<div class="card flat lk"><span class="e">🧱</span>${n}<span class="lock">🔒</span></div>`).join("")}`,
+};
+function cta(k) { const x = EXTRAS[k];
+  return `<div class="vit"><span class="tag">SÓ PRA QUEM JÁ É DO PROTOCOLO</span><h3><span>${x.emoji}</span>${x.nome}</h3>
+    <div class="pr"><s>R$ ${x.de}</s><b>R$ ${x.preco}</b><span class="small">pagamento único, sem mensalidade</span></div>
+    <button class="btn green buy" data-x="${k}" type="button">Quero liberar agora</button>
+    <p class="small" style="text-align:center;margin-top:8px">🔒 Pagamento seguro pela Kirvano · Libera aqui no app na hora</p></div>`; }
+const VENDA = (k) => () => {
+  const x = EXTRAS[k], v = x.venda, t = S.tipo, T = (s) => s.replaceAll("{T}", t).replaceAll("seu tipo", "tipo " + t);
+  return `${voltar}<div class="small" style="margin-top:10px;font-weight:800;color:var(--accent);letter-spacing:.03em">${x.emoji} SÓ PRA QUEM JÁ ESTÁ NO PROTOCOLO</div>
+    <h1 style="margin-top:4px">${T(v.titulo).replace("tipo " + t, `<span class="hl">tipo ${t}</span>`)}</h1><p class="small">${T(v.sub)}</p>
+    <div class="card">${v.dor.map((p) => `<p class="small" style="margin:0 0 8px">${T(p)}</p>`).join("")}</div>
+    <h2>💡 Por que isso acontece</h2><div class="card"><p class="small" style="margin:0">${T(v.porque)}</p></div>
+    <h2>📦 O que você libera</h2>${v.dentro.map(([n, r]) => `<div class="card flat"><h3>✅ ${T(n)}</h3><p class="small">${T(r)}</p></div>`).join("")}
+    <h2>👀 Uma amostra pro seu tipo</h2>${AMOSTRA[k](x, t)}
+    ${cta(k)}
+    <h2>🛡️ Garantia de 30 dias</h2><div class="card"><p class="small" style="margin:0">Faça por 30 dias. Se não gostar, por qualquer motivo, peça o reembolso pela Kirvano e você recebe 100% do valor de volta. Sem pergunta e sem burocracia.</p></div>
+    <h2>❓ Perguntas</h2>${v.faq.map(([q, r]) => `<details><summary>${q}</summary><div class="dbody"><p class="small" style="margin:0">${r}</p></div></details>`).join("")}
+    ${cta(k)}`;
+};
+TABS.v_doces = VENDA("doces"); TABS.v_barriga = VENDA("barriga"); TABS.v_fase2 = VENDA("fase2");
+const abrirVenda = (k) => { S.tab = "v_" + k; save(); render(); scrollTo(0, 0); };
 TABS.x_doces = () => {
   const x = EXTRAS.doces, t = S.tipo;
   return `${voltar}<h1>${x.emoji} Doces Liberados · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
@@ -622,7 +654,8 @@ function bind() {
   const zr = $("#zerar"); if (zr) zr.onclick = () => { if (zr.dataset.ok) { S.inicio = hoje(); S.feitos = {}; S.desincha = {}; S.pesos = [{ d: hoje(), kg: S.peso }]; save(); S.tab = "hoje"; render(); toast("Recomeçou do dia 1"); } else { zr.dataset.ok = 1; zr.textContent = "Toque de novo pra confirmar"; } };
   document.querySelectorAll("[data-off]").forEach((a) => a.onclick = (e) => { e.preventDefault(); toast("Link ainda não configurado"); });
   document.querySelectorAll(".buy").forEach((e) => e.onclick = () => { const u = buyUrl(e.dataset.x); if (!u) return toast("Checkout ainda não configurado"); location.href = u; });
-  document.querySelectorAll("[data-open]").forEach((e) => e.onclick = () => { const k = e.dataset.open; if (S.extras[k]) { S.tab = "x_" + k; save(); render(); scrollTo(0, 0); } else { const u = buyUrl(k); u ? (location.href = u) : toast("Checkout ainda não configurado"); } });
+  document.querySelectorAll("[data-open]").forEach((e) => e.onclick = () => { const k = e.dataset.open; if (S.extras[k]) { S.tab = "x_" + k; save(); render(); scrollTo(0, 0); } else abrirVenda(k); });
+  document.querySelectorAll("[data-venda]").forEach((e) => e.onclick = () => abrirVenda(e.dataset.venda));
   document.querySelectorAll("[data-voltar]").forEach((e) => e.onclick = () => { S.tab = "mais"; save(); render(); scrollTo(0, 0); });
   document.querySelectorAll(".day.f2").forEach((e) => e.onclick = () => { TABS._f2 = +e.dataset.d; render(); });
   document.querySelectorAll(".day.acd").forEach((e) => e.onclick = () => { TABS._ac = +e.dataset.d; render(); });

@@ -187,4 +187,71 @@ const UPSELLS = {
     ],
   },
 };
+/* ===== COPY das páginas de venda dentro do app ({T} = tipo sanguíneo da pessoa) ===== */
+EXTRAS.doces.venda = {
+  titulo: "Você não precisa viver sem doce pra emagrecer no tipo {T}",
+  sub: "24 doces liberados pro seu sangue. Come à tarde, come depois do jantar, e a balança continua descendo.",
+  dor: [
+    "Você tá indo bem. Desinchou, a roupa já fecha melhor. Aí bate aquela vontade de doce no fim da tarde.",
+    "Você segura um dia, dois, três. No quarto, ataca o pote de sorvete, se sente culpada e pensa: \"pronto, estraguei tudo\".",
+    "Não é falta de força de vontade. Cortar doce de uma vez só aumenta a vontade. E é esse ciclo que faz quase todo mundo largar a dieta na segunda semana.",
+  ],
+  porque: "O problema nunca foi o doce. É o ingrediente. O açúcar refinado, a farinha branca e os itens da sua lista vermelha é que inflamam e seguram o peso no tipo {T}. Troque esses ingredientes pelos que o seu tipo aceita e o doce volta pro seu dia sem travar nada.",
+  dentro: [
+    ["6 doces feitos pro tipo {T}", "Pudim, brigadeiro, sorvete de fruta, bolo de caneca e mais, só com ingrediente da sua lista verde."],
+    ["Prontos em até 15 minutos", "Nada de forno por horas. Muitos são de micro-ondas ou de liquidificador."],
+    ["Ingrediente de mercado", "Nada de loja natural nem produto caro. Você acha tudo no mercado do bairro."],
+    ["Quando comer cada um", "Qual vai bem à tarde, qual vai depois do jantar e qual serve pra matar a vontade de madrugada."],
+    ["Os doces dos outros tipos também", "Tem gente de outro tipo em casa? Os doces dos tipos O, A, B e AB vêm junto: 24 receitas no total."],
+  ],
+  faq: [
+    ["Vou engordar comendo doce?", "Não, se for estes. São feitos sem açúcar refinado e sem nada da sua lista vermelha, na porção certa pra encaixar no cardápio."],
+    ["Preciso de algum ingrediente difícil?", "Não. Banana, cacau, ovo, aveia, leite ou bebida vegetal, mel e frutas. Tudo de mercado."],
+    ["Como recebo?", "Na hora. Depois do pagamento os doces aparecem liberados aqui no app, e o PDF chega no seu e-mail."],
+  ],
+};
+EXTRAS.barriga.venda = {
+  titulo: "Desinchou, mas a barriguinha do tipo {T} ainda não saiu?",
+  sub: "A gordura que fica embaixo do umbigo é a última a sair. Esse protocolo de 21 dias trabalha nela, com uma rotina de 5 minutos por dia.",
+  dor: [
+    "A balança já desceu. O rosto afinou. Mas você ainda olha no espelho de lado e a barriga tá lá.",
+    "De manhã ela tá menor, e de noite parece que você engoliu uma bola. A calça aperta depois do almoço.",
+    "Isso não é só gordura. Boa parte é intestino preso e alimento que fermenta no seu tipo de sangue.",
+  ],
+  porque: "Cada tipo de sangue fermenta alimentos diferentes. No tipo {T}, alguns alimentos que parecem saudáveis ficam parados no intestino e estufam a barriga o dia inteiro. Quando você tira esses alimentos e destrava o intestino na ordem certa, a barriga desincha primeiro e depois começa a secar.",
+  dentro: [
+    ["Shot da manhã do tipo {T}", "Feito em 2 minutos, em jejum, pra destravar o intestino logo cedo."],
+    ["Chá da noite do tipo {T}", "Pra acordar com a barriga mais lisa do que foi dormir."],
+    ["3 fases de 7 dias", "Destravar, secar e firmar. Cada fase tem as regras do dia, e o app mostra em qual você está."],
+    ["Lista do que estufa o tipo {T}", "Os alimentos que fermentam no seu sangue, pra você tirar do prato durante os 21 dias."],
+    ["Check diário aqui no app", "Marca o shot, o chá e as regras do dia. Leva 5 minutos e você vê o progresso de 1 a 21."],
+  ],
+  faq: [
+    ["Preciso fazer exercício?", "Não é obrigatório. O protocolo funciona pela alimentação e pelas bebidas. Se você já caminha, só ajuda."],
+    ["Posso fazer junto com o cardápio de 30 dias?", "Pode e deve. Ele foi feito pra rodar junto, sem trocar nada do que você já está fazendo."],
+    ["Como recebo?", "Na hora. Depois do pagamento o protocolo aparece liberado aqui no app, com o dia 1 pronto, e o PDF chega no seu e-mail."],
+  ],
+};
+EXTRAS.fase2.venda = {
+  titulo: "Não pare no dia 30. A Fase 2 leva o tipo {T} até a sua meta",
+  sub: "Mais 60 dias de cardápio pro seu tipo e o plano pra não voltar nenhum quilo.",
+  dor: [
+    "Os 30 dias funcionam. Mas se você tem mais de 10 kg pra perder, o dia 31 chega e bate a dúvida: \"e agora, faço o quê?\".",
+    "Repetir o mesmo cardápio enjoa. Voltar a comer como antes devolve tudo em poucas semanas.",
+    "Mais cedo ou mais tarde a balança para, e é aí que a maioria desiste perto do fim.",
+  ],
+  porque: "O corpo se adapta. Depois de algumas semanas comendo igual, ele aprende a gastar menos e a balança trava. A Fase 2 muda as refeições e a ordem dos alimentos do seu tipo pra o corpo não se acostumar, e ensina a sair do platô sem passar fome.",
+  dentro: [
+    ["Cardápio dos dias 31 a 90", "Montado dia a dia pro tipo {T}, com refeições novas e as porções do seu peso. Aparece aqui no app."],
+    ["Plano anti-platô", "O que fazer na semana em que a balança não se mexe, passo a passo."],
+    ["Fim de semana e festa", "Como comer em churrasco, aniversário e restaurante sem perder a semana."],
+    ["Manutenção", "As regras pra quando você chegar no peso que quer e não voltar a engordar."],
+  ],
+  faq: [
+    ["Preciso terminar os 30 dias antes?", "Você pode liberar agora e começar quando chegar no dia 31. Fica tudo guardado no app."],
+    ["E se eu já bati minha meta?", "Use a parte de Manutenção. Ela serve justamente pra não voltar nenhum quilo."],
+    ["Como recebo?", "Na hora. Depois do pagamento os dias 31 a 90 aparecem liberados aqui no app, e o PDF chega no seu e-mail."],
+  ],
+};
+
 if (typeof module !== "undefined") module.exports = { EXTRAS, UPSELLS };
