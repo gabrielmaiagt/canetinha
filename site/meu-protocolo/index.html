@@ -314,7 +314,11 @@ const liberar = (cod) => {
   if (S.ups[u] !== "full") S.ups[u] = UPSELLS[u].codigos[c]; save(); return u;
 };
 const nomeDe = (k) => (EXTRAS[k] || UPSELLS[k]).nome;
-const LIBEROU = QS.get("libera") ? liberar(QS.get("libera")) : null;
+let LIBEROU = QS.get("libera") ? liberar(QS.get("libera")) : null;
+// upsells comprados no funil (/sangue/up1-3 guardam os códigos em localStorage "sangue_lib"; o up3 manda ?lib= direto)
+try { const fila = JSON.parse(localStorage.getItem("sangue_lib") || "[]"); if (QS.get("lib")) fila.push(QS.get("lib"));
+  fila.forEach((c) => { const k = liberar(c); if (k && !LIBEROU) LIBEROU = k; }); localStorage.removeItem("sangue_lib");
+  if (QS.get("lib") && !QS.get("libera")) history.replaceState(null, "", location.pathname); } catch (e) {}
 if (LIBEROU) { S.tab = "x_" + LIBEROU; history.replaceState(null, "", location.pathname); }
 if (QS.get("tipo") && TIPOS[QS.get("tipo").toUpperCase()] && !S.tipo) S.tipo = QS.get("tipo").toUpperCase();
 if (+QS.get("peso") && !S.peso) S.peso = +QS.get("peso");

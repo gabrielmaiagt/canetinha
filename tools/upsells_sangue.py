@@ -6,21 +6,23 @@
 
 Uso: python3 tools/upsells_sangue.py   (reescreve as 3 páginas)
 Texto, preço e links ficam aqui. Depois de gerar, os links da Kirvano vão no CONFIG de cada página
-(ou aqui no LINKS, e roda de novo).
+(ou aqui em OFERTAS, e roda de novo).
 """
 import json, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site/sangue"
 
-# Links de 1 clique da Kirvano (Upsell → "link da oferta"). Preencher e rodar de novo.
-LINKS = {
-    "up1": ("https://pay.kirvano.com/dbabc887-7746-486d-b6fe-12d5ff8d2192", "https://pay.kirvano.com/23335337-a9c8-48d9-ac1c-e1768ce7ff11"),
-    "up2": ("https://pay.kirvano.com/69b5be57-304a-45e4-887c-f1d130ae20b0", "https://pay.kirvano.com/a64dfeb7-6c57-4cf3-809e-639611a5c361"),
-    "up3": ("https://pay.kirvano.com/a659209e-2759-42a1-a9dd-fbab82c9d857", "https://pay.kirvano.com/be64f304-58c8-4727-bc14-c994b333e7a2"),
+# IDs das ofertas de 1 clique da Kirvano (estratégias UP/DOWN) e pra onde vai depois (comprando ou recusando).
+BASE = "https://dietadesangue.netlify.app"
+OFERTAS = {
+    "up1": ("dbabc887-7746-486d-b6fe-12d5ff8d2192", "23335337-a9c8-48d9-ac1c-e1768ce7ff11", BASE + "/sangue/up2/"),
+    "up2": ("69b5be57-304a-45e4-887c-f1d130ae20b0", "a64dfeb7-6c57-4cf3-809e-639611a5c361", BASE + "/sangue/up3/"),
+    "up3": ("a659209e-2759-42a1-a9dd-fbab82c9d857", "be64f304-58c8-4727-bc14-c994b333e7a2", BASE + "/meu-protocolo/"),
 }
-# Quem recusa upsell E downsell vai pra cá. No último, vazio = obrigado da Kirvano.
-PROX = {"up1": "../up2/", "up2": "../up3/", "up3": ""}
+# Códigos que o app /meu-protocolo libera (extras.js → UPSELLS.codigos). Vão no ?lib= da página seguinte
+# e ficam guardados no localStorage "sangue_lib" até o app ler.
+CODIGOS = {"up1": ("ACEL21X", "ACEL21D"), "up2": ("INTEST7X", "INTEST7D"), "up3": ("FAMILIA3", "FAMILIA1")}
 
 TOTAL = 5  # compra, up1, up2, up3, acesso
 
@@ -187,7 +189,7 @@ p{margin:14px 0 0}
 .price .val{font-size:2.8rem;font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .price .val small{font-size:1.1rem;vertical-align:top;margin-right:2px}
 .price .pix{font-size:.85rem;color:var(--ink2);margin-top:4px}
-.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border:0;border-radius:var(--r);font:800 1.02rem var(--font);line-height:1.3;color:#fff;background:linear-gradient(180deg,#22c55e 0%,#15803d 100%);cursor:pointer;padding:12px 18px;text-align:center;text-decoration:none;margin-top:20px;animation:pulseG 1.7s infinite}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border:0;border-radius:var(--r);font:800 1.02rem var(--font);-webkit-appearance:none;line-height:1.3;color:#fff;background:linear-gradient(180deg,#22c55e 0%,#15803d 100%);cursor:pointer;padding:12px 18px;text-align:center;text-decoration:none;margin-top:20px;animation:pulseG 1.7s infinite}
 .btn:active{transform:scale(.985)}
 @keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 14px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
 .no{display:block;width:100%;background:none;border:0;color:var(--mute);font:500 .85rem var(--font);text-align:center;margin-top:16px;cursor:pointer;padding:10px}
@@ -210,6 +212,10 @@ SCRIPT = r"""
 const CONFIG = __CONFIG__;
 
 /* params: a Kirvano devolve o que foi na URL do checkout (utms, sid, tipo) */
+/* compra de upsell anterior: ?lib=CODIGO chega aqui; guarda pro app liberar e tira da URL */
+{ const L = new URLSearchParams(location.search), c = L.get("lib");
+  if (c) { try { const a = JSON.parse(localStorage.getItem("sangue_lib") || "[]"); if (!a.includes(c)) a.push(c); localStorage.setItem("sangue_lib", JSON.stringify(a)); } catch (e) {}
+    L.delete("lib"); history.replaceState(null, "", location.pathname + (L.toString() ? "?" + L : "")); } }
 let search = location.search;
 try { if (search && search.length > 1) localStorage.setItem("utm_query", search); else search = localStorage.getItem("utm_query") || ""; } catch (e) {}
 const Q = new URLSearchParams(search);
@@ -238,13 +244,23 @@ const $ = (id) => document.getElementById(id);
 if (CONFIG.foto) $("mock").innerHTML = `<img src="${CONFIG.foto}" alt="">`; else $("mock").remove();
 
 w({ viewed: true, at: now() }); track("UpsellView", { up: K });
-$("sim").href = link(CONFIG.linkSim, K);
 $("sim").onclick = () => { w({ clicked: true }); track("InitiateCheckout", { src: K }); };
 $("nao").onclick = () => { $("s1").hidden = true; $("s2").hidden = false; scrollTo(0, 0); w({ recusado: true, downViewed: true }); track("UpsellDeclined", { up: K }); };
-$("sim2").href = link(CONFIG.linkSim2, K + "-down");
 $("sim2").onclick = () => { w({ downClicked: true }); track("InitiateCheckout", { src: K + "-down" }); };
-$("nao2").onclick = () => { w({ downRecusado: true }); track("DownsellDeclined", { up: K }); if (CONFIG.linkProx) location.href = link(CONFIG.linkProx, K + "-fim"); else history.back(); };
+$("nao2").onclick = () => { w({ downRecusado: true }); track("DownsellDeclined", { up: K }); };  // o redirecionamento da recusa é da Kirvano (refusePageURL)
 </script>
+<!-- Kirvano 1 clique: UM snippet por página. O offerMap separa upsell (#sim) e downsell (#sim2);
+     as globais valem pro botão de recusa do downsell (#nao2). O "não" do upsell (#nao) não é da Kirvano. -->
+<script>
+  var offer = "__DOWN__";
+  var nextPageURL = "__PROX__";
+  var refusePageURL = "__PROX__";
+  window.offerMap = {
+    "sim":  { offer: "__UP__",   nextPageURL: "__PROX__?lib=__CX__", refusePageURL: "__PROX__" },
+    "sim2": { offer: "__DOWN__", nextPageURL: "__PROX__?lib=__CD__", refusePageURL: "__PROX__" }
+  };
+</script>
+<script src="https://snippets.kirvano.com/upsell.min.js"></script>
 </body>
 </html>
 """
@@ -262,8 +278,8 @@ def price(feat, nome, p, a, sub):
 
 
 def pagina(pid, d):
-    sim, sim2 = LINKS[pid]
-    cfg = dict(id=pid, linkSim=sim, linkSim2=sim2, linkProx=PROX[pid], foto="",
+    up, down, prox = OFERTAS[pid]
+    cfg = dict(id=pid, foto="",
                firebase={"apiKey": "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", "authDomain": "canetinha-4bd2a.firebaseapp.com",
                          "projectId": "canetinha-4bd2a", "appId": "1:298345331983:web:06f6d8092fcbc3e1d5527a"})
     inc = "".join(f'<div class="it"><div>✅</div><div>{t}</div></div>' for t in d["inc"])
@@ -281,7 +297,7 @@ def pagina(pid, d):
   <div class="mock" id="mock"></div>
   <p class="bridge">{d["bridge"]}</p>
   {price("Só nesta página", d["produto"], d["preco"], d["antes"], "no mesmo pagamento que você acabou de fazer · 1 clique, sem digitar o cartão de novo")}
-  <a class="btn" id="sim" href="#"><span>{d["sim"].format(p=d["preco"])}</span></a>
+  <button class="btn kirvano-payment-trigger" id="sim" type="button"><span>{d["sim"].format(p=d["preco"])}</span></button>
   <button class="no" id="nao" type="button">{d["nao"]}</button>
   <div class="guar"><div class="ic">🛡️</div><div><b>Os mesmos 30 dias de garantia</b><p>{d["garantia"].format(p=d["preco"])}</p></div></div>
   <p class="foot">{DISC}</p>
@@ -296,13 +312,13 @@ def pagina(pid, d):
   {d["down_tsl"]}
   <div class="inc">{dinc}</div>
   {price("Última chance", d["produto"], d["preco2"], d["antes2"], "1 clique, no mesmo pagamento")}
-  <a class="btn" id="sim2" href="#"><span>{d["sim2"].format(p=d["preco2"])}</span></a>
-  <button class="no" id="nao2" type="button">{d["nao2"]}</button>
+  <button class="btn kirvano-payment-trigger" id="sim2" type="button"><span>{d["sim2"].format(p=d["preco2"])}</span></button>
+  <button class="no kirvano-refuse-trigger" id="nao2" type="button">{d["nao2"]}</button>
   <p class="foot">{DISC}</p>
   <p class="foot">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Não vendemos o seu e-mail nem qualquer informação para terceiros.</p>
 </div>
 """
-    html = HEAD.replace("__TITULO__", d["titulo"]) + body + SCRIPT.replace("__CONFIG__", json.dumps(cfg, ensure_ascii=False, indent=2))
+    html = HEAD.replace("__TITULO__", d["titulo"]) + body + SCRIPT.replace("__CONFIG__", json.dumps(cfg, ensure_ascii=False, indent=2)).replace("__UP__", up).replace("__DOWN__", down).replace("__CX__", CODIGOS[pid][0]).replace("__CD__", CODIGOS[pid][1]).replace("__PROX__", prox)
     out = SITE / pid / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
