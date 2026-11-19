@@ -168,6 +168,7 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 .ph-img{border:2px dashed var(--line2);background:var(--card);border-radius:var(--r-sm);display:grid;place-items:center;color:var(--mute);font-size:.76rem;font-weight:600;text-align:center;padding:12px;width:100%}
 .fit{border-radius:var(--r-sm);overflow:hidden;background:var(--card)}
 .fit img{width:100%;height:100%;object-fit:cover}
+.fit.clear{background:none;border-radius:0}.fit.clear img{object-fit:contain}
 
 /* ===== sliders ===== */
 .slider{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0;background:var(--card);border-radius:var(--r);border:1px solid var(--line)}
@@ -217,6 +218,7 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 @keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
 .slide{border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);aspect-ratio:9/13;position:relative}
 .slide img{width:100%;height:100%;object-fit:cover}
+.slide:has(img){aspect-ratio:auto}.slide:has(img) img{height:auto;display:block}
 .slide .ph{position:absolute;inset:10px;border:2px dashed var(--line2);border-radius:12px;display:grid;place-items:center;color:var(--mute);font-size:.78rem;font-weight:600;text-align:center;padding:14px}
 .dots{display:flex;justify-content:center;gap:6px}
 .dots i{width:7px;height:7px;border-radius:50%;background:var(--line2)}
@@ -297,11 +299,39 @@ h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
 .guar .g{width:76px;height:76px;flex:0 0 auto;border-radius:50%;background:linear-gradient(180deg,#22c55e,#15803d);color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;line-height:1;font-size:.66rem;padding:6px}
 .guar .g b{display:block;font-size:1.5rem}
 .guar p{font-size:.84rem;color:var(--ink)}
+.price .vit{margin:12px auto 0;display:inline-block;background:var(--green-soft);color:var(--green-deep);border-radius:99px;padding:6px 12px;font-size:.8rem;font-weight:600}
+.price .vit b{font-weight:800}
+.ponte{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--r-sm);padding:14px 16px}
+.ponte p{font-size:.92rem;line-height:1.6;color:var(--ink2);margin-top:8px}.ponte p b{color:var(--ink)}.ponte .h3{margin-top:0;color:var(--ink)}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 10px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center}
+.how i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.how b{font-size:.85rem;color:var(--ink)}.how span{font-size:.72rem;line-height:1.35;color:var(--ink2)}
+.stack{display:grid;gap:10px}
+.stk{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px}
+.stk .si{width:92px;height:78px;border-radius:10px;overflow:hidden;background:var(--accent-soft);display:grid;place-items:center;font-size:30px}
+.stk .si img{width:100%;height:100%;object-fit:cover}
+.stk b{display:block;font-size:.9rem;line-height:1.25;color:var(--ink)}
+.stk p{font-size:.76rem;line-height:1.4;color:var(--ink2);margin-top:3px}
+.stk .sv{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;color:var(--ink2)}
+.stk.bn{border:2px dashed #f59e0b;background:#fffbeb}
+.stk .tag{display:inline-block;background:#f59e0b;color:#fff;font-size:.62rem;font-weight:800;letter-spacing:.05em;padding:3px 8px;border-radius:99px;margin-bottom:4px}
+.stk.bn .sv s{color:var(--mute)}.stk.bn .sv em{font-style:normal;color:var(--green-deep);font-weight:800;margin-left:4px}
+.bnh{margin-top:6px}
+.al.sm2{font-size:.82rem;text-align:center}
+.soma{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:6px 14px}
+.soma div{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px dashed var(--line2);font-size:.84rem;color:var(--ink2)}
+.soma div:first-child{border-top:0}
+.soma .tt{border-top:2px solid var(--line2);font-weight:800;color:var(--ink);font-size:.95rem}
+.soma .tt s{color:var(--red)}
+.btn.ghost2{background:var(--card);color:var(--accent);border:2px solid var(--accent);box-shadow:none}
+.guar .selo{width:88px;height:88px;flex:0 0 auto;display:block}
 .car{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 0 6px;scrollbar-width:none}
 .car::-webkit-scrollbar{display:none}
 .car > *{flex:0 0 78%;scroll-snap-align:center;aspect-ratio:1/1}
 .car.tall > *{aspect-ratio:4/5}
-.appshot{aspect-ratio:9/16;max-width:220px;margin:0 auto;width:100%}
+.car.res{align-items:center}.car.res > .fit{aspect-ratio:auto!important}.car.res > .fit img{height:auto;display:block}
+.appshot{max-width:290px;margin:0 auto;width:100%}
 .addq{display:flex;gap:8px}
 .addq input{flex:1;min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font-family:inherit;font-size:.9rem;background:var(--card)}
 .addq button{min-height:46px;border:0;border-radius:12px;background:var(--card2);color:var(--ink);font-weight:700;padding:0 14px;cursor:pointer}
@@ -372,13 +402,14 @@ const CONFIG = {
     corpoMedio: "assets/corpoMedio.jpg", corpoPlus: "assets/corpoPlus.jpg", corpoAcima: "assets/corpoAcima.jpg", corpoSobrepeso: "assets/corpoSobrepeso.jpg",
     areaCulotes: "assets/areaCulotes.jpg", areaBarriga: "assets/areaBarriga.jpg", areaCorpoTodo: "assets/areaCorpoTodo.jpg",
     depoisSeca: "assets/depoisSeca.jpg", depoisNatural: "assets/depoisNatural.jpg",
-    depoimentoPorTipo: { O: "", A: "", B: "", AB: "" },   // antes/depois de alguém de cada tipo
-    loadingPrints: ["", "", ""],
+    depoimentoPorTipo: { O: "assets/depoimentoTipo.jpg", A: "assets/depoimentoTipo.jpg", B: "assets/depoimentoTipo.jpg", AB: "assets/depoimentoTipo.jpg" },   // antes/depois (380x378). Trocar por tipo quando tiver uma de cada
+    loadingPrints: ["assets/loadingPrint1.jpg", "assets/loadingPrint2.jpg", "assets/loadingPrint3.jpg"],
     appMockup: "assets/appMockup.jpg",
     argumentos: ["assets/arg1.jpg", "assets/arg2.jpg", "assets/arg3.jpg", "assets/arg4.jpg", "assets/arg5.jpg", "assets/arg6.jpg"],
-    resultadosCarrossel: ["", "", "", "", "", "", "", ""],
+    resultadosCarrossel: ["assets/resultado1.jpg", "assets/resultado2.jpg", "assets/resultado3.jpg", "assets/resultado4.jpg", "assets/resultado5.jpg"],
     appPrint: "assets/appPrint.jpg",
-    quotesAvatars: ["", "", "", "", ""],
+    appMockupNovo: "assets/appMockupNovo.png",   // celular com o app (fundo transparente), seção "Tudo num aplicativo"
+    quotesAvatars: ["assets/quoteAvatar1.jpg", "assets/quoteAvatar2.jpg", "assets/quoteAvatar3.jpg", "assets/quoteAvatar4.jpg", "assets/quoteAvatar5.jpg"],
     audio1: "assets/audio1.mp3", audio3: "assets/audio3.mp3",   // ElevenLabs, voz Prister · take 2 do áudio 1 em assets/audio1-take2.mp3
   }
 };
@@ -669,7 +700,7 @@ const STEPS = [
     <h2 class="q-title">Ouve isso <span class="hl">antes de continuar</span>:</h2>
     ${audio(A.audio1, "audio1")}
     <p class="small">Resultado de quem é <b>tipo ${t}</b>, igual você:</p>
-    ${img((A.depoimentoPorTipo || {})[t], "antes/depois de alguém do tipo " + t, "4/3")}
+    ${img((A.depoimentoPorTipo || {})[t], "antes/depois de alguém do tipo " + t, "380/378")}
     ${quote(d[0], d[1], d[2], A.quotesAvatars[0])}
     ${btn("Continuar →", "pulse")}`; } },
 
@@ -740,7 +771,7 @@ const STEPS = [
       sobrepeso: `Seu IMC deu <b>${v.toFixed(1)}</b>: sobrepeso. Seu corpo está <b>inflamado e retendo</b>, e cada mês comendo o que o seu sangue rejeita fica mais difícil de reverter.`,
       obesidade: `Seu IMC deu <b>${v.toFixed(1)}</b>: obesidade. Seu corpo está <b>inflamado e travado</b> e a sua saúde tem que vir primeiro. O cardápio do tipo ${t} começa hoje.`,
     }[f];
-    const beforeImg = { "Médio": A.corpoMedio, "Plus size": A.corpoPlus, "Acima do peso": A.corpoAcima, "Sobrepeso": A.corpoSobrepeso }[S.a.corpo] || "";
+    const beforeImg = { "Médio": A.corpoMedio, "Plus size": A.corpoPlus, "Acima do peso": A.corpoAcima, "Sobrepeso": A.corpoSobrepeso }[S.a.corpo] || A.corpoAcima || "";
     const afterImg = S.a.corpoalvo === "Natural" ? A.depoisNatural : A.depoisSeca;
     const sono = S.a.sono === "Menos de 5 horas" ? `<div class="al warn">😴 <b>Você dorme menos de 5 horas.</b> Isso aumenta a inflamação, então o seu cardápio tem um ajuste pra quem dorme pouco.</div>` : "";
     const prov = P.provavel() ? `<div class="al info">🩸 Pelos sinais do seu corpo, o seu perfil provável é <b>tipo ${t}</b>. Quando você confirmar o tipo num exame de sangue simples, é só trocar no app.</div>` : "";
@@ -773,15 +804,20 @@ const STEPS = [
   { id: "oferta", render: () => {
     const t = P.tipo(), T = P.T();
     const ben = P.beneficio();
-    const args = [
-      [`Lista Verde e Vermelha do tipo ${t}`, `Tudo que o seu sangue aceita e tudo que ele rejeita, com os nomes que você encontra no mercado.`, "🩸"],
-      [`Cardápio de 30 dias pro tipo ${t}`, "Café, almoço, lanche e jantar montados, com porções pro seu peso. É só seguir.", "🍽️"],
-      ["Receita Desincha 7 Dias", "A receita que acelera a saída do inchaço na primeira semana, feita com o que o seu tipo aceita.", "🥗"],
-      ["Lista de compras pronta", "Pra você ir ao mercado e não errar, e gastar menos do que gasta hoje.", "🛒"],
-      ["Anti Efeito Sanfona", "Como manter o resultado depois dos 30 dias sem voltar a inchar.", "🔁"],
-      ["Grupo VIP + Suporte no WhatsApp", "Pra tirar dúvida, postar resultado e não desistir.", "💬"],
+    // [título, descrição, emoji, valor, índice da foto em A.argumentos]
+    const principal = [
+      [`Lista Verde e Vermelha do tipo ${t}`, "Tudo que o seu sangue aceita e tudo que ele rejeita, com os nomes que você encontra no mercado.", "🩸", 47, 0],
+      [`Cardápio de 30 dias pro tipo ${t}`, "Café, almoço, lanche e jantar montados, com porções pro seu peso. É só abrir o app e seguir.", "🍽️", 97, 1],
+      ["Lista de compras pronta", "Pra ir ao mercado sem errar e gastar menos do que você gasta hoje.", "🛒", 27, 3],
     ];
-    const price = (feat) => `<div class="price"><span class="feat">${feat}</span><div class="pt">${CONFIG.produto} · Tipo ${t}</div><div class="before">de R$ ${CONFIG.priceBefore} por</div><div class="val"><small>R$</small>${CONFIG.price}</div><div class="parc">ou ${CONFIG.parcelas}</div><div class="pix">à vista no Pix ou cartão</div></div>`;
+    const bonus = [
+      ["Receita Desincha 7 Dias", "Acelera a saída do inchaço na primeira semana, feita com o que o seu tipo aceita.", "🥗", 37, 2, true],
+      ["Anti Efeito Sanfona", "O que fazer depois dos 30 dias pra o peso não voltar.", "🔁", 47, 4],
+      ["Grupo VIP + Suporte no WhatsApp", "Pra tirar dúvida, postar resultado e não desistir no meio.", "💬", 67, 5],
+    ];
+    const totalVal = [...principal, ...bonus].reduce((a, x) => a + x[3], 0);
+    const item = (x, isBonus) => `<div class="stk ${isBonus ? "bn" : ""}"><div class="si">${A.argumentos[x[4]] ? `<img src="${A.argumentos[x[4]]}" alt="">` : x[2]}</div><div class="st">${isBonus ? `<span class="tag">🎁 BÔNUS${x[5] ? " DO TIMER" : ""}</span>` : ""}<b>${x[0]}</b><p>${x[1]}</p><span class="sv">${isBonus ? `<s>R$ ${x[3]}</s> <em>GRÁTIS</em>` : `Valor: R$ ${x[3]}`}</span></div></div>`;
+    const price = (feat) => `<div class="price"><span class="feat">${feat}</span><div class="pt">${CONFIG.produto} · Tipo ${t}</div><div class="before">de R$ ${CONFIG.priceBefore} por</div><div class="val"><small>R$</small>${CONFIG.price}</div><div class="parc">ou ${CONFIG.parcelas}</div><div class="pix">à vista no Pix ou cartão</div><div class="vit">♾️ Pagamento único · <b>acesso vitalício</b>, sem mensalidade</div></div>`;
     const cta = (n) => `<button class="btn green pulse cta" data-n="${n}">Quero o meu protocolo tipo ${t}</button>`;
     const wk = (lb, color, tx, on) => `<div class="w ${on ? "on" : ""}" style="--bar:${color}"><span class="lb">${lb}</span><span class="tx">${tx}</span></div>`;
     const lista = (arr, cls) => `<ul class="lt ${cls}">${arr.map((x, i) => `<li class="${i >= 3 ? "blur" : ""}">${esc(x)}</li>`).join("")}</ul>`;
@@ -793,6 +829,7 @@ const STEPS = [
       ["Sou gestante ou estou amamentando, posso fazer?", "Gestantes e lactantes devem falar com o médico antes de mudar a alimentação."],
       ["Em quanto tempo vejo resultado?", "O inchaço costuma diminuir na primeira semana e o peso começa a cair junto."],
       ["Como recebo o acesso?", "No e-mail cadastrado na compra, na hora."],
+      ["Por quanto tempo tenho acesso?", "Pra sempre. Você paga uma vez só, sem mensalidade, e o app é seu. Pode refazer o protocolo quantas vezes quiser."],
     ];
     const vsl = (VSLV === "B" && CONFIG.vslEmbedB) ? CONFIG.vslEmbedB : (VSLV === "A" && CONFIG.vslEmbed) ? CONFIG.vslEmbed : (CONFIG.vslEmbedB || CONFIG.vslEmbed) ? (CONFIG.vslEmbedB || CONFIG.vslEmbed) : CONFIG.vslMp4 ? `<video src="${CONFIG.vslMp4}" controls playsinline></video>` : "";
     return `
@@ -804,19 +841,30 @@ const STEPS = [
       <div><h3>✅ Seu sangue aceita</h3>${lista(T.verde, "ok")}</div>
       <div><h3>🚫 Seu sangue rejeita</h3>${lista(T.vermelha, "no")}</div>
     </div>
-    <p class="small c">🔒 A lista completa, o cardápio e as receitas liberam depois da compra.</p>
-    <div id="ctaTop" hidden>${cta(1)}<div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div></div>
+    <div id="ctaTop" hidden></div>
     <div id="rest" hidden>
     ${P.culpados().length ? `<div class="al red" style="text-align:center">🚫 Primeira coisa que sai do seu prato: <b>${P.culpadosTxt()}</b></div>` : ""}
-    <p class="h3">Seu protocolo inclui:</p>
-    <div class="args">${args.map((a, i) => `<div class="a"><div class="ai">${A.argumentos[i] ? `<img src="${A.argumentos[i]}" alt="">` : a[2]}</div><div class="at"><b>${a[0]}</b><p>${a[1]}</p></div></div>`).join("")}</div>
+
+    <div class="ponte">
+      <p class="h3">Agora vem a parte que faz a barriga baixar 💪</p>
+      <p>Você já descobriu o que o seu sangue aceita e o que ele rejeita. O próximo passo é levar isso pro prato: <b>o que comer em cada refeição</b>, na quantidade certa pro seu peso, sem você ter que pensar em nada.</p>
+      <p>É isso que o seu <b>Protocolo tipo ${t}</b> faz. Ele junta o seu tipo, o seu peso e a sua meta e deixa o seu cardápio pronto pra você só seguir.</p>
+    </div>
+    <p class="h3">Como funciona</p>
+    <div class="how">
+      <div><i>1</i><b>Abre o app</b><span>O cardápio do tipo ${t} já está montado pro seu peso.</span></div>
+      <div><i>2</i><b>Segue o dia</b><span>Café, almoço, lanche e jantar. Comida de mercado.</span></div>
+      <div><i>3</i><b>Acompanha</b><span>Marca o peso e vê a barriga baixar semana a semana.</span></div>
+    </div>
+
     <div class="sp2"></div>
-    ${price("Protocolo Completo")}
-    ${cta(2)}
-    <div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div>
-    <div class="sp2"></div>
-    <p class="h3">Quem comeu pro próprio tipo tem resultado 😉👇</p>
-    ${carousel(A.resultadosCarrossel, "resultado")}
+    <p class="h3">O que você recebe no seu Protocolo tipo ${t}:</p>
+    <div class="stack">${principal.map((x) => item(x, false)).join("")}</div>
+    <p class="h3 bnh">🎁 E de bônus, só pra quem fez o teste hoje:</p>
+    <div class="stack">${bonus.map((x) => item(x, true)).join("")}</div>
+    <div class="al warn sm2">⏰ O bônus <b>Receita Desincha 7 Dias</b> só vem junto se você garantir o protocolo antes do tempo acabar: <b class="tmr">10:00</b></div>
+    <button class="btn ghost2" type="button" onclick="document.getElementById('cardOferta').scrollIntoView({behavior:'smooth',block:'start'});track('ScrollToOffer')">Ver meu protocolo com desconto ↓</button>
+
     <div class="sp2"></div>
     <p class="h3">Nos próximos 30 dias:</p>
     <div class="wk">
@@ -826,20 +874,35 @@ const STEPS = [
       ${wk("3ª semana", "#7c3aed", "Gordura localizada saindo, <b>roupa folgando</b>.")}
       ${wk("4ª semana", "#16a34a", `<b>Até ${P.mes1()} kg a menos</b>${ben ? `, ${ben.toLowerCase()}` : ", sem passar fome"}.`, true)}
     </div>
-    <div class="sp1"></div>
-    <div class="al red sm">🔴 Vagas disponíveis hoje: ${CONFIG.vagas}</div>
+
+    <div class="sp2"></div>
+    <p class="h3">Quem comeu pro próprio tipo tem resultado 😉👇</p>
+    ${carousel(A.resultadosCarrossel.filter(Boolean), "resultado").replace('class="car ', 'class="car res ')}
+
+    <div class="sp2"></div>
     <div class="al"><b>Já parou pra pensar o quanto gastou até hoje tentando emagrecer?</b>
       <p style="font-size:.86rem;line-height:1.8;margin-top:8px">👨‍⚕️ Consultas + exames <b>R$ 500</b><br>🏋️ Academia + personal <b>R$ 400</b><br>🥗 Dietas + suplementos <b>R$ 450</b><br>💊 Remédio pra emagrecer <b>R$ 300/mês</b><br>🩸 ${CONFIG.produto} tipo ${t} <b style="color:var(--green-deep)">${CONFIG.parcelas}</b></p>
       <p style="margin-top:8px;font-size:.88rem">Pelo preço de uma pizza você para de comer pro sangue dos outros e começa a comer pro seu.</p></div>
-    ${price("Mais vendido")}
+
+    <div class="sp2"></div>
+    <div id="cardOferta" style="scroll-margin-top:70px"></div>
+    <div class="soma">
+      ${[...principal, ...bonus].map((x) => `<div><span>${x[0]}</span><b>R$ ${x[3]}</b></div>`).join("")}
+      <div class="tt"><span>Tudo isso valeria</span><b><s>R$ ${totalVal}</s></b></div>
+    </div>
+    <p class="small c" style="margin-top:8px">Mas como você fez a avaliação hoje, não vai pagar nem os R$ ${CONFIG.priceBefore} do preço normal:</p>
+    ${price("Condição de quem fez o teste")}
     ${cta(2)}
+    <div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div>
+    <div class="guar"><img class="selo" src="assets/seloGarantia.png" alt="Garantia de 30 dias"><p><b>Garantia de Reembolso ⭐⭐⭐⭐⭐</b><br>A lei obriga 7 dias; eu dou 30. Se em 30 dias sua barriga não desinchar e suas roupas não folgarem, devolvo cada centavo. É só mandar um e-mail pro suporte ou pedir pelo app.</p></div>
+    <div class="al red sm">🔴 Vagas com essa condição hoje: ${CONFIG.vagas}</div>
+
     <div class="sp2"></div>
     <p class="h3 c">Tudo num aplicativo de fácil acesso 📲</p>
-    <div class="appshot">${img(A.appPrint, "print do app no tipo " + t, "9/16")}</div>
-    <div class="sp2"></div>
-    <div class="guar"><div class="g"><b>30</b>dias de<br>garantia</div><p><b>Garantia de Reembolso ⭐⭐⭐⭐⭐</b><br>A lei obriga 7 dias; eu dou 30. Se em 30 dias sua barriga não desinchar e suas roupas não folgarem, devolvo cada centavo. É só mandar um e-mail pro suporte ou pedir pelo app.</p></div>
+    <div class="appshot">${img(A.appMockupNovo, "app Dieta do Sangue no tipo " + t, "998/1576", "clear")}</div>
     <div class="stamp"><div class="sa">${A.avatarSentada ? `<img src="${A.avatarSentada}" alt="">` : avRound()}</div><div><b>Protocolo gerado por: ${esc(CONFIG.avatar)}</b>${CONFIG.crn ? `<br>Nutricionista · ${esc(CONFIG.crn)}` : ""}</div></div>
-    <div class="timer">O seu protocolo tipo ${t} fica reservado por<b id="timer">10:00</b>depois disso a página é apagada pra dar lugar a novas avaliações</div>
+    <div class="timer">O seu protocolo tipo ${t} fica reservado por<b class="tmr">10:00</b>depois disso a página é apagada pra dar lugar a novas avaliações</div>
+
     <div class="sp2"></div>
     <p class="h3">Depoimentos</p>
     ${quote("Rafaela Nascimento", "Sou tipo O e não acreditava. Tirei o pão e o leite e já perdi 5 kg em 17 dias.", "📍 Recife - PE", A.quotesAvatars[1])}
@@ -849,6 +912,7 @@ const STEPS = [
     <div class="addq"><input id="addq" placeholder="Adicionar depoimento" aria-label="Adicionar depoimento"><button type="button">Enviar</button></div>
     <div class="sp2"></div>
     ${A.audio3 ? `<p class="small"><b>Ficou com alguma dúvida?</b> Ouve isso:</p>${audio(A.audio3, "audio3")}<div class="sp1"></div>` : ""}
+    ${price("Últimos minutos")}
     ${cta(3)}
     <div class="sp1"></div>
     <p class="h3">Perguntas frequentes</p>
@@ -858,8 +922,9 @@ const STEPS = [
     </div>
     <p class="foot">Este produto não substitui orientação médica. Consulte um profissional de saúde. Resultados variam de pessoa para pessoa.<br>© ${new Date().getFullYear()} ${CONFIG.produto}</p>`; },
     mount: () => {
-      let t = CONFIG.timerSeconds; const te = document.getElementById("timer");
-      const tk = () => { if (!te || !document.body.contains(te)) return; te.textContent = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`; if (t-- > 0) setTimeout(tk, 1000); }; tk();
+      band.innerHTML = `⏰ Seu protocolo tipo ${P.tipo()} fica reservado por <b class="tmr">10:00</b><span>Garanta antes do tempo acabar pra levar o bônus Desincha 7 Dias</span>`;
+      let t = CONFIG.timerSeconds;
+      const tk = () => { const els = document.querySelectorAll(".tmr"); if (!els.length || STEPS[S.i].id !== "oferta") return; const v = `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`; els.forEach(e => e.textContent = v); if (t-- > 0) setTimeout(tk, 1000); }; tk();
       const ctaTop = document.getElementById("ctaTop"), rest = document.getElementById("rest");
       let revealed = false;
       window.revealOffer = () => { if (revealed || !ctaTop) return; revealed = true; ctaTop.hidden = false; rest.hidden = false; track("OfferRevealed"); if (DB) DB.reveal(); };

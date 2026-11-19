@@ -114,13 +114,19 @@ tr:last-child td{border-bottom:0}
 const FIREBASE = { apiKey: "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", authDomain: "canetinha-4bd2a.firebaseapp.com", projectId: "canetinha-4bd2a", appId: "1:298345331983:web:06f6d8092fcbc3e1d5527a" };
 
 /* ============ Estrutura do funil (espelha site/index.html) ============ */
-const STEPS = [
+let STEPS = [
   ["landing", "Landing", "/?v=landing"], ["meta", "Quantos kg", "/"], ["corpo", "Corpo hoje", "corpo"], ["areas", "Onde quer secar", "areas"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["caneta", "Relação c/ canetinha", "caneta"], ["barreira", "O que impede", "barreira"], ["mecanismo", "Mecanismo ✗/✓", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["fome", "Momento da fome", "fome"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Diagnóstico", "diagnostico"], ["oferta", "🎬 Oferta (VSL)", "oferta"], ["checkout", "Clique checkout", "checkout"],
 ];
 const MEDIA = new Set(["prova", "loading", "oferta"]);
-const QUESTIONS = [
+let QUESTIONS = [
   ["meta", "Quantos kg", "Pra começar: quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["areasalvo", "Onde quer secar", "E onde você mais quer secar?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["futuro", "Daqui 1 ano", "Se nada mudar: como você se imagina daqui 1 ano?"], ["caneta", "Canetinha", "Me fala uma coisa: qual a sua relação com a canetinha de verdade?"], ["barreira", "O que impede", "O que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha de Pobre todo dia por 30 dias?"],
 ];
+/* ============ Funil: ?funil=sangue mostra a Dieta do Sangue (sessões com funil:"sangue") ============ */
+const FUNIL = new URLSearchParams(location.search).get("funil") === "sangue" ? "sangue" : "canetinha";
+if (FUNIL === "sangue") {
+  STEPS = [["landing", "Landing", "/sangue/?v=landing"], ["meta", "Quantos kg", "/sangue/"], ["tipo", "🩸 Tipo sanguíneo", "tipo"], ["corpo", "Corpo hoje", "corpo"], ["areas", "Onde quer secar", "areas"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["dietas", "Quantas dietas", "dietas"], ["barreira", "O que impede", "barreira"], ["comidas", "O que come", "comidas"], ["mecanismo", "Mecanismo", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["inchaco", "Inchaço", "inchaco"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Laudo", "diagnostico"], ["oferta", "Oferta", "oferta"], ["checkout", "Clique checkout", "checkout"]];
+  QUESTIONS = [["meta", "Quantos kg", "Quantos quilos você quer eliminar?"], ["tipo", "Tipo", "Qual é o seu tipo sanguíneo?"], ["corpo", "Corpo hoje", "Como tá o seu corpo hoje?"], ["areasalvo", "Onde quer secar", "Onde você mais quer secar?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência?"], ["futuro", "Daqui 1 ano", "Se nada mudar, como se imagina daqui 1 ano?"], ["dietas", "Dietas", "Quantas dietas já fez?"], ["barreira", "O que impede", "O que mais te impede de emagrecer?"], ["comidas", "O que come", "O que você come quase todo dia? (multi)"], ["beneficios", "Benefícios", "O que mais quer sentir em 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas dorme?"], ["inchaco", "Inchaço", "Com que frequência se sente inchada?"], ["corpoalvo", "Corpo que quer", "Como quer se ver em 30 dias?"], ["compromisso", "Compromisso", "Tá pronta pra comer pro seu tipo por 30 dias?"]];
+}
 const CANETA = { usei: "Já usei e o peso voltou", medo: "Medo dos efeitos", caro: "Não tenho R$ 3 mil", nunca: "Nunca pensei nisso" };
 const BARREIRA = { fome: "A fome vence", tempo: "Falta tempo", financeiro: "É caro demais", constancia: "Sem constância" };
 const COMP = { pronta: "Tô pronta", medo: "Tenho medo de não conseguir" };
@@ -193,7 +199,9 @@ async function fetchAll() {
   const from = F.from || "2020-01-01", to = F.to || dayStr(new Date());
   const snap = await db.collection("sessions").where("day", ">=", from).where("day", "<=", to).limit(8000).get();
   all = snap.docs.map(d => { const x = d.data(); x.createdAt = x.createdAt && x.createdAt.toMillis ? x.createdAt.toMillis() : (x.createdAt || 0); return x; });
+  all = all.filter(x => (x.funil || "canetinha") === FUNIL);
   try { const s2 = await db.collection("sales").where("day", ">=", from).where("day", "<=", to).limit(5000).get(); sales = s2.docs.map(d => { const x = d.data(); x.at = x.at && x.at.toMillis ? x.at.toMillis() : (x.at || 0); return x; }); } catch (e) { sales = []; }
+  { const sids = new Set(all.map(x => x.sid)); sales = sales.filter(v => v.sid ? sids.has(v.sid) : FUNIL === "canetinha"); }
   try { const c = await db.collection("config").doc("funnel").get(); if (c.exists) config = { ...config, ...c.data() }; } catch (e) {}
 }
 
@@ -261,7 +269,7 @@ function render() {
   const stepLabel = (id) => (STEPS.find(x => x[0] === id) || [])[1] || id || "–";
 
   app.innerHTML = `<div class="wrap">
-    <div class="top"><div><h1>Canetinha de Pobre · Leads ${DEMO ? `<span class="badge demo">demo</span>` : `<span class="badge">firestore</span>`}</h1>
+    <div class="top"><div><h1>${FUNIL === "sangue" ? "Dieta do Sangue" : "Canetinha de Pobre"} · Leads <a class="badge" href="?funil=${FUNIL === "sangue" ? "canetinha" : "sangue"}" style="text-decoration:none">trocar pra ${FUNIL === "sangue" ? "Canetinha" : "Sangue"} ⇄</a> ${DEMO ? `<span class="badge demo">demo</span>` : `<span class="badge">firestore</span>`}</h1>
       <p class="sub num">${N(pv)} pageviews · ${N(off)} na oferta · ${N(ck)} cliques no checkout · ${N(approved.length)} compras · CVR ${P(pct(approved.length, pv), 1)} · de ${F.from || "sempre"} até ${F.to || "agora"}${DEMO ? " · <b style='color:var(--red)'>dados sintéticos</b> até o funil rodar" : ""}</p></div>
       <div class="r"><button class="btn" id="reload">Atualizar</button>${!DEMO ? `<button class="btn" id="logout">Sair</button>` : ""}</div></div>
 
@@ -334,11 +342,11 @@ function render() {
       <p class="foot">Sem o back, essas ${N(bk.left)} pessoas tinham ido embora. "Botão" = clicou no CTA da /back (<code>src=bk-vsl</code>); "voltar de novo" = tentou sair da /back e foi jogada no checkout (<code>src=bk-bk</code>). Pra desligar: <code>CONFIG.backredirect = false</code> no funil.</p>
     </div>
 
-    <div class="card">
+    ${FUNIL === "canetinha" ? `<div class="card">
       <h2>Pós-bifurcação · relação com a canetinha <span>· abre o mecanismo com uma frase diferente</span></h2>
       <p class="exp">A resposta de <b>"qual a sua relação com a canetinha?"</b> muda a abertura da tela ✗/✓ (já usei e voltou / medo / caro / nunca pensei), um alerta no diagnóstico e o FAQ. Aqui: quem passou do mecanismo por resposta.</p>
       <div class="quad">${canetaGroups.map(g => { const r = canRows(g.rows); return `<div class="side"><h3>${esc(CANETA[g.k])}</h3><p class="d">abertura "${g.k}"</p>${r.map(x => `<div class="ln"><span>${x[0]}</span><b class="${x[2] || ""}">${x[1]}${x[3] ? `<em>${x[3]}</em>` : ""}</b></div>`).join("")}</div>`; }).join("")}</div>
-    </div>
+    </div>` : ""}
 
     <div class="card">
       <h2>Retenção por etapa <span>· por etapa alcançada · 🎧🎬 = mídia · ⏳ = loading</span></h2>
@@ -388,8 +396,9 @@ function render() {
 async function refetch() { if (DEMO) { const d = demoData(); all = d.out; sales = d.sl; } else { app.querySelector("h1") && (document.querySelector("#reload").textContent = "…"); await fetchAll(); } render(); }
 
 function loginScreen(err = "") {
-  app.innerHTML = `<div class="login"><h1>Canetinha · Leads</h1><p class="sub" style="margin-top:4px">Entre com o e-mail cadastrado no Firebase Auth.</p><input id="em" type="email" placeholder="e-mail" autocomplete="username"><input id="pw" type="password" placeholder="senha" autocomplete="current-password"><button class="btn pri" id="go">Entrar</button>${err ? `<p class="err">${esc(err)}</p>` : ""}<p class="sub" style="margin-top:10px">Ver com dados de exemplo: <a href="?demo=1" style="color:var(--accent)">?demo=1</a></p></div>`;
+  app.innerHTML = `<div class="login"><h1>Canetinha · Leads</h1><p class="sub" style="margin-top:4px">Entre com o e-mail cadastrado no Firebase Auth.</p><input id="em" type="email" placeholder="e-mail" autocomplete="username"><input id="pw" type="password" placeholder="senha" autocomplete="current-password"><button class="btn pri" id="go">Entrar</button><button class="btn" id="reset" type="button" style="margin-top:8px;background:none;border:0;color:#888;text-decoration:underline;cursor:pointer">Esqueci a senha</button>${err ? `<p class="err">${esc(err)}</p>` : ""}<p class="sub" style="margin-top:10px">Ver com dados de exemplo: <a href="?demo=1" style="color:var(--accent)">?demo=1</a></p></div>`;
   document.getElementById("go").onclick = async () => { try { const c = firebase.auth().currentUser; if (c && c.isAnonymous) await firebase.auth().signOut(); await firebase.auth().signInWithEmailAndPassword(document.getElementById("em").value, document.getElementById("pw").value); } catch (e) { loginScreen(e.message); } };
+  document.getElementById("reset").onclick = async () => { const em = document.getElementById("em").value.trim(); if (!em) return loginScreen("Digite o seu e-mail no campo acima e clique de novo em Esqueci a senha."); try { await firebase.auth().sendPasswordResetEmail(em); loginScreen("Pronto: se esse e-mail estiver cadastrado, o link pra criar uma senha nova chegou nele (olha o spam também)."); } catch (e) { loginScreen(e.message); } };
   document.getElementById("pw").onkeydown = (e) => { if (e.key === "Enter") document.getElementById("go").click(); };
 }
 (async () => {
