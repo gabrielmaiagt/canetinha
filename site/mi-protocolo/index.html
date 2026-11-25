@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Mi Protocolo · Dieta del Tipo de Sangre</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fff5f5">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="%23b3122e"/><path fill="%23fff" d="M12 4C10 7.2 7.5 10 7.5 13.2a4.5 4.5 0 0 0 9 0C16.5 10 14 7.2 12 4z"/></svg>'>
+<link rel="manifest" href='data:application/json,{"name":"Dieta del Tipo de Sangre","short_name":"Mi Protocolo","display":"standalone","background_color":"%23fff5f5","theme_color":"%23b3122e"}'>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#fff5f5; --bg2:#fde8e8; --card:#fff; --card2:#fffafa;
+  --line:rgba(140,20,40,.13); --line2:rgba(140,20,40,.28);
+  --ink:#2b1418; --ink2:#6b5257; --mute:#a8949a;
+  --accent:#b3122e; --accent-deep:#8a0d22; --accent-soft:#fde2e6;
+  --grad:linear-gradient(180deg,#e0435c 0%,#b3122e 100%);
+  --red:#dc2626; --red-soft:#fee2e2; --green:#16a34a; --green-deep:#15803d; --green-soft:#dcfce7;
+  --amber:#b45309; --amber-soft:#fef3c7;
+  --r:20px; --r-sm:14px; --maxw:520px; --tab:72px;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --shadow:0 18px 44px -20px rgba(120,15,35,.28);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input{font-family:inherit}
+.app{max-width:var(--maxw);margin:0 auto;padding:0 16px calc(var(--tab) + 26px + env(safe-area-inset-bottom,0px))}
+header{position:sticky;top:0;z-index:30;background:var(--bg);padding:calc(10px + env(safe-area-inset-top,0px)) 0 8px}
+.head{max-width:var(--maxw);margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:7px;font-weight:800;font-size:.95rem}
+.logo svg{width:20px;height:20px;color:var(--accent)}
+.logo b{color:var(--accent)}
+.tchip{margin-left:auto;display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 12px 4px 4px;font-weight:800;font-size:.8rem;cursor:pointer}
+.drop{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.72rem;background:var(--tc,var(--accent))}
+h1{font-size:1.32rem;font-weight:800;letter-spacing:-.01em;margin:16px 0 0;line-height:1.25}
+h1 .hl,h2 .hl{color:var(--accent)}
+h2{font-size:1.05rem;font-weight:800;margin:26px 0 0}
+h3{font-size:.95rem;font-weight:800;margin:0}
+p{margin:8px 0 0;color:var(--ink2)}
+.small{font-size:.86rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-top:12px;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none;background:var(--card2)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent-deep);border-radius:99px;padding:5px 11px;font-size:.76rem;font-weight:700}
+.pill.g{background:var(--green-soft);color:var(--green-deep)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border:0;border-radius:var(--r);font-weight:800;font-size:1rem;color:#fff;background:var(--grad);cursor:pointer;padding:12px 18px;box-shadow:0 10px 26px -12px rgba(179,18,46,.7);margin-top:14px;text-decoration:none}
+.btn:active{transform:scale(.985)}
+.btn.green{background:linear-gradient(180deg,#22c55e 0%,#15803d 100%);box-shadow:0 10px 26px -12px rgba(22,163,74,.7)}
+.btn.ghost{background:none;color:var(--accent-deep);border:1px solid var(--line2);box-shadow:none;min-height:46px;font-size:.92rem}
+/* hoje */
+.hero{display:flex;align-items:center;gap:14px}
+.ring{width:66px;height:66px;flex:none;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) var(--p,0%),var(--bg2) 0)}
+.ring i{width:52px;height:52px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:.95rem;color:var(--accent-deep)}
+.hero b{display:block;font-size:1.02rem;font-weight:800}
+.hero span{font-size:.85rem;color:var(--ink2)}
+.task{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);cursor:pointer;margin-top:8px;user-select:none}
+.task .ck{width:26px;height:26px;flex:none;border-radius:50%;border:2px solid var(--line2);display:grid;place-items:center;color:#fff;font-size:.8rem;font-weight:800}
+.task.on{background:var(--green-soft);border-color:transparent}
+.task.on .ck{background:var(--green);border-color:var(--green)}
+.task.on .tt{text-decoration:line-through;color:var(--ink2)}
+.task .tt{font-weight:600;font-size:.9rem}
+.task small{display:block;color:var(--ink2);font-size:.78rem;font-weight:400;text-decoration:none}
+/* refeições */
+.meal{display:flex;gap:12px;padding:12px 0;border-top:1px dashed var(--line)}
+.meal:first-child{border-top:0;padding-top:4px}
+.meal .ic{width:40px;height:40px;flex:none;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;font-size:1.2rem}
+.meal small{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent)}
+.meal b{display:block;font-size:.92rem;line-height:1.35}
+.meal p{font-size:.8rem;margin-top:3px}
+.days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;margin:12px -16px 0;padding-left:16px;padding-right:16px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day{flex:none;width:52px;height:62px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;cursor:pointer;font-size:1.05rem;color:var(--ink)}
+.day small{font-size:.62rem;font-weight:600;color:var(--mute)}
+.day.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+.day.sel small{color:#fde2e6}
+.day.lock{opacity:.4}
+.day.done{border-color:var(--green)}
+/* listas */
+.seg{display:flex;background:var(--bg2);border-radius:99px;padding:4px;margin-top:14px}
+.seg button{flex:1;border:0;background:none;border-radius:99px;padding:9px 6px;font-weight:700;font-size:.84rem;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--accent-deep);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.grp h3{margin-top:16px;font-size:.86rem;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{border-radius:99px;padding:6px 12px;font-size:.84rem;font-weight:600}
+.chip.ok{background:var(--green-soft);color:var(--green-deep)}
+.chip.no{background:var(--red-soft);color:var(--red)}
+.chip.mid{background:var(--amber-soft);color:var(--amber)}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:10px 0;border-top:1px dashed var(--line);font-size:.86rem}
+.swap:first-of-type{border-top:0}
+.swap .a{color:var(--red);font-weight:600;text-decoration:line-through}
+.swap .b{color:var(--green-deep);font-weight:700;text-align:right}
+.shop{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);cursor:pointer;font-size:.9rem}
+.shop:first-child{border-top:0}
+.shop .ck{width:22px;height:22px;flex:none;border-radius:6px;border:2px solid var(--line2);display:grid;place-items:center;color:#fff;font-size:.7rem}
+.shop.on{color:var(--mute);text-decoration:line-through}
+.shop.on .ck{background:var(--green);border-color:var(--green)}
+.shop em{margin-left:auto;font-style:normal;color:var(--mute);font-size:.78rem}
+/* receitas */
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-top:10px;overflow:hidden}
+summary{list-style:none;padding:14px 16px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:.92rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font-weight:800;color:var(--accent);font-size:1.2rem}
+details[open] summary::after{content:"−"}
+summary .e{font-size:1.3rem}
+.dbody{padding:0 16px 16px;font-size:.88rem;color:var(--ink2)}
+.dbody ol,.dbody ul{padding-left:20px;margin:8px 0 0}
+.dbody li{margin-top:4px}
+.dbody b{color:var(--ink)}
+.dz{display:flex;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
+.dz:first-child{border-top:0}
+.dz .n{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent-soft);color:var(--accent-deep);font-weight:800;display:grid;place-items:center;font-size:.85rem}
+.dz.on .n{background:var(--green);color:#fff}
+/* peso */
+.wrow{display:flex;gap:8px;margin-top:12px}
+.wrow input{flex:1;min-width:0;border:1px solid var(--line2);border-radius:var(--r-sm);padding:12px 14px;font-size:1rem;font-weight:700;background:var(--card);color:var(--ink)}
+.wrow .btn{margin:0;width:auto;min-height:48px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px;text-align:center}
+.stat b{display:block;font-size:1.15rem;font-weight:800;color:var(--accent-deep)}
+.stat span{font-size:.72rem;color:var(--ink2)}
+.chart{display:flex;align-items:flex-end;gap:6px;height:120px;margin-top:14px;padding-top:18px}
+.bar{flex:1;background:var(--accent-soft);border-radius:8px 8px 4px 4px;position:relative;min-height:6px}
+.bar:last-child{background:var(--accent)}
+.bar span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:.66rem;font-weight:700;color:var(--ink2);white-space:nowrap}
+/* abas */
+nav{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav .in{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--tab)}
+nav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.68rem;font-weight:700;color:var(--mute);cursor:pointer}
+nav button .i{font-size:1.25rem;filter:grayscale(1);opacity:.6}
+nav button.on{color:var(--accent)}
+nav button.on .i{filter:none;opacity:1}
+/* setup */
+.setup{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:24px 0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.opt{border:2px solid var(--line);background:var(--card);border-radius:var(--r);padding:16px 10px;text-align:center;cursor:pointer;font-weight:800}
+.opt .drop{width:44px;height:44px;margin:0 auto 6px;font-size:.95rem}
+.opt small{display:block;font-weight:500;color:var(--ink2);font-size:.75rem}
+.opt.on{border-color:var(--accent);background:var(--accent-soft)}
+.opt.wide{grid-column:span 2}
+.al{background:var(--amber-soft);color:#7c2d12;border-radius:var(--r-sm);padding:12px 14px;font-size:.84rem;margin-top:12px}
+.al.g{background:var(--green-soft);color:#14532d}
+.foot{font-size:.72rem;color:var(--mute);text-align:center;margin-top:28px}
+.toast{position:fixed;left:50%;bottom:calc(var(--tab) + 20px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-size:.84rem;font-weight:600;opacity:0;transition:.25s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+/* extras */
+.vit{position:relative;background:linear-gradient(160deg,#fff 0%,#fff1f3 100%);border:2px solid var(--accent);border-radius:var(--r);padding:16px;margin-top:14px;box-shadow:var(--shadow)}
+.vit .tag{position:absolute;top:-11px;left:14px;background:var(--accent);color:#fff;font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:.03em}
+.vit h3{font-size:1.02rem;display:flex;gap:8px;align-items:center}
+.vit ul{list-style:none;padding:0;margin:10px 0 0}
+.vit li{font-size:.84rem;padding:3px 0 3px 22px;position:relative;color:var(--ink)}
+.vit li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.vit .pr{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-top:10px}
+.vit .pr s{color:var(--mute);font-size:.85rem}
+.vit .pr b{font-size:1.35rem;font-weight:800;color:var(--green-deep)}
+.vit .btn{margin-top:10px;min-height:50px;font-size:.95rem}
+.vit.mini{padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.vit.mini .e{font-size:1.6rem}
+.vit.mini b{display:block;font-size:.9rem}
+.vit.mini span{font-size:.78rem;color:var(--ink2)}
+.vit.mini .go{margin-left:auto;font-weight:800;color:var(--accent);white-space:nowrap;font-size:.85rem}
+.vit.own{border-color:var(--green);background:linear-gradient(160deg,#fff 0%,#f0fdf4 100%)}
+.vit.own .go{color:var(--green-deep)}
+.lk{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:600;color:var(--ink2);opacity:.8}
+.lk .lock{margin-left:auto}
+.back{border:0;background:none;color:var(--accent-deep);font-weight:700;padding:14px 0 0;cursor:pointer;font-size:.9rem}
+</style>
+</head>
+<body>
+<header id="hd" hidden><div class="head">
+  <span class="logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5C9 7 6 10.6 6 14.5a6 6 0 0 0 12 0c0-3.9-3-7.5-6-12z"/></svg>Dieta <b>del Tipo de Sangre</b></span>
+  <button class="tchip" id="tchip" type="button"></button>
+</div></header>
+<main class="app" id="app"></main>
+<nav id="nav" hidden><div class="in">
+  <button data-t="hoje"><span class="i">🏠</span>Hoy</button>
+  <button data-t="cardapio"><span class="i">🍽️</span>Menú</button>
+  <button data-t="listas"><span class="i">🩸</span>Listas</button>
+  <button data-t="receitas"><span class="i">🥗</span>Recetas</button>
+  <button data-t="mais"><span class="i">☰</span>Más</button>
+</div></nav>
+<div class="toast" id="toast"></div>
+
+<script src="extras.js"></script>
+<script>
+/* =====================================================================
+   CONFIG — versión ES (LATAM)
+   ===================================================================== */
+const CONFIG = {
+  produto: "Dieta del Tipo de Sangre",
+  avatar: "Fabiana",
+  grupoVip: "",     // TODO link del grupo VIP de WhatsApp (en español)
+  suporte: "",      // TODO link de WhatsApp de soporte
+  dias: 30,
+};
+
+/* =====================================================================
+   LOS 4 TIPOS — mismas listas del quiz (/sangre) + lo que entrega la app
+   ===================================================================== */
+const TIPOS = {
+  O: { nome: "El Cazador", cor: "#b3122e",
+    resumo: "Tu cuerpo espera proteína y verduras. El trigo, la leche y el maíz son lo que más hincha al tipo O.",
+    aceita: {
+      "Proteínas": ["Carne roja magra", "Pescado", "Huevo", "Sardina", "Hígado", "Pollo"],
+      "Verduras": ["Brócoli", "Col rizada", "Espinaca", "Zapallo", "Calabacín", "Cebolla", "Lechuga", "Quimbombó"],
+      "Frutas": ["Piña", "Plátano", "Ciruela", "Mango", "Papaya"],
+      "Carbohidratos": ["Camote", "Arroz (poco)", "Yuca (poca)"],
+      "Grasas y condimentos": ["Aceite de oliva", "Ajo", "Jengibre", "Cúrcuma", "Perejil"],
+      "Bebidas": ["Agua", "Té verde", "Té de jengibre", "Café solo (1 al día)"] },
+    rejeita: {
+      "Granos y pastas": ["Pan y trigo", "Pasta", "Galletas", "Avena"],
+      "Legumbres": ["Frijoles", "Lentejas", "Garbanzos"],
+      "Lácteos": ["Leche", "Queso", "Queso crema", "Yogur"],
+      "Maíz": ["Maíz", "Arepa", "Tortilla de maíz", "Palomitas"],
+      "Otros": ["Coliflor", "Café con leche", "Papa", "Naranja"] },
+    trocas: [["Pan", "Huevo revuelto o camote"], ["Café con leche", "Café solo o té"], ["Arepa / tortilla", "Omelette de espinaca"], ["Frijoles", "Más verduras en el plato"], ["Queso", "Aguacate o aceite de oliva"], ["Pasta", "Calabacín en tiras"]] },
+  A: { nome: "El Agricultor", cor: "#1f6f8b",
+    resumo: "Tu cuerpo fue hecho para vegetales, granos y pescado. La carne roja y la leche son lo que más le pesa al tipo A.",
+    aceita: {
+      "Proteínas": ["Pescado", "Sardina", "Tofu", "Soya", "Huevo (hasta 4 por semana)", "Pollo (poco)"],
+      "Verduras": ["Brócoli", "Zanahoria", "Col rizada", "Espinaca", "Zapallo", "Calabacín", "Lechuga", "Betabel"],
+      "Frutas": ["Piña", "Frutos rojos", "Ciruela", "Limón", "Manzana", "Pera"],
+      "Carbohidratos": ["Avena", "Arroz integral", "Quinoa", "Camote (poco)"],
+      "Grasas y condimentos": ["Aceite de oliva", "Ajo", "Jengibre", "Linaza", "Semillas de calabaza"],
+      "Bebidas": ["Agua", "Té verde", "Café solo (1 al día)", "Té de manzanilla"] },
+    rejeita: {
+      "Carnes": ["Carne roja", "Cerdo", "Embutidos (salchicha, jamón)"],
+      "Lácteos": ["Leche", "Queso amarillo", "Queso crema", "Helado"],
+      "Legumbres": ["Frijoles pintos", "Frijoles negros"],
+      "Otros": ["Papa", "Exceso de trigo", "Café con leche", "Naranja", "Plátano"] },
+    trocas: [["Carne roja", "Pescado o tofu"], ["Café con leche", "Café solo o té verde"], ["Pan", "Avena cocida con agua"], ["Frijoles", "Lentejas o garbanzos"], ["Papa", "Zapallo"], ["Queso", "Tofu sazonado"]] },
+  B: { nome: "El Nómada", cor: "#8a5a00",
+    resumo: "El tipo más flexible. Acepta huevo, lácteos y carne magra, pero se traba con pollo, maíz y trigo.",
+    aceita: {
+      "Proteínas": ["Huevo", "Carne magra", "Pescado", "Cordero", "Sardina"],
+      "Lácteos": ["Yogur natural", "Queso fresco", "Ricota", "Leche (poca)"],
+      "Verduras": ["Hojas verdes", "Brócoli", "Col rizada", "Zanahoria", "Betabel", "Pimiento", "Repollo"],
+      "Frutas": ["Plátano", "Piña", "Papaya", "Uva", "Sandía"],
+      "Carbohidratos": ["Arroz", "Camote", "Avena", "Ñame"],
+      "Grasas y bebidas": ["Aceite de oliva", "Jengibre", "Té verde", "Agua"] },
+    rejeita: {
+      "Aves": ["Pollo", "Pechuga de pavo"],
+      "Maíz": ["Maíz", "Arepa", "Tortilla de maíz", "Palomitas"],
+      "Granos y semillas": ["Trigo", "Pan blanco", "Maní", "Ajonjolí", "Lentejas"],
+      "Otros": ["Tomate", "Aguacate", "Garbanzos", "Refresco"] },
+    trocas: [["Pollo", "Carne magra o pescado"], ["Arepa / tortilla", "Huevo con camote"], ["Pan", "Ñame cocido"], ["Mantequilla de maní", "Yogur con plátano"], ["Lentejas", "Arroz con verduras"], ["Pechuga de pavo", "Queso fresco"]] },
+  AB: { nome: "El Raro", cor: "#5b3fa0",
+    resumo: "El tipo más raro, mezcla del A con el B. Pescado, huevo, yogur y verduras funcionan. La carne roja, el pollo y el maíz lo traban.",
+    aceita: {
+      "Proteínas": ["Pescado", "Huevo", "Tofu", "Sardina", "Atún"],
+      "Lácteos": ["Yogur natural", "Ricota", "Queso fresco"],
+      "Verduras": ["Brócoli", "Col rizada", "Pepino", "Betabel", "Calabacín", "Lechuga", "Zanahoria"],
+      "Frutas": ["Piña", "Uva", "Ciruela", "Sandía", "Kiwi", "Limón"],
+      "Carbohidratos": ["Avena", "Arroz", "Camote", "Quinoa"],
+      "Grasas y bebidas": ["Aceite de oliva", "Nueces", "Té verde", "Agua"] },
+    rejeita: {
+      "Carnes": ["Carne roja", "Pollo", "Cerdo", "Embutidos"],
+      "Maíz": ["Maíz", "Arepa", "Tortilla de maíz", "Palomitas"],
+      "Legumbres": ["Frijoles", "Garbanzos"],
+      "Otros": ["Exceso de café", "Plátano", "Naranja", "Chile picante", "Refresco"] },
+    trocas: [["Carne roja", "Pescado o huevo"], ["Pollo", "Atún o tofu"], ["Arepa / tortilla", "Avena cocida"], ["Frijoles", "Arroz con verduras"], ["3 cafés al día", "1 café + té verde"], ["Plátano", "Piña o uva"]] },
+};
+
+/* Comidas por tipo. {p} = gramos de proteína, {c} = cucharadas de carbohidrato, {o} = huevos — calculados por el peso */
+const MEALS = {
+  O: {
+    cafe: ["{o} huevos revueltos con espinaca + 1 rodaja de piña", "Omelette de {o} huevos con col rizada y cebolla + café solo", "{o} huevos cocidos + 1 plátano + té de jengibre", "Puré de camote ({c} cdas.) con {o} huevos y perejil", "Crepa de {o} huevos con carne molida magra + té verde", "{o} huevos fritos en aceite de oliva con calabacín + papaya", "Omelette de {o} huevos con zapallo + café solo"],
+    almoco: ["Carne magra a la plancha ({p} g) + brócoli al ajo + arroz ({c} cdas.)", "Pescado al horno ({p} g) + col rizada salteada + zapallo cocido", "Carne molida magra ({p} g) con calabacín + ensalada verde + camote ({c} cdas.)", "Pollo a la plancha ({p} g) + quimbombó salteado + arroz ({c} cdas.)", "Bistec encebollado ({p} g) + espinaca + yuca ({c} cdas.)", "Sardinas al horno ({p} g) + ensalada de hojas + camote ({c} cdas.)", "Hígado encebollado ({p} g) + col rizada + arroz ({c} cdas.)"],
+    lanche: ["1 plátano con canela", "2 huevos cocidos", "1 rodaja de piña + té verde", "1 mango pequeño", "Tiras de carne del almuerzo + pepino", "1 ciruela + 1 puñado de nueces"],
+    jantar: ["Sopa de zapallo con carne deshebrada ({p} g)", "Pescado a la plancha ({p} g) + ensalada de hojas con aceite de oliva", "Omelette de {o} huevos con espinaca y cebolla", "Carne molida ({p} g) con calabacín salteado", "Caldo de verduras con pollo deshebrado ({p} g)", "Ensalada tibia de brócoli con {o} huevos cocidos", "Pastel de zapallo con carne ({p} g)"] },
+  A: {
+    cafe: ["Avena cocida ({c} cdas.) con agua + frutos rojos", "Tofu revuelto con cúrcuma + 1 manzana + té verde", "Avena ({c} cdas.) con pera picada y linaza + café solo", "{o} huevos revueltos con espinaca + 1 rodaja de piña", "Licuado de frutos rojos con agua y avena ({c} cdas.)", "Panqueque de avena ({c} cdas.) con 1 huevo + ciruela", "Avena cocida ({c} cdas.) con manzana y canela"],
+    almoco: ["Pescado al horno ({p} g) + brócoli + arroz integral ({c} cdas.)", "Tofu a la plancha ({p} g) + verduras salteadas + quinoa ({c} cdas.)", "Sardinas ({p} g) + ensalada de hojas + arroz integral ({c} cdas.)", "Pescado guisado ({p} g) con zapallo y zanahoria", "Lentejas ({c} cdas.) con verduras + ensalada de betabel", "Filete de pescado ({p} g) + col rizada salteada + camote ({c} cdas.)", "Pollo ({p} g) a la plancha + calabacín + arroz integral ({c} cdas.)"],
+    lanche: ["1 manzana", "1 puñado de semillas de calabaza", "Frutos rojos", "1 pera + té verde", "2 ciruelas", "Bastones de zanahoria con aceite de oliva y limón"],
+    jantar: ["Sopa de verduras con tofu ({p} g)", "Pescado a la plancha ({p} g) + ensalada verde con aceite de oliva", "Omelette de {o} huevos con calabacín", "Caldo de zapallo con jengibre", "Ensalada de quinoa ({c} cdas.) con verduras y tofu", "Pescado al horno ({p} g) con zanahoria y brócoli", "Crema de espinaca con {o} huevos cocidos"] },
+  B: {
+    cafe: ["Yogur natural con plátano y avena ({c} cdas.)", "{o} huevos revueltos + queso fresco + papaya", "Omelette de {o} huevos con ricota + té verde", "Ñame cocido ({c} cdas.) con {o} huevos", "Camote ({c} cdas.) + queso fresco + café solo", "Licuado de plátano con yogur y avena ({c} cdas.)", "{o} huevos cocidos + 1 rodaja de piña + yogur"],
+    almoco: ["Carne magra ({p} g) + arroz ({c} cdas.) + ensalada de hojas", "Pescado al horno ({p} g) + brócoli + camote ({c} cdas.)", "Carne molida magra ({p} g) con repollo + arroz ({c} cdas.)", "Omelette de {o} huevos con verduras + arroz ({c} cdas.)", "Bistec a la plancha ({p} g) + col rizada + ñame ({c} cdas.)", "Sardinas ({p} g) + ensalada de betabel y zanahoria + arroz ({c} cdas.)", "Pescado guisado ({p} g) con pimiento + arroz ({c} cdas.)"],
+    lanche: ["Yogur natural con miel", "1 plátano", "Queso fresco + uvas", "1 rebanada de sandía", "2 huevos cocidos", "Papaya con avena"],
+    jantar: ["Sopa de verduras con carne deshebrada ({p} g)", "Pescado a la plancha ({p} g) + ensalada verde", "Omelette de {o} huevos con queso fresco y espinaca", "Caldo de ñame con carne ({p} g)", "Carne molida ({p} g) con calabacín", "Ensalada de hojas con {o} huevos y ricota", "Pescado ({p} g) con puré de camote"] },
+  AB: {
+    cafe: ["Yogur natural con avena ({c} cdas.) y uvas", "{o} huevos revueltos + 1 rodaja de piña + té verde", "Tofu revuelto con cúrcuma + kiwi", "Avena cocida ({c} cdas.) con ciruela", "Omelette de {o} huevos con ricota", "Yogur natural con piña y nueces", "{o} huevos cocidos + sandía + café solo"],
+    almoco: ["Pescado al horno ({p} g) + brócoli + arroz ({c} cdas.)", "Atún ({p} g) con ensalada de hojas y pepino + camote ({c} cdas.)", "Tofu a la plancha ({p} g) + verduras + quinoa ({c} cdas.)", "Omelette de {o} huevos con calabacín + arroz ({c} cdas.)", "Sardinas ({p} g) + ensalada de betabel + arroz ({c} cdas.)", "Pescado guisado ({p} g) con zanahoria + arroz ({c} cdas.)", "Filete de pescado ({p} g) + col rizada + camote ({c} cdas.)"],
+    lanche: ["Yogur natural", "Uvas", "1 puñado de nueces", "Piña", "1 kiwi", "Pepino con limón y aceite de oliva"],
+    jantar: ["Sopa de verduras con tofu ({p} g)", "Pescado a la plancha ({p} g) + ensalada verde", "Omelette de {o} huevos con espinaca", "Crema de calabacín con ricota", "Ensalada de atún ({p} g) con hojas", "Caldo de betabel y zanahoria con {o} huevos cocidos", "Pescado al horno ({p} g) con verduras"] },
+};
+
+const MISSOES = ["Saca de tu casa una cosa de tu lista roja. Solo una.", "Toma 2 litros de agua hoy. Marca cada botella.", "Haz la lista de compras de la semana en la app antes de ir al supermercado.", "Tómate una foto de la barriga de perfil. En 30 días la comparas.", "Cambia el desayuno completo por el del menú.", "Cena hasta 3 horas antes de dormir.", "¡Primera semana cerrada! Pésate y anótalo en la app.", "Prepara hoy en la noche 2 comidas de mañana.", "Come despacio: 20 minutos en cada comida.", "Camina 15 minutos después del almuerzo.", "Prueba una comida de tu lista verde que nunca hayas comido.", "Duerme 7 horas hoy. El celular lejos de la cama.", "Fíjate: ¿la barriga todavía se infla después de comer? Anota qué comiste.", "¡Segunda semana cerrada! Pésate y mira cuánto ya bajaste.", "Haz de nuevo hoy la Receta Desinflama.", "Cuenta en el grupo VIP qué diferencia notaste más.", "Fin de semana: elige UNA comida libre y vuelve al menú en la siguiente.", "Cambia el refresco o el jugo de caja por agua con limón.", "Pruébate la ropa que te quedaba apretada.", "Come verduras en dos comidas hoy.", "¡Tercera semana cerrada! Tómate la foto de perfil y compárala con la del día 4.", "Lee la sección Anti Efecto Rebote.", "Cocina con aceite de oliva y ajo en vez de aceite vegetal.", "Día sin nada de la lista roja. Ni un pedacito.", "Ayuda a alguien de tu familia a descubrir su tipo de sangre.", "Camina 20 minutos hoy.", "Planea tu menú del próximo mes con los cambios que te funcionaron.", "Pésate y anótalo.", "Escribe 3 cosas que cambiaron en tu cuerpo.", "¡30 días! Tómate la foto final y compárala con la del día 4."];
+
+const DESINCHA = [
+  ["Día 1", "Saca todo lo de la lista roja de una vez. Toma el Agua Desinflama en ayunas."],
+  ["Día 2", "Agua Desinflama en ayunas + 2 litros de agua en el día. Sin sal extra en la comida."],
+  ["Día 3", "Puede venir un antojo fuerte de lo que dejaste. Es normal y pasa en 2 días."],
+  ["Día 4", "Agua Desinflama en ayunas y otro vaso a media tarde."],
+  ["Día 5", "Fíjate en la cara y en los pies en la mañana: aquí la mayoría nota que se desinflamó."],
+  ["Día 6", "Sopa en la cena (elige una del menú)."],
+  ["Día 7", "Pésate y anótalo. Desde mañana, el Agua Desinflama queda solo 3 veces por semana."],
+];
+
+/* =====================================================================
+   ESTADO (solo en el dispositivo)
+   ===================================================================== */
+const KEY = "dds_es_app_v1";
+const store = { get() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }, set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} } };
+const S = Object.assign({ tipo: "", peso: 0, inicio: "", feitos: {}, pesos: [], compras: {}, desincha: {}, extras: {}, barriga: {}, ups: {}, acel: {}, intest: {}, perfis: [], tab: "hoje" }, store.get());
+if (S.tab.startsWith("x_") || S.tab.startsWith("v_")) S.tab = "hoje";
+const save = () => store.set(S);
+const QS = new URLSearchParams(location.search);
+// liberación de extra: link de agradecimiento (?libera=CODIGO) o código escrito en Más
+const liberar = (cod) => {
+  const c = String(cod || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const k = Object.keys(EXTRAS).find((k) => EXTRAS[k].codigo === c); if (k) { S.extras[k] = true; save(); return k; }
+  const u = Object.keys(UPSELLS).find((u) => UPSELLS[u].codigos[c]); if (!u) return null;
+  if (S.ups[u] !== "full") S.ups[u] = UPSELLS[u].codigos[c]; save(); return u;
+};
+const nomeDe = (k) => (EXTRAS[k] || UPSELLS[k]).nome;
+let LIBEROU = QS.get("libera") ? liberar(QS.get("libera")) : null;
+// upsells comprados en el funil (/sangre/up1-3 guardan los códigos en localStorage "sangre_lib")
+try { const fila = JSON.parse(localStorage.getItem("sangre_lib") || "[]"); if (QS.get("lib")) fila.push(QS.get("lib"));
+  fila.forEach((c) => { const k = liberar(c); if (k && !LIBEROU) LIBEROU = k; }); localStorage.removeItem("sangre_lib");
+  if (QS.get("lib") && !QS.get("libera")) history.replaceState(null, "", location.pathname); } catch (e) {}
+if (LIBEROU) { S.tab = "x_" + LIBEROU; history.replaceState(null, "", location.pathname); }
+if (QS.get("tipo") && TIPOS[QS.get("tipo").toUpperCase()] && !S.tipo) S.tipo = QS.get("tipo").toUpperCase();
+if (+QS.get("peso") && !S.peso) S.peso = +QS.get("peso");
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const hoje = () => new Date().toISOString().slice(0, 10);
+const diaAtual = () => { if (!S.inicio) return 1; const d = Math.floor((new Date(hoje()) - new Date(S.inicio)) / 864e5) + 1; return Math.max(1, Math.min(CONFIG.dias, d)); };
+const T = () => TIPOS[S.tipo];
+const porc = () => { const p = S.peso || 70; return p < 70 ? { p: 100, c: 3, o: 2 } : p <= 90 ? { p: 130, c: 4, o: 3 } : { p: 160, c: 5, o: 3 }; };
+const fill = (s) => { const x = porc(); return s.replace("{p}", x.p).replace("{c}", x.c).replace("{o}", x.o); };
+const cardapio = (d) => { const m = MEALS[S.tipo], i = d - 1; return { cafe: fill(m.cafe[i % m.cafe.length]), almoco: fill(m.almoco[(i * 3) % m.almoco.length]), lanche: fill(m.lanche[(i * 5) % m.lanche.length]), jantar: fill(m.jantar[(i * 2 + 1) % m.jantar.length]) }; };
+const drop = (t, big) => `<span class="drop" style="--tc:${TIPOS[t].cor}${big ? ";width:44px;height:44px;font-size:.95rem" : ""}">${t}</span>`;
+const toast = (m) => { const e = $("#toast"); e.textContent = m; e.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove("on"), 1800); };
+
+const METAS = [["agua", "2 litros de agua", "8 vasos a lo largo del día"], ["cafe", "Desayuno del menú", ""], ["almoco", "Almuerzo del menú", ""], ["jantar", "Cena del menú", ""], ["vermelha", "Nada de la lista roja", "ni un pedacito"]];
+
+/* =====================================================================
+   PANTALLAS
+   ===================================================================== */
+function setup() {
+  $("#hd").hidden = true; $("#nav").hidden = true;
+  let tipo = S.tipo, peso = S.peso || "";
+  const draw = () => {
+    $("#app").innerHTML = `<div class="setup">
+      <span class="pill">🩸 Bienvenida a tu protocolo</span>
+      <h1>Vamos a armar <span class="hl">tu menú</span>. Toma 20 segundos.</h1>
+      <p class="small">Usa el mismo tipo que pusiste en el test.</p>
+      <h2>¿Cuál es tu tipo de sangre?</h2>
+      <div class="opts">${Object.keys(TIPOS).map((t) => `<div class="opt ${tipo === t ? "on" : ""}" data-t="${t}">${drop(t, true)}Tipo ${t}<small>${TIPOS[t].nome}</small></div>`).join("")}</div>
+      <div class="al">¿No sabes tu tipo? Empieza por el <b>tipo O</b>, que es el más común en Latinoamérica, y cámbialo cuando te hagas el examen (cualquier laboratorio lo hace y es barato). El menú cambia al instante.</div>
+      <h2>¿Cuál es tu peso hoy?</h2>
+      <p class="small">Sirve para calcular las porciones.</p>
+      <div class="wrow"><input id="peso" type="number" inputmode="decimal" placeholder="Ej: 78" value="${peso}"><span style="align-self:center;font-weight:700">kg</span></div>
+      <button class="btn" id="go">Armar mi protocolo</button>
+    </div>`;
+    document.querySelectorAll(".opt").forEach((o) => o.onclick = () => { tipo = o.dataset.t; peso = $("#peso").value; draw(); });
+    $("#go").onclick = () => {
+      const p = parseFloat(String($("#peso").value).replace(",", "."));
+      if (!tipo) return toast("Elige tu tipo de sangre");
+      if (!(p >= 35 && p <= 250)) return toast("Escribe tu peso en kg");
+      const novo = !S.inicio;
+      S.tipo = tipo; S.peso = p; if (novo) { S.inicio = hoje(); S.pesos = [{ d: hoje(), kg: p }]; }
+      save(); render();
+    };
+  };
+  draw();
+}
+
+const TABS = {
+  hoje() {
+    const d = diaAtual(), c = cardapio(d), f = S.feitos[d] || {}, n = METAS.filter((m) => f[m[0]]).length;
+    const ini = S.pesos[0]?.kg, ult = S.pesos[S.pesos.length - 1]?.kg, saiu = ini && ult ? Math.max(0, ini - ult) : 0;
+    return `
+    <h1>Día ${d} de ${CONFIG.dias}, <span class="hl">tipo ${S.tipo}</span></h1>
+    <div class="card"><div class="hero"><div class="ring" style="--p:${n / METAS.length * 100}%"><i>${n}/${METAS.length}</i></div>
+      <div><b>${n === METAS.length ? "¡Día completo! 🎉" : "Tus metas de hoy"}</b><span>${saiu ? `Ya bajaste <b>${saiu.toFixed(1).replace(".", ",")} kg</b>` : "Marca cada una a medida que la cumples"}</span></div></div>
+      ${METAS.map(([k, t, s]) => `<div class="task ${f[k] ? "on" : ""}" data-k="${k}"><span class="ck">${f[k] ? "✓" : ""}</span><div class="tt">${t}${s ? `<small>${s}</small>` : ""}</div></div>`).join("")}
+    </div>
+    <h2>🎯 Misión del día</h2>
+    <div class="card flat"><p style="margin:0;color:var(--ink);font-weight:600">${MISSOES[d - 1]}</p></div>
+    <h2>🍽️ Qué comer hoy</h2>
+    <div class="card">${refeicoes(c)}</div>
+    ${d <= 7 ? `<div class="al g">🥤 Estás en la <b>semana Desinflama</b>. No olvides el Agua Desinflama en ayunas. Está en la sección Recetas.</div>` : ""}
+    ${Object.keys(S.ups).length || S.extras.barriga ? `<h2>🎁 Tus productos</h2>${Object.keys(S.ups).map(miniUp).join("")}${S.extras.barriga ? mini("barriga") : ""}` : ""}
+    ${vitrine(d >= 18 ? "fase2" : d >= 4 ? "doces" : "barriga")}`;
+  },
+  cardapio() {
+    const d0 = diaAtual(); const sel = TABS._dia || d0; const c = cardapio(sel);
+    return `
+    <h1>Menú de 30 días · <span class="hl">tipo ${S.tipo}</span></h1>
+    <p class="small">Porciones calculadas para tu peso (${String(S.peso).replace(".", ",")} kg). Los días se liberan uno por uno.</p>
+    <div class="days" id="days">${Array.from({ length: CONFIG.dias }, (_, i) => i + 1).map((n) => { const full = METAS.every((m) => (S.feitos[n] || {})[m[0]]); return `<button class="day ${n === sel ? "sel" : ""} ${n > d0 ? "lock" : ""} ${full ? "done" : ""}" data-d="${n}"><small>DÍA</small>${n > d0 ? "🔒" : n}</button>`; }).join("")}</div>
+    <div class="card">${sel > d0 ? `<p style="text-align:center;margin:10px 0">🔒 El día ${sel} se libera en ${sel - d0} día${sel - d0 > 1 ? "s" : ""}.</p>` : refeicoes(c)}</div>
+    <h2>📏 Cómo medir las porciones</h2>
+    <div class="card flat small"><p style="margin:0"><b>Proteína:</b> ${porc().p} g es más o menos el tamaño y el grosor de la palma de tu mano.<br><b>Carbohidrato:</b> cucharada sopera llena, sin copete.<br><b>Verduras:</b> libres. La mitad del plato en el almuerzo y en la cena.</p></div>
+    <div class="al">¿No te gustó una comida? Repite la de otro día ya liberado. Solo no la cambies por nada de la lista roja.</div>
+    ${S.extras.fase2 ? mini("fase2") : vitrine("fase2")}`;
+  },
+  listas() {
+    const v = TABS._lista || "aceita", t = T();
+    const grp = (obj, cls) => Object.entries(obj).map(([g, arr]) => `<div class="grp"><h3>${g}</h3><div class="chips">${arr.map((x) => `<span class="chip ${cls}">${esc(x)}</span>`).join("")}</div></div>`).join("");
+    let body = "";
+    if (v === "aceita") body = `<div class="card">${grp(t.aceita, "ok")}</div>`;
+    if (v === "rejeita") body = `<div class="card">${grp(t.rejeita, "no")}</div><div class="al">No hace falta botar nada. Termina lo que tienes en casa y no lo vuelvas a comprar.</div>`;
+    if (v === "trocas") body = `<div class="card">${t.trocas.map(([a, b]) => `<div class="swap"><span class="a">${a}</span><span>→</span><span class="b">${b}</span></div>`).join("")}</div>`;
+    if (v === "compras") { const it = compras(); body = `<p class="small">Lista de la semana para el tipo ${S.tipo}. Toca para tachar lo que ya tienes.</p><div class="card">${it.map(([x, q], i) => `<div class="shop ${S.compras[x] ? "on" : ""}" data-x="${esc(x)}"><span class="ck">${S.compras[x] ? "✓" : ""}</span>${esc(x)}<em>${q}</em></div>`).join("")}</div><button class="btn ghost" id="limpar">Empezar lista nueva</button>`; }
+    return `
+    <h1>Listas del <span class="hl">tipo ${S.tipo}</span></h1>
+    <p class="small">${t.resumo}</p>
+    <div class="seg">${[["aceita", "✅ Acepta"], ["rejeita", "🚫 Rechaza"], ["trocas", "🔁 Cambios"], ["compras", "🛒 Compras"]].map(([k, l]) => `<button data-l="${k}" class="${v === k ? "on" : ""}">${l}</button>`).join("")}</div>
+    ${body}`;
+  },
+  receitas() {
+    const t = S.tipo;
+    return `
+    <h1>Recetas</h1>
+    ${S.extras.doces ? mini("doces") : ""}
+    <details open><summary><span class="e">🥤</span>Receta Desinflama 7 Días</summary><div class="dbody">
+      <p style="margin-top:0">El Agua Desinflama ayuda a soltar el líquido retenido en la primera semana, mientras el cuerpo se acostumbra sin lo que el tipo ${t} rechaza.</p>
+      <b>Ingredientes (1 vaso de 300 ml)</b><ul><li>2 rodajas de piña con la cáscara bien lavada</li><li>1 rodaja fina de jengibre</li><li>5 hojas de hierbabuena</li><li>Jugo de medio limón</li><li>300 ml de agua fría</li></ul>
+      <b>Preparación</b><ol><li>Licúa todo durante 1 minuto.</li><li>No lo cueles (la fibra es lo que quita el hambre).</li><li>Tómalo en ayunas, 20 minutos antes del desayuno.</li></ol>
+      <p><b>Sin azúcar y sin endulzante.</b> Si queda muy ácido, ponle más agua.</p>
+      <h3 style="margin-top:16px">Los 7 días</h3>
+      ${DESINCHA.map(([d, tx], i) => `<div class="dz ${S.desincha[i] ? "on" : ""}" data-z="${i}"><span class="n">${S.desincha[i] ? "✓" : i + 1}</span><div><b>${d}</b><br>${tx}</div></div>`).join("")}
+    </div></details>
+    ${RECEITAS[t].map(([e, n, ing, prep]) => `<details><summary><span class="e">${e}</span>${n}</summary><div class="dbody"><b>Ingredientes</b><ul>${ing.map((x) => `<li>${x}</li>`).join("")}</ul><b>Preparación</b><ol>${prep.map((x) => `<li>${x}</li>`).join("")}</ol></div></details>`).join("")}
+    <p class="small" style="margin-top:14px">Todas las recetas usan solo lo que está en tu lista verde.</p>
+    ${S.extras.doces ? "" : vitrine("doces")}`;
+  },
+  mais() {
+    const ini = S.pesos[0]?.kg, ult = S.pesos[S.pesos.length - 1]?.kg, saiu = ini && ult ? ini - ult : 0;
+    const last = S.pesos.slice(-8), mx = Math.max(...last.map((x) => x.kg)), mn = Math.min(...last.map((x) => x.kg));
+    return `
+    <h1>Más</h1>
+    <h2>⚖️ Mi peso</h2>
+    <div class="card">
+      <div class="stats"><div class="stat"><b>${ini ? String(ini).replace(".", ",") : "–"}</b><span>inicio</span></div><div class="stat"><b>${ult ? String(ult).replace(".", ",") : "–"}</b><span>hoy</span></div><div class="stat"><b>${saiu > 0 ? "−" + saiu.toFixed(1).replace(".", ",") : "0"}</b><span>kg bajados</span></div></div>
+      ${last.length > 1 ? `<div class="chart">${last.map((x) => `<div class="bar" style="height:${mx === mn ? 60 : 25 + (x.kg - mn) / (mx - mn) * 75}%"><span>${String(x.kg).replace(".", ",")}</span></div>`).join("")}</div>` : ""}
+      <div class="wrow"><input id="npeso" type="number" inputmode="decimal" placeholder="Peso de hoy (kg)"><button class="btn" id="addp" type="button">Guardar</button></div>
+      <p class="small">Pésate siempre a la misma hora, en la mañana, después de ir al baño.</p>
+    </div>
+    ${Object.keys(S.ups).length ? `<h2>🎁 Tus productos</h2>${Object.keys(S.ups).map(miniUp).join("")}` : ""}
+    <h2>⭐ Potencia tu protocolo</h2>
+    ${Object.keys(EXTRAS).map(mini).join("")}
+    <div class="card flat small"><b>¿Ya compraste y no se liberó?</b> Escribe el código que vino en tu PDF de acceso.
+      <div class="wrow"><input id="cod" placeholder="Código" autocapitalize="characters"><button class="btn" id="libcod" type="button">Liberar</button></div></div>
+    <h2>📚 Tus guías</h2>
+    <details><summary><span class="e">🔁</span>Anti Efecto Rebote</summary><div class="dbody">
+      <p style="margin-top:0">Después de los 30 días el cuerpo ya se desinflamó. Lo que sostiene el resultado es no volver a comer todos los días lo que tu tipo rechaza.</p>
+      <ol><li><b>Regla 80/20:</b> el 80% de las comidas de la semana siguen el menú. El otro 20% es libre.</li><li><b>Reintroduce un alimento a la vez.</b> Si quieres volver al pan, por ejemplo, cómelo 1 vez y observa durante 2 días si la barriga se infla.</li><li><b>Comida libre no es día libre.</b> ¿Comiste fuera del plan? La siguiente comida ya es del menú.</li><li><b>Pésate 1 vez por semana.</b> ¿Subiste más de 1 kg? Haz 3 días de la Receta Desinflama y vuelve 100% al menú.</li><li><b>Mantén el Agua Desinflama</b> 3 veces por semana.</li><li><b>Sigue en el grupo.</b> Quien comparte resultados los mantiene más.</li></ol>
+    </div></details>
+    <details><summary><span class="e">❓</span>Preguntas frecuentes</summary><div class="dbody">
+      ${FAQ.map(([q, a]) => `<p style="margin-top:12px"><b>${q}</b><br>${a}</p>`).join("")}
+    </div></details>
+    <h2>💬 Soporte</h2>
+    <a class="btn green" ${CONFIG.grupoVip ? `href="${CONFIG.grupoVip}" target="_blank" rel="noopener"` : `href="#" data-off`}>Entrar al Grupo VIP</a>
+    <a class="btn ghost" ${CONFIG.suporte ? `href="${CONFIG.suporte}" target="_blank" rel="noopener"` : `href="#" data-off`}>Hablar con soporte por WhatsApp</a>
+    <h2>⚙️ Mis datos</h2>
+    <div class="card flat small"><p style="margin:0">Tipo <b>${S.tipo}</b> · ${String(S.peso).replace(".", ",")} kg · empezó el ${S.inicio.split("-").reverse().join("/")}</p>
+      <button class="btn ghost" id="trocar" type="button">Cambiar tipo de sangre o peso</button>
+      <button class="btn ghost" id="zerar" type="button" style="color:var(--red)">Reiniciar los 30 días</button></div>
+    <p class="foot">Este protocolo es educativo y no sustituye la orientación de un médico o nutricionista. Embarazadas, mujeres en lactancia, diabéticas, hipertensas o quien toma medicamentos de uso continuo deben consultar a un profesional antes de cambiar su alimentación. Los resultados varían de persona a persona.<br>© ${new Date().getFullYear()} ${CONFIG.produto}</p>`;
+  },
+};
+const FAQ = [
+  ["¿Voy a pasar hambre?", "No. Las verduras son libres y las porciones de proteína se calculan para tu peso. Si te da hambre entre comidas, come la merienda."],
+  ["No sé mi tipo de sangre. ¿Y ahora?", "Empieza por el tipo O y hazte el examen de grupo sanguíneo en cualquier laboratorio. Cuando lo sepas, cámbialo en Más → Mis datos. El menú cambia al instante."],
+  ["¿Puedo comer algo de la lista roja de vez en cuando?", "En los primeros 7 días, no: es la semana en que el cuerpo se desinflama. Después, sigue la regla 80/20 del Anti Efecto Rebote."],
+  ["¿Toda la familia puede hacerlo?", "Sí, pero cada uno con su tipo. Si en casa hay tipos distintos, arma el plato con la lista que aceptan los dos (míralas en la app cambiando el tipo)."],
+  ["¿Tengo que hacer ejercicio?", "No es obligatorio. Una caminata de 15 a 20 minutos ayuda y está en las misiones."],
+  ["Estoy embarazada, soy diabética o tomo medicamentos. ¿Puedo?", "Habla con tu médico antes de cambiar tu alimentación."],
+  ["Perdí el acceso. ¿Cómo entro de nuevo?", "Es el mismo link del correo de la compra. Tus datos quedan guardados en este celular."],
+];
+
+const RECEITAS = {
+  O: [["🥩", "Carne guisada con zapallo", ["400 g de carne magra en cubos", "2 tazas de zapallo en cubos", "1 cebolla, 3 dientes de ajo", "Aceite de oliva, sal, cúrcuma y perejil"], ["Dora la carne en aceite de oliva con ajo y cebolla.", "Cúbrela con agua y cocínala en olla de presión 25 minutos.", "Agrega el zapallo y cocina 5 minutos más sin presión.", "Termina con perejil."]], ["🍳", "Omelette al horno con espinaca", ["4 huevos", "1 atado de espinaca picada", "1/2 cebolla", "Sal y pimienta"], ["Bate los huevos con sal.", "Mezcla la espinaca y la cebolla.", "Hornea en un molde con aceite de oliva a 200 °C por 20 minutos.", "Córtalo en cuadros: dura 2 días en la nevera."]], ["🐟", "Pescado con costra de hierbas", ["2 filetes de pescado", "Perejil, ajo y ralladura de limón", "1 cucharada de aceite de oliva"], ["Sazona el pescado con sal y limón.", "Cúbrelo con la mezcla de hierbas, ajo y aceite.", "Hornea a 200 °C por 15 minutos."]], ["🍠", "Puré de camote", ["2 camotes medianos", "1 cucharada de aceite de oliva", "Sal y nuez moscada"], ["Cocina el camote hasta que esté blando.", "Aplástalo con aceite de oliva, sal y nuez moscada.", "Sírvelo en lugar del arroz."]]],
+  A: [["🍲", "Guiso de pescado con verduras", ["2 filetes de pescado", "1 zanahoria, 1 calabacín", "1 cebolla, ajo, jengibre", "Aceite de oliva y cilantro"], ["Sofríe cebolla, ajo y jengibre en aceite de oliva.", "Agrega las verduras y 1 taza de agua.", "Pon el pescado encima y cocina tapado 12 minutos."]], ["🥣", "Avena cocida con frutos rojos", ["3 cucharadas de avena", "200 ml de agua", "Frutos rojos y canela"], ["Cocina la avena en el agua revolviendo 3 minutos.", "Pon las frutas y la canela encima."]], ["🧈", "Tofu a la plancha con jengibre", ["1 bloque de tofu firme", "Salsa de soya light, jengibre rallado, ajo"], ["Corta el tofu en rebanadas y sécalo con papel.", "Marínalo 15 minutos en la soya con jengibre y ajo.", "Dóralo 3 minutos por lado."]], ["🥗", "Ensalada de quinoa", ["1 taza de quinoa cocida", "Pepino, zanahoria rallada, perejil", "Limón y aceite de oliva"], ["Mezcla todo.", "Aliña con limón, aceite de oliva y sal.", "Dura 3 días en la nevera."]]],
+  B: [["🥩", "Carne molida con repollo", ["400 g de carne molida magra", "1/4 de repollo en tiras", "Cebolla, ajo, aceite de oliva"], ["Sofríe la carne con cebolla y ajo.", "Agrega el repollo y saltea hasta que se ablande.", "Ajusta la sal."]], ["🍌", "Panqueque de plátano", ["1 plátano maduro", "2 huevos", "2 cucharadas de avena", "Canela"], ["Aplasta el plátano y mezcla todo.", "Cocina en sartén antiadherente, 2 minutos por lado."]], ["🐟", "Pescado con puré de ñame", ["2 filetes de pescado", "3 ñames", "Aceite de oliva, ajo, perejil"], ["Cocina y aplasta el ñame con aceite de oliva y sal.", "Dora el pescado sazonado con ajo.", "Sírvelo con perejil encima."]], ["🥛", "Yogur casero con miel", ["1 litro de leche", "1 vaso de yogur natural"], ["Entibia la leche (que puedas meter el dedo).", "Mezcla el yogur y déjalo en el horno apagado 8 horas.", "Guárdalo en la nevera."]]],
+  AB: [["🐟", "Atún con ensalada tibia", ["1 lata de atún en agua", "Brócoli y calabacín", "Aceite de oliva y limón"], ["Cocina las verduras al vapor 5 minutos.", "Mezcla el atún.", "Aliña con aceite de oliva, limón y sal."]], ["🥣", "Yogur con avena y uvas", ["1 vaso de yogur natural", "2 cucharadas de avena", "Uvas cortadas y nueces"], ["Mezcla todo al momento de comer."]], ["🧈", "Tofu revuelto con cúrcuma", ["1/2 bloque de tofu", "Cúrcuma, cebolla, perejil"], ["Desmenuza el tofu con un tenedor.", "Sofríelo con cebolla y cúrcuma 4 minutos.", "Termina con perejil."]], ["🍲", "Crema de calabacín con ricota", ["3 calabacines", "1 cebolla", "2 cucharadas de ricota"], ["Cocina el calabacín con la cebolla en poca agua.", "Lícualo con la ricota.", "Ajusta la sal."]]],
+};
+
+/* ===== extras: vitrina, acceso y pantallas ===== */
+const buyUrl = (k) => { const x = EXTRAS[k]; if (!x.checkout) return ""; try { const u = new URL(x.checkout); u.searchParams.set("src", "app|" + k + "|" + S.tipo); return u.toString(); } catch (e) { return x.checkout; } };
+function vitrine(k) {
+  const x = EXTRAS[k]; if (S.extras[k]) return "";
+  return `<div class="vit"><span class="tag">SOLO PARA QUIEN YA ESTÁ EN EL PROTOCOLO</span>
+    <h3><span>${x.emoji}</span>${x.nome}</h3>
+    <p class="small">${x.gancho}</p>
+    <ul>${x.bullets.map((b) => `<li>${b.replace("para tu tipo", "para el tipo " + S.tipo)}</li>`).join("")}</ul>
+    <div class="pr"><s>US$ ${x.de}</s><b>US$ ${x.preco}</b><span class="small">pago único</span></div>
+    <button class="btn green" data-venda="${k}" type="button">Ver cómo funciona →</button>
+    <p class="small" style="text-align:center;margin-top:8px">Adentro hay una muestra gratis para el tipo ${S.tipo}</p></div>`;
+}
+function mini(k) {
+  const x = EXTRAS[k], own = !!S.extras[k];
+  return `<div class="vit mini ${own ? "own" : ""}" data-open="${k}"><span class="e">${x.emoji}</span><div><b>${x.nome}</b><span>${own ? "Liberado ✓" : "US$ " + x.preco}</span></div><span class="go">${own ? "Abrir →" : "Ver →"}</span></div>`;
+}
+const voltar = `<button class="back" data-voltar type="button">← Volver</button>`;
+/* ===== página de venta de cada extra (abre antes del checkout) ===== */
+const AMOSTRA = {
+  doces: (x, t) => { const [e, n, ing, prep] = x.porTipo[t][0];
+    return `<details open><summary><span class="e">${e}</span>${n} <span class="chip ok" style="margin-left:auto">GRATIS</span></summary><div class="dbody"><b>Ingredientes</b><ul>${ing.map((y) => `<li>${y}</li>`).join("")}</ul><b>Preparación</b><ol>${prep.map((y) => `<li>${y}</li>`).join("")}</ol></div></details>
+      ${x.porTipo[t].slice(1).map(([e, n]) => `<div class="card flat lk"><span class="e">${e}</span>${n}<span class="lock">🔒</span></div>`).join("")}`; },
+  barriga: (x, t) => `<div class="card flat"><h3>🚫 Lo que más infla al tipo ${t}</h3><div class="chips">${x.estufa[t].slice(0, 2).map((y) => `<span class="chip no">${y}</span>`).join("")}<span class="chip">+ ${Math.max(0, x.estufa[t].length - 2)} se liberan con la compra 🔒</span></div><p class="small" style="margin-top:8px">Ya puedes sacar esos 2 del plato hoy y sentir la diferencia.</p></div>
+      ${x.shots[t].map(([n]) => `<div class="card flat lk"><span class="e">🥤</span>${n}<span class="lock">🔒</span></div>`).join("")}`,
+  fase2: (x, t) => `<div class="card flat"><h3>🍽️ Un almuerzo de la Fase 2 para el tipo ${t}, en la porción de tu peso</h3><p class="small">${fill(x.meals[t].almoco[0])}</p></div>
+      ${x.plato.map(([n]) => `<div class="card flat lk"><span class="e">🧱</span>${n}<span class="lock">🔒</span></div>`).join("")}`,
+};
+function cta(k) { const x = EXTRAS[k];
+  return `<div class="vit"><span class="tag">SOLO PARA QUIEN YA ESTÁ EN EL PROTOCOLO</span><h3><span>${x.emoji}</span>${x.nome}</h3>
+    <div class="pr"><s>US$ ${x.de}</s><b>US$ ${x.preco}</b><span class="small">pago único, sin mensualidades</span></div>
+    <button class="btn green buy" data-x="${k}" type="button">Quiero liberarlo ahora</button>
+    <p class="small" style="text-align:center;margin-top:8px">🔒 Pago seguro con tarjeta · Se libera aquí en la app al instante</p></div>`; }
+const VENDA = (k) => () => {
+  const x = EXTRAS[k], v = x.venda, t = S.tipo, T = (s) => s.replaceAll("{T}", t);
+  return `${voltar}<div class="small" style="margin-top:10px;font-weight:800;color:var(--accent);letter-spacing:.03em">${x.emoji} SOLO PARA QUIEN YA ESTÁ EN EL PROTOCOLO</div>
+    <h1 style="margin-top:4px">${T(v.titulo).replace("tipo " + t, `<span class="hl">tipo ${t}</span>`)}</h1><p class="small">${T(v.sub)}</p>
+    <div class="card">${v.dor.map((p) => `<p class="small" style="margin:0 0 8px">${T(p)}</p>`).join("")}</div>
+    <h2>💡 Por qué pasa esto</h2><div class="card"><p class="small" style="margin:0">${T(v.porque)}</p></div>
+    <h2>📦 Lo que liberas</h2>${v.dentro.map(([n, r]) => `<div class="card flat"><h3>✅ ${T(n)}</h3><p class="small">${T(r)}</p></div>`).join("")}
+    <h2>👀 Una muestra para tu tipo</h2>${AMOSTRA[k](x, t)}
+    ${cta(k)}
+    <h2>🛡️ Garantía de 30 días</h2><div class="card"><p class="small" style="margin:0">Pruébalo durante 30 días. Si no te gusta, por cualquier motivo, pide el reembolso y recibes el 100% de vuelta. Sin preguntas y sin trámites.</p></div>
+    <h2>❓ Preguntas</h2>${v.faq.map(([q, r]) => `<details><summary>${q}</summary><div class="dbody"><p class="small" style="margin:0">${r}</p></div></details>`).join("")}
+    ${cta(k)}`;
+};
+TABS.v_doces = VENDA("doces"); TABS.v_barriga = VENDA("barriga"); TABS.v_fase2 = VENDA("fase2");
+const abrirVenda = (k) => { S.tab = "v_" + k; save(); render(); scrollTo(0, 0); };
+TABS.x_doces = () => {
+  const x = EXTRAS.doces, t = S.tipo;
+  return `${voltar}<h1>${x.emoji} Postres Liberados · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    ${x.porTipo[t].map(([e, n, ing, prep], i) => `<details ${i ? "" : "open"}><summary><span class="e">${e}</span>${n}</summary><div class="dbody"><b>Ingredientes</b><ul>${ing.map((y) => `<li>${y}</li>`).join("")}</ul><b>Preparación</b><ol>${prep.map((y) => `<li>${y}</li>`).join("")}</ol></div></details>`).join("")}
+    <div class="al">¿Hay alguien en casa de otro tipo? Cambia el tipo en Más → Mis datos y mira sus postres.</div>`;
+};
+TABS.x_barriga = () => {
+  const x = EXTRAS.barriga, t = S.tipo, b = S.barriga;
+  const ini = b.inicio || hoje(), dia = Math.max(1, Math.min(21, Math.floor((new Date(hoje()) - new Date(ini)) / 864e5) + 1));
+  return `${voltar}<h1>${x.emoji} Vientre Plano · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    ${b.inicio ? `<div class="card"><div class="hero"><div class="ring" style="--p:${dia / 21 * 100}%"><i>${dia}/21</i></div><div><b>Día ${dia} de 21</b><span>${x.fases[dia <= 7 ? 0 : dia <= 14 ? 1 : 2][0]}</span></div></div>
+      ${[["shot", "Shot de la mañana"], ["cha", "Té de la noche"], ["regras", "Reglas de la fase de hoy"]].map(([k, l]) => { const on = (b[dia] || {})[k]; return `<div class="task bt ${on ? "on" : ""}" data-k="${k}" data-d="${dia}"><span class="ck">${on ? "✓" : ""}</span><div class="tt">${l}</div></div>`; }).join("")}</div>`
+      : `<button class="btn" id="bstart" type="button">Empezar los 21 días hoy</button>`}
+    <h2>🥤 Tus 2 recetas</h2>
+    ${x.shots[t].map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
+    <h2>🚫 Lo que infla al tipo ${t}</h2><div class="card"><div class="chips">${x.estufa[t].map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
+    <h2>📅 Las 3 fases</h2>
+    ${x.fases.map(([n, r], i) => `<details ${b.inicio && (dia <= 7 ? 0 : dia <= 14 ? 1 : 2) === i ? "open" : ""}><summary><span class="e">${["1️⃣", "2️⃣", "3️⃣"][i]}</span>${n}</summary><div class="dbody"><ul>${r.map((y) => `<li>${y}</li>`).join("")}</ul></div></details>`).join("")}`;
+};
+TABS.x_fase2 = () => {
+  const x = EXTRAS.fase2, t = S.tipo, m = MEALS[t], m2 = x.meals[t];
+  const sel = TABS._f2 || 31;
+  const i = sel - 31, c = { cafe: fill(m.cafe[(i * 2) % m.cafe.length]), almoco: fill((i % 2 ? m2.almoco : m.almoco)[i % (i % 2 ? m2.almoco : m.almoco).length]), lanche: fill(m.lanche[(i * 7) % m.lanche.length]), jantar: fill((i % 3 === 0 ? m.jantar : m2.jantar)[(i * 3) % (i % 3 === 0 ? m.jantar : m2.jantar).length]) };
+  return `${voltar}<h1>${x.emoji} Fase 2 · <span class="hl">días 31 a 90</span></h1><p class="small">${x.intro}</p>
+    <div class="days">${Array.from({ length: 60 }, (_, k) => k + 31).map((n) => `<button class="day f2 ${n === sel ? "sel" : ""}" data-d="${n}"><small>DÍA</small>${n}</button>`).join("")}</div>
+    <div class="card">${refeicoes(c)}</div>
+    <h2>🧱 Cuando la balanza se detiene</h2>${x.plato.map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
+    <h2>🎉 Fin de semana y fiestas</h2><div class="card"><ul class="small" style="margin:0;padding-left:18px">${x.fds.map((y) => `<li>${y}</li>`).join("")}</ul></div>
+    <h2>🔒 Mantenimiento</h2><div class="card"><ul class="small" style="margin:0;padding-left:18px">${x.manut.map((y) => `<li>${y}</li>`).join("")}</ul></div>`;
+};
+
+/* ===== upsells del funil: solo aparecen para quien los compró ===== */
+function miniUp(k) {
+  const x = UPSELLS[k], down = S.ups[k] === "down";
+  const sub = k === "familia" ? (down ? "+1 perfil" : "+3 perfiles") : down ? "versión esencial" : "completo";
+  return `<div class="vit mini own" data-up="${k}"><span class="e">${x.emoji}</span><div><b>${x.nome}</b><span>Liberado ✓ · ${sub}</span></div><span class="go">Abrir →</span></div>`;
+}
+const comPerfil = (p, fn) => { const t = S.tipo, w = S.peso; S.tipo = p.tipo; S.peso = p.peso; try { return fn(); } finally { S.tipo = t; S.peso = w; } };
+const provavel = () => { const v = (id) => { const e = document.getElementById(id); return e && e.checked; }; const a = v("fq2"), b = v("fq3"); return a && b ? "AB" : a ? "A" : b ? "B" : "O"; };
+const ul = (a) => `<ul class="small" style="margin:6px 0 0;padding-left:18px">${a.map((y) => `<li>${y}</li>`).join("")}</ul>`;
+
+TABS.x_acel = () => {
+  const x = UPSELLS.acel, t = S.tipo, full = S.ups.acel === "full", a = S.acel, m = x.menu[t];
+  const dia = a.inicio ? Math.max(1, Math.min(21, Math.floor((new Date(hoje()) - new Date(a.inicio)) / 864e5) + 1)) : 1;
+  const sel = TABS._ac || dia, fi = sel <= 7 ? 0 : sel <= 14 ? 1 : 2, i = sel - 1;
+  const c = { cafe: fill(m.cafe[i % m.cafe.length]), almoco: fill(m.almoco[(i * 2) % m.almoco.length]), lanche: fi === 0 ? "Solo si te da hambre: 1 fruta de la lista verde" : fill(MEALS[t].lanche[i % MEALS[t].lanche.length]), jantar: fill(m.jantar[(i * 3) % m.jantar.length]) + (fi === 2 && i % 2 ? ` + ${porc().c} cdas. de carbohidrato de la lista verde` : "") };
+  return `${voltar}<h1>${x.emoji} Acelerador 21 Días · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    ${a.inicio ? (full ? `<div class="card"><div class="hero"><div class="ring" style="--p:${dia / 21 * 100}%"><i>${dia}/21</i></div><div><b>Check-in del día ${dia}</b><span>${x.fases[fi][0]}</span></div></div>
+      ${[["suco", "Jugo de la mañana"], ["menu", "Menú del día, sin salirte"], ["zero", "Nada de la lista Cero Absoluto"], ...(dia > 7 ? [["cha", "Té de la noche"]] : [])].map(([k, l]) => { const on = (a[dia] || {})[k]; return `<div class="task ac ${on ? "on" : ""}" data-k="${k}" data-d="${dia}"><span class="ck">${on ? "✓" : ""}</span><div class="tt">${l}</div></div>`; }).join("")}</div>` : "")
+      : `<button class="btn" id="astart" type="button">Empezar los 21 días hoy</button>`}
+    <h2>📅 Fase ${fi + 1}: ${x.fases[fi][0].split("· ")[1]}</h2><div class="card flat small"><p style="margin:0">${x.fases[fi][1]}</p></div>
+    <div class="days">${Array.from({ length: 21 }, (_, k) => k + 1).map((n) => `<button class="day acd ${n === sel ? "sel" : ""}" data-d="${n}"><small>DÍA</small>${n}</button>`).join("")}</div>
+    <div class="card">${refeicoes(c)}</div>
+    <h2>⛔ Cero Absoluto del tipo ${t}</h2><p class="small">En los 21 días, ni un pedacito.</p><div class="card"><div class="chips">${x.zero[t].map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
+    ${full ? `<h2>🥤 Jugo y té del tipo ${t}</h2>${x.bebidas[t].map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
+      <a class="btn green" ${CONFIG.grupoVip ? `href="${CONFIG.grupoVip}" target="_blank" rel="noopener"` : `href="#" data-off`}>Entrar al grupo del Reto 21 Días</a>` : ""}`;
+};
+TABS.x_intest = () => {
+  const x = UPSELLS.intest, t = S.tipo, full = S.ups.intest === "full", g = x.ingredientes[t];
+  return `${voltar}<h1>${x.emoji} Intestino · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
+    <h2>🕐 El orden correcto</h2><div class="card">${x.ordem[t].map(([h, r]) => `<div class="meal"><span class="ic">⏰</span><div><small>${h}</small><b>${r}</b></div></div>`).join("")}</div>
+    <h2>🧺 Ingredientes de limpieza del tipo ${t}</h2><div class="card"><h3 style="font-size:.86rem">Usar</h3><div class="chips">${g.usar.map((y) => `<span class="chip ok">${y}</span>`).join("")}</div>
+      <h3 style="font-size:.86rem;margin-top:14px">Evitar, aunque sea "natural"</h3><div class="chips">${g.evitar.map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
+    <h2>✅ Paso a paso de los 7 días</h2><div class="card">${x.passos.map(([d, tx], i) => `<div class="dz it7 ${S.intest[i] ? "on" : ""}" data-z="${i}"><span class="n">${S.intest[i] ? "✓" : i + 1}</span><div><b>${d}</b><br><span class="small">${tx}</span>${full ? `<br><span class="small" style="color:var(--accent-deep)">🍽️ ${x.menu[t][i]}</span>` : ""}</div></div>`).join("")}</div>
+    ${full ? `<h2>📈 Qué esperar</h2><div class="card">${ul(x.esperar)}</div>` : ""}`;
+};
+TABS.x_familia = () => {
+  const x = UPSELLS.familia, full = S.ups.familia === "full", max = full ? 3 : 1, d = diaAtual();
+  const todos = [{ nome: "Tú", tipo: S.tipo, peso: S.peso }, ...S.perfis];
+  const card = (p, i) => { const c = comPerfil(p, () => cardapio(d)), T = TIPOS[p.tipo];
+    return `<div class="card"><div style="display:flex;align-items:center;gap:10px">${drop(p.tipo)}<div><b>${esc(p.nome)}</b><br><span class="small">Tipo ${p.tipo} · ${T.nome}${p.provavel ? " · perfil probable" : ""} · ${String(p.peso).replace(".", ",")} kg</span></div></div>
+      <div class="chips" style="margin-top:10px">${Object.values(T.rejeita).flat().slice(0, 5).map((y) => `<span class="chip no">${y}</span>`).join("")}</div>
+      <h3 style="margin-top:12px;font-size:.86rem">Hoy (día ${d})</h3>${refeicoes(c)}
+      <button class="btn ghost" data-rm="${i}" type="button" style="color:var(--red)">Quitar perfil</button></div>`; };
+  const quem = {}; todos.forEach((p) => Object.entries(TIPOS[p.tipo].aceita).forEach(([gr, arr]) => { if (/Bebidas|Grasas/.test(gr)) return; arr.forEach((it) => { const n = it.replace(/ \(.*\)/, ""); (quem[n] = quem[n] || new Set()).add(p.nome); }); }));
+  const rej = (n) => todos.filter((p) => Object.values(TIPOS[p.tipo].rejeita).flat().some((r) => r.toLowerCase().includes(n.toLowerCase().split(" ")[0]))).map((p) => p.nome);
+  const comuns = Object.keys(quem).filter((n) => quem[n].size === todos.length && !rej(n).length);
+  const lista = Object.keys(quem).sort((a, b) => quem[b].size - quem[a].size);
+  return `${voltar}<h1>${x.emoji} Protocolo de la Familia</h1><p class="small">${x.intro} Tienes <b>${max} perfil${max > 1 ? "es" : ""}</b> extra${max > 1 ? "s" : ""}.</p>
+    ${S.perfis.map((p, i) => card(p, i)).join("")}
+    ${S.perfis.length < max ? `<h2>➕ Agregar persona (${S.perfis.length}/${max})</h2><div class="card">
+      <div class="wrow"><input id="fnome" placeholder="Nombre (ej: Carlos)"></div>
+      <div class="wrow"><select id="ftipo" style="flex:1;border:1px solid var(--line2);border-radius:var(--r-sm);padding:12px;font-size:1rem;background:var(--card);color:var(--ink);font-family:inherit"><option value="">Tipo de sangre</option><option>O</option><option>A</option><option>B</option><option>AB</option><option value="?">No sé el tipo</option></select><input id="fpeso" type="number" inputmode="decimal" placeholder="Peso (kg)"></div>
+      <div id="fq" hidden class="small" style="margin-top:10px"><b>Test rápido del perfil probable:</b>
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="fq1"> El pan y la pasta le hinchan</label>
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="fq2"> La carne roja le cae pesada</label>
+        <label style="display:block;margin-top:6px"><input type="checkbox" id="fq3"> La leche y el queso le caen bien</label></div>
+      <button class="btn" id="fadd" type="button">Agregar</button></div>` : ""}
+    ${full && S.perfis.length ? `<h2>🍲 Menú de la casa</h2><div class="card small"><p style="margin:0"><b>Base que sirve para todos:</b> ${comuns.slice(0, 8).join(", ") || "arma con la proteína de cada uno y la verdura en común"}.</p>
+      <p><b>En el plato de cada uno:</b></p>${ul(todos.map((p) => `<b>${esc(p.nome)}</b> (tipo ${p.tipo}): evita ${Object.values(TIPOS[p.tipo].rejeita).flat().slice(0, 4).join(", ").toLowerCase()}`))}</div>
+      <h2>🔁 Cambios rápidos</h2>${x.trocas.map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}` : ""}
+    ${S.perfis.length ? `<h2>🛒 Lista de compras de la casa</h2><div class="card">${lista.map((n) => `<div class="shop ${S.compras["f:" + n] ? "on" : ""}" data-x="f:${esc(n)}"><span class="ck">${S.compras["f:" + n] ? "✓" : ""}</span>${esc(n)}<em>${[...quem[n]].map(esc).join(", ")}</em></div>`).join("")}</div>` : ""}`;
+};
+
+function refeicoes(c) {
+  return [["☕", "Desayuno", c.cafe], ["🍽️", "Almuerzo", c.almoco], ["🍎", "Merienda", c.lanche], ["🌙", "Cena", c.jantar]].map(([i, l, t]) => `<div class="meal"><span class="ic">${i}</span><div><small>${l}</small><b>${esc(t)}</b></div></div>`).join("");
+}
+function compras() {
+  const t = T(), q = porc(), out = [];
+  const qtd = { "Proteínas": `${(q.p * 10 / 1000).toFixed(1).replace(".", ",")} kg en la semana`, "Lácteos": "1 a 2 envases", "Verduras": "1 atado / 3 unid.", "Frutas": "5 a 7 unid.", "Carbohidratos": "1 kg", "Grasas y condimentos": "", "Grasas y bebidas": "", "Bebidas": "" };
+  Object.entries(t.aceita).forEach(([g, arr]) => arr.forEach((x) => { if (!/Agua|Café solo|poco\)$|poca\)$/.test(x) || g === "Carbohidratos") out.push([x.replace(/ \(.*\)/, ""), x === arr[0] && g === "Proteínas" ? qtd[g] : (qtd[g] && g !== "Proteínas" ? qtd[g] : "")]); }));
+  out.push(["Piña, jengibre, hierbabuena y limón", "Agua Desinflama"]);
+  return out;
+}
+/* =====================================================================
+   RENDER
+   ===================================================================== */
+function render() {
+  if (!S.tipo || !S.peso || !S.inicio) return setup();
+  $("#hd").hidden = false; $("#nav").hidden = false;
+  $("#tchip").innerHTML = `${drop(S.tipo)}Tipo ${S.tipo}`;
+  document.querySelectorAll("nav button").forEach((b) => b.classList.toggle("on", b.dataset.t === S.tab));
+  $("#app").innerHTML = TABS[S.tab]();
+  bind();
+}
+function bind() {
+  document.querySelectorAll(".task").forEach((e) => e.onclick = () => { const d = diaAtual(); S.feitos[d] = S.feitos[d] || {}; S.feitos[d][e.dataset.k] = !S.feitos[d][e.dataset.k]; save(); render(); if (METAS.every((m) => S.feitos[d][m[0]])) toast("¡Día completo! 🎉"); });
+  document.querySelectorAll(".day").forEach((e) => e.onclick = () => { TABS._dia = +e.dataset.d; render(); });
+  const sel = document.querySelector(".day.sel"); if (sel) sel.scrollIntoView({ inline: "center", block: "nearest" });
+  document.querySelectorAll(".seg button").forEach((e) => e.onclick = () => { TABS._lista = e.dataset.l; render(); });
+  document.querySelectorAll(".shop").forEach((e) => e.onclick = () => { S.compras[e.dataset.x] = !S.compras[e.dataset.x]; save(); render(); });
+  document.querySelectorAll(".dz").forEach((e) => e.onclick = () => { S.desincha[e.dataset.z] = !S.desincha[e.dataset.z]; save(); const open = [...document.querySelectorAll("details")].map((d) => d.open); render(); document.querySelectorAll("details").forEach((d, i) => d.open = open[i]); });
+  const lim = $("#limpar"); if (lim) lim.onclick = () => { S.compras = {}; save(); render(); };
+  const ap = $("#addp"); if (ap) ap.onclick = () => { const v = parseFloat(String($("#npeso").value).replace(",", ".")); if (!(v >= 35 && v <= 250)) return toast("Escribe el peso en kg"); S.pesos = S.pesos.filter((x) => x.d !== hoje()); S.pesos.push({ d: hoje(), kg: v }); S.peso = v; save(); render(); toast("Peso guardado"); };
+  const tr = $("#trocar"); if (tr) tr.onclick = () => { const t = S.tipo; S.tipo = ""; setup(); S.tipo = t; };
+  const zr = $("#zerar"); if (zr) zr.onclick = () => { if (zr.dataset.ok) { S.inicio = hoje(); S.feitos = {}; S.desincha = {}; S.pesos = [{ d: hoje(), kg: S.peso }]; save(); S.tab = "hoje"; render(); toast("Reiniciaste desde el día 1"); } else { zr.dataset.ok = 1; zr.textContent = "Toca de nuevo para confirmar"; } };
+  document.querySelectorAll("[data-off]").forEach((a) => a.onclick = (e) => { e.preventDefault(); toast("Link aún no configurado"); });
+  document.querySelectorAll(".buy").forEach((e) => e.onclick = () => { const u = buyUrl(e.dataset.x); if (!u) return toast("Checkout aún no configurado"); location.href = u; });
+  document.querySelectorAll("[data-open]").forEach((e) => e.onclick = () => { const k = e.dataset.open; if (S.extras[k]) { S.tab = "x_" + k; save(); render(); scrollTo(0, 0); } else abrirVenda(k); });
+  document.querySelectorAll("[data-venda]").forEach((e) => e.onclick = () => abrirVenda(e.dataset.venda));
+  document.querySelectorAll("[data-voltar]").forEach((e) => e.onclick = () => { S.tab = "mais"; save(); render(); scrollTo(0, 0); });
+  document.querySelectorAll(".day.f2").forEach((e) => e.onclick = () => { TABS._f2 = +e.dataset.d; render(); });
+  document.querySelectorAll(".day.acd").forEach((e) => e.onclick = () => { TABS._ac = +e.dataset.d; render(); });
+  document.querySelectorAll("[data-up]").forEach((e) => e.onclick = () => { S.tab = "x_" + e.dataset.up; save(); render(); scrollTo(0, 0); });
+  document.querySelectorAll(".bt").forEach((e) => e.onclick = () => { const d = e.dataset.d; S.barriga[d] = S.barriga[d] || {}; S.barriga[d][e.dataset.k] = !S.barriga[d][e.dataset.k]; save(); render(); });
+  const bs = $("#bstart"); if (bs) bs.onclick = () => { S.barriga.inicio = hoje(); save(); render(); toast("Empezó el día 1 🔥"); };
+  const lc = $("#libcod"); if (lc) lc.onclick = () => { const k = liberar($("#cod").value); if (!k) return toast("Código no encontrado"); toast(nomeDe(k) + " ¡liberado!"); S.tab = "x_" + k; save(); render(); scrollTo(0, 0); };
+  document.querySelectorAll(".ac").forEach((e) => e.onclick = () => { const d = e.dataset.d; S.acel[d] = S.acel[d] || {}; S.acel[d][e.dataset.k] = !S.acel[d][e.dataset.k]; save(); render(); });
+  const as = $("#astart"); if (as) as.onclick = () => { S.acel.inicio = hoje(); save(); render(); toast("Empezó el Acelerador ⚡"); };
+  document.querySelectorAll(".it7").forEach((e) => e.onclick = () => { S.intest[e.dataset.z] = !S.intest[e.dataset.z]; save(); const open = [...document.querySelectorAll("details")].map((d) => d.open); render(); document.querySelectorAll("details").forEach((d, i) => d.open = open[i]); });
+  const fa = $("#fadd"); if (fa) fa.onclick = () => {
+    const nome = $("#fnome").value.trim(), tipo = $("#ftipo").value, peso = parseFloat(String($("#fpeso").value).replace(",", "."));
+    if (!nome) return toast("Escribe el nombre"); if (!tipo) return toast("Elige el tipo"); if (!(peso >= 15 && peso <= 250)) return toast("Escribe el peso en kg");
+    const t = tipo === "?" ? provavel() : tipo; S.perfis.push({ nome, tipo: t, peso, provavel: tipo === "?" }); save(); render(); toast(nome + " agregado");
+  };
+  document.querySelectorAll("[data-rm]").forEach((e) => e.onclick = () => { if (e.dataset.ok) { S.perfis.splice(+e.dataset.rm, 1); save(); render(); } else { e.dataset.ok = 1; e.textContent = "Toca de nuevo para quitar"; } });
+  const ft = $("#ftipo"); if (ft) ft.onchange = () => { const q = $("#fq"); if (q) q.hidden = ft.value !== "?"; };
+}
+document.querySelectorAll("nav button").forEach((b) => b.onclick = () => { S.tab = b.dataset.t; TABS._dia = 0; save(); render(); scrollTo(0, 0); });
+$("#tchip").onclick = () => { S.tab = "listas"; TABS._lista = "aceita"; save(); render(); };
+render();
+</script>
+</body>
+</html>

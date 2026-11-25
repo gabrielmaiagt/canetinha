@@ -1,0 +1,12 @@
+{
+  "principal": {"product": "af6fe82c-7d90-4b7e-bb81-64d3387ef9f3", "front": "abm8u4s"},
+  "doces":    {"product": "e3ef1726-61d8-49ce-bd8a-a7d6e411dae7", "app": "tfopgx3"},
+  "barriga":  {"product": "11f61466-9383-46ee-af08-ca56e8fe4639", "app": "6arpd93"},
+  "fase2":    {"product": "fb1f5530-753b-47a2-98ea-695ead39c732", "app": "3ffz8na"},
+  "acel":     {"product": "950d5b1b-e8ab-4daf-9998-0e04bc951f88", "up": "6ppjdip"},
+  "acel_down":{"product": "6183659f-e64c-414a-8081-a61052e67d50", "down": "oihxqsz"},
+  "intest":   {"product": "ffd9a233-2f4d-477e-9e2d-633e50a788a9", "up": "udhtqhp"},
+  "intest_down":{"product": "c074ad55-dc39-4e71-8c30-590ff54e8b7b", "down": "u7n7xkp"},
+  "familia":  {"product": "a6fe4586-9be6-49f0-89c9-5820b8f82077", "up": "ytrjtju"},
+  "familia_down":{"product": "27a08b1e-392f-41d5-8055-1052d7fb49ae", "down": "3em4b5o"}
+}

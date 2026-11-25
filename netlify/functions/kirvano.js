@@ -18,8 +18,13 @@ const money = (v) => typeof v === "number" ? v : parseFloat(String(v || "0").rep
 const PRODUCT = {
   "3d91f533-62ad-4945-a86d-bea2aafa4e4c": "principal",
   "be75b426-7805-49ba-af3d-84512909f508": "backredirect",
-  // "xxxxxxxx-...": "upsell desparasita",
-  // "xxxxxxxx-...": "downsell desparasita",
+  // upsells 1 clique da Dieta do Sangue (ids das ofertas na Kirvano)
+  "dbabc887-7746-486d-b6fe-12d5ff8d2192": "up1 acelerador",
+  "23335337-a9c8-48d9-ac1c-e1768ce7ff11": "down1 acelerador",
+  "69b5be57-304a-45e4-887c-f1d130ae20b0": "up2 intestino",
+  "a64dfeb7-6c57-4cf3-809e-639611a5c361": "down2 intestino",
+  "a659209e-2759-42a1-a9dd-fbab82c9d857": "up3 familia",
+  "be64f304-58c8-4727-bc14-c994b333e7a2": "down3 familia",
 };
 
 exports.handler = async (event) => {

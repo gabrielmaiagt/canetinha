@@ -122,9 +122,13 @@ let QUESTIONS = [
   ["meta", "Quantos kg", "Pra começar: quantos quilos você quer eliminar?"], ["corpo", "Corpo hoje", "Sem julgamento: como tá o seu corpo hoje?"], ["areasalvo", "Onde quer secar", "E onde você mais quer secar?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência hoje?"], ["futuro", "Daqui 1 ano", "Se nada mudar: como você se imagina daqui 1 ano?"], ["caneta", "Canetinha", "Me fala uma coisa: qual a sua relação com a canetinha de verdade?"], ["barreira", "O que impede", "O que mais te impede de emagrecer?"], ["beneficios", "Benefícios", "O que você mais quer sentir nos próximos 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas você dorme por noite?"], ["fome", "Fome", "Em que momento a fome mais te ataca?"], ["corpoalvo", "Corpo que quer", "Como você quer se ver daqui a 30 dias?"], ["compromisso", "Compromisso", "Você tá disposta a tomar a Canetinha de Pobre todo dia por 30 dias?"],
 ];
 /* ============ Funil: ?funil=sangue mostra a Dieta do Sangue (sessões com funil:"sangue") ============ */
-const FUNIL = new URLSearchParams(location.search).get("funil") === "sangue" ? "sangue" : "canetinha";
-if (FUNIL === "sangue") {
-  STEPS = [["landing", "Landing", "/sangue/?v=landing"], ["meta", "Quantos kg", "/sangue/"], ["tipo", "🩸 Tipo sanguíneo", "tipo"], ["corpo", "Corpo hoje", "corpo"], ["areas", "Onde quer secar", "areas"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["dietas", "Quantas dietas", "dietas"], ["barreira", "O que impede", "barreira"], ["comidas", "O que come", "comidas"], ["mecanismo", "Mecanismo", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["inchaco", "Inchaço", "inchaco"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Laudo", "diagnostico"], ["oferta", "Oferta", "oferta"], ["checkout", "Clique checkout", "checkout"]];
+/* ?funil=sangre (ou /admin-latam) = Dieta del Tipo de Sangre, LATAM em USD (sessões com funil:"sangre", vendas da Cakto) */
+const FUNIL = (() => { const f = new URLSearchParams(location.search).get("funil"); return f === "sangue" || f === "sangre" ? f : "canetinha"; })();
+const FUNIS = { canetinha: "Canetinha de Pobre", sangue: "Dieta do Sangue", sangre: "Dieta del Tipo de Sangre · LATAM" };
+const MOEDA = FUNIL === "sangre" ? "USD" : "BRL";
+if (FUNIL === "sangue" || FUNIL === "sangre") {
+  const base = "/" + FUNIL + "/";
+  STEPS = [["landing", "Landing", base + "?v=landing"], ["meta", "Quantos kg", base], ["tipo", "🩸 Tipo sanguíneo", "tipo"], ["corpo", "Corpo hoje", "corpo"], ["areas", "Onde quer secar", "areas"], ["impacto", "Impacto", "impacto"], ["feliz", "Está feliz?", "feliz"], ["futuro", "Daqui 1 ano", "futuro"], ["dietas", "Quantas dietas", "dietas"], ["barreira", "O que impede", "barreira"], ["comidas", "O que come", "comidas"], ["mecanismo", "Mecanismo", "mecanismo"], ["beneficios", "Benefícios", "beneficios"], ["prova", "🎧 Prova + áudio 1", "prova"], ["peso", "Peso", "peso"], ["altura", "Altura", "altura"], ["ideal", "Meta kg", "ideal"], ["motiva", "Faltam X kg", "motiva"], ["rotina", "Rotina", "rotina"], ["sono", "Sono", "sono"], ["inchaco", "Inchaço", "inchaco"], ["corpoalvo", "Corpo que quer", "corpoalvo"], ["compromisso", "Compromisso", "compromisso"], ["loading", "⏳ Gerando", "loading"], ["diagnostico", "Laudo", "diagnostico"], ["oferta", "Oferta", "oferta"], ["checkout", "Clique checkout", "checkout"]];
   QUESTIONS = [["meta", "Quantos kg", "Quantos quilos você quer eliminar?"], ["tipo", "Tipo", "Qual é o seu tipo sanguíneo?"], ["corpo", "Corpo hoje", "Como tá o seu corpo hoje?"], ["areasalvo", "Onde quer secar", "Onde você mais quer secar?"], ["impacto", "Impacto", "Como o peso tem atrapalhado a sua vida?"], ["feliz", "Está feliz?", "Você tá feliz com a sua aparência?"], ["futuro", "Daqui 1 ano", "Se nada mudar, como se imagina daqui 1 ano?"], ["dietas", "Dietas", "Quantas dietas já fez?"], ["barreira", "O que impede", "O que mais te impede de emagrecer?"], ["comidas", "O que come", "O que você come quase todo dia? (multi)"], ["beneficios", "Benefícios", "O que mais quer sentir em 30 dias? (multi)"], ["rotina", "Rotina", "Como é o seu dia a dia?"], ["sono", "Sono", "Quantas horas dorme?"], ["inchaco", "Inchaço", "Com que frequência se sente inchada?"], ["corpoalvo", "Corpo que quer", "Como quer se ver em 30 dias?"], ["compromisso", "Compromisso", "Tá pronta pra comer pro seu tipo por 30 dias?"]];
 }
 const CANETA = { usei: "Já usei e o peso voltou", medo: "Medo dos efeitos", caro: "Não tenho R$ 3 mil", nunca: "Nunca pensei nisso" };
@@ -145,7 +149,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<":
 const pct = (a, b) => b ? 100 * a / b : 0;
 const P = (v, d = 0) => (Math.round(v * 10 ** d) / 10 ** d).toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d }) + "%";
 const N = (n) => (n || 0).toLocaleString("pt-BR");
-const BRL = (v) => (v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const BRL = (v) => (v || 0).toLocaleString("pt-BR", { style: "currency", currency: MOEDA });
 const median = (arr) => { const a = arr.filter(x => typeof x === "number" && !isNaN(x)).sort((x, y) => x - y); if (!a.length) return null; const m = Math.floor(a.length / 2); return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
 const hbar = (v, max, cls = "") => `<div class="bar ${cls}" data-tip="${P(v, 1)}"><i style="width:${max ? Math.max(0, Math.min(100, 100 * v / max)) : 0}%"></i></div>`;
 const tile = (b, l, s = "") => `<div class="tile"><b class="num">${b}</b><span class="l">${l}</span>${s ? `<span class="s num">${s}</span>` : ""}</div>`;
@@ -262,14 +266,14 @@ function render() {
   const segList = (title, arr, exp) => { const tot = arr.reduce((a, x) => a + x.n, 0), max = Math.max(1, ...arr.map(x => x.n)); return `<p class="qtitle">${title} <span>· ${exp}</span></p><div class="rows">${arr.map(r => `<div class="row"><span class="lbl">${esc(r.k)}</span>${hbar(r.n, max)}<span class="v num"><b>${N(r.n)}</b><span>${P(pct(r.n, tot))}</span> <span title="checkout/oferta">· ck ${r.off ? P(pct(r.ck, r.off)) : "–"}</span></span></div>`).join("") || `<div class="empty">sem dados</div>`}</div>`; };
   // vendas por origem
   const bySrc = {}; approved.forEach(s => { const k = s.source || "(sem origem)"; bySrc[k] = (bySrc[k] || 0) + (+s.value || 0); }); const srcArr = Object.entries(bySrc).sort((a, b) => b[1] - a[1]); const srcMax = Math.max(1, ...srcArr.map(x => x[1]));
-  const byProd = {}; approved.forEach(s => { const k = s.product || ("R$ " + (+s.value || 0).toFixed(2).replace(".", ",")); byProd[k] = byProd[k] || { n: 0, v: 0 }; byProd[k].n++; byProd[k].v += (+s.value || 0); }); const prodArr = Object.entries(byProd).sort((a, b) => b[1].v - a[1].v); const prodMax = Math.max(1, ...prodArr.map(x => x[1].v));
+  const byProd = {}; approved.forEach(s => { const k = s.product || (MOEDA + " " + (+s.value || 0).toFixed(2).replace(".", ",")); byProd[k] = byProd[k] || { n: 0, v: 0 }; byProd[k].n++; byProd[k].v += (+s.value || 0); }); const prodArr = Object.entries(byProd).sort((a, b) => b[1].v - a[1].v); const prodMax = Math.max(1, ...prodArr.map(x => x[1].v));
   const recentSales = [...sl].sort((a, b) => b.at - a.at).slice(0, 15);
   // leads recentes
   const recent = [...rows].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)).slice(0, 200);
   const stepLabel = (id) => (STEPS.find(x => x[0] === id) || [])[1] || id || "–";
 
   app.innerHTML = `<div class="wrap">
-    <div class="top"><div><h1>${FUNIL === "sangue" ? "Dieta do Sangue" : "Canetinha de Pobre"} · Leads <a class="badge" href="?funil=${FUNIL === "sangue" ? "canetinha" : "sangue"}" style="text-decoration:none">trocar pra ${FUNIL === "sangue" ? "Canetinha" : "Sangue"} ⇄</a> ${DEMO ? `<span class="badge demo">demo</span>` : `<span class="badge">firestore</span>`}</h1>
+    <div class="top"><div><h1>${FUNIS[FUNIL]} · Leads ${Object.keys(FUNIS).filter(f => f !== FUNIL).map(f => `<a class="badge" href="?funil=${f}" style="text-decoration:none">${FUNIS[f].split(" · ")[0]} ⇄</a>`).join(" ")} ${DEMO ? `<span class="badge demo">demo</span>` : `<span class="badge">firestore</span>`}</h1>
       <p class="sub num">${N(pv)} pageviews · ${N(off)} na oferta · ${N(ck)} cliques no checkout · ${N(approved.length)} compras · CVR ${P(pct(approved.length, pv), 1)} · de ${F.from || "sempre"} até ${F.to || "agora"}${DEMO ? " · <b style='color:var(--red)'>dados sintéticos</b> até o funil rodar" : ""}</p></div>
       <div class="r"><button class="btn" id="reload">Atualizar</button>${!DEMO ? `<button class="btn" id="logout">Sair</button>` : ""}</div></div>
 
@@ -331,7 +335,7 @@ function render() {
       `CVR de venda por VSL fica no bloco Vendas quando o webhook estiver ligado (a venda leva <code>ab</code> na URL do checkout).`, splitCtl("vslB", "quem vê a VSL B"))}
 
     <div class="card">
-      <h2>Backredirect · /back <span>· apertou "voltar" na oferta → presente R$ 24,90</span></h2>
+      <h2>Backredirect · /back <span>· apertou "voltar" na oferta → presente ${FUNIL === "sangre" ? "US$ 9.99" : "R$ 24,90"}</span></h2>
       <p class="exp">Modelo BumbumFlix <code>/back/</code>: na oferta, "voltar" cai na <code>/back/</code> (cupom); lá, "voltar" de novo ou sair vai direto pro checkout (<code>src=bk-bk</code>). UTMs vão junto (localStorage), então a venda do back não vira "(sem origem)" como no Paizão.</p>
       <div class="tiles">
         ${tile(N(bk.left), "Apertaram voltar na oferta", `${P(pct(bk.left, off))} · ${N(bk.left)} / ${N(off)} · de quem chegou na oferta`)}
