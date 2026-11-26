@@ -1,8 +1,8 @@
 """Gera as 3 páginas de upsell (TSL) do funil /sangue, cada uma com o seu downsell.
 
-  site/sangue/up1/  Acelerador 21 Dias do seu tipo     R$ 47  · down R$ 27
-  site/sangue/up2/  Intestino do seu tipo (Desparasita) R$ 37  · down R$ 19,90
-  site/sangue/up3/  Protocolo da Família                R$ 47  · down R$ 27
+  site/sangue/up1/  Intestino do seu tipo   R$ 27 · down R$ 17
+  site/sangue/up2/  Acelerador 21 Dias      R$ 27 · down R$ 17
+  site/sangue/up3/  Protocolo da Família    R$ 27 · down R$ 17
 
 Uso: python3 tools/upsells_sangue.py   (reescreve as 3 páginas)
 Texto, preço e links ficam aqui. Depois de gerar, os links da Kirvano vão no CONFIG de cada página
@@ -16,33 +16,33 @@ SITE = ROOT / "site/sangue"
 # IDs das ofertas de 1 clique da Kirvano (estratégias UP/DOWN) e pra onde vai depois (comprando ou recusando).
 BASE = "https://dietadesangue.netlify.app"
 OFERTAS = {
-    "up1": ("dbabc887-7746-486d-b6fe-12d5ff8d2192", "23335337-a9c8-48d9-ac1c-e1768ce7ff11", BASE + "/sangue/up2/"),
-    "up2": ("69b5be57-304a-45e4-887c-f1d130ae20b0", "a64dfeb7-6c57-4cf3-809e-639611a5c361", BASE + "/sangue/up3/"),
+    "up1": ("69b5be57-304a-45e4-887c-f1d130ae20b0", "a64dfeb7-6c57-4cf3-809e-639611a5c361", BASE + "/sangue/up2/"),  # Intestino
+    "up2": ("dbabc887-7746-486d-b6fe-12d5ff8d2192", "23335337-a9c8-48d9-ac1c-e1768ce7ff11", BASE + "/sangue/up3/"),  # Acelerador
     "up3": ("a659209e-2759-42a1-a9dd-fbab82c9d857", "be64f304-58c8-4727-bc14-c994b333e7a2", BASE + "/meu-protocolo/"),
 }
 # Códigos que o app /meu-protocolo libera (extras.js → UPSELLS.codigos). Vão no ?lib= da página seguinte
 # e ficam guardados no localStorage "sangue_lib" até o app ler.
-CODIGOS = {"up1": ("ACEL21X", "ACEL21D"), "up2": ("INTEST7X", "INTEST7D"), "up3": ("FAMILIA3", "FAMILIA1")}
+CODIGOS = {"up1": ("INTEST7X", "INTEST7D"), "up2": ("ACEL21X", "ACEL21D"), "up3": ("FAMILIA3", "FAMILIA1")}
 
 TOTAL = 5  # compra, up1, up2, up3, acesso
 
 PAGINAS = {
     # ------------------------------------------------------------------ UP 1
-    "up1": dict(
-        etapa=2, titulo="Seu resultado mais rápido", produto="Acelerador 21 Dias",
-        preco="47", antes="97", preco2="27", antes2="47",
-        h1='<span class="mk">ESPERA!</span> Dá pra sentir o resultado do seu protocolo bem antes. Só que tem uma ordem certa.',
+    "up2": dict(
+        etapa=3, titulo="Pra não travar no meio", produto="Acelerador 21 Dias",
+        preco="27", antes="67", preco2="17", antes2="27",
+        h1='<span class="mk">ESPERA!</span> Tem uma semana em que quase toda mulher trava. Deixa eu te mostrar como passar dela.',
         tsl="""
-<p class="lead">O seu protocolo do <b class="tp">seu tipo</b> já foi pro seu e-mail. Ele funciona no ritmo normal: você tira do prato o que o seu sangue rejeita e o corpo vai desinchando aos poucos, ao longo dos 30 dias.</p>
-<p class="lead">Só que quase toda mulher me pergunta a mesma coisa logo depois da compra: <b>"dá pra ir mais rápido?"</b></p>
-<p class="lead">Dá. E sem passar fome. O segredo é apertar o cardápio do seu tipo por 21 dias, em três fases, cada uma com um objetivo.</p>
+<p class="lead">O seu protocolo do <b class="tp">seu tipo</b> já está no seu e-mail. Na primeira semana o corpo responde rápido: você para de comer o que o seu sangue rejeita e o inchaço começa a sair.</p>
+<p class="lead">Aí, lá pela segunda semana, acontece o que mais faz mulher desistir: <b>a balança para</b>. Não é que o protocolo parou de funcionar. É o corpo se acostumando.</p>
+<p class="lead">Pra esse momento eu montei 21 dias de reforço, em três fases, cada uma com um objetivo. Você encaixa por cima do seu protocolo e passa da trava sem passar fome.</p>
 <h2>Como funcionam os 21 dias</h2>
 <div class="fases">
   <div class="fs"><span>Dias 1 a 7</span><b>Limpeza</b><p>Sai tudo o que o seu sangue rejeita de uma vez<span class="rj"></span>, e entra o suco da manhã do seu tipo.</p></div>
   <div class="fs"><span>Dias 8 a 14</span><b>Queima</b><p>O jantar fica mais leve e entra o chá do seu tipo antes de dormir.</p></div>
   <div class="fs"><span>Dias 15 a 21</span><b>Firmeza</b><p>Os alimentos da sua lista verde voltam aos poucos, na ordem que segura o resultado.</p></div>
 </div>
-<p class="lead">É o mesmo protocolo que você comprou, só que mais intenso e com começo, meio e fim marcados. Você sabe exatamente o que fazer em cada dia.</p>
+<p class="lead">Não muda nada do que você já tem. É um reforço por cima, com começo, meio e fim marcados, pra você saber exatamente o que fazer em cada dia.</p>
 <h2>O que vem no Acelerador 21 Dias:</h2>""",
         inc=[
             "O <b>cardápio intensivo de 21 dias</b> do <b class=\"tp\">seu tipo</b>, dividido nas 3 fases",
@@ -52,8 +52,8 @@ PAGINAS = {
             "Acesso ao <b>grupo do Desafio 21 Dias</b>, junto com as outras meninas",
         ],
         bridge="Na primeira semana você sente o corpo mais leve. Na segunda, a roupa começa a folgar. No fim dos 21 dias, as pessoas em volta começam a perguntar o que você fez.",
-        sim="Quero acelerar meu resultado por R$&nbsp;{p}&nbsp;→",
-        nao="não, obrigada. prefiro seguir no ritmo normal",
+        sim="Quero o reforço dos 21 dias por R$&nbsp;{p}&nbsp;→",
+        nao="não, obrigada. se eu travar, eu me viro",
         garantia="Se não sentir diferença nos 21 dias, devolvo os R$ {p} e você fica com o Acelerador.",
         down_h1='Entendi. Então deixa eu <span class="mk">fazer uma coisa por você</span>:',
         down_tsl="""<p class="lead">Eu tiro os extras e te deixo só a parte que faz o resultado vir antes: <b>o cardápio intensivo dos 21 dias e a lista Zero Absoluto</b> do seu tipo.</p>""",
@@ -63,12 +63,13 @@ PAGINAS = {
         nao2="não, quero seguir só com o meu protocolo",
     ),
     # ------------------------------------------------------------------ UP 2
-    "up2": dict(
-        etapa=3, titulo="O intestino do seu tipo", produto="Protocolo Intestino do Seu Tipo",
-        preco="37", antes="67", preco2="19,90", antes2="37",
+    "up1": dict(
+        etapa=2, titulo="O intestino do seu tipo", produto="Protocolo Intestino do Seu Tipo",
+        preco="27", antes="67", preco2="17", antes2="27",
         h1='<span class="mk">ESPERA!</span> Cada tipo de sangue tem um intestino diferente. E o seu pode estar segurando o inchaço.',
         tsl="""
-<p class="lead">Lembra do teste? O seu sangue rejeita alguns alimentos<span class="rj"></span>. Você passou anos comendo eles sem saber.</p>
+<p class="lead">Parabéns, o seu protocolo do <b class="tp">seu tipo</b> já está no seu e-mail. Ele cuida do que entra no seu prato <b>daqui pra frente</b>.</p>
+<p class="lead">Mas lembra do teste? O seu sangue rejeita alguns alimentos<span class="rj"></span>. Você passou anos comendo eles sem saber.</p>
 <p class="lead">Tirar esses alimentos do prato resolve <b>daqui pra frente</b>. Mas o que esses anos deixaram no seu intestino continua lá: ele fica inflamado, travado, e o corpo <b>segura líquido</b>.</p>
 <p class="lead">É por isso que algumas mulheres fazem tudo certinho na primeira semana e a barriga demora pra baixar. Elas estão seguindo o protocolo direitinho. O que segura é o que ficou parado lá dentro.</p>
 <p class="lead">E aqui tem um detalhe que quase ninguém sabe: <b>a limpeza também muda de um tipo pro outro</b>. Ingrediente que limpa o intestino do tipo O pode ser justamente um que o tipo A rejeita. Por isso receita de limpeza genérica da internet às vezes estufa mais do que ajuda.</p>
@@ -94,7 +95,7 @@ PAGINAS = {
     # ------------------------------------------------------------------ UP 3
     "up3": dict(
         etapa=4, titulo="E o resto da sua casa?", produto="Protocolo da Família",
-        preco="47", antes="97", preco2="27", antes2="47",
+        preco="27", antes="67", preco2="17", antes2="27",
         h1='<span class="mk">ÚLTIMA ETAPA:</span> e o resto da sua casa?',
         tsl="""
 <p class="lead">Você vai começar a comer pro <b class="tp">seu tipo</b>. Só que lá em casa ninguém come igual a você.</p>
