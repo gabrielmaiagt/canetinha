@@ -280,7 +280,7 @@ def price(feat, nome, p, a, sub):
 
 def pagina(pid, d):
     up, down, prox = OFERTAS[pid]
-    cfg = dict(id=pid, foto="",
+    cfg = dict(id=pid, foto={"up1": "../assets/upIntestino.jpg", "up2": "../assets/upAcelerador.jpg", "up3": "../assets/upFamilia.jpg"}[pid],
                firebase={"apiKey": "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", "authDomain": "canetinha-4bd2a.firebaseapp.com",
                          "projectId": "canetinha-4bd2a", "appId": "1:298345331983:web:06f6d8092fcbc3e1d5527a"})
     inc = "".join(f'<div class="it"><div>✅</div><div>{t}</div></div>' for t in d["inc"])
@@ -293,9 +293,9 @@ def pagina(pid, d):
   {stepbar(d["etapa"])}
   <span class="paid">✅ Pagamento aprovado</span><span class="tipo"></span>
   <h1>{d["h1"]}</h1>
+  <div class="mock" id="mock"></div>
   {d["tsl"]}
   <div class="inc">{inc}</div>
-  <div class="mock" id="mock"></div>
   <p class="bridge">{d["bridge"]}</p>
   {price("Só nesta página", d["produto"], d["preco"], d["antes"], "no mesmo pagamento que você acabou de fazer · 1 clique, sem digitar o cartão de novo")}
   <button class="btn kirvano-payment-trigger" id="sim" type="button"><span>{d["sim"].format(p=d["preco"])}</span></button>
