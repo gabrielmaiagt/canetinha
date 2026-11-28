@@ -381,9 +381,9 @@ const CONFIG = {
   produto:  "Dieta do Sangue",
   avatar:   "Fabiana",
   crn:      "",
-  price:    "37,90",
-  priceBefore: "87,90",
-  parcelas: "9x de R$ 5,50",
+  price:    "19,90",
+  priceBefore: "197,00",
+  parcelas: "9x de R$ 2,89",
   vagas:    7,
   timerSeconds: 600,
   vslCtaAt: 95,
@@ -806,18 +806,18 @@ const STEPS = [
     const ben = P.beneficio();
     // [título, descrição, emoji, valor, índice da foto em A.argumentos]
     const principal = [
-      [`Lista Verde e Vermelha do tipo ${t}`, "Tudo que o seu sangue aceita e tudo que ele rejeita, com os nomes que você encontra no mercado.", "🩸", 47, 0],
-      [`Cardápio de 30 dias pro tipo ${t}`, "Café, almoço, lanche e jantar montados, com porções pro seu peso. É só abrir o app e seguir.", "🍽️", 97, 1],
-      ["Lista de compras pronta", "Pra ir ao mercado sem errar e gastar menos do que você gasta hoje.", "🛒", 27, 3],
+      [`Lista Verde e Vermelha do tipo ${t}`, "Tudo que o seu sangue aceita e tudo que ele rejeita, com os nomes que você encontra no mercado.", "🩸", 37, 0],
+      [`Cardápio de 30 dias pro tipo ${t}`, "Café, almoço, lanche e jantar montados, com porções pro seu peso. É só abrir o app e seguir.", "🍽️", 57, 1],
+      ["Lista de compras pronta", "Pra ir ao mercado sem errar e gastar menos do que você gasta hoje.", "🛒", 17, 3],
     ];
     const bonus = [
-      ["Receita Desincha 7 Dias", "Acelera a saída do inchaço na primeira semana, feita com o que o seu tipo aceita.", "🥗", 37, 2, true],
-      ["Anti Efeito Sanfona", "O que fazer depois dos 30 dias pra o peso não voltar.", "🔁", 47, 4],
-      ["Grupo VIP + Suporte no WhatsApp", "Pra tirar dúvida, postar resultado e não desistir no meio.", "💬", 67, 5],
+      ["Receita Desincha 7 Dias", "Acelera a saída do inchaço na primeira semana, feita com o que o seu tipo aceita.", "🥗", 27, 2, true],
+      ["Anti Efeito Sanfona", "O que fazer depois dos 30 dias pra o peso não voltar.", "🔁", 27, 4],
+      ["Grupo VIP + Suporte no WhatsApp", "Pra tirar dúvida, postar resultado e não desistir no meio.", "💬", 32, 5],
     ];
     const totalVal = [...principal, ...bonus].reduce((a, x) => a + x[3], 0);
     const item = (x, isBonus) => `<div class="stk ${isBonus ? "bn" : ""}"><div class="si">${A.argumentos[x[4]] ? `<img src="${A.argumentos[x[4]]}" alt="">` : x[2]}</div><div class="st">${isBonus ? `<span class="tag">🎁 BÔNUS${x[5] ? " DO TIMER" : ""}</span>` : ""}<b>${x[0]}</b><p>${x[1]}</p><span class="sv">${isBonus ? `<s>R$ ${x[3]}</s> <em>GRÁTIS</em>` : `Valor: R$ ${x[3]}`}</span></div></div>`;
-    const price = (feat) => `<div class="price"><span class="feat">${feat}</span><div class="pt">${CONFIG.produto} · Tipo ${t}</div><div class="before">de R$ ${CONFIG.priceBefore} por</div><div class="val"><small>R$</small>${CONFIG.price}</div><div class="parc">ou ${CONFIG.parcelas}</div><div class="pix">à vista no Pix ou cartão</div><div class="vit">♾️ Pagamento único · <b>acesso vitalício</b>, sem mensalidade</div></div>`;
+    const price = (feat) => `<div class="price"><span class="feat">${feat}</span><div class="pt">${CONFIG.produto} · Tipo ${t}</div><div class="before">de R$ ${totalVal} por</div><div class="parc" style="font-size:1rem;font-weight:700;color:var(--ink)">${CONFIG.parcelas}</div><div class="val"><small>ou R$</small>${CONFIG.price}</div><div class="pix">à vista no Pix ou cartão</div><div class="vit">♾️ Pagamento único · <b>acesso vitalício</b>, sem mensalidade</div></div>`;
     const cta = (n) => `<button class="btn green pulse cta" data-n="${n}">Quero o meu protocolo tipo ${t}</button>`;
     const wk = (lb, color, tx, on) => `<div class="w ${on ? "on" : ""}" style="--bar:${color}"><span class="lb">${lb}</span><span class="tx">${tx}</span></div>`;
     const lista = (arr, cls) => `<ul class="lt ${cls}">${arr.map((x, i) => `<li class="${i >= 3 ? "blur" : ""}">${esc(x)}</li>`).join("")}</ul>`;
@@ -880,17 +880,12 @@ const STEPS = [
     ${carousel(A.resultadosCarrossel.filter(Boolean), "resultado").replace('class="car ', 'class="car res ')}
 
     <div class="sp2"></div>
-    <div class="al"><b>Já parou pra pensar o quanto gastou até hoje tentando emagrecer?</b>
-      <p style="font-size:.86rem;line-height:1.8;margin-top:8px">👨‍⚕️ Consultas + exames <b>R$ 500</b><br>🏋️ Academia + personal <b>R$ 400</b><br>🥗 Dietas + suplementos <b>R$ 450</b><br>💊 Remédio pra emagrecer <b>R$ 300/mês</b><br>🩸 ${CONFIG.produto} tipo ${t} <b style="color:var(--green-deep)">${CONFIG.parcelas}</b></p>
-      <p style="margin-top:8px;font-size:.88rem">Pelo preço de uma pizza você para de comer pro sangue dos outros e começa a comer pro seu.</p></div>
-
-    <div class="sp2"></div>
     <div id="cardOferta" style="scroll-margin-top:70px"></div>
     <div class="soma">
       ${[...principal, ...bonus].map((x) => `<div><span>${x[0]}</span><b>R$ ${x[3]}</b></div>`).join("")}
       <div class="tt"><span>Tudo isso valeria</span><b><s>R$ ${totalVal}</s></b></div>
     </div>
-    <p class="small c" style="margin-top:8px">Mas como você fez a avaliação hoje, não vai pagar nem os R$ ${CONFIG.priceBefore} do preço normal:</p>
+    <p class="small c" style="margin-top:8px">Mas como você fez a avaliação hoje, leva tudo isso por:</p>
     ${price("Condição de quem fez o teste")}
     ${cta(2)}
     <div class="badges"><span>🔒 Compra segura</span><span>💠 Pix</span><span>💳 Cartão</span><span>📱 Acesso imediato</span></div>

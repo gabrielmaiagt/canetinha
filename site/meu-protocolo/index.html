@@ -590,6 +590,7 @@ TABS.x_intest = () => {
   const x = UPSELLS.intest, t = S.tipo, full = S.ups.intest === "full", g = x.ingredientes[t];
   return `${voltar}<h1>${x.emoji} Intestino · <span class="hl">tipo ${t}</span></h1><p class="small">${x.intro}</p>
     <h2>🕐 A ordem certa</h2><div class="card">${x.ordem[t].map(([h, r]) => `<div class="meal"><span class="ic">⏰</span><div><small>${h}</small><b>${r}</b></div></div>`).join("")}</div>
+    <h2>🥤 Shots Acelerador de Intestino · tipo ${t}</h2><div class="card">${ul(x.shotsComo)}</div>${x.shots[t].map(([n, r]) => `<div class="card flat"><h3>${n}</h3><p class="small">${r}</p></div>`).join("")}
     <h2>🧺 Ingredientes de limpeza do tipo ${t}</h2><div class="card"><h3 style="font-size:.86rem">Usar</h3><div class="chips">${g.usar.map((y) => `<span class="chip ok">${y}</span>`).join("")}</div>
       <h3 style="font-size:.86rem;margin-top:14px">Evitar, mesmo sendo "natural"</h3><div class="chips">${g.evitar.map((y) => `<span class="chip no">${y}</span>`).join("")}</div></div>
     <h2>✅ Passo a passo dos 7 dias</h2><div class="card">${x.passos.map(([d, tx], i) => `<div class="dz it7 ${S.intest[i] ? "on" : ""}" data-z="${i}"><span class="n">${S.intest[i] ? "✓" : i + 1}</span><div><b>${d}</b><br><span class="small">${tx}</span>${full ? `<br><span class="small" style="color:var(--accent-deep)">🍽️ ${x.menu[t][i]}</span>` : ""}</div></div>`).join("")}</div>

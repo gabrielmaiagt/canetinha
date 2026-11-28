@@ -141,8 +141,16 @@ const UPSELLS = {
   },
 
   intest: {
-    codigos: { INTEST7X: "full", INTEST7D: "down" },
+    codigos: { INTEST7X: "full", INTEST7D: "down", SHOT9X: "full" },
     nome: "Protocolo Intestino do Seu Tipo", emoji: "🌿",
+    // Shots Acelerador de Intestino (order bump do front): 1 shot 20 min antes do almoço, alternando as receitas
+    shots: {
+      O: [["Shot Verde", "50 ml de água + suco de 1 limão + 1 folha de couve batida + 1 rodela de gengibre. Coa e toma num gole."], ["Shot Dourado", "50 ml de água morna + suco de meio limão + 1 pitada de cúrcuma + 1 pitada de pimenta-do-reino."], ["Shot de Abacaxi", "2 rodelas de abacaxi batidas com 3 folhas de hortelã e 50 ml de água. Coa e toma."]],
+      A: [["Shot de Linhaça", "50 ml de água morna + 1 colher de chá de linhaça hidratada na noite anterior + suco de meio limão."], ["Shot de Ameixa", "2 ameixas secas deixadas de molho na água à noite: bate com 50 ml dessa água e toma."], ["Shot de Cenoura", "Meia cenoura batida com meia maçã e 50 ml de água. Coa e toma."]],
+      B: [["Shot de Mamão", "2 colheres de mamão batidas com 50 ml de água e suco de meio limão."], ["Shot de Gengibre", "50 ml de água morna + 1 rodela de gengibre ralado + suco de meio limão."], ["Shot de Beterraba", "1 fatia de beterraba crua batida com 50 ml de água e 3 folhas de hortelã. Coa e toma."]],
+      AB: [["Shot de Chia", "50 ml de água + 1 colher de chá de chia hidratada + suco de meio limão."], ["Shot de Kiwi", "1 kiwi batido com 50 ml de água. Toma sem coar."], ["Shot de Pepino", "Meio pepino batido com suco de meio limão e 50 ml de água. Coa e toma."]],
+    },
+    shotsComo: ["Toma 1 shot 20 minutos antes do almoço, num gole só.", "Alterna as 3 receitas ao longo da semana.", "Bebe 2 copos de água no resto da tarde: o shot puxa a água pro intestino.", "Faz junto com o cardápio do seu tipo: é ele que tira do prato o que trava o intestino."],
     intro: "7 dias pra limpar e destravar o intestino só com o que o seu tipo aceita. Faça antes ou junto com a primeira semana do protocolo.",
     ordem: {
       O: [["Ao acordar", "1 copo de água morna com suco de meio limão e 1 pitada de cúrcuma."], ["30 min depois", "Café da manhã normal do seu cardápio."], ["Antes de dormir", "1 colher de sopa de azeite + chá de hortelã com gengibre."]],

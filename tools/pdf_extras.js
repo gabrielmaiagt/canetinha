@@ -73,7 +73,9 @@ const corpoUp = {
     TIPOS.map((t, i) => `<section class="tipo" style="--c:${COR[t]}"><h2>Tipo ${t}</h2><h3>Zero Absoluto (21 dias sem)</h3><div class="chips">${x.zero[t].map((y) => `<span>${esc(y)}</span>`).join("")}</div>
       ${x.bebidas[t].map(([n, r]) => `<div class="box"><h3>${esc(n)}</h3>${esc(r)}</div>`).join("")}
       <h3>Cafés da manhã</h3>${lista(x.menu[t].cafe.map(fx))}<h3>Almoços</h3>${lista(x.menu[t].almoco.map(fx))}<h3>Jantares</h3>${lista(x.menu[t].jantar.map(fx))}<p class="intro" style="font-size:9.5pt">${PORC} Na Fase 1, lanche só se der fome (1 fruta da lista verde). No app, o cardápio sai dia a dia.</p></section>`).join(""),
-  intest: (x) => `<h2>Passo a passo dos 7 dias</h2>${lista(x.passos.map(([d, r]) => `${d}: ${r}`))}<h2 style="margin-top:18px">O que esperar</h2>${lista(x.esperar)}` +
+  intest: (x) => `<div class="cod" style="margin:0 auto 18px"><small>Comprou os Shots no checkout? Seu código pra liberar no app Meu Protocolo</small><b>SHOT9X</b><small>Abra o app → aba Mais → "Já comprou e não liberou?" → digite o código.</small></div>
+    <h2>Shots Acelerador de Intestino</h2>${lista(x.shotsComo)}${TIPOS.map((t) => `<div class="box"><h3>Tipo ${t}</h3>${lista(x.shots[t].map(([n, r]) => `${n}: ${r}`))}</div>`).join("")}
+    <h2 style="margin-top:18px">Passo a passo dos 7 dias</h2>${lista(x.passos.map(([d, r]) => `${d}: ${r}`))}<h2 style="margin-top:18px">O que esperar</h2>${lista(x.esperar)}` +
     TIPOS.map((t) => `<section class="tipo" style="--c:${COR[t]}"><h2>Tipo ${t}</h2><h3>A ordem certa</h3>${lista(x.ordem[t].map(([h, r]) => `${h}: ${r}`))}
       <h3>Usar</h3><p>${x.ingredientes[t].usar.join(", ")}</p><h3>Evitar, mesmo sendo "natural"</h3><div class="chips">${x.ingredientes[t].evitar.map((y) => `<span>${esc(y)}</span>`).join("")}</div>
       <h3>Cardápio dos 7 dias</h3>${lista(x.menu[t].map((m, i) => `Dia ${i + 1} · ${m}`))}</section>`).join(""),

@@ -16,20 +16,20 @@ SITE = ROOT / "site/sangue"
 # IDs das ofertas de 1 clique da Kirvano (estratégias UP/DOWN) e pra onde vai depois (comprando ou recusando).
 BASE = "https://dietadesangue.netlify.app"
 OFERTAS = {
-    "up1": ("69b5be57-304a-45e4-887c-f1d130ae20b0", "a64dfeb7-6c57-4cf3-809e-639611a5c361", BASE + "/sangue/up2/"),  # Intestino
-    "up2": ("dbabc887-7746-486d-b6fe-12d5ff8d2192", "23335337-a9c8-48d9-ac1c-e1768ce7ff11", BASE + "/sangue/up3/"),  # Acelerador
+    "up2": ("69b5be57-304a-45e4-887c-f1d130ae20b0", "a64dfeb7-6c57-4cf3-809e-639611a5c361", BASE + "/sangue/up3/"),  # Intestino
+    "up1": ("dbabc887-7746-486d-b6fe-12d5ff8d2192", "23335337-a9c8-48d9-ac1c-e1768ce7ff11", BASE + "/sangue/up2/"),  # Acelerador
     "up3": ("a659209e-2759-42a1-a9dd-fbab82c9d857", "be64f304-58c8-4727-bc14-c994b333e7a2", BASE + "/meu-protocolo/"),
 }
 # Códigos que o app /meu-protocolo libera (extras.js → UPSELLS.codigos). Vão no ?lib= da página seguinte
 # e ficam guardados no localStorage "sangue_lib" até o app ler.
-CODIGOS = {"up1": ("INTEST7X", "INTEST7D"), "up2": ("ACEL21X", "ACEL21D"), "up3": ("FAMILIA3", "FAMILIA1")}
+CODIGOS = {"up2": ("INTEST7X", "INTEST7D"), "up1": ("ACEL21X", "ACEL21D"), "up3": ("FAMILIA3", "FAMILIA1")}
 
 TOTAL = 5  # compra, up1, up2, up3, acesso
 
 PAGINAS = {
     # ------------------------------------------------------------------ UP 1
-    "up2": dict(
-        etapa=3, titulo="Pra não travar no meio", produto="Acelerador 21 Dias",
+    "up1": dict(
+        etapa=2, titulo="Pra não travar no meio", produto="Acelerador 21 Dias",
         preco="27", antes="67", preco2="17", antes2="27",
         h1='<span class="mk">ESPERA!</span> Tem uma semana em que quase toda mulher trava. Deixa eu te mostrar como passar dela.',
         tsl="""
@@ -63,8 +63,8 @@ PAGINAS = {
         nao2="não, quero seguir só com o meu protocolo",
     ),
     # ------------------------------------------------------------------ UP 2
-    "up1": dict(
-        etapa=2, titulo="O intestino do seu tipo", produto="Protocolo Intestino do Seu Tipo",
+    "up2": dict(
+        etapa=3, titulo="O intestino do seu tipo", produto="Protocolo Intestino do Seu Tipo",
         preco="27", antes="67", preco2="17", antes2="27",
         h1='<span class="mk">ESPERA!</span> Cada tipo de sangue tem um intestino diferente. E o seu pode estar segurando o inchaço.',
         tsl="""
@@ -280,7 +280,7 @@ def price(feat, nome, p, a, sub):
 
 def pagina(pid, d):
     up, down, prox = OFERTAS[pid]
-    cfg = dict(id=pid, foto={"up1": "../assets/upIntestino.jpg", "up2": "../assets/upAcelerador.jpg", "up3": "../assets/upFamilia.jpg"}[pid],
+    cfg = dict(id=pid, foto={"up2": "../assets/upIntestino.jpg", "up1": "../assets/upAcelerador.jpg", "up3": "../assets/upFamilia.jpg"}[pid],
                firebase={"apiKey": "AIzaSyDbRQJkq7C_lBWa7QSf6bvhTaP_EFP8OUU", "authDomain": "canetinha-4bd2a.firebaseapp.com",
                          "projectId": "canetinha-4bd2a", "appId": "1:298345331983:web:06f6d8092fcbc3e1d5527a"})
     inc = "".join(f'<div class="it"><div>✅</div><div>{t}</div></div>' for t in d["inc"])
